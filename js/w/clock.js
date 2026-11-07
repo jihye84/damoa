@@ -1,8 +1,8 @@
 // 모형 시계: 바늘을 돌려 시각 만들기(set) · 시계를 보고 시각 쓰기(read)
 // content: { mode: 'set'|'read', time: '3:30', step: 30|5|1 }
 // answer:  set → { minutes } (0~719)   read → { h, m }
-import { h } from '../common.js?v=202611072119';
-import { s, svgRoot, toSvg, makeState, wrap, num, eul } from './base.js?v=202611072119';
+import { h } from '../common.js?v=202611072130';
+import { s, svgRoot, toSvg, makeState, wrap, num, eul } from './base.js?v=202611072130';
 
 export function parseTime(t) {
   const m = String(t || '').match(/^\s*(\d{1,2})\s*[:시]\s*(\d{1,2})?/);
@@ -35,7 +35,7 @@ export const clock = {
   fields: [
     { k: 'mode', label: '할 일', type: 'select', options: [['set', '바늘을 돌려 시각 만들기'], ['read', '시계를 보고 시각 쓰기']] },
     { k: 'time', label: '시각 (예: 3:30)', type: 'text' },
-    { k: 'step', label: '긴바늘이 움직이는 칸', type: 'select', options: [[30, '30분씩 (몇 시 · 몇 시 30분)'], [5, '5분씩'], [1, '1분씩']] },
+    { k: 'step', label: '바늘을 놓으면 맞춰지는 눈금', type: 'select', options: [[30, '30분 (몇 시 · 몇 시 30분)'], [5, '5분'], [1, '1분']] },
   ],
   validate(c) { return parseTime(c.time) ? null : '시각을 "3:30"처럼 써 주세요 (1~12시)'; },
   defaultQuestion(c) {
@@ -51,7 +51,7 @@ export const clock = {
       return { ok, short: ok ? '맞았어요' : `${ans.h}시 ${ans.m}분` };
     }
     if (ans.minutes == null || !ans.mine) return null;
-    const got = ((ans.minutes % 720) + 720) % 720;
+    const got = ((Math.round(ans.minutes) % 720) + 720) % 720;
     const ok = got === t.minutes;
     const gh = Math.floor(got / 60) || 12, gm = got % 60;
     return { ok, short: ok ? '맞았어요' : `${gh}시 ${gm}분` };
@@ -112,31 +112,51 @@ export const clock = {
         try { svg.setPointerCapture(e.pointerId); } catch (_) {}
         move(e);
       });
+      // 끄는 동안은 바늘이 손가락을 그대로 따라 돌고, 놓으면 가까운 눈금(step분)에 살짝 맞춰져요
       const move = (e) => {
         if (!drag) return;
         e.preventDefault();
         const ang = angleOf(toSvg(svg, e));
         S.set((st) => {
           if (drag === 'm') {
-            const target = Math.round(ang / 6 / step) * step % 60;
             const cur = ((st.minutes % 60) + 60) % 60;
-            let d = target - cur;
+            let d = ang / 6 - cur;
             if (d > 30) d -= 60;
             if (d < -30) d += 60;
             st.minutes = (st.minutes + d + 720) % 720;
           } else {
-            st.minutes = (Math.round(ang * 2 / step) * step) % 720;
+            // 짧은바늘: 지금 위치에서 가장 가까운 쪽으로 이어서 돌아요
+            const cur = ((st.minutes % 720) + 720) % 720;
+            let d = ang * 2 - cur;
+            if (d > 360) d -= 720;
+            if (d < -360) d += 720;
+            st.minutes = (cur + d + 720) % 720;
           }
         }, { record: false });
       };
       svg.addEventListener('pointermove', move);
-      const end = () => { drag = null; };
+      let anim = null;
+      const end = () => {
+        if (!drag) return;
+        drag = null;
+        const from = S.get().minutes;
+        let to = Math.round(from / step) * step;
+        const t0 = performance.now();
+        cancelAnimationFrame(anim);
+        const tick = (now) => {
+          const k = Math.min(1, (now - t0) / 140);
+          const v = from + (to - from) * (1 - Math.pow(1 - k, 3));
+          S.set((st) => { st.minutes = k < 1 ? v : ((to % 720) + 720) % 720; }, { record: false });
+          if (k < 1) anim = requestAnimationFrame(tick);
+        };
+        anim = requestAnimationFrame(tick);
+      };
       svg.addEventListener('pointerup', end);
       svg.addEventListener('pointercancel', end);
     }
 
     return {
-      getAnswer: () => Object.assign({}, S.get(), { mine: S.mine() }),
+      getAnswer: () => { const a2 = Object.assign({}, S.get(), { mine: S.mine() }); if (a2.minutes != null) a2.minutes = Math.round(a2.minutes) % 720; return a2; },
       hasWork: () => S.mine() > 0,
       undo: () => S.undo(),
     };

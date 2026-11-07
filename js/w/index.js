@@ -1,11 +1,11 @@
 // 수학 도구 템플릿 모음 (종류 이름 → 부품)
-import { clock } from './clock.js?v=202611072119';
-import { tens } from './tens.js?v=202611072119';
-import { vmath } from './vmath.js?v=202611072119';
-import { numline } from './numline.js?v=202611072119';
-import { fraction } from './fraction.js?v=202611072119';
-import { bargraph } from './bargraph.js?v=202611072119';
-import { geoboard } from './geoboard.js?v=202611072119';
+import { clock } from './clock.js?v=202611072130';
+import { tens } from './tens.js?v=202611072130';
+import { vmath } from './vmath.js?v=202611072130';
+import { numline } from './numline.js?v=202611072130';
+import { fraction } from './fraction.js?v=202611072130';
+import { bargraph } from './bargraph.js?v=202611072130';
+import { geoboard } from './geoboard.js?v=202611072130';
 
 export const WIDGETS = { clock, tens, vmath, numline, fraction, bargraph, geoboard };
 

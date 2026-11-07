@@ -286,3 +286,8 @@
   body.printing #print-root { position: static; left: auto; width: auto; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
+.btn.danger-soft { color: #B91C1C; border-color: #F3C4C4; }
+.btn.danger { background: #DC2626; border-color: #DC2626; color: #fff; }
+.btn.danger:disabled { background: #F3B4B4; border-color: #F3B4B4; }
+.reset-warn { margin: 0; padding: 10px 12px; border-radius: 10px; background: #FEF2F2; color: #991B1B; line-height: 1.6; }
+.reset-n { font-weight: 700; }

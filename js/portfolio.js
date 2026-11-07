@@ -2,8 +2,8 @@
 // 반을 고르고 학생을 누르면, 그 학생이 낸 것이 날짜순으로 나와요. 도장·한마디·자동 채점도 함께.
 // ★ 대표작을 달고, 학생 한 명 또는 반 전체를 A4로 인쇄(PDF 저장)할 수 있어요.
 
-import { h, $, toast, errMsg, KINDS, stampOf } from './common.js?v=202611072035';
-import { renderSheet, isCorrect, gradeMap, gradeShapes } from './sheet.js?v=202611072035';
+import { h, $, toast, errMsg, KINDS, stampOf } from './common.js?v=202611072101';
+import { renderSheet, isCorrect, gradeMap, gradeShapes } from './sheet.js?v=202611072101';
 
 const PAGE = 500;
 const CHUNK = 80;
@@ -47,6 +47,7 @@ export function initPortfolio(ctx) {
   $('#port-class').addEventListener('change', async (e) => { P.classId = e.target.value; await loadClass(); });
   $('#port-print-one').addEventListener('click', () => askPrint(false));
   $('#port-print-all').addEventListener('click', () => askPrint(true));
+  $('#port-reset').addEventListener('click', () => askReset());
 
   async function open() {
     const classes = getClasses();
@@ -249,6 +250,73 @@ export function initPortfolio(ctx) {
     const all = P.subs.filter((x) => x.student_id === s.id);
     $('#port-sum').textContent = `낸 것 ${all.length}개 · 대표작 ★${all.filter((x) => P.stars.has(x.id)).length}개`;
     if (P.starOnly && !on) paintCards();
+  }
+
+  // ------------------------------------------------ 초기화
+  function askReset() {
+    const s = P.students.find((x) => x.id === P.studentId);
+    const clsName = $('#port-class').selectedOptions[0].textContent;
+    const periodName = { all: '전체 기간', h1: '1학기', h2: '2학기', month: '이번 달' }[P.period];
+    const radio = (name, v, label, checked) => {
+      const i = h('input', { type: 'radio', name, value: v, id: `rs-${name}-${v}`, checked });
+      return [i, h('label', { class: 'row', for: i.id, style: { gap: '8px' } }, i, label)];
+    };
+    const [rOne, lOne] = radio('who', 'one', s ? `${s.number}번 ${s.name}만` : '이 학생만', !!s);
+    const [rAll, lAll] = radio('who', 'all', `${clsName} 학생 모두`, !s);
+    if (!s) rOne.disabled = true;
+    const [pAll, lpAll] = radio('when', 'all', '모든 기간', true);
+    const [pCur, lpCur] = radio('when', 'cur', `지금 고른 기간만 (${periodName})`, false);
+    if (P.period === 'all') pCur.disabled = true;
+    const keepStar = h('input', { type: 'checkbox', id: 'rs-keep' });
+    const typed = h('input', { class: 'input', id: 'rs-typed', placeholder: '지우기', autocomplete: 'off' });
+    const n = h('span', { class: 'reset-n' });
+    const go = h('button', { type: 'button', class: 'btn danger', disabled: true }, '지우기');
+
+    const targets = () => {
+      const ids = rAll.checked ? new Set(P.students.map((x) => x.id)) : new Set([P.studentId]);
+      const r = pCur.checked ? periodRange(P.period) : null;
+      return P.subs.filter((x) => ids.has(x.student_id))
+        .filter((x) => !r || (new Date(x.updated_at) >= r[0] && new Date(x.updated_at) < r[1]))
+        .filter((x) => !(keepStar.checked && P.stars.has(x.id)));
+    };
+    const sync = () => {
+      const k = targets().length;
+      n.textContent = `${k}개`;
+      go.disabled = !k || typed.value.trim() !== '지우기';
+    };
+    for (const el of [rOne, rAll, pAll, pCur, keepStar]) el.addEventListener('change', sync);
+    typed.addEventListener('input', sync);
+
+    const body = h('div', { class: 'col', style: { gap: '12px' } },
+      h('div', { class: 'field' }, h('label', null, '누구를'), h('div', { class: 'col', style: { gap: '6px' } }, lOne, lAll)),
+      h('div', { class: 'field' }, h('label', null, '언제 것을'), h('div', { class: 'col', style: { gap: '6px' } }, lpAll, lpCur)),
+      h('label', { class: 'row', for: 'rs-keep', style: { gap: '8px' } }, keepStar, '★ 대표작은 남기기'),
+      h('p', { class: 'reset-warn' }, '낸 답과 받은 도장·한마디가 ', n, ' 지워져요. 지운 것은 되돌릴 수 없어요. 필요하면 먼저 인쇄해서 "PDF로 저장"해 두세요.'),
+      h('div', { class: 'field' }, h('label', { for: 'rs-typed' }, '정말 지우려면 아래 칸에 "지우기"라고 써 주세요'), typed));
+    const pdf = h('button', { type: 'button', class: 'btn', onclick: () => { closeModal(); askPrint(rAll.checked); } }, '먼저 PDF로 저장');
+    go.addEventListener('click', async () => {
+      const list = targets();
+      if (!list.length || typed.value.trim() !== '지우기') return;
+      go.disabled = true;
+      go.textContent = '지우는 중…';
+      const ids = list.map((x) => x.id);
+      try {
+        for (let i = 0; i < ids.length; i += CHUNK) {
+          const { error } = await sb.from('submissions').delete().in('id', ids.slice(i, i + CHUNK));
+          if (error) throw error;
+        }
+      } catch (e) {
+        toast(errMsg(e));
+        closeModal();
+        await loadClass();
+        return;
+      }
+      closeModal();
+      toast(`${ids.length}개를 지웠어요`);
+      await loadClass();
+    });
+    openModal('포트폴리오 초기화', body, [pdf, go]);
+    sync();
   }
 
   // ------------------------------------------------ 인쇄

@@ -1,5 +1,7 @@
 // 템플릿 꺼내 오기: 다모아가 미리 만들어 둔 묶음(수학 1~6학년, 생각하기)을 골라 보관함에 넣어요.
-import { h, toast, errMsg, KINDS } from './common.js?v=202611071603';
+import { h, toast, errMsg, KINDS } from './common.js?v=202611071721';
+
+import { renderSheet } from './sheet.js?v=202611071721';
 
 const SOURCES = [
   { key: 'math', label: '수학', file: 'library/math.json' },
@@ -113,14 +115,21 @@ export async function openLibrary(ctx) {
         ? h('div', { class: 'lib-opts' }, ...it.content.options.map((o, j) =>
           h('span', { class: 'lib-opt' + (it.answer_key && it.answer_key.correct === j ? ' ans' : '') }, '①②③④'[j] + ' ' + o)))
         : null;
+      const thumb = h('div', { class: 'lib-thumb', 'aria-hidden': 'true' });
       ul.appendChild(h('label', { for: 'lib-it-' + i, class: 'lib-item' },
-        cb,
+        cb, thumb,
         h('div', { class: 'lib-item-body' },
           h('div', { class: 'lib-q' }, it.content.question),
           opts,
           h('span', { class: 'lib-kind' }, KINDS[it.kind] || it.kind))));
     });
     detail.appendChild(ul);
+    // 학생 화면 그대로 작게 그려 보여 줘요
+    [...ul.querySelectorAll('.lib-thumb')].forEach((th, i) => {
+      const it = b.items[i];
+      const k = it.answer_key || {};
+      renderSheet(th, it.content, { correctIndex: typeof k.correct === 'number' ? k.correct : null, mapTargets: k.targets || null });
+    });
     syncBtn();
   }
 

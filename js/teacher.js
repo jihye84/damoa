@@ -1,8 +1,8 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl } from './common.js?v=202611071603';
-import { renderSheet, isCorrect, loadMap } from './sheet.js?v=202611071603';
-import { openLibrary } from './library.js?v=202611071603';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611071603';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl } from './common.js?v=202611071721';
+import { renderSheet, isCorrect, loadMap } from './sheet.js?v=202611071721';
+import { openLibrary } from './library.js?v=202611071721';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611071721';
 
 const sb = makeClient('teacher');
 
@@ -299,7 +299,7 @@ function renderTemplates() {
     box.appendChild(head);
     if (!open) continue;
     for (const t of items) {
-      box.appendChild(h('button', { type: 'button', class: 'list-item in-folder', onclick: () => editTemplate(t) },
+      box.appendChild(h('button', { type: 'button', class: 'list-item in-folder', onclick: () => openViewer(t) },
         h('span', { class: 'tname' }, t.title), h('span', { class: 'meta' }, KINDS[t.kind] || t.kind)));
     }
   }
@@ -370,11 +370,44 @@ function editTemplate(t, afterSave) {
     $('#tp-q-label') && ($('#tp-q-label').textContent = kind === 'blank' ? '안내 글 (없어도 돼요)' : '문제');
   }
 
-  const body = h('div', { class: 'col', style: { gap: '14px' } },
+  const form = h('div', { class: 'col te-form', style: { gap: '14px' } },
     h('div', { class: 'kind-picks' }, ...kinds),
     h('div', { class: 'field' }, h('label', { for: 'tp-title' }, '템플릿 이름 (보관함에 보이는 이름)'), title),
     h('div', { class: 'field' }, h('label', { for: 'tp-q', id: 'tp-q-label' }, '문제'), q),
     optBox, mapBox);
+
+  // 오른쪽: 고치는 대로 학생 화면이 바로 바뀌어요
+  const stage = h('div', { class: 'tv-stage' });
+  const body = h('div', { class: 'te' }, form,
+    h('div', { class: 'tv-main' }, h('div', { class: 'tv-label' }, '학생 태블릿에 이렇게 보여요'), stage));
+  let pv = null;
+  let pvT = null;
+  async function paintPreview() {
+    const content = { kind, question: q.value.trim() };
+    let key = null;
+    if (kind === 'choice4') {
+      content.options = opts.map((o, i) => o.value.trim() || '(' + (i + 1) + '번)');
+      key = { correct: parseInt(radios.find((r) => r.checked).value, 10) };
+    }
+    if (kind === 'map') {
+      content.map = mapSel.value;
+      content.labels = mapLabels.checked;
+      const names = mapTargets.value.split(/[,，、\n]/).map((x) => x.trim()).filter(Boolean);
+      if (names.length) {
+        try {
+          const m = await loadMap(content.map);
+          const norm = (x) => x.replace(/\s/g, '');
+          key = { targets: names.map((n) => (m.regions.find((r) => norm(r.name) === norm(n)) || m.regions.find((r) => norm(r.name).startsWith(norm(n))) || {}).id).filter(Boolean) };
+        } catch (_) {}
+      }
+    }
+    if (pv) pv.destroy();
+    pv = previewSheet(stage, content, key);
+  }
+  const schedule = () => { clearTimeout(pvT); pvT = setTimeout(paintPreview, 120); };
+  form.addEventListener('input', schedule);
+  form.addEventListener('change', schedule);
+  form.addEventListener('click', (e) => { if (e.target.closest('.kind-pick')) schedule(); });
 
   const buttons = [];
   if (t) {
@@ -423,8 +456,113 @@ function editTemplate(t, afterSave) {
     if (afterSave) afterSave(res.data);
   } }, afterSave ? '저장하고 보내기' : '저장'));
 
-  openModal(t ? '템플릿 고치기' : '새 템플릿', body, buttons);
+  openModal(t ? '템플릿 고치기' : '새 템플릿', body, buttons, 'wide');
   paintKinds();
+  paintPreview();
+}
+
+
+// =====================================================================
+// 템플릿 미리 보기: 학생 태블릿에 뜨는 화면 그대로
+// =====================================================================
+function previewSheet(host, content, key) {
+  return renderSheet(host, content || {}, {
+    correctIndex: key && typeof key.correct === 'number' ? key.correct : null,
+    mapTargets: key && Array.isArray(key.targets) ? key.targets : null,
+  });
+}
+
+function answerNote(t) {
+  const k = t.answer_key;
+  if (t.kind === 'choice4' && k && typeof k.correct === 'number') return `정답: ${'①②③④'[k.correct]} ${(t.content.options || [])[k.correct] || ''} (초록 테두리, 학생에게는 안 보여요)`;
+  if (t.kind === 'map') return k && k.targets && k.targets.length ? `찾아 칠할 곳 ${k.targets.length}곳 (초록 테두리, 학생에게는 안 보여요)` : '자유 색칠 (정답 없음)';
+  if (t.kind === 'essay') return '타자나 펜으로 답을 써요';
+  return '펜으로 자유롭게 써요';
+}
+
+function openViewer(startT, { sending = false } = {}) {
+  let cur = startT || null;
+  let view = null;
+  const search = h('input', { class: 'input', type: 'search', placeholder: '찾기: 예) 받아올림, 중랑구, 행복', 'aria-label': '템플릿 찾기' });
+  const list = h('div', { class: 'pick-list tv-list', role: 'listbox', 'aria-label': '템플릿' });
+  const stage = h('div', { class: 'tv-stage' });
+  const capTitle = h('b', null);
+  const capNote = h('span', { class: 'muted' });
+  const cap = h('div', { class: 'tv-cap' }, h('div', { class: 'tv-cap-text' }, capTitle, capNote));
+  const prevB = h('button', { type: 'button', class: 'btn icon', 'aria-label': '앞 템플릿', onclick: () => step(-1) }, '‹');
+  const nextB = h('button', { type: 'button', class: 'btn icon', 'aria-label': '다음 템플릿', onclick: () => step(1) }, '›');
+  cap.appendChild(h('div', { class: 'row', style: { gap: '6px' } }, prevB, nextB));
+  const body = h('div', { class: 'tv' },
+    h('div', { class: 'tv-side' }, search, list),
+    h('div', { class: 'tv-main' }, h('div', { class: 'tv-label' }, '학생 태블릿에 이렇게 보여요'), stage, cap));
+
+  let shown = [];
+  const paintList = () => {
+    list.innerHTML = '';
+    const q = search.value.trim();
+    shown = st.templates.filter((t) => !q || t.title.includes(q) || (t.folder || '').includes(q) || (t.content && (t.content.question || '').includes(q)));
+    if (!st.templates.length) { list.appendChild(h('div', { class: 'empty' }, '보관함이 비어 있어요.')); return; }
+    if (!shown.length) { list.appendChild(h('div', { class: 'empty' }, '찾는 템플릿이 없어요.')); return; }
+    const ordered = [];
+    for (const [folder, items] of foldersOf(shown)) {
+      list.appendChild(h('div', { class: 'pick-folder' }, folder));
+      for (const t of items) {
+        ordered.push(t);
+        list.appendChild(h('button', {
+          type: 'button', role: 'option', class: 'list-item' + (cur && cur.id === t.id ? ' on' : ''),
+          'aria-selected': cur && cur.id === t.id ? 'true' : 'false', 'data-id': t.id,
+          onclick: () => show(t),
+          ondblclick: () => { if (sending) { closeModal(); sendTemplate(t); } },
+        }, h('span', { class: 'tname' }, t.title), h('span', { class: 'meta' }, KINDS[t.kind] || t.kind)));
+      }
+    }
+    shown = ordered;
+  };
+
+  const sendB = h('button', { type: 'button', class: 'btn primary', onclick: () => { if (cur) { closeModal(); sendTemplate(cur); } } }, '이 템플릿 보내기');
+  const editB = h('button', { type: 'button', class: 'btn', onclick: () => cur && editTemplate(cur, sending ? (t) => sendTemplate(t) : null) }, '고치기');
+  const newB = h('button', { type: 'button', class: 'btn', onclick: () => editTemplate(null, sending ? (t) => sendTemplate(t) : null) }, '+ 새로 만들기');
+  const buttons = sending ? [newB, editB, sendB] : [newB, editB];
+
+  function show(t) {
+    cur = t;
+    if (view) view.destroy();
+    view = null;
+    stage.innerHTML = '';
+    [...list.querySelectorAll('.list-item')].forEach((b) => {
+      const on = !!t && b.dataset.id === t.id;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      if (on) b.scrollIntoView({ block: 'nearest' });
+    });
+    editB.disabled = !t; sendB.disabled = !t;
+    const i = t ? shown.findIndex((x) => x.id === t.id) : -1;
+    prevB.disabled = i <= 0; nextB.disabled = i < 0 || i >= shown.length - 1;
+    if (!t) {
+      stage.appendChild(h('div', { class: 'empty tv-empty' }, '왼쪽에서 템플릿을 고르면\n학생 화면 그대로 보여 드려요.'));
+      capTitle.textContent = ''; capNote.textContent = '';
+      return;
+    }
+    view = previewSheet(stage, t.content, t.answer_key);
+    capTitle.textContent = t.title;
+    capNote.textContent = `${KINDS[t.kind] || t.kind} · ${answerNote(t)}`;
+  }
+  function step(d) {
+    const i = cur ? shown.findIndex((x) => x.id === cur.id) : -1;
+    const n = shown[Math.max(0, Math.min(shown.length - 1, i + d))];
+    if (n) show(n);
+  }
+  body.addEventListener('keydown', (e) => {
+    if (e.target === search) return;
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); step(1); }
+    if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); step(-1); }
+  });
+  search.addEventListener('input', () => { paintList(); show(cur && shown.some((x) => x.id === cur.id) ? cur : shown[0] || null); });
+
+  openModal(sending ? '어떤 템플릿을 보낼까요?' : '템플릿 미리 보기', body, buttons, 'wide');
+  paintList();
+  show(cur || shown[0] || null);
+  if (!sending && cur) setTimeout(() => list.querySelector('.list-item.on') && list.querySelector('.list-item.on').focus(), 40);
 }
 
 // =====================================================================
@@ -589,28 +727,7 @@ $('#btn-end').addEventListener('click', async () => {
 });
 
 // ---------- 템플릿 보내기 ----------
-$('#btn-send').addEventListener('click', () => {
-  const search = h('input', { class: 'input', type: 'search', placeholder: '찾기: 예) 받아올림, 8 + 5, 행복', 'aria-label': '템플릿 찾기' });
-  const list = h('div', { class: 'pick-list' });
-  const paint = () => {
-    list.innerHTML = '';
-    const q = search.value.trim();
-    const hits = st.templates.filter((t) => !q || t.title.includes(q) || (t.folder || '').includes(q) || (t.content && (t.content.question || '').includes(q)));
-    if (!st.templates.length) { list.appendChild(h('div', { class: 'empty' }, '보관함이 비어 있어요. 아래에서 새로 만들어 보내세요.')); return; }
-    if (!hits.length) { list.appendChild(h('div', { class: 'empty' }, '찾는 템플릿이 없어요.')); return; }
-    for (const [folder, items] of foldersOf(hits)) {
-      list.appendChild(h('div', { class: 'pick-folder' }, folder));
-      for (const t of items) {
-        list.appendChild(h('button', { type: 'button', class: 'list-item', onclick: () => { closeModal(); sendTemplate(t); } },
-          h('span', { class: 'tname' }, t.title), h('span', { class: 'meta' }, KINDS[t.kind] || t.kind)));
-      }
-    }
-  };
-  search.addEventListener('input', paint);
-  paint();
-  const make = h('button', { type: 'button', class: 'btn', onclick: () => editTemplate(null, (t) => sendTemplate(t)) }, '+ 새로 만들어 보내기');
-  openModal('어떤 템플릿을 보낼까요?', h('div', { class: 'col' }, search, list), [make]);
-});
+$('#btn-send').addEventListener('click', () => openViewer(null, { sending: true }));
 
 async function sendTemplate(t) {
   const { data: a, error } = await sb.from('assignments').insert({

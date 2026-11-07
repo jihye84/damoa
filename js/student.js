@@ -1,6 +1,6 @@
 // 다모아 학생 태블릿
-import { makeClient, h, $, toast, errMsg, stampEl } from './common.js?v=202611071603';
-import { renderSheet } from './sheet.js?v=202611071603';
+import { makeClient, h, $, toast, errMsg, stampEl } from './common.js?v=202611071721';
+import { renderSheet } from './sheet.js?v=202611071721';
 
 const sb = makeClient('student');
 const CLAIM_KEY = 'damoa-claim';

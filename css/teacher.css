@@ -184,3 +184,29 @@
 .lib-opt.ans { background: var(--teal-bg); color: var(--teal-t); font-weight: 700; }
 .lib-kind { align-self: flex-start; font-size: 11px; font-weight: 700; color: var(--ink-3); }
 .lib-note { margin: 0; font-size: 12px; }
+
+/* 템플릿 미리 보기 (학생 화면 그대로) */
+.tv { flex: 1; min-height: 0; display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 16px; }
+.tv-side { min-height: 0; display: flex; flex-direction: column; gap: 10px; }
+.tv-list { flex: 1; min-height: 0; overflow: auto; padding-right: 4px; }
+.tv-main { min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 10px;
+  background: #E9F3F0; border-radius: 16px; padding: 12px 16px 14px; }
+.tv-label { font-size: 13px; font-weight: 700; color: var(--teal-t); }
+.tv-stage { flex: 1; min-height: 0; position: relative; }
+.tv-stage .sheet { box-shadow: 0 0 0 1px var(--line), 0 6px 0 #CFE3DD; }
+.tv-empty { margin: auto; text-align: center; height: 100%; display: grid; place-items: center; }
+.tv-cap { flex: none; display: flex; align-items: center; gap: 12px; }
+.tv-cap-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.tv-cap-text b { font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tv-cap-text .muted { font-size: 13px; }
+.tv-cap .btn.icon { width: 40px; height: 40px; font-size: 22px; line-height: 1; padding: 0; }
+/* 템플릿 만들기: 왼쪽 입력, 오른쪽 미리 보기 */
+.te { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(320px, 400px) minmax(0, 1fr); gap: 16px; }
+.te-form { min-height: 0; overflow: auto; padding-right: 4px; }
+.te .kind-picks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 760px) {
+  .tv, .te { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); }
+}
+.lib-thumb { flex: none; width: 208px; height: 130px; pointer-events: none; }
+.lib-thumb .sheet { border-radius: 10px; }
+.lib-item { align-items: center; }

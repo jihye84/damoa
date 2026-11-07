@@ -52,6 +52,10 @@ begin
   if not s.entry_open then raise exception 'entry_closed'; end if;
   if s.join_mode <> 'open' then raise exception 'roster_only'; end if;
 
+  -- 같은 수업에 동시에 들어오는 요청은 한 줄로 세워요
+  -- (들어가기를 두 번 톡 누르거나, 두 친구가 같은 별명을 동시에 써도 한 명만 들어가요)
+  perform pg_advisory_xact_lock(hashtext('damoa-join-' || s.id::text));
+
   -- 같은 수업에서 다른 태블릿이 이미 쓰는 이름이면 안 돼요
   if exists (select 1 from public.students st
                join public.session_participants sp on sp.student_id = st.id and sp.session_id = s.id

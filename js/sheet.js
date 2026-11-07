@@ -1,7 +1,7 @@
 // 템플릿 한 장을 그려요. 학생 태블릿(풀기)과 선생님 화면(보기)이 같은 코드를 써서 똑같이 보여요.
 // 모든 템플릿 = 바탕(문제) + 입력 부품(선택지·글쓰기 칸) + 맨 위 필기 층
-import { h } from './common.js?v=202611071758';
-import { Ink } from './ink.js?v=202611071758';
+import { h } from './common.js?v=202611071852';
+import { Ink } from './ink.js?v=202611071852';
 
 const MARKS = ['①', '②', '③', '④'];
 

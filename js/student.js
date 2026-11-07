@@ -1,6 +1,6 @@
 // 다모아 학생 태블릿
-import { makeClient, h, $, toast, errMsg, stampEl, makeNickname } from './common.js?v=202611071758';
-import { renderSheet } from './sheet.js?v=202611071758';
+import { makeClient, h, $, toast, errMsg, stampEl, makeNickname } from './common.js?v=202611071852';
+import { renderSheet } from './sheet.js?v=202611071852';
 
 const sb = makeClient('student');
 const CLAIM_KEY = 'damoa-claim';
@@ -157,7 +157,15 @@ $('#nick-form').addEventListener('submit', async (e) => {
   if (!name) { toast('이름이나 별명을 써요'); $('#nick-input').focus(); return; }
   try { if (!document.fullscreenElement) document.documentElement.requestFullscreen({ navigationUI: 'hide' }).catch(() => {}); } catch (_) {}
   $('#nick-input').blur();
-  const { data, error } = await sb.rpc('join_open', { p_code: st.code, p_name: name });
+  // 두 번 톡 눌러도 한 번만 들어가요
+  if (st.joining) return;
+  st.joining = true;
+  const btn = $('#nick-form button[type=submit]');
+  btn.disabled = true;
+  let res;
+  try { res = await sb.rpc('join_open', { p_code: st.code, p_name: name }); }
+  finally { st.joining = false; btn.disabled = false; }
+  const { data, error } = res;
   if (error) {
     toast(errMsg(error), 4000);
     if (/roster_only/.test(error.message || '')) showNames(st.code);

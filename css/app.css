@@ -139,6 +139,23 @@ button:disabled { cursor: default; }
   padding: 2cqw; font-size: 2.8cqw; line-height: 1.6; resize: none; background: #FBFDFC; user-select: text; -webkit-user-select: text;
 }
 .sheet-blank { flex: 1; }
+
+/* 지도 */
+.kind-map .sheet-q { font-size: 3cqw; padding-top: 2cqw; }
+.sheet-map { flex: 1; min-height: 0; position: relative; padding: 1cqw 3cqw 2.4cqw; display: flex; }
+.map-svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.map-region {
+  fill: #FFFFFF; stroke: #6B7280; stroke-width: var(--map-stroke, 1); stroke-linejoin: round;
+  fill-opacity: 0.85; transition: fill 0.12s;
+}
+.sheet.is-live .map-region { cursor: pointer; }
+.map-region.is-target { stroke: #16A34A; stroke-width: calc(var(--map-stroke, 1) * 3); paint-order: stroke; }
+.map-labels text {
+  fill: #374151; font-family: var(--font); font-weight: 700; text-anchor: middle; dominant-baseline: central;
+  paint-order: stroke; stroke: #fff; stroke-width: 0.25em; stroke-linejoin: round; pointer-events: none;
+}
+.map-credit { position: absolute; right: 2cqw; bottom: 0.6cqw; font-size: 1cqw; color: #9CA3AF; pointer-events: none; }
+.map-loading { margin: auto; font-size: 2.4cqw; color: var(--ink-3); }
 .ink-layer { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 
 /* 도장 */

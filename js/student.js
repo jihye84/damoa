@@ -1,6 +1,6 @@
 // 다모아 학생 태블릿
-import { makeClient, h, $, toast, errMsg, stampEl } from './common.js?v=202611071333';
-import { renderSheet } from './sheet.js?v=202611071333';
+import { makeClient, h, $, toast, errMsg, stampEl } from './common.js?v=202611071603';
+import { renderSheet } from './sheet.js?v=202611071603';
 
 const sb = makeClient('student');
 const CLAIM_KEY = 'damoa-claim';
@@ -278,7 +278,8 @@ function readDraft(aid) {
 }
 function answerHasWork(a) {
   if (!a) return false;
-  return (a.strokes && a.strokes.length > 0) || typeof a.choice === 'number' || (a.text && a.text.trim().length > 0);
+  return (a.strokes && a.strokes.length > 0) || typeof a.choice === 'number' || (a.text && a.text.trim().length > 0)
+    || (a.fills && Object.keys(a.fills).length > 0);
 }
 
 async function loadQueue() {
@@ -395,6 +396,7 @@ function openSheet(aid) {
   st.sheet = renderSheet($('#sheet-host'), a.content || {}, {
     interactive: true,
     answer,
+    getFill: () => ({ color: tool.color, erase: tool.kind === 'eraser' }),
     onChange: () => {
       clearTimeout(saveT);
       saveT = setTimeout(() => {
@@ -504,6 +506,9 @@ function applyTool() {
   st.sheet.ink.color = tool.color;
   st.sheet.ink.allowFinger = tool.finger;
   $('#kbd').hidden = !st.sheet.textarea;
+  $('#v-work').classList.toggle('is-map', st.sheet.kind === 'map');
+  if (st.sheet.kind === 'map') $('#foot-help').textContent = '펜이나 손가락으로 톡 누르면 색칠돼요';
+  else $('#foot-help').textContent = tool.finger ? '손가락으로도 써져요. 선택지는 톡 눌러요' : '펜으로 쓰고, 손가락으로 골라요';
   paintMode();
 }
 
@@ -514,9 +519,10 @@ function typing() {
 function paintMode() {
   const m = typing() ? 'kbd' : (tool.kind === 'eraser' ? 'eraser' : 'pen');
   const box = $('#mode');
-  box.className = 'mode mode-' + m;
-  const pen = tool.finger ? '펜·손가락으로 쓰는 중' : '펜으로 쓰는 중';
-  $('#mode-text').textContent = m === 'kbd' ? '키보드로 쓰는 중' : m === 'eraser' ? '지우개로 지우는 중' : pen;
+  const isMap = !!(st.sheet && st.sheet.kind === 'map');
+  box.className = 'mode mode-' + (isMap && m === 'pen' ? 'paint' : m);
+  const pen = isMap ? '톡 눌러 색칠하는 중' : tool.finger ? '펜·손가락으로 쓰는 중' : '펜으로 쓰는 중';
+  $('#mode-text').textContent = m === 'kbd' ? '키보드로 쓰는 중' : m === 'eraser' ? (isMap ? '톡 눌러 지우는 중' : '지우개로 지우는 중') : pen;
   $('#kbd').classList.toggle('on', m === 'kbd');
   $('#kbd').setAttribute('aria-pressed', m === 'kbd' ? 'true' : 'false');
   document.querySelectorAll('.tool[data-tool]').forEach((x) => {

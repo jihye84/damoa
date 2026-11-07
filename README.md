@@ -34,3 +34,13 @@
 ## 데이터베이스
 
 `supabase/` 폴더의 SQL을 번호 순서대로 Supabase SQL Editor에서 한 번씩 실행합니다.
+
+## 지도 템플릿
+
+- 백지도 6장: 중랑구(행정동) · 서울특별시(자치구) · 대한민국(시·도) · 한반도 · 아시아 · 세계 (`maps/*.json`, SVG 경로)
+- 학생은 펜이나 손가락으로 지역을 톡 눌러 색칠해요. 지우개로 톡 누르면 색이 지워져요.
+- "찾아 칠할 곳"을 정해 두면 칠한 지역이 정답과 똑같을 때 맞음으로 채점해요.
+- 묶음: `library/maps.json` (`python3 tools/gen_maps_lib.py`로 다시 만들어요)
+- 경계 자료: 행정동 – 통계청 SGIS(공공누리 제1유형) · vuski/admdongkor ver20261001 (CC BY 4.0) / 나라 – Natural Earth (퍼블릭 도메인)
+- 2026년 7월 1일 출범한 전남광주통합특별시를 반영했어요 (16개 시·도).
+- 지도 다시 만들기: mapshaper로 단순화·투영 → `tools/recenter.py`(세계·아시아 가운데 맞추기) → `tools/build_maps.py`

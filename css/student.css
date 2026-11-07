@@ -204,3 +204,12 @@ body.kid { background: var(--kid-bg); }
 .garden-foot { flex: none; display: flex; align-items: center; gap: 12px; }
 .garden-help { font-size: clamp(15px, 2.6vh, 19px); color: #3E4452; line-height: 1.4; }
 .kid-btn.ghost-kid { background: #fff; color: var(--teal-t); box-shadow: 0 6px 0 var(--kid-line); height: 60px; font-size: 26px; padding: 0 32px; }
+
+/* 색 고르기: 지도일 때만 색이 더 나오고 두 줄로 놓여요 */
+.swatches { display: flex; flex-direction: column; align-items: center; gap: clamp(6px, 1.5vh, 12px); }
+.swatch.map-only { display: none; }
+.is-map .swatches { display: grid; grid-template-columns: repeat(2, auto); gap: clamp(5px, 1.1vh, 9px); }
+.is-map .swatch { width: clamp(30px, 4.8vh, 38px); height: clamp(30px, 4.8vh, 38px); border-width: 3px; }
+.is-map .swatch.map-only { display: block; }
+.mode-paint { background: #FEF3C7; color: #92400E; }
+.mode-paint .mi-pen { display: block; }

@@ -12,6 +12,7 @@ export class Ink {
     this.tool = 'pen';
     this.color = '#1D4ED8';
     this.onChange = opts.onChange || null;
+    this.onTap = opts.onTap || null;   // 거의 안 움직이고 뗀 경우 (지도 색칠 등)
 
     this.canvas = document.createElement('canvas');
     this.canvas.className = 'ink-layer';
@@ -163,6 +164,12 @@ export class Ink {
       if (e.pointerId !== id) return;
       try { sheet.releasePointerCapture(id); } catch (_) {}
       id = null;
+      // 톡 친 것이면 찍힌 점을 지우고 onTap에게 맡겨요
+      if (moved < 6 && this.onTap && this.onTap(e.clientX, e.clientY, e.pointerType)) {
+        if (cur) { this.strokes.pop(); this.redraw(); cur = null; }
+        suppressUntil = performance.now() + 400;
+        return;
+      }
       if (moved > 6) suppressUntil = performance.now() + 400;
       if (cur) { cur = null; this.changed(); }
     };

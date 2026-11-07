@@ -1,5 +1,5 @@
-import { createClient } from '../vendor/supabase.js?v=202611071333';
-import { SUPABASE_URL, SUPABASE_KEY } from './config.js?v=202611071333';
+import { createClient } from '../vendor/supabase.js?v=202611071603';
+import { SUPABASE_URL, SUPABASE_KEY } from './config.js?v=202611071603';
 
 // 선생님 PC와 학생 태블릿의 로그인을 따로 보관 (같은 기기에서 둘 다 열어도 섞이지 않게)
 export function makeClient(role) {
@@ -88,7 +88,18 @@ export const KINDS = {
   choice4: '4지선다',
   blank: '빈 답지',
   essay: '서술형',
+  map: '지도',
 };
+
+// 백지도 (maps/<id>.json)
+export const MAPS = [
+  { id: 'jungnang', name: '중랑구' },
+  { id: 'seoul', name: '서울특별시' },
+  { id: 'korea', name: '대한민국' },
+  { id: 'peninsula', name: '한반도' },
+  { id: 'asia', name: '아시아' },
+  { id: 'world', name: '세계' },
+];
 
 export function joinUrl(code) {
   const base = location.href.replace(/[^/]*([?#].*)?$/, '');

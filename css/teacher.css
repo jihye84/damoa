@@ -114,7 +114,7 @@
 .stamp-pick .lb { font-size: 13px; color: var(--ink); }
 
 /* 템플릿 만들기 */
-.kind-picks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.kind-picks { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 .kind-pick { border: 1px solid var(--line-2); background: #fff; border-radius: 12px; padding: 12px; text-align: left; }
 .kind-pick[aria-pressed="true"] { border: 2px solid var(--teal); background: var(--teal-bg); }
 .kind-pick b { display: block; font-size: 15px; }

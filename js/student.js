@@ -1,6 +1,6 @@
 // 다모아 학생 태블릿
-import { makeClient, h, $, toast, errMsg, stampEl, makeNickname } from './common.js?v=202611072011';
-import { renderSheet } from './sheet.js?v=202611072011';
+import { makeClient, h, $, toast, errMsg, stampEl, makeNickname } from './common.js?v=202611072023';
+import { renderSheet } from './sheet.js?v=202611072023';
 
 const sb = makeClient('student');
 const CLAIM_KEY = 'damoa-claim';
@@ -573,7 +573,9 @@ function applyTool() {
   $('#kbd').hidden = !st.sheet.textarea;
   $('#v-work').classList.toggle('is-map', st.sheet.kind === 'map');
   $('#v-work').classList.toggle('is-song', st.sheet.kind === 'song');
-  if (st.sheet.kind === 'song') $('#foot-help').textContent = '칸을 톡 누르거나 쭉 끌어서 음을 놓고, ▶로 들어 봐요';
+  $('#v-work').classList.toggle('is-shapes', st.sheet.kind === 'shapes');
+  if (st.sheet.kind === 'shapes') $('#foot-help').textContent = '모양을 눌러 놓고, 끌어서 옮기고, 네모 손잡이로 크기를 바꿔요';
+  else if (st.sheet.kind === 'song') $('#foot-help').textContent = '칸을 톡 누르거나 쭉 끌어서 음을 놓고, ▶로 들어 봐요';
   else if (st.sheet.kind === 'map') $('#foot-help').textContent = '펜이나 손가락으로 톡 누르면 색칠돼요';
   else $('#foot-help').textContent = tool.finger ? '손가락으로도 써져요. 선택지는 톡 눌러요' : '펜으로 쓰고, 손가락으로 골라요';
   paintMode();
@@ -588,8 +590,9 @@ function paintMode() {
   const box = $('#mode');
   const isMap = !!(st.sheet && st.sheet.kind === 'map');
   const isSong = !!(st.sheet && st.sheet.kind === 'song');
-  box.className = 'mode mode-' + ((isMap || isSong) && m === 'pen' ? 'paint' : m);
-  const pen = isSong ? '톡 눌러 음 놓는 중' : isMap ? '톡 눌러 색칠하는 중' : tool.finger ? '펜·손가락으로 쓰는 중' : '펜으로 쓰는 중';
+  const isShapes = !!(st.sheet && st.sheet.kind === 'shapes');
+  box.className = 'mode mode-' + ((isMap || isSong || isShapes) && m === 'pen' ? 'paint' : m);
+  const pen = isShapes ? '모양으로 꾸미는 중' : isSong ? '톡 눌러 음 놓는 중' : isMap ? '톡 눌러 색칠하는 중' : tool.finger ? '펜·손가락으로 쓰는 중' : '펜으로 쓰는 중';
   $('#mode-text').textContent = m === 'kbd' ? '키보드로 쓰는 중' : m === 'eraser' ? (isMap ? '톡 눌러 지우는 중' : '지우개로 지우는 중') : pen;
   $('#kbd').classList.toggle('on', m === 'kbd');
   $('#kbd').setAttribute('aria-pressed', m === 'kbd' ? 'true' : 'false');

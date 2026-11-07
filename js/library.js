@@ -1,13 +1,14 @@
 // 템플릿 꺼내 오기: 다모아가 미리 만들어 둔 묶음(수학 1~6학년, 생각하기)을 골라 보관함에 넣어요.
-import { h, toast, errMsg, KINDS } from './common.js?v=202611072011';
+import { h, toast, errMsg, KINDS } from './common.js?v=202611072023';
 
-import { renderSheet } from './sheet.js?v=202611072011';
+import { renderSheet } from './sheet.js?v=202611072023';
 
 const SOURCES = [
   { key: 'math', label: '수학', file: 'library/math.json' },
   { key: 'think', label: '생각하기', file: 'library/think.json' },
   { key: 'maps', label: '지도', file: 'library/maps.json' },
   { key: 'songs', label: '음악', file: 'library/songs.json' },
+  { key: 'shapes', label: '그림판', file: 'library/shapes.json' },
 ];
 const cache = {};
 

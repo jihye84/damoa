@@ -1,8 +1,9 @@
 // 템플릿 한 장을 그려요. 학생 태블릿(풀기)과 선생님 화면(보기)이 같은 코드를 써서 똑같이 보여요.
 // 모든 템플릿 = 바탕(문제) + 입력 부품(선택지·글쓰기 칸) + 맨 위 필기 층
-import { h } from './common.js?v=202611072011';
-import { Ink } from './ink.js?v=202611072011';
-import { renderSong } from './song.js?v=202611072011';
+import { h } from './common.js?v=202611072023';
+import { Ink } from './ink.js?v=202611072023';
+import { renderShapes, gradeShapes } from './shapes.js?v=202611072023';
+import { renderSong } from './song.js?v=202611072023';
 
 const MARKS = ['①', '②', '③', '④'];
 
@@ -157,6 +158,8 @@ export function renderSheet(host, content, opt = {}) {
         if (r) tapRegion(r.dataset.id);
       });
     }
+  } else if (content.kind === 'shapes') {
+    song = renderShapes(sheet, content, { interactive, answer: opt.answer, onChange: changed });
   } else if (content.kind === 'song') {
     song = renderSong(sheet, content, {
       interactive, answer: opt.answer, onChange: changed, compact: !!opt.compact,
@@ -227,7 +230,7 @@ export function renderSheet(host, content, opt = {}) {
   paint();
 
   const ink = new Ink(sheet, {
-    readonly: !interactive || content.kind === 'song',   // 작곡 칸은 펜 필기 대신 칸 누르기
+    readonly: !interactive || content.kind === 'song' || content.kind === 'shapes',   // 작곡 칸은 펜 필기 대신 칸 누르기
     strokes: answer.strokes || [],
     allowFinger: !!opt.allowFinger,
     onChange: changed,
@@ -324,8 +327,10 @@ export function gradeMap(kind, answer, key) {
   return null;
 }
 
+export { gradeShapes };
 export function isCorrect(kind, answer, key) {
   if (kind === 'map') { const g = gradeMap(kind, answer, key); return g ? g.ok : null; }
+  if (kind === 'shapes') { const g = gradeShapes(answer, key); return g ? g.ok : null; }
   if (kind !== 'choice4' || !key || typeof key.correct !== 'number') return null;
   if (!answer || typeof answer.choice !== 'number') return null;
   return answer.choice === key.correct;

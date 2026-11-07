@@ -1,5 +1,5 @@
-import { createClient } from '../vendor/supabase.js?v=202611072011';
-import { SUPABASE_URL, SUPABASE_KEY } from './config.js?v=202611072011';
+import { createClient } from '../vendor/supabase.js?v=202611072023';
+import { SUPABASE_URL, SUPABASE_KEY } from './config.js?v=202611072023';
 
 // 선생님 PC와 학생 태블릿의 로그인을 따로 보관 (같은 기기에서 둘 다 열어도 섞이지 않게)
 export function makeClient(role) {
@@ -109,6 +109,7 @@ export const KINDS = {
   essay: '서술형',
   map: '지도',
   song: '작곡',
+  shapes: '모양 그림판',
 };
 
 // 백지도 (maps/<id>.json)

@@ -228,3 +228,34 @@ button:disabled { cursor: default; }
 .kind-song .song.compact { margin-top: 2cqw; }
 .kind-song .song-play { width: 4.6cqw; height: 4.6cqw; font-size: 2.3cqw; }
 .kind-song .song-clear { margin-left: 0.6cqw; }
+
+/* 모양 그림판 */
+.sheet.kind-shapes { display: grid; grid-template-columns: minmax(0, 1fr) 14cqw; grid-template-rows: auto minmax(0, 1fr) auto; }
+.sheet.kind-shapes.shp-view { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); }
+.kind-shapes .sheet-q { grid-column: 1; grid-row: 1; text-align: left; font-size: 2.3cqw; padding: 1.5cqw 2cqw 0 2.4cqw; }
+.shp-board { grid-column: 1; grid-row: 2; min-height: 0; margin: 1.1cqw 1cqw 1cqw 2.4cqw; border: 0.15cqw solid #E2E2E2; border-radius: 1.2cqw; background: #fff; overflow: hidden; }
+.shp-view .shp-board { margin: 1cqw 2.4cqw 2.4cqw; }
+.shp-svg { width: 100%; height: 100%; display: block; touch-action: none; }
+.shp-bg { fill: #fff; }
+.shp-live .shp { cursor: grab; }
+.shp-box { fill: none; stroke: #2563EB; }
+.shp-h { fill: #fff; stroke: #2563EB; stroke-width: 4; }
+.shp-h.rot { fill: #DBEAFE; }
+.shp-hit { fill: transparent; }
+.shp-side { grid-column: 2; grid-row: 1 / -1; min-height: 0; display: flex; flex-direction: column; gap: 0.6cqw; padding: 1.5cqw 1.6cqw 1.5cqw 0; }
+.shp-add, .shp-act {
+  display: flex; align-items: center; gap: 0.8cqw; border: 0.15cqw solid #C9B8EE; background: #fff; color: var(--ink);
+  border-radius: 1cqw; font-weight: 700; padding: 0 1cqw; min-height: 0; white-space: nowrap;
+}
+.shp-add { height: 4.8cqw; font-size: 1.7cqw; border-color: #7C5CC4; }
+.shp-add .ic { width: 2.8cqw; height: 2.8cqw; display: grid; }
+.shp-add .ic svg { width: 100%; height: 100%; }
+.shp-act { height: 3.5cqw; font-size: 1.35cqw; color: #4B3A79; }
+.shp-act .ic { width: 1.8cqw; height: 1.8cqw; display: grid; }
+.shp-act .ic svg { width: 100%; height: 100%; }
+.shp-act:disabled { opacity: 0.35; }
+.shp-act.clear { margin-top: auto; justify-content: center; color: #B91C1C; border-color: #F3C4C4; }
+.shp-sep { height: 0.4cqw; }
+.shp-palette { grid-column: 1; grid-row: 3; display: flex; justify-content: center; flex-wrap: nowrap; gap: 0.55cqw; padding: 0 1cqw 1.5cqw 2.4cqw; }
+.shp-sw { width: 3.1cqw; height: 3.1cqw; flex: none; border-radius: 50%; border: 0.3cqw solid #fff; box-shadow: 0 0 0 0.12cqw #C8C8C8; padding: 0; }
+.shp-sw.on { box-shadow: 0 0 0 0.35cqw #5B3FB0; }

@@ -1,8 +1,8 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611072011';
-import { renderSheet, isCorrect, gradeMap, loadMap } from './sheet.js?v=202611072011';
-import { openLibrary } from './library.js?v=202611072011';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611072011';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611072023';
+import { renderSheet, isCorrect, gradeMap, gradeShapes, loadMap } from './sheet.js?v=202611072023';
+import { openLibrary } from './library.js?v=202611072023';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611072023';
 
 const sb = makeClient('teacher');
 
@@ -370,11 +370,12 @@ function editTemplate(t, afterSave) {
     essay: ['서술형', '타자로 쓰기 + 펜'],
     map: ['지도', '백지도에 톡 눌러 색칠'],
     song: ['작곡', '칸을 눌러 가락 짓기 · 이어 짓기'],
+    shapes: ['모양 그림판', '○△□로 그림 꾸미기'],
   }).map(([k, [name, desc]]) => h('button', {
     type: 'button', class: 'kind-pick', 'aria-pressed': k === kind ? 'true' : 'false',
     onclick: () => { kind = k; paintKinds(); },
   }, h('b', null, name), h('span', null, desc)));
-  const kindKeys = ['choice4', 'blank', 'essay', 'map', 'song'];
+  const kindKeys = ['choice4', 'blank', 'essay', 'map', 'song', 'shapes'];
 
   // 지도: 어떤 지도인지, 이름 보이기, 정답 지역(있으면 자동 채점)
   const mapSel = h('select', { class: 'input', id: 'tp-map' },
@@ -515,8 +516,34 @@ function editTemplate(t, afterSave) {
     });
   }
 
+  // 모양 그림판: 쓸 수 있는 모양, 개수 채점, 미리 놓아 둘 모양
+  const shc = c.kind === 'shapes' ? c : {};
+  const shk = (t && t.kind === 'shapes' && t.answer_key && t.answer_key.counts) || {};
+  const SHN = { c: '동그라미', t: '세모', r: '네모' };
+  const shAllow = {}, shCount = {};
+  for (const k2 of ['c', 't', 'r']) {
+    shAllow[k2] = h('input', { type: 'checkbox', id: 'tp-sh-' + k2, checked: !shc.allow || shc.allow.includes(k2) });
+    shCount[k2] = h('input', { class: 'input', type: 'number', min: '0', max: '30', id: 'tp-shn-' + k2, placeholder: '상관없음', value: typeof shk[k2] === 'number' ? String(shk[k2]) : '' });
+  }
+  let shGiven = (shc.given || []).map((x) => Object.assign({}, x));
+  const shapesBox = h('div', { class: 'col', style: { gap: '10px' } },
+    h('div', { class: 'field' }, h('label', null, '쓸 수 있는 모양'),
+      h('div', { class: 'row', style: { gap: '16px' } }, ...['c', 't', 'r'].map((k2) => h('label', { class: 'row', for: 'tp-sh-' + k2, style: { gap: '6px' } }, shAllow[k2], SHN[k2])))),
+    h('div', { class: 'field' }, h('label', null, '자동 채점 · 모양별 개수 (비우면 상관없음)'),
+      h('div', { class: 'song-form' }, ...['c', 't', 'r'].map((k2) => h('div', { class: 'field' }, h('label', { for: 'tp-shn-' + k2 }, SHN[k2] + ' 개수'), shCount[k2])))),
+    h('p', { class: 'muted small-note', style: { margin: 0 } }, '오른쪽 그림판에 모양을 미리 놓아 두면 학생 화면에 그대로 나와요. 학생은 그 모양을 옮기고 바꿀 수 있어요.'));
+  function shapesContent() {
+    return { allow: ['c', 't', 'r'].filter((k2) => shAllow[k2].checked), given: shGiven };
+  }
+  function shapesKey() {
+    const counts = {};
+    for (const k2 of ['c', 't', 'r']) if (shCount[k2].value !== '') counts[k2] = Math.max(0, parseInt(shCount[k2].value, 10) || 0);
+    return Object.keys(counts).length ? { counts } : null;
+  }
+
   function paintKinds() {
     kinds.forEach((b, i) => b.setAttribute('aria-pressed', kindKeys[i] === kind ? 'true' : 'false'));
+    shapesBox.hidden = kind !== 'shapes';
     optBox.hidden = kind !== 'choice4';
     mapBox.hidden = kind !== 'map';
     songBox.hidden = kind !== 'song';
@@ -527,7 +554,7 @@ function editTemplate(t, afterSave) {
     h('div', { class: 'kind-picks' }, ...kinds),
     h('div', { class: 'field' }, h('label', { for: 'tp-title' }, '템플릿 이름 (보관함에 보이는 이름)'), title),
     h('div', { class: 'field' }, h('label', { for: 'tp-q', id: 'tp-q-label' }, '문제'), q),
-    optBox, mapBox, songBox);
+    optBox, mapBox, songBox, shapesBox);
 
   // 오른쪽: 고치는 대로 학생 화면이 바로 바뀌어요
   const stage = h('div', { class: 'tv-stage' });
@@ -548,6 +575,15 @@ function editTemplate(t, afterSave) {
       key = (await buildMapKey(false)).key;
     }
     if (pv) pv.destroy();
+    if (kind === 'shapes') {
+      Object.assign(content, shapesContent());
+      if (!content.allow.length) content.allow = ['c', 't', 'r'];
+      pv = renderSheet(stage, content, {
+        interactive: true, answer: { shapes: shGiven },
+        onChange: () => { shGiven = pv.getAnswer().shapes; },
+      });
+      return;
+    }
     if (kind === 'song') {
       // 작곡: 미리 보기 칸에서 앞부분을 바로 지어요
       Object.assign(content, songContent());
@@ -585,6 +621,11 @@ function editTemplate(t, afterSave) {
       answer_key = { correct: parseInt(radios.find((r) => r.checked).value, 10) };
     }
     if (kind === 'essay' && !content.question) { toast('질문을 써 주세요'); return; }
+    if (kind === 'shapes') {
+      Object.assign(content, shapesContent());
+      if (!content.allow.length) { toast('쓸 수 있는 모양을 하나 이상 골라 주세요'); return; }
+      answer_key = shapesKey();
+    }
     if (kind === 'song') {
       Object.assign(content, songContent());
       if (content.givenBars && !content.given.notes.length && !content.given.drums.length) {
@@ -598,7 +639,7 @@ function editTemplate(t, afterSave) {
       if (r.error) { toast(r.error); return; }
       answer_key = r.key;
     }
-    const row = { title: title.value.trim() || content.question.slice(0, 30) || (kind === 'map' ? MAPS.find((m) => m.id === content.map).name + ' 백지도' : kind === 'song' ? (content.givenBars ? '이어 짓기' : '작곡') : KINDS[kind]), kind, content, answer_key };
+    const row = { title: title.value.trim() || content.question.slice(0, 30) || (kind === 'map' ? MAPS.find((m) => m.id === content.map).name + ' 백지도' : kind === 'song' ? (content.givenBars ? '이어 짓기' : '작곡') : kind === 'shapes' ? '모양 그림판' : KINDS[kind]), kind, content, answer_key };
     const res = t
       ? await sb.from('templates').update(row).eq('id', t.id).select().single()
       : await sb.from('templates').insert(row).select().single();
@@ -634,6 +675,10 @@ function answerNote(t) {
     return '자유 색칠 (채점 안 함)';
   }
   if (t.kind === 'essay') return '타자나 펜으로 답을 써요';
+  if (t.kind === 'shapes') {
+    const n = k && k.counts ? Object.entries(k.counts).map(([a, b]) => `${{ c: '동그라미', t: '세모', r: '네모' }[a]} ${b}개`).join(', ') : '';
+    return n ? `자동 채점 · ${n}` : '자유롭게 꾸미기 (채점 안 함)';
+  }
   if (t.kind === 'song') { const s2 = t.content || {}; return `${s2.bars || 4}마디 · ${s2.givenBars ? `앞 ${s2.givenBars}마디를 이어 짓기` : '빈 작곡 칸'} · ▶로 들어 볼 수 있어요`; }
   return '펜으로 자유롭게 써요';
 }
@@ -1130,8 +1175,8 @@ function tileState(s) {
   const sub = st.subs.get(s.id);
   if (sub && sub.auto_collected) return { cls: 'late', badge: '마감 때 거둠' };
   if (sub) {
-    if (st.assignment.kind === 'map') {
-      const g = gradeMap('map', sub.answer, st.key);
+    if (st.assignment.kind === 'map' || st.assignment.kind === 'shapes') {
+      const g = st.assignment.kind === 'map' ? gradeMap('map', sub.answer, st.key) : gradeShapes(sub.answer, st.key);
       if (g && g.ok !== null) return { cls: g.ok ? 'ok' : 'no', badge: g.short };
     }
     const ok = isCorrect(st.assignment.kind, sub.answer, st.key);

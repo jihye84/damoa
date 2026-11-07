@@ -228,7 +228,8 @@ body.kid { background: var(--kid-bg); }
 .kid-btn.soft:active { box-shadow: 0 2px 0 #E9C969; }
 @media (max-height: 520px) { .kid-btn { height: 56px; font-size: 24px; padding: 0 28px; } }
 /* 작곡 칸: 펜·색은 필요 없어요 (되돌리기만) */
-.is-song .tool[data-tool], .is-song .swatches, .is-song .tool-sep, .is-song #finger { display: none; }
+.is-song .tool[data-tool], .is-song .swatches, .is-song .tool-sep, .is-song #finger,
+.is-shapes .tool[data-tool], .is-shapes .swatches, .is-shapes .tool-sep, .is-shapes #finger { display: none; }
 
 /* 풀기 화면: 종이를 최대한 크게, 아래 한 줄에 이름·상태·전송 */
 .work-bar { flex: none; height: 56px; gap: 10px; min-width: 0; }

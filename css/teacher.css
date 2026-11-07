@@ -160,7 +160,7 @@
 .modal.wide .modal-body { overflow: hidden; }
 .lib { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 12px; }
 .lib-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.lib-top .seg { width: 340px; }
+.lib-top .seg { width: 430px; }
 .lib-grades { display: flex; gap: 6px; flex-wrap: wrap; }
 .chip { height: 34px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line-2); background: #fff; font-size: 14px; }
 .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; font-weight: 700; }

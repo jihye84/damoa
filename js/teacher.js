@@ -1,7 +1,7 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, joinUrl } from './common.js?v=202611071231';
-import { renderSheet, isCorrect } from './sheet.js?v=202611071231';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611071231';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, joinUrl } from './common.js?v=202611071245';
+import { renderSheet, isCorrect } from './sheet.js?v=202611071245';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611071245';
 
 const sb = makeClient('teacher');
 
@@ -20,6 +20,8 @@ const st = {
   key: null,
   subs: new Map(),          // student_id → submission
   fbs: new Map(),           // submission_id → feedback
+  asgList: [],              // 이 수업에서 보낸 장들 (보낸 순서)
+  subCounts: new Map(),     // assignment_id → Set(student_id)
   channel: null,
   view: 'grid',             // grid | one
   oneId: null,              // 한 명 보기 중인 student_id
@@ -363,6 +365,7 @@ async function enterLive(session) {
   renderQR();
   paintControls();
 
+  await loadSessionAssignments();
   if (session.current_assignment_id) await loadAssignment(session.current_assignment_id);
   else { st.assignment = null; showLobby(true); }
 
@@ -391,7 +394,10 @@ function subscribeLive() {
     .on('postgres_changes', { event: '*', schema: 'public', table: 'submissions', filter: 'session_id=eq.' + sid },
       (p) => {
         const s = p.new;
-        if (!s || !st.assignment || s.assignment_id !== st.assignment.id) return;
+        if (!s || !s.assignment_id) return;
+        countSub(s);
+        renderTabs();
+        if (!st.assignment || s.assignment_id !== st.assignment.id) return;
         st.subs.set(s.student_id, s);
         renderTile(s.student_id);
         renderStats();
@@ -507,16 +513,53 @@ $('#btn-send').addEventListener('click', () => {
 });
 
 async function sendTemplate(t) {
-  const prev = st.assignment;
   const { data: a, error } = await sb.from('assignments').insert({
     session_id: st.session.id, template_id: t.id, title: t.title, kind: t.kind, content: t.content,
   }).select().single();
   if (error) { toast(errMsg(error)); return; }
   if (t.answer_key) await sb.from('assignment_keys').insert({ assignment_id: a.id, answer_key: t.answer_key });
-  if (prev) await sb.from('assignments').update({ accepting: false }).eq('id', prev.id);
+  // 이전 장은 닫지 않아요: 아이들은 새 장을 먼저 하고, 내면 이전 장이 다시 나와요
+  st.asgList.push(a);
   await updateSession({ current_assignment_id: a.id, screen_mode: 'normal' });
   await loadAssignment(a.id);
   toast('아이들 태블릿에 보냈어요');
+}
+
+async function loadSessionAssignments() {
+  const sid = st.session.id;
+  const [{ data: asgs }, { data: subs }] = await Promise.all([
+    sb.from('assignments').select('id, title, kind, accepting, sent_at, closed_at').eq('session_id', sid).order('sent_at'),
+    sb.from('submissions').select('assignment_id, student_id').eq('session_id', sid),
+  ]);
+  st.asgList = asgs || [];
+  st.subCounts = new Map();
+  for (const x of subs || []) countSub(x);
+  renderTabs();
+}
+
+function countSub(x) {
+  if (!st.subCounts.has(x.assignment_id)) st.subCounts.set(x.assignment_id, new Set());
+  st.subCounts.get(x.assignment_id).add(x.student_id);
+}
+
+function renderTabs() {
+  const box = $('#asg-tabs');
+  box.innerHTML = '';
+  box.hidden = st.asgList.length < 2;
+  const total = st.sessionStudents.length;
+  st.asgList.forEach((a, i) => {
+    const on = st.assignment && st.assignment.id === a.id;
+    const n = (st.subCounts.get(a.id) || new Set()).size;
+    box.appendChild(h('button', {
+      type: 'button', role: 'tab', class: 'asg-tab' + (a.accepting ? '' : ' closed'),
+      'aria-selected': on ? 'true' : 'false',
+      onclick: () => { if (!on) loadAssignment(a.id); },
+    },
+      h('span', { class: 'asg-no' }, i + 1),
+      h('span', { class: 'asg-name' }, a.title),
+      h('span', { class: 'asg-count' }, `${n}/${total}`),
+      a.accepting ? null : h('span', { class: 'asg-closed' }, '마감')));
+  });
 }
 
 async function loadAssignment(aid) {
@@ -536,6 +579,8 @@ async function loadAssignment(aid) {
   }
   $('#board-title').textContent = `${KINDS[a.kind] || ''} · ${a.title}`;
   $('#btn-close-asg').textContent = a.accepting ? '제출 마감' : '제출 다시 받기';
+  if (!st.asgList.find((x) => x.id === a.id)) st.asgList.push(a);
+  renderTabs();
   st.view = 'grid';
   showLobby(false);
   paintView();
@@ -547,6 +592,11 @@ $('#btn-close-asg').addEventListener('click', async () => {
   if (error) { toast(errMsg(error)); return; }
   st.assignment = data;
   $('#btn-close-asg').textContent = data.accepting ? '제출 마감' : '제출 다시 받기';
+  const i = st.asgList.findIndex((x) => x.id === data.id);
+  if (i >= 0) st.asgList[i] = data;
+  renderTabs();
+  renderTiles();
+  if (!data.accepting) toast('마감했어요. 쓰던 답은 잠시 뒤 "마감 때 거둠"으로 들어와요');
 });
 
 // =====================================================================
@@ -557,6 +607,7 @@ const tileSheets = new Map(); // student_id → {sheet, sig}
 function tileState(s) {
   const p = st.participants.get(s.id);
   const sub = st.subs.get(s.id);
+  if (sub && sub.auto_collected) return { cls: 'late', badge: '마감 때 거둠' };
   if (sub) {
     const ok = isCorrect(st.assignment.kind, sub.answer, st.key);
     if (ok === true) return { cls: 'ok', badge: '맞았어요' };
@@ -564,6 +615,7 @@ function tileState(s) {
     return { cls: 'done', badge: '냈어요' };
   }
   if (!p) return { cls: 'absent', badge: '안 들어옴' };
+  if (!st.assignment.accepting) return { cls: 'absent', badge: '안 냈어요' };
   if (isAway(p)) return { cls: 'away', badge: '나갔어요' };
   return { cls: 'wip', badge: '푸는 중' };
 }
@@ -637,11 +689,11 @@ function renderTile(studentId) {
 
 function renderStats() {
   if (!st.assignment) return;
-  let ok = 0, no = 0, done = 0, wip = 0, away = 0;
+  let ok = 0, no = 0, done = 0, wip = 0, away = 0, late = 0;
   for (const s of st.sessionStudents) {
     const t = tileState(s).cls;
     if (t === 'ok') ok++; else if (t === 'no') no++; else if (t === 'done') done++;
-    else if (t === 'wip') wip++; else if (t === 'away') away++;
+    else if (t === 'wip') wip++; else if (t === 'away') away++; else if (t === 'late') late++;
   }
   const sent = ok + no + done;
   const box = $('#board-stats');
@@ -650,7 +702,8 @@ function renderStats() {
   const item = (color, label, n, ring) => h('span', null,
     h('span', { class: 'dot', style: ring ? { border: '2px solid #A9A392' } : { background: color } }), `${label} ${n}`);
   if (st.key) { box.appendChild(item('var(--teal)', '맞았어요', ok)); box.appendChild(item('var(--orange)', '다시 볼까요', no)); }
-  box.appendChild(item(null, '푸는 중', wip, true));
+  if (st.assignment.accepting) box.appendChild(item(null, '푸는 중', wip, true));
+  if (late) box.appendChild(item('#64748B', '마감 때 거둠', late));
   if (away) box.appendChild(item('var(--red)', '나갔어요', away));
 }
 

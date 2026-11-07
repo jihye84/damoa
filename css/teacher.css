@@ -123,3 +123,20 @@
 .opt-row .mk { font-weight: 700; width: 24px; text-align: center; }
 .opt-row label { font-size: 13px; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
 .pick-list { display: flex; flex-direction: column; gap: 6px; }
+
+/* 보낸 템플릿 탭 */
+.asg-tabs { flex: none; display: flex; gap: 6px; overflow: hidden; }
+.asg-tab {
+  display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 12px; border-radius: 12px;
+  border: 1px solid var(--line-2); background: #fff; color: var(--ink-2); font-size: 14px; max-width: 280px; min-width: 0;
+}
+.asg-tab[aria-selected="true"] { border: 2px solid var(--teal); background: var(--teal-bg); color: var(--ink); font-weight: 700; }
+.asg-tab.closed { background: #F3F1EC; }
+.asg-no { width: 22px; height: 22px; border-radius: 99px; background: var(--ink); color: #fff; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+.asg-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.asg-count { color: var(--teal-t); font-weight: 700; flex: none; }
+.asg-closed { font-size: 11px; font-weight: 700; padding: 1px 6px; border-radius: 99px; background: #64748B; color: #fff; flex: none; }
+
+/* 마감 때 거둔 답 */
+.tile.late { border-color: #64748B; border-style: dashed; }
+.tile.late .badge { background: #64748B; color: #fff; }

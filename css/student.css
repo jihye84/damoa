@@ -156,3 +156,51 @@ body.kid { background: var(--kid-bg); }
 /* 키보드로 쓰는 중이면 글쓰기 칸을 보라색 테두리로 */
 .sheet.is-typing .sheet-essay { border-color: #6D28D9; box-shadow: 0 0 0 0.3cqw #EDE3FF; outline: none; }
 .sheet-essay:focus { outline: none; }
+
+/* ---------- 여러 장 ---------- */
+.pile { display: inline-flex; align-items: center; gap: 10px; background: #FFF4D6; color: #7A4B00; border-radius: 999px; padding: 6px 14px 6px 10px; font-size: 15px; font-weight: 700; }
+.pile b { font-size: 18px; }
+.pile-paper { position: relative; width: 22px; height: 26px; }
+.pile-paper i { position: absolute; inset: 0; background: #fff; border: 2px solid #D9A93B; border-radius: 4px; }
+.pile-paper i:nth-child(1) { transform: rotate(-10deg) translate(-2px, 1px); }
+.pile-paper i:nth-child(2) { transform: rotate(6deg) translate(2px, 0); }
+.sheet-wrap { position: relative; min-height: 0; display: flex; }
+.sheet-wrap .sheet-host { flex: 1; min-height: 0; }
+.back-notice {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 5;
+  background: #7A4B00; color: #fff; font-family: var(--round); font-size: clamp(28px, 6vh, 48px);
+  padding: 18px 36px; border-radius: 24px; box-shadow: 0 8px 0 #4F3000; animation: pop 0.4s cubic-bezier(.2, 1.6, .4, 1) both;
+  pointer-events: none;
+}
+
+/* ---------- 우리 반 꽃밭 ---------- */
+.screen.garden {
+  padding: clamp(14px, 3vh, 28px) 36px clamp(12px, 2.4vh, 22px); gap: clamp(6px, 1.4vh, 14px);
+  background: linear-gradient(#E8F6FF 0%, #F4FBF7 55%, #EAF6E5 100%);
+}
+.garden-head { text-align: center; flex: none; }
+.garden-title { font-family: var(--round); font-size: clamp(30px, 7vh, 60px); color: var(--teal-t); line-height: 1.15; }
+.garden-count { font-size: clamp(18px, 3.4vh, 28px); font-weight: 700; color: #3E4452; margin-top: 4px; }
+.garden-field {
+  flex: 1; min-height: 0; position: relative; display: flex; align-items: flex-end; justify-content: center;
+  border-radius: 28px; background: linear-gradient(#DDF2D2 0%, #C6E8B6 60%, #B2DD9F 100%); overflow: hidden;
+}
+.garden-bed { width: 100%; height: 100%; display: grid; align-items: end; padding: 2% 3% 1%; row-gap: 0; }
+.flower { position: relative; height: 110%; max-height: 240px; display: flex; align-items: flex-end; justify-content: center; transform: translateX(var(--dx, 0)); min-height: 0; }
+.flower svg { height: 100%; width: auto; max-width: 100%; overflow: visible; }
+.flower .bloom { transform: scale(0); transform-origin: 0 0; transition: transform 0.6s cubic-bezier(.2, 1.7, .4, 1); }
+.flower .bud { transition: opacity 0.3s; }
+.flower.open .bloom { transform: scale(1); }
+.flower.open .bud { opacity: 0; }
+.flower.open svg { animation: sway 3.2s ease-in-out infinite; animation-delay: var(--delay, 0s); transform-origin: 50% 100%; }
+@keyframes sway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+.flower-tag {
+  position: absolute; top: -4px; left: 50%; transform: translateX(-50%); white-space: nowrap;
+  background: #fff; color: var(--teal-t); font-weight: 900; font-size: clamp(11px, 1.8vh, 15px); padding: 2px 8px; border-radius: 999px; box-shadow: 0 2px 0 var(--kid-line);
+}
+.garden.all .garden-title { animation: cheer 0.9s ease-in-out 2; }
+@keyframes cheer { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+.garden.all .flower.open svg { animation-duration: 1.4s; }
+.garden-foot { flex: none; display: flex; align-items: center; gap: 12px; }
+.garden-help { font-size: clamp(15px, 2.6vh, 19px); color: #3E4452; line-height: 1.4; }
+.kid-btn.ghost-kid { background: #fff; color: var(--teal-t); box-shadow: 0 6px 0 var(--kid-line); height: 60px; font-size: 26px; padding: 0 32px; }

@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#EEF6F4">
 <title>다모아 · 학생</title>
-<script src="js/inapp.js?v=202611071231"></script>
+<script src="js/inapp.js?v=202611071245"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Jua&display=swap">
-<link rel="stylesheet" href="css/app.css?v=202611071231">
-<link rel="stylesheet" href="css/student.css?v=202611071231">
+<link rel="stylesheet" href="css/app.css?v=202611071245">
+<link rel="stylesheet" href="css/student.css?v=202611071245">
 </head>
 <body class="kid">
 <div class="app">
@@ -88,9 +88,16 @@
           <span id="mode-text">펜으로 쓰는 중</span>
         </div>
         <div class="spacer"></div>
-        <div id="sent-badge" class="sent-badge" hidden>보냈어요! 고쳐서 다시 보내도 돼요</div>
+        <div id="pile" class="pile" hidden>
+          <span class="pile-paper" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>아직 안 낸 것 <b id="pile-n">1</b>장 더 있어요</span>
+        </div>
+        <div id="sent-badge" class="sent-badge" hidden>고쳐서 다시 보낼 수 있어요</div>
       </div>
-      <div id="sheet-host" class="grow sheet-host"></div>
+      <div class="grow sheet-wrap">
+        <div id="sheet-host" class="sheet-host"></div>
+        <div id="back-notice" class="back-notice" role="status" hidden>아까 하던 거예요</div>
+      </div>
       <div class="row work-foot">
         <span id="foot-help" class="muted foot-help">펜으로 쓰고, 손가락으로 골라요</span>
         <div class="spacer"></div>
@@ -99,6 +106,22 @@
           <svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg>
         </button>
       </div>
+    </div>
+  </section>
+
+  <!-- 다 내고 기다리기: 우리 반 꽃밭 -->
+  <section id="v-garden" class="screen garden" hidden>
+    <div class="garden-head">
+      <div id="garden-title" class="garden-title">선생님께 보냈어요!</div>
+      <div id="garden-count" class="garden-count"></div>
+    </div>
+    <div class="garden-field">
+      <div id="garden-bed" class="garden-bed"></div>
+    </div>
+    <div class="garden-foot">
+      <span class="garden-help">친구들이 보낼 때마다<br>꽃이 하나씩 피어요</span>
+      <div class="spacer"></div>
+      <button id="edit-mine" type="button" class="kid-btn ghost-kid" hidden>내 답 고치기</button>
     </div>
   </section>
 
@@ -153,6 +176,6 @@
     <div class="dots" aria-label="불러오는 중"><span></span><span></span><span></span></div>
   </div>
 </div>
-<script type="module" src="js/student.js?v=202611071231"></script>
+<script type="module" src="js/student.js?v=202611071245"></script>
 </body>
 </html>

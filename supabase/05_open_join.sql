@@ -23,6 +23,7 @@ create or replace function public.session_info(p_code text)
 returns table (session_title text, join_mode text)
 language plpgsql stable security definer set search_path = public
 as $$
+#variable_conflict use_column
 declare
   s public.sessions;
 begin
@@ -37,6 +38,7 @@ create or replace function public.join_open(p_code text, p_name text)
 returns table (session_id uuid, student_id uuid, name text)
 language plpgsql security definer set search_path = public
 as $$
+#variable_conflict use_column
 declare
   s   public.sessions;
   v   text := btrim(regexp_replace(coalesce(p_name, ''), '\s+', ' ', 'g'));

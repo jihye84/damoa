@@ -60,7 +60,7 @@ async function init() {
     return;
   }
 
-  if (claim && claim.code === st.code && (await enterSession(claim))) return;
+  if (claim && claim.code === st.code && (await enterSession(claim)) === true) return;
   if (claim && claim.code !== st.code) saveClaim(null);
 
   if (st.code) await showNames(st.code);
@@ -118,26 +118,53 @@ function startRosterPolling(code) {
 }
 function stopRosterPolling() { if (st.rosterTimer) { clearInterval(st.rosterTimer); st.rosterTimer = null; } }
 
+// 들어가지 못했을 때 이유를 화면에 남겨 둬요 (선생님이 보고 알려 줄 수 있게)
+function showProblem(friendly, detail) {
+  let box = $('#problem');
+  if (!box) {
+    box = h('div', { id: 'problem', role: 'alert' });
+    $('#v-names').appendChild(box);
+  }
+  box.innerHTML = '';
+  box.appendChild(h('b', null, friendly));
+  if (detail) box.appendChild(h('div', { class: 'problem-detail' }, detail));
+  box.hidden = false;
+}
+
 async function pickName(r) {
   // 첫 터치에 전체 화면으로 (주소창이 사라져서 더 넓게 써요)
   try { if (!document.fullscreenElement) document.documentElement.requestFullscreen({ navigationUI: 'hide' }).catch(() => {}); } catch (_) {}
-  const { data, error } = await sb.rpc('claim_student', { p_code: st.code, p_student: r.student_id });
-  if (error) {
-    toast(errMsg(error));
-    showNames(st.code);
-    return;
+  if ($('#problem')) $('#problem').hidden = true;
+  let step = '이름 고르기';
+  try {
+    const { data, error } = await sb.rpc('claim_student', { p_code: st.code, p_student: r.student_id });
+    if (error) {
+      showProblem(errMsg(error), `[${step}] ${error.code || ''} ${error.message || ''}`);
+      showNames(st.code);
+      return;
+    }
+    step = '수업 불러오기';
+    const claim = { code: st.code, sessionId: data, studentId: r.student_id, name: r.name, number: r.number };
+    saveClaim(claim);
+    const why = await enterSession(claim);
+    if (why !== true) {
+      showProblem('수업에 들어가지 못했어요. 이 글자를 선생님께 보여 주세요.', `[${step}] ${why}`);
+      saveClaim(null);
+      showNames(st.code);
+    }
+  } catch (e) {
+    showProblem('수업에 들어가지 못했어요. 이 글자를 선생님께 보여 주세요.', `[${step}] ${e && (e.stack || e.message || e)}`);
   }
-  const claim = { code: st.code, sessionId: data, studentId: r.student_id, name: r.name, number: r.number };
-  saveClaim(claim);
-  if (!(await enterSession(claim))) showNames(st.code);
 }
 
 // ---------------- 수업 안 ----------------
+// 성공하면 true, 실패하면 그 이유(글자)를 돌려줘요
 async function enterSession(claim) {
   const { data: s, error } = await sb.from('sessions').select('*').eq('id', claim.sessionId).maybeSingle();
-  if (error || !s) return false;
+  if (error) return 'sessions: ' + (error.code || '') + ' ' + error.message;
+  if (!s) return 'sessions: 수업이 안 보여요 (id ' + claim.sessionId + ')';
   st.claim = claim;
-  if (!(await stillJoined())) { st.claim = null; return false; }
+  if (!(await stillJoined())) { st.claim = null; return 'participants: 내 입장 기록이 안 보여요'; }
 
   const label = `${claim.number}번 ${claim.name}`;
   $('#wait-name').textContent = label;

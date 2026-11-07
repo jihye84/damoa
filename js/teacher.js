@@ -1,8 +1,8 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611071854';
-import { renderSheet, isCorrect, loadMap } from './sheet.js?v=202611071854';
-import { openLibrary } from './library.js?v=202611071854';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611071854';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611071908';
+import { renderSheet, isCorrect, gradeMap, loadMap } from './sheet.js?v=202611071908';
+import { openLibrary } from './library.js?v=202611071908';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611071908';
 
 const sb = makeClient('teacher');
 
@@ -379,17 +379,97 @@ function editTemplate(t, afterSave) {
   const mapSel = h('select', { class: 'input', id: 'tp-map' },
     ...MAPS.map((m) => h('option', { value: m.id, selected: (c.map || 'korea') === m.id }, m.name)));
   const mapLabels = h('input', { type: 'checkbox', id: 'tp-map-labels', checked: !!c.labels });
-  const mapTargets = h('input', { class: 'input', id: 'tp-map-targets', placeholder: '예: 서울특별시, 부산광역시 (비우면 자유 색칠)' });
-  const prevTargets = (t && t.answer_key && Array.isArray(t.answer_key.targets)) ? t.answer_key.targets : [];
-  if (prevTargets.length) {
+  const mapTargets = h('input', { class: 'input', id: 'tp-map-targets', placeholder: '예: 서울특별시, 부산광역시' });
+  const mapGroups = h('textarea', { class: 'textarea', id: 'tp-map-groups', rows: '4', placeholder: '한 줄에 한 묶음 · 예)\n남한: 서울특별시, 경기도\n북한: 평양직할시, 평안남도' });
+  const mapNeedAll = h('input', { type: 'checkbox', id: 'tp-map-need', checked: true });
+  const pk = (t && t.answer_key) || {};
+  let gradeMode = Array.isArray(pk.targets) && pk.targets.length ? 'targets' : Array.isArray(pk.groups) && pk.groups.length ? 'groups' : 'none';
+  if (pk.need === 'some') mapNeedAll.checked = false;
+  const nameOf = (m, id) => (m.regions.find((r) => r.id === id) || { name: id }).name;
+  if (gradeMode !== 'none') {
     loadMap(c.map || 'korea').then((m) => {
-      mapTargets.value = prevTargets.map((id) => (m.regions.find((r) => r.id === id) || { name: id }).name).join(', ');
+      if (gradeMode === 'targets') mapTargets.value = pk.targets.map((id) => nameOf(m, id)).join(', ');
+      else mapGroups.value = pk.groups.map((g) => `${g.name}: ${g.ids.map((id) => nameOf(m, id)).join(', ')}`).join('\n');
     }).catch(() => {});
   }
+  const gradeSeg = h('div', { class: 'seg small', role: 'group', 'aria-label': '채점 방법' },
+    ...[['none', '채점 안 함'], ['targets', '찾아 칠하기'], ['groups', '같은 색끼리 묶기']].map(([k, label]) =>
+      h('button', { type: 'button', 'data-g': k, onclick: () => { gradeMode = k; paintGrade(); schedule(); } }, label)));
+  const presetRow = h('div', { class: 'row preset-row' });
+  const targetsBox = h('div', { class: 'field' }, h('label', { for: 'tp-map-targets' }, '찾아 칠할 곳 (쉼표로 나눠 쓰기) · 칠한 곳이 이것과 똑같으면 맞음'), mapTargets);
+  const groupsBox = h('div', { class: 'col', style: { gap: '8px' } },
+    h('div', { class: 'field' }, h('label', { for: 'tp-map-groups' }, '묶음 · 묶음 안은 같은 색, 묶음끼리는 다른 색이면 맞음'), mapGroups),
+    presetRow,
+    h('label', { class: 'row', for: 'tp-map-need', style: { gap: '8px' } }, mapNeedAll, '묶음의 모든 곳을 다 칠해야 맞음 (끄면 묶음마다 한 곳 이상)'));
+
+  // 자주 쓰는 묶음
+  const PRESETS = {
+    peninsula: [['남한과 북한', async (m) => [
+      { name: '남한', ids: m.regions.filter((r) => !r.id.startsWith('KP-')).map((r) => r.id) },
+      { name: '북한', ids: m.regions.filter((r) => r.id.startsWith('KP-')).map((r) => r.id) }], true]],
+    world: [['6대륙', async (m) => [['AS', '아시아'], ['EU', '유럽'], ['AF', '아프리카'], ['NA', '북아메리카'], ['SA', '남아메리카'], ['OC', '오세아니아']]
+      .map(([c2, name]) => ({ name, ids: m.regions.filter((r) => r.c === c2).map((r) => r.id) })), false]],
+  };
+  function paintPresets() {
+    presetRow.innerHTML = '';
+    for (const [label, make, needAll] of PRESETS[mapSel.value] || []) {
+      presetRow.appendChild(h('button', { type: 'button', class: 'btn small', onclick: async () => {
+        const m = await loadMap(mapSel.value);
+        const groups = await make(m);
+        mapGroups.value = groups.map((g) => `${g.name}: ${g.ids.map((id) => nameOf(m, id)).join(', ')}`).join('\n');
+        mapNeedAll.checked = needAll;
+        schedule();
+      } }, '불러오기: ' + label));
+    }
+    if (mapSel.value === 'world') presetRow.appendChild(h('span', { class: 'muted small-note' }, '두 대륙에 걸친 나라(러시아·튀르키예 등)는 채점하지 않아요'));
+  }
+  function paintGrade() {
+    gradeSeg.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x.dataset.g === gradeMode ? 'true' : 'false'));
+    targetsBox.hidden = gradeMode !== 'targets';
+    groupsBox.hidden = gradeMode !== 'groups';
+    paintPresets();
+  }
+  mapSel.addEventListener('change', paintPresets);
+
+  // 이름 → 지역 id (strict면 못 찾은 이름을 알려 줘요)
+  async function buildMapKey(strict) {
+    if (gradeMode === 'none') return { key: null };
+    let m;
+    try { m = await loadMap(mapSel.value); } catch (e) { return { error: e.message }; }
+    const norm = (x) => x.replace(/\s/g, '');
+    const find = (n) => m.regions.find((r) => norm(r.name) === norm(n)) || m.regions.find((r) => norm(r.name).startsWith(norm(n)));
+    const toIds = (txt) => {
+      const ids = [];
+      for (const n of txt.split(/[,，、]/).map((x) => x.trim()).filter(Boolean)) {
+        const r = find(n);
+        if (!r) { if (strict) throw new Error(`"${n}"을(를) 지도에서 찾지 못했어요`); continue; }
+        if (!ids.includes(r.id)) ids.push(r.id);
+      }
+      return ids;
+    };
+    try {
+      if (gradeMode === 'targets') {
+        const ids = toIds(mapTargets.value.replace(/\n/g, ','));
+        if (!ids.length) return strict ? { error: '찾아 칠할 곳을 써 주세요' } : { key: null };
+        return { key: { targets: ids } };
+      }
+      const groups = [];
+      mapGroups.value.split('\n').map((l) => l.trim()).filter(Boolean).forEach((line, i) => {
+        const at = line.search(/[:：]/);
+        const name = at > 0 ? line.slice(0, at).trim() : `묶음 ${i + 1}`;
+        const ids = toIds(at > 0 ? line.slice(at + 1) : line);
+        if (ids.length) groups.push({ name, ids });
+      });
+      if (groups.length < 2) return strict ? { error: '묶음을 두 줄 이상 써 주세요' } : { key: null };
+      return { key: { groups, need: mapNeedAll.checked ? 'all' : 'some' } };
+    } catch (e) { return { error: e.message }; }
+  }
+
   const mapBox = h('div', { class: 'col' },
     h('div', { class: 'field' }, h('label', { for: 'tp-map' }, '지도'), mapSel),
     h('label', { class: 'row', style: { gap: '8px' } }, mapLabels, '지역 이름을 지도에 보여 주기'),
-    h('div', { class: 'field' }, h('label', { for: 'tp-map-targets' }, '찾아 칠할 곳 (쉼표로 나눠 쓰기)'), mapTargets));
+    h('div', { class: 'field' }, h('label', null, '자동 채점'), gradeSeg),
+    targetsBox, groupsBox);
 
   function paintKinds() {
     kinds.forEach((b, i) => b.setAttribute('aria-pressed', kindKeys[i] === kind ? 'true' : 'false'));
@@ -420,14 +500,7 @@ function editTemplate(t, afterSave) {
     if (kind === 'map') {
       content.map = mapSel.value;
       content.labels = mapLabels.checked;
-      const names = mapTargets.value.split(/[,，、\n]/).map((x) => x.trim()).filter(Boolean);
-      if (names.length) {
-        try {
-          const m = await loadMap(content.map);
-          const norm = (x) => x.replace(/\s/g, '');
-          key = { targets: names.map((n) => (m.regions.find((r) => norm(r.name) === norm(n)) || m.regions.find((r) => norm(r.name).startsWith(norm(n))) || {}).id).filter(Boolean) };
-        } catch (_) {}
-      }
+      key = (await buildMapKey(false)).key;
     }
     if (pv) pv.destroy();
     pv = previewSheet(stage, content, key);
@@ -459,20 +532,9 @@ function editTemplate(t, afterSave) {
     if (kind === 'map') {
       content.map = mapSel.value;
       content.labels = mapLabels.checked;
-      const names = mapTargets.value.split(/[,，、\n]/).map((x) => x.trim()).filter(Boolean);
-      if (names.length) {
-        let m;
-        try { m = await loadMap(content.map); } catch (e) { toast(e.message); return; }
-        const norm = (x) => x.replace(/\s/g, '');
-        const ids = [];
-        for (const n of names) {
-          const r = m.regions.find((r) => norm(r.name) === norm(n))
-            || m.regions.find((r) => norm(r.name).startsWith(norm(n)));
-          if (!r) { toast(`"${n}"을(를) 지도에서 찾지 못했어요`); return; }
-          if (!ids.includes(r.id)) ids.push(r.id);
-        }
-        answer_key = { targets: ids };
-      }
+      const r = await buildMapKey(true);
+      if (r.error) { toast(r.error); return; }
+      answer_key = r.key;
     }
     const row = { title: title.value.trim() || content.question.slice(0, 30) || (kind === 'map' ? MAPS.find((m) => m.id === content.map).name + ' 백지도' : KINDS[kind]), kind, content, answer_key };
     const res = t
@@ -486,6 +548,7 @@ function editTemplate(t, afterSave) {
 
   openModal(t ? '템플릿 고치기' : '새 템플릿', body, buttons, 'wide');
   paintKinds();
+  paintGrade();
   paintPreview();
 }
 
@@ -496,14 +559,18 @@ function editTemplate(t, afterSave) {
 function previewSheet(host, content, key) {
   return renderSheet(host, content || {}, {
     correctIndex: key && typeof key.correct === 'number' ? key.correct : null,
-    mapTargets: key && Array.isArray(key.targets) ? key.targets : null,
+    mapKey: key && (key.targets || key.groups) ? key : null,
   });
 }
 
 function answerNote(t) {
   const k = t.answer_key;
   if (t.kind === 'choice4' && k && typeof k.correct === 'number') return `정답: ${'①②③④'[k.correct]} ${(t.content.options || [])[k.correct] || ''} (초록 테두리, 학생에게는 안 보여요)`;
-  if (t.kind === 'map') return k && k.targets && k.targets.length ? `찾아 칠할 곳 ${k.targets.length}곳 (초록 테두리, 학생에게는 안 보여요)` : '자유 색칠 (정답 없음)';
+  if (t.kind === 'map') {
+    if (k && k.targets && k.targets.length) return `자동 채점 · 찾아 칠할 곳 ${k.targets.length}곳 (초록 테두리, 학생에게는 안 보여요)`;
+    if (k && k.groups && k.groups.length) return `자동 채점 · ${k.groups.map((g) => g.name).join('·')} 같은 색끼리 (점선, 학생에게는 안 보여요)`;
+    return '자유 색칠 (채점 안 함)';
+  }
   if (t.kind === 'essay') return '타자나 펜으로 답을 써요';
   return '펜으로 자유롭게 써요';
 }
@@ -1000,6 +1067,10 @@ function tileState(s) {
   const sub = st.subs.get(s.id);
   if (sub && sub.auto_collected) return { cls: 'late', badge: '마감 때 거둠' };
   if (sub) {
+    if (st.assignment.kind === 'map') {
+      const g = gradeMap('map', sub.answer, st.key);
+      if (g && g.ok !== null) return { cls: g.ok ? 'ok' : 'no', badge: g.short };
+    }
     const ok = isCorrect(st.assignment.kind, sub.answer, st.key);
     if (ok === true) return { cls: 'ok', badge: '맞았어요' };
     if (ok === false) return { cls: 'no', badge: '다시 볼까요' };
@@ -1064,7 +1135,7 @@ function renderTile(studentId) {
       body.innerHTML = '';
       const host = h('div', { style: { position: 'absolute', inset: '0' } });
       body.appendChild(host);
-      const sheet = renderSheet(host, st.assignment.content, { answer: sub.answer, correctIndex: st.key ? st.key.correct : null, mapTargets: st.key ? st.key.targets : null });
+      const sheet = renderSheet(host, st.assignment.content, { answer: sub.answer, correctIndex: st.key ? st.key.correct : null, mapKey: st.key });
       tileSheets.set(studentId, { sheet, sig });
     }
     const fb = st.fbs.get(sub.id);
@@ -1146,7 +1217,7 @@ function renderOne() {
   $('#one-name').textContent = who(s);
   const time = new Date(sub.updated_at).toLocaleTimeString('ko-KR', { hour: 'numeric', minute: '2-digit' });
   $('#one-sub').textContent = `${time}에 냈어요 · ${list.length}명 중 ${list.indexOf(s) + 1}번째`;
-  oneSheet = renderSheet($('#one-sheet'), st.assignment.content, { answer: sub.answer, correctIndex: st.key ? st.key.correct : null, mapTargets: st.key ? st.key.targets : null });
+  oneSheet = renderSheet($('#one-sheet'), st.assignment.content, { answer: sub.answer, correctIndex: st.key ? st.key.correct : null, mapKey: st.key });
 
   const fb = st.fbs.get(sub.id);
   st.pickStamp = fb ? fb.stamp : null;

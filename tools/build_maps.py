@@ -22,6 +22,9 @@ MAPS = [
 W = 1000.0
 
 
+TWO_CONTINENTS = {'RU', 'TR', 'KZ', 'GE', 'AZ', 'AM', 'CY', 'NCY', 'EG'}
+
+
 def rings_of(geom):
     if geom['type'] == 'Polygon':
         return [geom['coordinates']]
@@ -87,7 +90,11 @@ for mid, fn, name, desc, credit in MAPS:
             continue
         cx, cy = centroid(best)
         p = f['properties']
-        regions.append({'id': str(p['id']), 'name': p['name'], 'd': ''.join(parts), 'lx': tx(cx), 'ly': ty(cy)})
+        reg = {'id': str(p['id']), 'name': p['name'], 'd': ''.join(parts), 'lx': tx(cx), 'ly': ty(cy)}
+        # 세계 지도: 대륙 표시 (대륙별 색칠 채점용). 두 대륙에 걸친 나라와 남극 쪽 섬은 빼요
+        if mid == 'world' and p.get('continent') not in (None, 'AN') and reg['id'] not in TWO_CONTINENTS:
+            reg['c'] = p['continent']
+        regions.append(reg)
     regions.sort(key=lambda r: r['name'])
     out = {'id': mid, 'name': name, 'desc': desc, 'viewBox': f'0 0 {W:g} {H:g}', 'credit': credit, 'regions': regions}
     path = os.path.join(OUT, mid + '.json')

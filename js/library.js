@@ -1,7 +1,7 @@
 // 템플릿 꺼내 오기: 다모아가 미리 만들어 둔 묶음(수학 1~6학년, 생각하기)을 골라 보관함에 넣어요.
-import { h, toast, errMsg, KINDS } from './common.js?v=202611071854';
+import { h, toast, errMsg, KINDS } from './common.js?v=202611071908';
 
-import { renderSheet } from './sheet.js?v=202611071854';
+import { renderSheet } from './sheet.js?v=202611071908';
 
 const SOURCES = [
   { key: 'math', label: '수학', file: 'library/math.json' },
@@ -128,7 +128,7 @@ export async function openLibrary(ctx) {
     [...ul.querySelectorAll('.lib-thumb')].forEach((th, i) => {
       const it = b.items[i];
       const k = it.answer_key || {};
-      renderSheet(th, it.content, { correctIndex: typeof k.correct === 'number' ? k.correct : null, mapTargets: k.targets || null });
+      renderSheet(th, it.content, { correctIndex: typeof k.correct === 'number' ? k.correct : null, mapKey: (k.targets || k.groups) ? k : null });
     });
     syncBtn();
   }

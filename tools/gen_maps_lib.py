@@ -20,12 +20,17 @@ def ids_named(mid, names):
     return [by[n] for n in names]
 
 
-def item(title, mid, question, labels=False, targets=None):
+def item(title, mid, question, labels=False, targets=None, groups=None, need='all'):
+    key = None
+    if targets:
+        key = {'targets': targets}
+    elif groups:
+        key = {'groups': groups, 'need': need}
     return {
         'title': title,
         'kind': 'map',
         'content': {'kind': 'map', 'map': mid, 'labels': labels, 'question': question},
-        'answer_key': {'targets': targets} if targets else None,
+        'answer_key': key,
     }
 
 
@@ -81,7 +86,9 @@ bundles.append({'id': 'map-korea', 'unit': '대한민국', 'title': '지도 · �
 
 # ---------- 한반도 ----------
 pn = basic('peninsula', '한반도')
-pn.append(item('남한과 북한', 'peninsula', '남한과 북한을\n서로 다른 색으로 칠해 보세요.'))
+pn.append(item('남한과 북한', 'peninsula', '남한과 북한을\n서로 다른 색으로 칠해 보세요.',
+               groups=[{'name': '남한', 'ids': [r['id'] for r in regions('peninsula') if not r['id'].startswith('KP-')]},
+                       {'name': '북한', 'ids': [r['id'] for r in regions('peninsula') if r['id'].startswith('KP-')]}]))
 pn.append(item('서울과 평양 찾기', 'peninsula', '서울과 평양을\n찾아 색칠해 보세요.',
                targets=ids_named('peninsula', ['서울특별시', '평양직할시'])))
 pn.append(item('북한 땅 모두 칠하기', 'peninsula', '북한 땅을\n모두 찾아 색칠해 보세요.',
@@ -108,7 +115,9 @@ wo.append(item('호주 찾기', 'world', '캥거루가 사는 나라, 호주를\
 wo.append(item('미국과 캐나다', 'world', '미국과 캐나다를\n찾아 색칠해 보세요.', targets=ids_named('world', ['미국', '캐나다'])))
 wo.append(item('브라질 찾기', 'world', '아마존 숲이 있는 나라, 브라질을\n찾아 색칠해 보세요.', targets=ids_named('world', ['브라질'])))
 wo.append(item('이집트 찾기', 'world', '피라미드가 있는 나라, 이집트를\n찾아 색칠해 보세요.', targets=ids_named('world', ['이집트'])))
-wo.append(item('대륙마다 다른 색', 'world', '대륙마다\n서로 다른 색으로 칠해 보세요.'))
+CONT = [('AS', '아시아'), ('EU', '유럽'), ('AF', '아프리카'), ('NA', '북아메리카'), ('SA', '남아메리카'), ('OC', '오세아니아')]
+wo.append(item('대륙마다 다른 색', 'world', '대륙마다\n서로 다른 색으로 칠해 보세요.',
+               groups=[{'name': n, 'ids': [r['id'] for r in regions('world') if r.get('c') == c]} for c, n in CONT], need='some'))
 bundles.append({'id': 'map-world', 'unit': '세계', 'title': '지도 · 세계',
                 'note': '태평양이 가운데 오는 세계 지도예요 (남극은 빠져 있어요).', 'items': wo})
 

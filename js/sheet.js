@@ -1,7 +1,7 @@
 // 템플릿 한 장을 그려요. 학생 태블릿(풀기)과 선생님 화면(보기)이 같은 코드를 써서 똑같이 보여요.
 // 모든 템플릿 = 바탕(문제) + 입력 부품(선택지·글쓰기 칸) + 맨 위 필기 층
-import { h } from './common.js?v=202611071854';
-import { Ink } from './ink.js?v=202611071854';
+import { h } from './common.js?v=202611071908';
+import { Ink } from './ink.js?v=202611071908';
 
 const MARKS = ['①', '②', '③', '④'];
 
@@ -17,6 +17,7 @@ export function loadMap(id) {
   return mapCache.get(id);
 }
 const SVGNS = 'http://www.w3.org/2000/svg';
+const GROUP_HINT = ['#2563EB', '#DC2626', '#16A34A', '#D97706', '#9333EA', '#DB2777'];
 
 // 지역 이름: 큰 곳부터 놓고, 겹치면 위·아래·옆으로 비켜 보고, 그래도 겹치면 숨겨요
 function placeLabels(svg, g, m, vbW) {
@@ -158,15 +159,46 @@ export function renderSheet(host, content, opt = {}) {
     sheet.appendChild(h('div', { class: 'sheet-blank' }));
   }
 
+  // 정답: 선생님 화면에서만 넘겨받아요 (학생 화면에는 절대 없음)
+  const mapKey = interactive ? null : (opt.mapKey || (opt.mapTargets ? { targets: opt.mapTargets } : null));
+  const reviewing = !!(opt.answer && opt.answer.fills);   // 학생 답을 보는 중이면 채점 표시
+
   function paintFills() {
     if (!mapSvg) return;
+    const g = mapKey && reviewing ? gradeMap(content.kind, { fills }, mapKey) : null;
+    const groupOf = new Map();
+    if (mapKey && !reviewing && Array.isArray(mapKey.groups)) {
+      mapKey.groups.forEach((gr, i) => (gr.ids || []).forEach((id) => groupOf.set(id, i)));
+    }
+    const top = [];
     mapSvg.querySelectorAll('.map-region').forEach((p) => {
       const id = p.dataset.id;
       p.style.fill = fills[id] || '';
       p.classList.toggle('is-filled', !!fills[id]);
-      const isTarget = opt.mapTargets && opt.mapTargets.includes(id);
-      p.classList.toggle('is-target', !!isTarget);
+      // 미리 보기: 찾을 곳은 초록 테두리, 묶음은 묶음마다 다른 색 점선
+      p.classList.toggle('is-target', !reviewing && !!(mapKey && mapKey.targets && mapKey.targets.includes(id)));
+      const gi = groupOf.get(id);
+      p.classList.toggle('is-group', gi !== undefined);
+      p.style.stroke = gi !== undefined ? GROUP_HINT[gi % GROUP_HINT.length] : '';
+      // 채점: 맞게 칠함 / 잘못 칠함 / 빠뜨림
+      const m = g ? g.marks[id] : null;
+      p.classList.toggle('mark-hit', m === 'hit');
+      p.classList.toggle('mark-wrong', m === 'wrong');
+      p.classList.toggle('mark-miss', m === 'miss');
+      if (m || gi !== undefined) top.push(p);
     });
+    // 표시한 곳은 맨 위로 (테두리가 이웃에 가려지지 않게)
+    const layer = mapSvg.querySelector('g');
+    for (const p of top) layer.appendChild(p);
+    const legend = mapSvg.parentNode && mapSvg.parentNode.querySelector('.map-legend');
+    if (legend) legend.remove();
+    if (g && g.ok !== null && mapSvg.parentNode) {
+      mapSvg.parentNode.appendChild(h('div', { class: 'map-legend' },
+        h('span', { class: 'lg hit' }, '맞게 칠함'),
+        g.wrong ? h('span', { class: 'lg wrong' }, '잘못 칠함') : null,
+        g.miss ? h('span', { class: 'lg miss' }, '빠뜨림') : null,
+        h('b', null, g.label)));
+    }
   }
 
   function tapRegion(id) {
@@ -222,15 +254,68 @@ export function renderSheet(host, content, opt = {}) {
 }
 
 // 객관식이면 맞았는지 계산 (정답은 선생님 쪽에만 있음)
-export function isCorrect(kind, answer, key) {
-  if (kind === 'map') {
-    // 찾아 칠하기: 칠한 곳이 정답 지역과 꼭 같으면 맞음 (색은 상관없어요)
-    if (!key || !Array.isArray(key.targets) || !answer) return null;
-    const got = Object.keys(answer.fills || {}).sort();
-    const want = [...key.targets].sort();
-    if (!got.length) return null;
-    return got.length === want.length && got.every((v, i) => v === want[i]);
+/**
+ * 지도 채점
+ * - targets: 찾아 칠하기. 칠한 곳이 정답 지역과 꼭 같으면 맞음 (색은 상관없어요)
+ * - groups:  같은 색끼리 묶기. 묶음 안은 같은 색, 묶음끼리는 다른 색이면 맞음
+ *            need: 'all' 이면 묶음의 모든 곳을 칠해야 하고, 'some' 이면 묶음마다 한 곳 이상
+ * @returns {ok, hit, total, wrong, miss, marks: {id: 'hit'|'wrong'|'miss'}, label, short}
+ */
+export function gradeMap(kind, answer, key) {
+  if (kind !== 'map' || !key || !answer) return null;
+  const fills = answer.fills || {};
+  const filled = Object.keys(fills);
+  const marks = {};
+  if (Array.isArray(key.targets) && key.targets.length) {
+    const want = new Set(key.targets);
+    let hit = 0, wrong = 0, miss = 0;
+    for (const id of filled) { if (want.has(id)) { hit++; marks[id] = 'hit'; } else { wrong++; marks[id] = 'wrong'; } }
+    for (const id of want) if (!fills[id]) { miss++; marks[id] = 'miss'; }
+    const total = want.size;
+    const ok = filled.length ? (wrong === 0 && miss === 0) : null;
+    return { ok, hit, total, wrong, miss, marks,
+      short: ok ? '다 찾았어요' : `${hit}/${total}곳` + (wrong ? ` · ${wrong}곳 틀림` : ''),
+      label: ok ? `${total}곳 모두 찾았어요` : `${total}곳 중 ${hit}곳 찾음` + (wrong ? `, ${wrong}곳 잘못 칠함` : '') };
   }
+  if (Array.isArray(key.groups) && key.groups.length) {
+    const needAll = key.need !== 'some';
+    let wrong = 0, miss = 0;
+    // 묶음마다 가장 많이 쓴 색이 그 묶음의 색
+    const main = key.groups.map((gr) => {
+      const cnt = new Map();
+      for (const id of gr.ids || []) if (fills[id]) cnt.set(fills[id], (cnt.get(fills[id]) || 0) + 1);
+      let best = null, n = 0;
+      for (const [c, k] of cnt) if (k > n) { best = c; n = k; }
+      return { color: best, n };
+    });
+    // 두 묶음이 같은 색이면 칠한 곳이 적은 쪽이 틀렸어요
+    const clash = new Set();
+    for (let i = 0; i < main.length; i++) for (let j = i + 1; j < main.length; j++) {
+      if (main[i].color && main[i].color === main[j].color) clash.add(main[i].n >= main[j].n ? j : i);
+    }
+    let goodGroups = 0;
+    key.groups.forEach((gr, i) => {
+      let bad = false, filledHere = 0;
+      for (const id of gr.ids || []) {
+        if (!fills[id]) { if (needAll) { marks[id] = 'miss'; miss++; bad = true; } continue; }
+        filledHere++;
+        if (clash.has(i) || fills[id] !== main[i].color) { marks[id] = 'wrong'; wrong++; bad = true; }
+        else marks[id] = 'hit';
+      }
+      if (!filledHere) bad = true;
+      if (!bad) goodGroups++;
+    });
+    const total = key.groups.length;
+    const ok = filled.length ? goodGroups === total : null;
+    return { ok, hit: goodGroups, total, wrong, miss, marks,
+      short: ok ? '맞았어요' : `${goodGroups}/${total}묶음` + (wrong ? ` · ${wrong}곳 색 다름` : ''),
+      label: ok ? '묶음마다 색을 잘 나눠 칠했어요' : `${total}묶음 중 ${goodGroups}묶음 맞음` + (wrong ? `, ${wrong}곳 색이 달라요` : '') + (miss ? `, ${miss}곳 안 칠함` : '') };
+  }
+  return null;
+}
+
+export function isCorrect(kind, answer, key) {
+  if (kind === 'map') { const g = gradeMap(kind, answer, key); return g ? g.ok : null; }
   if (kind !== 'choice4' || !key || typeof key.correct !== 'number') return null;
   if (!answer || typeof answer.choice !== 'number') return null;
   return answer.choice === key.correct;

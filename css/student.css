@@ -130,3 +130,29 @@ body.kid { background: var(--kid-bg); }
 .fb-mine .fb-mine-label { text-align: center; }
 .fb-sheet .sheet-fit { align-items: start; }
 .fb-comment-wrap .fb-mine-label { text-align: left; }
+
+/* 손가락으로도 쓰기 버튼 */
+.tool.finger { flex-direction: column; gap: 2px; height: 72px; }
+.tool-label { font-size: 12px; font-weight: 700; line-height: 1; }
+/* 낮은 화면(휴대폰 가로)에서도 도구가 다 들어가게 */
+.tools { gap: clamp(6px, 1.5vh, 12px); padding: clamp(10px, 2.2vh, 18px) 0; }
+.tool { width: clamp(48px, 8vh, 64px); height: clamp(48px, 8vh, 64px); }
+.tool.finger { height: clamp(54px, 9vh, 72px); }
+.swatch { width: clamp(34px, 5.8vh, 46px); height: clamp(34px, 5.8vh, 46px); }
+
+/* 지금 무엇으로 쓰는 중인지 */
+.mode {
+  display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 999px;
+  font-size: 16px; font-weight: 700; white-space: nowrap; transition: background 0.15s, color 0.15s;
+}
+.mode .mi { display: none; }
+.mode-pen { background: #DCE8FF; color: #1E3A8A; }
+.mode-pen .mi-pen { display: block; }
+.mode-kbd { background: #EDE3FF; color: #4C1D95; }
+.mode-kbd .mi-kbd { display: block; }
+.mode-eraser { background: #ECE8DE; color: #3E4452; }
+.mode-eraser .mi-eraser { display: block; }
+.tool.kbd.on { border-color: #6D28D9; background: #EDE3FF; color: #4C1D95; }
+/* 키보드로 쓰는 중이면 글쓰기 칸을 보라색 테두리로 */
+.sheet.is-typing .sheet-essay { border-color: #6D28D9; box-shadow: 0 0 0 0.3cqw #EDE3FF; outline: none; }
+.sheet-essay:focus { outline: none; }

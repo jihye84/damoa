@@ -1,6 +1,6 @@
 // 다모아 학생 태블릿
-import { makeClient, h, $, toast, errMsg, stampEl } from './common.js?v=202611071223';
-import { renderSheet } from './sheet.js?v=202611071223';
+import { makeClient, h, $, toast, errMsg, stampEl } from './common.js?v=202611071231';
+import { renderSheet } from './sheet.js?v=202611071231';
 
 const sb = makeClient('student');
 const CLAIM_KEY = 'damoa-claim';
@@ -304,14 +304,74 @@ async function loadAssignment(aid) {
 }
 
 // ---------------- 펜 도구 ----------------
-const tool = { kind: 'pen', color: '#1D4ED8' };
+let fingerSaved = false;
+try { fingerSaved = localStorage.getItem('damoa-finger') === '1'; } catch (_) {}
+const tool = { kind: 'pen', color: '#1D4ED8', finger: fingerSaved };
 function applyTool() {
   if (!st.sheet) return;
   st.sheet.ink.setTool(tool.kind);
   st.sheet.ink.color = tool.color;
+  st.sheet.ink.allowFinger = tool.finger;
+  $('#kbd').hidden = !st.sheet.textarea;
+  paintMode();
 }
+
+// ---------- 지금 무엇으로 쓰는 중인지 ----------
+function typing() {
+  return !!(st.sheet && st.sheet.textarea && document.activeElement === st.sheet.textarea);
+}
+function paintMode() {
+  const m = typing() ? 'kbd' : (tool.kind === 'eraser' ? 'eraser' : 'pen');
+  const box = $('#mode');
+  box.className = 'mode mode-' + m;
+  const pen = tool.finger ? '펜·손가락으로 쓰는 중' : '펜으로 쓰는 중';
+  $('#mode-text').textContent = m === 'kbd' ? '키보드로 쓰는 중' : m === 'eraser' ? '지우개로 지우는 중' : pen;
+  $('#kbd').classList.toggle('on', m === 'kbd');
+  $('#kbd').setAttribute('aria-pressed', m === 'kbd' ? 'true' : 'false');
+  document.querySelectorAll('.tool[data-tool]').forEach((x) => {
+    const on = m !== 'kbd' && x.dataset.tool === tool.kind;
+    x.classList.toggle('on', on);
+    x.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  if (st.sheet) st.sheet.sheet.classList.toggle('is-typing', m === 'kbd');
+}
+function leaveKeyboard() {
+  if (typing()) st.sheet.textarea.blur();
+}
+$('#kbd').addEventListener('click', () => {
+  if (!st.sheet || !st.sheet.textarea) return;
+  if (typing()) { leaveKeyboard(); return; }
+  const ta = st.sheet.textarea;
+  ta.focus();
+  ta.setSelectionRange(ta.value.length, ta.value.length);
+});
+// 글쓰기 칸에 들어가고 나올 때 표시를 바꿔요
+$('#sheet-host').addEventListener('focusin', paintMode);
+$('#sheet-host').addEventListener('focusout', () => setTimeout(paintMode, 0));
+// 키보드로 쓰다가 펜을 대면 키보드를 내리고 펜으로 바꿔요
+$('#sheet-host').addEventListener('pointerdown', (e) => {
+  const inkable = e.pointerType === 'pen' || (tool.finger && e.pointerType === 'touch' && !e.target.closest('textarea, button'));
+  if (inkable && typing()) { leaveKeyboard(); }
+}, true);
+// 손가락으로도 쓰기: S펜이 없거나 고무 펜(손가락처럼 인식됨)을 쓸 때 켜요
+function paintFinger() {
+  const b = $('#finger');
+  b.classList.toggle('on', tool.finger);
+  b.setAttribute('aria-pressed', tool.finger ? 'true' : 'false');
+  $('#foot-help').textContent = tool.finger ? '손가락으로도 써져요. 선택지는 톡 눌러요' : '펜으로 쓰고, 손가락으로 골라요';
+}
+paintFinger();
+$('#finger').addEventListener('click', () => {
+  tool.finger = !tool.finger;
+  try { localStorage.setItem('damoa-finger', tool.finger ? '1' : '0'); } catch (_) {}
+  paintFinger();
+  applyTool();
+  paintMode();
+  toast(tool.finger ? '이제 손가락으로도 써져요' : '이제 펜으로만 써져요');
+});
 document.querySelectorAll('.tool[data-tool]').forEach((b) => b.addEventListener('click', () => {
   tool.kind = b.dataset.tool;
+  leaveKeyboard();
   document.querySelectorAll('.tool[data-tool]').forEach((x) => {
     x.classList.toggle('on', x === b);
     x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
@@ -320,6 +380,7 @@ document.querySelectorAll('.tool[data-tool]').forEach((b) => b.addEventListener(
 }));
 document.querySelectorAll('.swatch').forEach((b) => b.addEventListener('click', () => {
   tool.color = b.dataset.color;
+  leaveKeyboard();
   tool.kind = 'pen';
   document.querySelectorAll('.swatch').forEach((x) => {
     x.classList.toggle('on', x === b);

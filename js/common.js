@@ -1,5 +1,5 @@
-import { createClient } from '../vendor/supabase.js?v=202611071223';
-import { SUPABASE_URL, SUPABASE_KEY } from './config.js?v=202611071223';
+import { createClient } from '../vendor/supabase.js?v=202611071231';
+import { SUPABASE_URL, SUPABASE_KEY } from './config.js?v=202611071231';
 
 // 선생님 PC와 학생 태블릿의 로그인을 따로 보관 (같은 기기에서 둘 다 열어도 섞이지 않게)
 export function makeClient(role) {

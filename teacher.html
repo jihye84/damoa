@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>다모아 · 선생님</title>
-<script src="js/inapp.js?v=202611072349"></script>
+<script src="js/inapp.js?v=202611080707"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Jua&display=swap">
-<link rel="stylesheet" href="css/app.css?v=202611072349">
-<link rel="stylesheet" href="css/teacher.css?v=202611072349">
+<link rel="stylesheet" href="css/app.css?v=202611080707">
+<link rel="stylesheet" href="css/teacher.css?v=202611080707">
 </head>
 <body>
 <div class="app" id="app">
@@ -68,6 +68,8 @@
           <button type="button" id="quick-template" class="btn primary">⚡ 빠른 만들기</button>
           <button type="button" id="add-template" class="btn">+ 새 템플릿</button></div>
         <div id="template-list" class="list grow"></div>
+        <div class="tpl-foot"><span id="tpl-count" class="muted"></span><div class="spacer"></div>
+          <button type="button" id="clear-templates" class="btn small danger-soft">보관함 모두 비우기</button></div>
       </section>
     </div>
     <div class="home-foot">
@@ -225,7 +227,7 @@
   </div>
 </div>
 
-<script type="module" src="js/teacher.js?v=202611072349"></script>
+<script type="module" src="js/teacher.js?v=202611080707"></script>
 <!-- 인쇄용 (포트폴리오) -->
 <div id="print-root" aria-hidden="true"></div>
 </body>

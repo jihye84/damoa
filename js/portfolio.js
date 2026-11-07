@@ -2,8 +2,8 @@
 // 반을 고르고 학생을 누르면, 그 학생이 낸 것이 날짜순으로 나와요. 도장·한마디·자동 채점도 함께.
 // ★ 대표작을 달고, 학생 한 명 또는 반 전체를 A4로 인쇄(PDF 저장)할 수 있어요.
 
-import { h, $, toast, errMsg, KINDS, stampOf } from './common.js?v=202611072349';
-import { renderSheet, gradeAny } from './sheet.js?v=202611072349';
+import { h, $, toast, errMsg, KINDS, stampOf } from './common.js?v=202611080707';
+import { renderSheet, gradeAny } from './sheet.js?v=202611080707';
 
 const PAGE = 500;
 const CHUNK = 80;

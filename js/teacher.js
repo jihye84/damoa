@@ -1,12 +1,12 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611072349';
-import { renderSheet, isCorrect, gradeMap, gradeShapes, gradeAny, loadMap, WIDGETS } from './sheet.js?v=202611072349';
-import { cleanUrl } from './w/link.js?v=202611072349';
-import { cleanKey, syncText } from './w/index.js?v=202611072349';
-import { openQuick } from './quick.js?v=202611072349';
-import { initPortfolio } from './portfolio.js?v=202611072349';
-import { openLibrary } from './library.js?v=202611072349';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611072349';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611080707';
+import { renderSheet, isCorrect, gradeMap, gradeShapes, gradeAny, loadMap, WIDGETS } from './sheet.js?v=202611080707';
+import { cleanUrl } from './w/link.js?v=202611080707';
+import { cleanKey, syncText } from './w/index.js?v=202611080707';
+import { openQuick } from './quick.js?v=202611080707';
+import { initPortfolio } from './portfolio.js?v=202611080707';
+import { openLibrary } from './library.js?v=202611080707';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611080707';
 
 const sb = makeClient('teacher');
 
@@ -310,6 +310,8 @@ function foldersOf(list) {
 function renderTemplates() {
   const box = $('#template-list');
   box.innerHTML = '';
+  $('#tpl-count').textContent = st.templates.length ? `템플릿 ${st.templates.length}개` : '';
+  $('#clear-templates').hidden = !st.templates.length;
   if (!st.templates.length) {
     box.appendChild(h('div', { class: 'empty' }, '"+ 새 템플릿"으로 직접 만들거나,\n"꺼내 오기"로 수학 단원별 묶음과\n생각하기 질문을 가져올 수 있어요.'));
     return;
@@ -355,6 +357,34 @@ $('#open-library').addEventListener('click', () => openLibrary({
 }));
 
 $('#add-template').addEventListener('click', () => editTemplate(null));
+
+// 보관함 모두 비우기 (꺼내 온 묶음 + 내가 만든 것 모두). 이미 보낸 수업 기록과 학생 답은 남아요.
+$('#clear-templates').addEventListener('click', () => {
+  const n = st.templates.length;
+  if (!n) { toast('보관함이 이미 비어 있어요'); return; }
+  const mine = st.templates.filter((t) => !t.folder || t.folder === MINE).length;
+  const typed = h('input', { class: 'input', id: 'ct-typed', placeholder: '비우기', autocomplete: 'off' });
+  const go = h('button', { type: 'button', class: 'btn danger', disabled: true }, `${n}개 모두 지우기`);
+  typed.addEventListener('input', () => { go.disabled = typed.value.trim() !== '비우기'; });
+  go.addEventListener('click', async () => {
+    go.disabled = true;
+    go.textContent = '지우는 중…';
+    const ids = st.templates.map((t) => t.id);
+    for (let i = 0; i < ids.length; i += 100) {
+      const { error } = await sb.from('templates').delete().in('id', ids.slice(i, i + 100));
+      if (error) { toast(errMsg(error)); break; }
+    }
+    closeModal();
+    openFolders.clear();
+    openFolders.add(MINE);
+    await loadHome();
+    toast('보관함을 비웠어요');
+  });
+  openModal('보관함 모두 비우기', h('div', { class: 'col', style: { gap: '12px' } },
+    h('p', { class: 'reset-warn' }, `템플릿 ${n}개가 모두 지워져요. 꺼내 온 묶음뿐 아니라 내가 만든 템플릿 ${mine}개도 포함이에요. 지운 것은 되돌릴 수 없어요.`),
+    h('p', { class: 'muted', style: { margin: 0, lineHeight: 1.6 } }, '이미 보낸 수업 기록과 학생 답(포트폴리오)은 그대로 남아요. 꺼내 온 묶음은 "꺼내 오기"에서 언제든 다시 가져올 수 있어요.'),
+    h('div', { class: 'field' }, h('label', { for: 'ct-typed' }, '정말 비우려면 아래 칸에 "비우기"라고 써 주세요'), typed)), [go]);
+});
 $('#quick-template').addEventListener('click', () => openQuick({ sb, openModal, closeModal, reload: loadHome }));
 
 initPortfolio({

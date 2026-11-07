@@ -20,7 +20,7 @@
 
 /* 홈 */
 .home { flex: 1; min-height: 0; display: flex; flex-direction: column; }
-.home-grid { padding: 16px 20px; display: grid; grid-template-columns: minmax(200px, 1fr) minmax(0, 2fr) minmax(240px, 1.2fr); gap: 16px; }
+.home-grid { padding: 16px 20px; display: grid; grid-template-columns: minmax(200px, 0.9fr) minmax(0, 1.6fr) minmax(360px, 1.5fr); gap: 16px; }
 .panel { padding: 16px; display: flex; flex-direction: column; gap: 12px; min-height: 0; }
 .panel-head { display: flex; align-items: center; gap: 8px; }
 .panel-head h2 { margin: 0; font-size: 18px; }
@@ -314,3 +314,7 @@
 .quick-chip.on { background: var(--teal); border-color: var(--teal); color: #fff; font-weight: 700; }
 .quick-pv { flex: 1; min-height: 0; }
 .te .kind-picks .kind-pick:nth-last-child(2) { grid-column: auto; }
+.tpl-foot { display: flex; align-items: center; gap: 8px; padding-top: 8px; border-top: 1px solid var(--line); margin-top: 8px; font-size: 13px; }
+/* 템플릿 보관함 머리: 제목 한 줄, 단추는 그 아래로 넘쳐도 줄바꿈 */
+section[aria-labelledby="h-templates"] .panel-head { flex-wrap: wrap; row-gap: 8px; }
+section[aria-labelledby="h-templates"] .panel-head h2 { white-space: nowrap; }

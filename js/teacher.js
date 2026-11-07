@@ -1,11 +1,11 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611072336';
-import { renderSheet, isCorrect, gradeMap, gradeShapes, gradeAny, loadMap, WIDGETS } from './sheet.js?v=202611072336';
-import { cleanKey, syncText } from './w/index.js?v=202611072336';
-import { openQuick } from './quick.js?v=202611072336';
-import { initPortfolio } from './portfolio.js?v=202611072336';
-import { openLibrary } from './library.js?v=202611072336';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611072336';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611072338';
+import { renderSheet, isCorrect, gradeMap, gradeShapes, gradeAny, loadMap, WIDGETS } from './sheet.js?v=202611072338';
+import { cleanKey, syncText } from './w/index.js?v=202611072338';
+import { openQuick } from './quick.js?v=202611072338';
+import { initPortfolio } from './portfolio.js?v=202611072338';
+import { openLibrary } from './library.js?v=202611072338';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611072338';
 
 const sb = makeClient('teacher');
 
@@ -855,7 +855,9 @@ function openViewer(startT, { sending = false } = {}) {
   const newB = h('button', { type: 'button', class: 'btn', onclick: () => editTemplate(null, sending ? (t) => sendTemplate(t) : null) }, '+ 새로 만들기');
   // 복사해서 숫자만 바꾸면 비슷한 문제를 금방 만들어요
   const copyB = h('button', { type: 'button', class: 'btn', onclick: () => cur && editTemplate(Object.assign({}, cur, { id: null, title: cur.title }), sending ? (t) => sendTemplate(t) : null) }, '복사해서 새로');
-  const quickB = h('button', { type: 'button', class: 'btn', onclick: () => openQuick({ sb, openModal, closeModal, reload: loadHome, onSaved: () => openViewer(null, { sending }) }) }, '⚡ 빠른 만들기');
+  const quickB = h('button', { type: 'button', class: 'btn', onclick: () => openQuick(sending
+    ? { sb, openModal, closeModal, reload: loadHome, send: (t) => sendTemplate(t) }
+    : { sb, openModal, closeModal, reload: loadHome, onSaved: () => openViewer(null, { sending }) }) }, sending ? '⚡ 바로 내기' : '⚡ 빠른 만들기');
   const buttons = sending ? [quickB, copyB, editB, sendB] : [quickB, newB, copyB, editB];
 
   function show(t) {
@@ -1208,6 +1210,7 @@ $('#btn-end').addEventListener('click', async () => {
 
 // ---------- 템플릿 보내기 ----------
 $('#btn-send').addEventListener('click', () => openViewer(null, { sending: true }));
+$('#btn-quick-send').addEventListener('click', () => openQuick({ sb, openModal, closeModal, reload: loadHome, send: (t) => sendTemplate(t) }));
 
 async function sendTemplate(t) {
   const { data: a, error } = await sb.from('assignments').insert({

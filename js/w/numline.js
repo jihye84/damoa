@@ -2,8 +2,8 @@
 // content: { min, max, step(큰 눈금 간격), minor(큰 눈금 사이 칸 수), labels: 'all'|'major'|'ends', fmt: 'int'|'frac'|'dec', mode, start }
 // answer:  point → { i } (작은 눈금 번호)   jump → { path: [i0, i1, …] }
 // answer_key: point → { value }   jump → { end, size }
-import { h } from '../common.js?v=202611072336';
-import { s, svgRoot, toSvg, makeState, wrap, num, clamp, parseNum, eul } from './base.js?v=202611072336';
+import { h } from '../common.js?v=202611072338';
+import { s, svgRoot, toSvg, makeState, wrap, num, clamp, parseNum, eul } from './base.js?v=202611072338';
 
 function shape(c) {
   const min = num(parseNum(c.min), 0), max = num(parseNum(c.max), 10);

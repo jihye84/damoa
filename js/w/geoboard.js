@@ -2,8 +2,8 @@
 // content: { cols: 7, rows: 5 }
 // answer:  { polys: [{ pts: [[x,y]…], closed }] }
 // answer_key: { sides: 3|4|…, kind: 'any'|'rect'|'square'|'right', area }
-import { h } from '../common.js?v=202611072336';
-import { s, svgRoot, toSvg, makeState, wrap, num, clamp, eul } from './base.js?v=202611072336';
+import { h } from '../common.js?v=202611072338';
+import { s, svgRoot, toSvg, makeState, wrap, num, clamp, eul } from './base.js?v=202611072338';
 
 const COLORS = ['#2563EB', '#E11D48', '#059669', '#D97706', '#7C3AED'];
 const SIDES = { 3: '삼각형', 4: '사각형', 5: '오각형', 6: '육각형' };

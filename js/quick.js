@@ -4,8 +4,8 @@
 //   7 = 3 + 4          → 십 배열판 가르기          57                     → 수 모형 (20까지는 십 배열판)
 //   사과는? 배, *사과, 귤, 감 → 4지선다 (* 가 정답)  물음표로 끝나는 글       → 서술형
 //   그 밖의 글           → 빈 답지
-import { h, $, toast, errMsg, KINDS } from './common.js?v=202611072336';
-import { renderSheet, WIDGETS } from './sheet.js?v=202611072336';
+import { h, $, toast, errMsg, KINDS } from './common.js?v=202611072338';
+import { renderSheet, WIDGETS } from './sheet.js?v=202611072338';
 
 const eunOf = (t) => { const ch = String(t).trim().slice(-1); if (/[0-9]/.test(ch)) return '013678'.includes(ch) ? '은' : '는'; const k = ch.charCodeAt(0) - 0xAC00; return k >= 0 && k < 11172 && k % 28 ? '은' : '는'; };
 const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -95,11 +95,11 @@ export function parseLine(raw) {
 }
 
 export function openQuick(ctx) {
-  const { sb, openModal, closeModal, reload, onSaved } = ctx;
+  const { sb, openModal, closeModal, reload, onSaved, send } = ctx;   // send: 수업 중이면 만들자마자 보내요
   const ta = h('textarea', { class: 'textarea quick-in', id: 'qk-in', rows: '8',
     placeholder: '한 줄에 하나씩 써요. 예)\n8 + 5\n27 + 35\n3:30\n3/4\n7 = 3 + 4\n57\n가장 큰 동물은? 개미, 고양이, *코끼리, 토끼\n친구와 다툰 적이 있나요?' });
   const d = new Date();
-  const folder = h('input', { class: 'input', id: 'qk-folder', value: `빠른 만들기 ${d.getMonth() + 1}/${d.getDate()}` });
+  const folder = h('input', { class: 'input', id: 'qk-folder', value: `${send ? '수업 중 만든 문제' : '빠른 만들기'} ${d.getMonth() + 1}/${d.getDate()}` });
   const list = h('div', { class: 'quick-list' });
   const stage = h('div', { class: 'tv-stage' });
   const help = h('div', { class: 'quick-help muted' },
@@ -108,7 +108,8 @@ export function openQuick(ctx) {
   let rows = [];   // { line, cands, pick }
   let sel = 0;
   let pv = null;
-  const go = h('button', { type: 'button', class: 'btn primary', disabled: true }, '보관함에 넣기');
+  const goLabel = send ? '바로 보내기' : '보관함에 넣기';
+  const go = h('button', { type: 'button', class: 'btn primary', disabled: true }, goLabel);
   const body = h('div', { class: 'quick' },
     h('div', { class: 'col quick-left' },
       h('div', { class: 'field grow' }, h('label', { for: 'qk-in' }, '문제 쓰기'), ta),
@@ -149,7 +150,7 @@ export function openQuick(ctx) {
     if (!rows.length) list.appendChild(h('div', { class: 'empty' }, '왼쪽에 문제를 써 보세요.'));
     const n = rows.filter((r) => r.cands.length).length;
     go.disabled = !n;
-    go.textContent = n ? `보관함에 넣기 (${n}개)` : '보관함에 넣기';
+    go.textContent = n ? `${goLabel} (${n}개)` : goLabel;
     if (sel >= rows.length) sel = Math.max(0, rows.length - 1);
   }
   let timer = null;
@@ -173,11 +174,22 @@ export function openQuick(ctx) {
     const res = await sb.from('templates').insert(make).select();
     if (res.error) { toast(errMsg(res.error)); go.disabled = false; return; }
     closeModal();
+    if (send) {
+      // 아이들은 새로 온 장부터 풀어요 → 첫 줄을 맨 나중에 보내야 첫 줄부터 풀어요
+      const made = res.data || [];
+      for (const t of made.slice().reverse()) await send(t);
+      if (made.length > 1) toast(`${made.length}장을 보냈어요. 아이들은 첫 줄 문제부터 풀어요`, 4000);
+      reload();
+      return;
+    }
     toast(`${make.length}개를 만들었어요`);
     await reload();
     if (onSaved) onSaved(res.data || []);
   });
-  openModal('빠른 만들기', body, [go], 'wide');
+  // Ctrl+Enter (또는 ⌘+Enter)로 바로
+  ta.addEventListener('keydown', (e) => { if (e.key === 'Enter' && (e.ctrlKey || e.metaKey) && !go.disabled) { e.preventDefault(); go.click(); } });
+  if (send) help.appendChild(h('span', null, '여러 줄이면 여러 장을 보내요. 아이들은 첫 줄 문제부터 풀어요. Ctrl + Enter로 바로 보내요.'));
+  openModal(send ? '바로 내기 · 써서 바로 보내요' : '빠른 만들기', body, [go], 'wide');
   paint();
   setTimeout(() => ta.focus(), 50);
 }

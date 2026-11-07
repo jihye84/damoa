@@ -9,7 +9,7 @@
 // answer = { shapes: [shape…], mine: 학생이 바꾼 횟수 }
 // answer_key = { counts: { c: 2, t: 3 } }   (모양별 개수 채점, 비우면 채점 안 함)
 
-import { h } from './common.js?v=202611072336';
+import { h } from './common.js?v=202611072338';
 
 const W = 1600, H = 800;
 const SVGNS = 'http://www.w3.org/2000/svg';

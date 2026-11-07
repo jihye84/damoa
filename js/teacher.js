@@ -1,8 +1,8 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611071852';
-import { renderSheet, isCorrect, loadMap } from './sheet.js?v=202611071852';
-import { openLibrary } from './library.js?v=202611071852';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611071852';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611071854';
+import { renderSheet, isCorrect, loadMap } from './sheet.js?v=202611071854';
+import { openLibrary } from './library.js?v=202611071854';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611071854';
 
 const sb = makeClient('teacher');
 
@@ -726,20 +726,29 @@ function boardStudents() {
 }
 
 // 처음 보는 학생이 들어오면 (이름을 쓰고 들어온 학생) 이름을 받아 와요
+const fetchingStudent = new Map();   // 같은 학생을 동시에 두 번 받아 오지 않게
 async function ensureStudent(id) {
-  const old = st.sessionStudents.find((x) => x.id === id);
-  if (old && !old.guest_session) return;
-  const { data } = await sb.from('students').select('*').eq('id', id).maybeSingle();
-  if (!data) return;
-  if (old) {
-    Object.assign(old, data);   // 이름을 바꿨을 수도 있어요
-    const nm = document.querySelector('#tile-' + id + ' .tile-name');
-    if (nm) nm.textContent = data.name;
-  }
-  else st.sessionStudents.push(data);
-  renderJoin();
-  renderTiles();
-  renderTabs();
+  const known = st.sessionStudents.find((x) => x.id === id);
+  if (known && !known.guest_session) return;
+  if (fetchingStudent.has(id)) return fetchingStudent.get(id);
+  const job = (async () => {
+    const { data } = await sb.from('students').select('*').eq('id', id).maybeSingle();
+    if (!data) return;
+    // 받아 오는 동안 다른 알림으로 이미 들어왔을 수 있어서 다시 찾아요
+    const old = st.sessionStudents.find((x) => x.id === id);
+    if (old) {
+      Object.assign(old, data);   // 이름을 바꿨을 수도 있어요
+      const nm = document.querySelector('#tile-' + id + ' .tile-name');
+      if (nm) nm.textContent = data.name;
+    } else {
+      st.sessionStudents.push(data);
+    }
+    renderJoin();
+    renderTiles();
+    renderTabs();
+  })();
+  fetchingStudent.set(id, job);
+  try { await job; } finally { fetchingStudent.delete(id); }
 }
 
 $('#live-join-mode').addEventListener('click', async (e) => {

@@ -24,6 +24,13 @@
 - 화면 잠금, 모두 앞을 보세요, 수업 끝내기
 - 인앱 브라우저(카카오톡 등)에서 열면 기본 브라우저로 이동
 
+## 템플릿 묶음 (꺼내 오기)
+
+- `library/math.json` — 수학 1~6학년 71묶음 559개 (2022 개정 교육과정. 1~2학년은 국정 교과서 단원, 3~6학년은 주제별)
+- `library/think.json` — 생각하기 16주제 96개 (바칼로레아 철학 주제를 초등학생 눈높이로 바꾸어 직접 쓴 질문)
+- 다시 만들기: `python3 tools/gen_math.py`, `python3 tools/gen_think.py`
+- 정답 검사: `python3 tools/check_math.py` (계산 문제를 문제 글에서 다시 계산해 비교)
+
 ## 데이터베이스
 
 `supabase/` 폴더의 SQL을 번호 순서대로 Supabase SQL Editor에서 한 번씩 실행합니다.

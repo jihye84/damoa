@@ -1,0 +1,1047 @@
+{
+ "version": 1,
+ "subject": "생각하기",
+ "source": "바칼로레아 철학 주제를 바탕으로 다모아가 직접 쓴 질문",
+ "bundles": [
+  {
+   "id": "think-1",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "행복",
+   "title": "생각하기 · 행복",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 친구가 없어도 행복할 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "친구가 없어도\n행복할 수 있을까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 갖고 싶은 것을 다 가지면 행복할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "갖고 싶은 것을 다 가지면\n행복할까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 오늘 가장 행복했던 순간은 언제였나요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "오늘 가장 행복했던 순간은\n언제였나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 행복은 찾는 것일까요, 만드는 것일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "행복은 찾는 것일까요,\n만드는 것일까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 다른 사람을 행복하게 하면 나도 행복해질까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "다른 사람을 행복하게 하면\n나도 행복해질까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 힘든 일을 해낸 뒤의 기쁨도 행복이라고 할 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "힘든 일을 해낸 뒤의 기쁨도\n행복이라고 할 수 있을까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "think-2",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "자유",
+   "title": "생각하기 · 자유",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 하고 싶은 것을 다 하면 자유로운 걸까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "하고 싶은 것을 다 하면\n자유로운 걸까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 학교에 규칙이 하나도 없으면 더 좋을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "학교에 규칙이 하나도 없으면\n더 좋을까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 새를 새장에 넣어 키워도 괜찮을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "새를 새장에 넣어 키워도\n괜찮을까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 규칙이 있으면 자유가 줄어드는 걸까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "규칙이 있으면\n자유가 줄어드는 걸까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 내 자유가 다른 사람을 불편하게 한다면 어떻게 해야 할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "내 자유가 다른 사람을\n불편하게 한다면 어떻게 해야 할까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 스스로 정한 약속을 지키는 것도 자유일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "스스로 정한 약속을 지키는 것도\n자유일까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "think-3",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "정의와 공정",
+   "title": "생각하기 · 정의와 공정",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 간식을 모두에게 똑같이 나누면 언제나 공평할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "간식을 모두에게 똑같이 나누면\n언제나 공평할까요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 잘못한 친구는 꼭 벌을 받아야 할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "잘못한 친구는\n꼭 벌을 받아야 할까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 줄을 서는 것은 왜 필요할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "줄을 서는 것은\n왜 필요할까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 모두에게 똑같이 주는 것과 필요한 만큼 주는 것 중 무엇이 더 공정할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "모두에게 똑같이 주는 것과\n필요한 만큼 주는 것 중 무엇이 더 공정할까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 법을 지키는 것과 옳은 일을 하는 것은 언제나 같을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "법을 지키는 것과\n옳은 일을 하는 것은 언제나 같을까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 이긴 사람이 모든 것을 가지는 것은 공정할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "이긴 사람이 모든 것을 가지는 것은\n공정할까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "think-4",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "진실과 거짓말",
+   "title": "생각하기 · 진실과 거짓말",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 친구를 기쁘게 하려고 하는 거짓말은 괜찮을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "친구를 기쁘게 하려고 하는 거짓말은\n괜찮을까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 눈에 보이는 것은 모두 진짜일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "눈에 보이는 것은\n모두 진짜일까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 내가 틀렸다는 걸 알았을 때 어떻게 하면 좋을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "내가 틀렸다는 걸 알았을 때\n어떻게 하면 좋을까요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 모든 사람이 믿으면 그것은 진실이 될까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "모든 사람이 믿으면\n그것은 진실이 될까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 진실을 말하는 것이 다른 사람을 아프게 한다면 그래도 말해야 할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "진실을 말하는 것이 다른 사람을 아프게 한다면\n그래도 말해야 할까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 인터넷에서 본 것이 사실인지 어떻게 알 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "인터넷에서 본 것이 사실인지\n어떻게 알 수 있을까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "think-5",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "시간",
+   "title": "생각하기 · 시간",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 재미있을 때는 왜 시간이 빨리 가는 것 같을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "재미있을 때는 왜 시간이\n빨리 가는 것 같을까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 어제로 돌아갈 수 있다면 무엇을 바꾸고 싶나요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "어제로 돌아갈 수 있다면\n무엇을 바꾸고 싶나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 어른이 되면 무엇이 달라질까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "어른이 되면\n무엇이 달라질까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 시간은 누구에게나 똑같이 흐를까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "시간은 누구에게나\n똑같이 흐를까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 지나간 일은 정말 바꿀 수 없을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "지나간 일은 정말\n바꿀 수 없을까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] \"지금\"을 소중히 한다는 것은 어떤 뜻일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "\"지금\"을 소중히 한다는 것은\n어떤 뜻일까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "think-6",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "나와 마음",
+   "title": "생각하기 · 나와 마음",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 나는 어떤 사람일까요? 나를 세 낱말로 말해 보세요.",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "나는 어떤 사람일까요?\n나를 세 낱말로 말해 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 화가 날 때 내 마음은 어떤 모양일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "화가 날 때 내 마음은\n어떤 모양일까요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 거울 속의 나와 진짜 나는 같을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "거울 속의 나와 진짜 나는\n같을까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 내가 나를 가장 잘 알까요, 다른 사람이 나를 더 잘 알까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "내가 나를 가장 잘 알까요,\n다른 사람이 나를 더 잘 알까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 어릴 때의 나와 지금의 나는 같은 사람일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "어릴 때의 나와 지금의 나는\n같은 사람일까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 내 마음을 내 마음대로 바꿀 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "내 마음을 내 마음대로\n바꿀 수 있을까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "think-7",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "친구와 다른 사람",
+   "title": "생각하기 · 친구와 다른 사람",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 좋은 친구는 어떤 친구일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "좋은 친구는\n어떤 친구일까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 나와 생각이 다른 친구와도 친하게 지낼 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "나와 생각이 다른 친구와도\n친하게 지낼 수 있을까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 처음 보는 친구에게 먼저 말을 걸려면 어떻게 할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "처음 보는 친구에게\n먼저 말을 걸려면 어떻게 할까요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 혼자서도 잘 살 수 있을까요? 사람은 왜 함께 살까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "혼자서도 잘 살 수 있을까요?\n사람은 왜 함께 살까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 다른 사람의 마음을 정말 알 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "다른 사람의 마음을\n정말 알 수 있을까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 친구의 잘못을 말해 주는 것은 친구를 위한 일일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "친구의 잘못을 말해 주는 것은\n친구를 위한 일일까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "think-8",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "해야 할 일",
+   "title": "생각하기 · 해야 할 일",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 하기 싫은 일도 꼭 해야 할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "하기 싫은 일도\n꼭 해야 할까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 약속을 못 지키게 되면 어떻게 해야 할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "약속을 못 지키게 되면\n어떻게 해야 할까요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 아무도 보지 않을 때도 규칙을 지켜야 할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "아무도 보지 않을 때도\n규칙을 지켜야 할까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 착한 일을 하면 꼭 칭찬을 받아야 할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "착한 일을 하면\n꼭 칭찬을 받아야 할까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] \"해야 하는 일\"과 \"하고 싶은 일\"이 부딪치면 무엇을 골라야 할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "\"해야 하는 일\"과 \"하고 싶은 일\"이 부딪치면\n무엇을 골라야 할까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 어른이 시키는 일은 언제나 따라야 할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "어른이 시키는 일은\n언제나 따라야 할까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "think-9",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "일과 놀이",
+   "title": "생각하기 · 일과 놀이",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 공부는 일일까요, 놀이일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "공부는 일일까요,\n놀이일까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 어른들은 왜 일을 할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "어른들은 왜 일을 할까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 가장 하고 싶은 일은 무엇인가요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "가장 하고 싶은 일은\n무엇인가요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 돈을 받지 않고 하는 일도 일이라고 할 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "돈을 받지 않고 하는 일도\n일이라고 할 수 있을까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 좋아하는 것을 일로 하면 더 행복할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "좋아하는 것을 일로 하면\n더 행복할까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 로봇이 모든 일을 해 준다면 사람은 무엇을 하며 살까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "로봇이 모든 일을 해 준다면\n사람은 무엇을 하며 살까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "think-10",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "기술과 로봇",
+   "title": "생각하기 · 기술과 로봇",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 로봇도 친구가 될 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "로봇도 친구가 될 수 있을까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 스마트폰이 없던 때는 어떻게 놀았을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "스마트폰이 없던 때는\n어떻게 놀았을까요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 내가 발명하고 싶은 물건은 무엇인가요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "내가 발명하고 싶은 물건은\n무엇인가요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 인공지능이 쓴 글도 작품이라고 할 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "인공지능이 쓴 글도\n작품이라고 할 수 있을까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 새로운 기술은 언제나 사람을 더 행복하게 할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "새로운 기술은\n언제나 사람을 더 행복하게 할까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 기계가 사람보다 더 잘하는 일이 많아지면 사람만 할 수 있는 일은 무엇일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "기계가 사람보다 더 잘하는 일이 많아지면\n사람만 할 수 있는 일은 무엇일까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "think-11",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "자연",
+   "title": "생각하기 · 자연",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 나무도 아플까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "나무도 아플까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 동물에게도 마음이 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "동물에게도\n마음이 있을까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 자연을 지키려면 내가 무엇을 할 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "자연을 지키려면\n내가 무엇을 할 수 있을까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 사람은 자연의 주인일까요, 자연의 한 부분일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "사람은 자연의 주인일까요,\n자연의 한 부분일까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 사람에게 필요하다면 숲을 없애도 될까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "사람에게 필요하다면\n숲을 없애도 될까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 자연에서 배울 수 있는 것은 무엇일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "자연에서 배울 수 있는 것은\n무엇일까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "think-12",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "예술과 아름다움",
+   "title": "생각하기 · 예술과 아름다움",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 아름다운 것은 누구에게나 아름다울까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "아름다운 것은\n누구에게나 아름다울까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 잘 못 그린 그림도 작품일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "잘 못 그린 그림도\n작품일까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 음악을 들으면 왜 기분이 달라질까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "음악을 들으면\n왜 기분이 달라질까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 예술가는 왜 작품을 만들까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "예술가는 왜\n작품을 만들까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 쓸모없는 것도 아름다울 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "쓸모없는 것도\n아름다울 수 있을까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 똑같이 따라 그린 그림과 처음 그린 그림은 무엇이 다를까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "똑같이 따라 그린 그림과\n처음 그린 그림은 무엇이 다를까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "think-13",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "말과 생각",
+   "title": "생각하기 · 말과 생각",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 말을 하지 않고도 마음을 전할 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "말을 하지 않고도\n마음을 전할 수 있을까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 한 번 한 말은 없던 일이 될 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "한 번 한 말은\n없던 일이 될 수 있을까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] \"고마워\"라는 말은 왜 힘이 셀까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "\"고마워\"라는 말은\n왜 힘이 셀까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 말이 없다면 생각도 할 수 없을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "말이 없다면\n생각도 할 수 없을까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 같은 말도 왜 사람마다 다르게 들을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "같은 말도 왜 사람마다\n다르게 들을까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 말로 상처를 주는 것과 몸으로 상처를 주는 것은 어떻게 다를까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "말로 상처를 주는 것과\n몸으로 상처를 주는 것은 어떻게 다를까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "think-14",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "앎과 배움",
+   "title": "생각하기 · 앎과 배움",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 모르는 것이 있으면 부끄러운 걸까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "모르는 것이 있으면\n부끄러운 걸까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 학교에서 배우지 않은 것 중에 내가 아는 것은 무엇인가요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "학교에서 배우지 않은 것 중에\n내가 아는 것은 무엇인가요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 궁금한 것이 생기면 어떻게 알아낼 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "궁금한 것이 생기면\n어떻게 알아낼 수 있을까요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 아는 것과 믿는 것은 어떻게 다를까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "아는 것과 믿는 것은\n어떻게 다를까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 틀리는 것에서도 배울 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "틀리는 것에서도\n배울 수 있을까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 과학으로 모든 것을 알 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "과학으로 모든 것을\n알 수 있을까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "think-15",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "나라와 함께 사는 규칙",
+   "title": "생각하기 · 나라와 함께 사는 규칙",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 우리 반에 꼭 필요한 규칙 하나를 만든다면?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "우리 반에 꼭 필요한 규칙\n하나를 만든다면?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 모두가 좋아하는 것을 고르려면 어떻게 정하면 좋을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "모두가 좋아하는 것을 고르려면\n어떻게 정하면 좋을까요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 반장은 왜 필요할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "반장은 왜 필요할까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 다수결로 정한 것은 언제나 옳을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "다수결로 정한 것은\n언제나 옳을까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 나라는 왜 필요할까요? 나라가 없다면 어떻게 될까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "나라는 왜 필요할까요?\n나라가 없다면 어떻게 될까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 좋은 지도자는 어떤 사람일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "좋은 지도자는\n어떤 사람일까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "think-16",
+   "subject": "생각하기",
+   "grade": 0,
+   "term": 0,
+   "unit": "기억",
+   "title": "생각하기 · 기억",
+   "note": "바칼로레아 철학 주제를 초등학생 눈높이로 바꾼 질문이에요. 정답이 없어요.",
+   "items": [
+    {
+     "title": "[저학년] 가장 오래된 기억은 무엇인가요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "가장 오래된 기억은\n무엇인가요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 잊고 싶은 일도 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "잊고 싶은 일도\n있을까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[저학년] 사진이 없어도 기억할 수 있을까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "사진이 없어도\n기억할 수 있을까요?\n왜 그렇게 생각하나요?"
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 기억이 모두 사라지면 나는 여전히 나일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "기억이 모두 사라지면\n나는 여전히 나일까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 잊는 것은 나쁜 일일까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "잊는 것은\n나쁜 일일까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "[고학년] 역사를 기억하는 것은 왜 중요할까요?",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "역사를 기억하는 것은\n왜 중요할까요?\n내 생각과 그 까닭을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  }
+ ]
+}

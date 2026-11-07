@@ -1,7 +1,8 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, joinUrl } from './common.js?v=202611071245';
-import { renderSheet, isCorrect } from './sheet.js?v=202611071245';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611071245';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, joinUrl } from './common.js?v=202611071333';
+import { renderSheet, isCorrect } from './sheet.js?v=202611071333';
+import { openLibrary } from './library.js?v=202611071333';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611071333';
 
 const sb = makeClient('teacher');
 
@@ -38,8 +39,9 @@ function show(id) {
 // =====================================================================
 // 대화상자
 // =====================================================================
-function openModal(title, body, buttons) {
+function openModal(title, body, buttons, size) {
   $('#modal-title').textContent = title;
+  $('#modal .modal').classList.toggle('wide', size === 'wide');
   const b = $('#modal-body');
   b.innerHTML = '';
   b.appendChild(body);
@@ -148,7 +150,7 @@ async function afterLogin() {
 async function loadHome() {
   const [{ data: classes }, { data: templates }] = await Promise.all([
     sb.from('classes').select('*').order('created_at'),
-    sb.from('templates').select('id, title, kind, content, answer_key, updated_at').order('updated_at', { ascending: false }),
+    sb.from('templates').select('id, title, kind, content, answer_key, updated_at, folder').order('updated_at', { ascending: false }),
   ]);
   st.classes = classes || [];
   st.templates = templates || [];
@@ -258,18 +260,67 @@ function parseRoster(text) {
 }
 
 // ---------- 템플릿 ----------
+// 보관함은 묶음(폴더)별로 접었다 펼 수 있어요
+const MINE = '내가 만든 템플릿';
+const openFolders = new Set([MINE]);
+
+function foldersOf(list) {
+  const map = new Map();
+  for (const t of list) {
+    const f = t.folder || MINE;
+    if (!map.has(f)) map.set(f, []);
+    map.get(f).push(t);
+  }
+  // 내가 만든 것이 맨 위, 나머지는 이름 순
+  return [...map.entries()].sort((x, y) => (x[0] === MINE ? -1 : y[0] === MINE ? 1 : x[0].localeCompare(y[0], 'ko', { numeric: true })));
+}
+
 function renderTemplates() {
   const box = $('#template-list');
   box.innerHTML = '';
   if (!st.templates.length) {
-    box.appendChild(h('div', { class: 'empty' }, '"+ 새 템플릿"으로 4지선다, 빈 답지, 서술형을 만들 수 있어요.'));
+    box.appendChild(h('div', { class: 'empty' }, '"+ 새 템플릿"으로 직접 만들거나,\n"꺼내 오기"로 수학 단원별 묶음과\n생각하기 질문을 가져올 수 있어요.'));
     return;
   }
-  for (const t of st.templates) {
-    box.appendChild(h('button', { type: 'button', class: 'list-item', onclick: () => editTemplate(t) },
-      h('span', { class: 'tname' }, t.title), h('span', { class: 'meta' }, KINDS[t.kind] || t.kind)));
+  for (const [folder, items] of foldersOf(st.templates)) {
+    const open = openFolders.has(folder);
+    const head = h('div', { class: 'folder-head' },
+      h('button', {
+        type: 'button', class: 'folder-btn', 'aria-expanded': open ? 'true' : 'false',
+        onclick: () => { if (open) openFolders.delete(folder); else openFolders.add(folder); renderTemplates(); },
+      },
+        h('span', { class: 'folder-caret', 'aria-hidden': 'true' }, open ? '▾' : '▸'),
+        h('span', { class: 'tname' }, folder),
+        h('span', { class: 'meta' }, items.length + '개')),
+      folder === MINE ? null : h('button', {
+        type: 'button', class: 'btn icon folder-del', 'aria-label': `${folder} 묶음 지우기`,
+        onclick: () => deleteFolder(folder, items.length),
+      }, h('span', { 'aria-hidden': 'true', html: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></svg>' })));
+    box.appendChild(head);
+    if (!open) continue;
+    for (const t of items) {
+      box.appendChild(h('button', { type: 'button', class: 'list-item in-folder', onclick: () => editTemplate(t) },
+        h('span', { class: 'tname' }, t.title), h('span', { class: 'meta' }, KINDS[t.kind] || t.kind)));
+    }
   }
 }
+
+async function deleteFolder(folder, n) {
+  if (!(await confirmBox('묶음 지우기', `"${folder}" 묶음의 템플릿 ${n}개를 보관함에서 지울까요? 이미 보낸 수업 기록은 남아요.`, '지우기'))) return;
+  const { error } = await sb.from('templates').delete().eq('folder', folder);
+  if (error) { toast(errMsg(error)); return; }
+  openFolders.delete(folder);
+  await loadHome();
+  toast('묶음을 지웠어요');
+}
+
+$('#open-library').addEventListener('click', () => openLibrary({
+  sb,
+  openModal,
+  closeModal,
+  existingFolders: new Set(st.templates.map((t) => t.folder).filter(Boolean)),
+  onImported: async (folder) => { openFolders.add(folder); await loadHome(); },
+}));
 
 $('#add-template').addEventListener('click', () => editTemplate(null));
 
@@ -502,14 +553,26 @@ $('#btn-end').addEventListener('click', async () => {
 
 // ---------- 템플릿 보내기 ----------
 $('#btn-send').addEventListener('click', () => {
+  const search = h('input', { class: 'input', type: 'search', placeholder: '찾기: 예) 받아올림, 8 + 5, 행복', 'aria-label': '템플릿 찾기' });
   const list = h('div', { class: 'pick-list' });
-  if (!st.templates.length) list.appendChild(h('div', { class: 'empty' }, '보관함이 비어 있어요. 아래에서 새로 만들어 보내세요.'));
-  for (const t of st.templates) {
-    list.appendChild(h('button', { type: 'button', class: 'list-item', onclick: () => { closeModal(); sendTemplate(t); } },
-      h('span', { class: 'tname' }, t.title), h('span', { class: 'meta' }, KINDS[t.kind] || t.kind)));
-  }
+  const paint = () => {
+    list.innerHTML = '';
+    const q = search.value.trim();
+    const hits = st.templates.filter((t) => !q || t.title.includes(q) || (t.folder || '').includes(q) || (t.content && (t.content.question || '').includes(q)));
+    if (!st.templates.length) { list.appendChild(h('div', { class: 'empty' }, '보관함이 비어 있어요. 아래에서 새로 만들어 보내세요.')); return; }
+    if (!hits.length) { list.appendChild(h('div', { class: 'empty' }, '찾는 템플릿이 없어요.')); return; }
+    for (const [folder, items] of foldersOf(hits)) {
+      list.appendChild(h('div', { class: 'pick-folder' }, folder));
+      for (const t of items) {
+        list.appendChild(h('button', { type: 'button', class: 'list-item', onclick: () => { closeModal(); sendTemplate(t); } },
+          h('span', { class: 'tname' }, t.title), h('span', { class: 'meta' }, KINDS[t.kind] || t.kind)));
+      }
+    }
+  };
+  search.addEventListener('input', paint);
+  paint();
   const make = h('button', { type: 'button', class: 'btn', onclick: () => editTemplate(null, (t) => sendTemplate(t)) }, '+ 새로 만들어 보내기');
-  openModal('어떤 템플릿을 보낼까요?', list, [make]);
+  openModal('어떤 템플릿을 보낼까요?', h('div', { class: 'col' }, search, list), [make]);
 });
 
 async function sendTemplate(t) {

@@ -1,0 +1,9891 @@
+{
+ "version": 1,
+ "subject": "수학",
+ "source": "2022 개정 교육과정 (1~2학년 국정 단원, 3~6학년 주제별)",
+ "bundles": [
+  {
+   "id": "math-1-1-1",
+   "subject": "수학",
+   "grade": 1,
+   "term": 1,
+   "unit": "1. 9까지의 수",
+   "title": "수학 1-1 · 1. 9까지의 수",
+   "note": "",
+   "items": [
+    {
+     "title": "6보다 1 큰 수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6보다 1 큰 수는\n무엇일까요?",
+      "options": [
+       "6",
+       "8",
+       "5",
+       "7"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "7보다 1 큰 수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "7보다 1 큰 수는\n무엇일까요?",
+      "options": [
+       "7",
+       "8",
+       "6",
+       "9"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "5보다 1 큰 수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5보다 1 큰 수는\n무엇일까요?",
+      "options": [
+       "6",
+       "5",
+       "7",
+       "4"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "3보다 1 작은 수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3보다 1 작은 수는\n무엇일까요?",
+      "options": [
+       "1",
+       "4",
+       "2",
+       "3"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "9보다 1 작은 수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "9보다 1 작은 수는\n무엇일까요?",
+      "options": [
+       "8",
+       "9",
+       "10",
+       "7"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "●의 수 세기 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "●●●●\n모두 몇 개일까요?",
+      "options": [
+       "5",
+       "3",
+       "2",
+       "4"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "●의 수 세기 7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "●●●●●●●\n모두 몇 개일까요?",
+      "options": [
+       "9",
+       "7",
+       "6",
+       "5"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "●의 수 세기 9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "●●●●●●●●●\n모두 몇 개일까요?",
+      "options": [
+       "8",
+       "7",
+       "11",
+       "9"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "4 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4를 바르게 읽은 것은?",
+      "options": [
+       "사, 넷",
+       "삼, 셋",
+       "육, 여섯",
+       "이, 둘"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "3 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3을 바르게 읽은 것은?",
+      "options": [
+       "오, 다섯",
+       "사, 넷",
+       "일, 하나",
+       "삼, 셋"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "순서: 넷째",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "앞에서부터 셋째 다음은\n몇째일까요?",
+      "options": [
+       "넷째",
+       "셋째",
+       "다섯째",
+       "둘째"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "0 알아보기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "접시에 사과가 하나도 없어요.\n사과의 수를 숫자로 쓰면?",
+      "options": [
+       "1",
+       "10",
+       "0",
+       "9"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "더 큰 수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6과 8 중에서\n더 큰 수는?",
+      "options": [
+       "7",
+       "6",
+       "9",
+       "8"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "1부터 9까지 쓰기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "1부터 9까지\n순서대로 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "거꾸로 쓰기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "9부터 1까지\n거꾸로 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-1-1-2",
+   "subject": "수학",
+   "grade": 1,
+   "term": 1,
+   "unit": "2. 여러 가지 모양",
+   "title": "수학 1-1 · 2. 여러 가지 모양",
+   "note": "",
+   "items": [
+    {
+     "title": "잘 굴러가는 모양",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "어느 쪽으로 굴려도\n잘 굴러가는 모양은?",
+      "options": [
+       "상자 모양",
+       "공 모양",
+       "둥근기둥 모양",
+       "세모 모양"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "쌓기 좋은 모양",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "평평한 면만 있어서\n높이 쌓기 좋은 모양은?",
+      "options": [
+       "둥근기둥 모양",
+       "동그라미 모양",
+       "상자 모양",
+       "공 모양"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "눕히면 굴러가는 모양",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "세우면 쌓을 수 있고,\n눕히면 굴러가는 모양은?",
+      "options": [
+       "둥근기둥 모양",
+       "공 모양",
+       "세모 모양",
+       "상자 모양"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "공 모양 물건",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "공 모양인 물건은?",
+      "options": [
+       "휴지 상자",
+       "주사위",
+       "구슬",
+       "음료수 캔"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "상자 모양 물건",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "상자 모양인 물건은?",
+      "options": [
+       "구슬",
+       "축구공",
+       "주사위",
+       "풀"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "둥근기둥 모양 물건",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "둥근기둥 모양인 물건은?",
+      "options": [
+       "필통",
+       "선물 상자",
+       "수박",
+       "음료수 캔"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "모양이 다른 하나",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "모양이 다른 하나는?",
+      "options": [
+       "농구공",
+       "책",
+       "냉장고",
+       "지우개"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "우리 반 모양 찾기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "교실에서 상자 모양 물건을\n찾아 이름을 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "모양으로 만들기",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "상자 모양, 둥근기둥 모양, 공 모양으로\n무엇을 만들고 싶나요?"
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-1-1-3",
+   "subject": "수학",
+   "grade": 1,
+   "term": 1,
+   "unit": "3. 덧셈과 뺄셈",
+   "title": "수학 1-1 · 3. 덧셈과 뺄셈",
+   "note": "",
+   "items": [
+    {
+     "title": "6과 3 모으기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6과 3을 모으면\n얼마일까요?",
+      "options": [
+       "8",
+       "9",
+       "12",
+       "7"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "3과 5 모으기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3과 5를 모으면\n얼마일까요?",
+      "options": [
+       "7",
+       "6",
+       "8",
+       "9"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "1과 4 모으기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1과 4를 모으면\n얼마일까요?",
+      "options": [
+       "5",
+       "4",
+       "6",
+       "3"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "4와 3 모으기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4와 3을 모으면\n얼마일까요?",
+      "options": [
+       "6",
+       "8",
+       "7",
+       "9"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "7 가르기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "7은 3과 몇으로\n가를 수 있을까요?",
+      "options": [
+       "4",
+       "3",
+       "6",
+       "2"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "8 가르기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "8은 5와 몇으로\n가를 수 있을까요?",
+      "options": [
+       "1",
+       "5",
+       "3",
+       "2"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "6 가르기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6은 2와 몇으로\n가를 수 있을까요?",
+      "options": [
+       "2",
+       "6",
+       "5",
+       "4"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "4 + 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4 + 3 = ?",
+      "options": [
+       "7",
+       "9",
+       "5",
+       "8"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "5 + 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5 + 4 = ?",
+      "options": [
+       "1",
+       "7",
+       "8",
+       "9"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "6 + 1",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6 + 1 = ?",
+      "options": [
+       "7",
+       "8",
+       "6",
+       "5"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "1 + 7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 + 7 = ?",
+      "options": [
+       "9",
+       "8",
+       "7",
+       "6"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "3 + 5",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3 + 5 = ?",
+      "options": [
+       "7",
+       "8",
+       "9",
+       "6"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "6 − 1",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6 − 1 = ?",
+      "options": [
+       "4",
+       "6",
+       "3",
+       "5"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "9 − 7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "9 − 7 = ?",
+      "options": [
+       "3",
+       "2",
+       "4",
+       "0"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "3 − 1",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3 − 1 = ?",
+      "options": [
+       "1",
+       "0",
+       "4",
+       "2"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "8 − 5",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "8 − 5 = ?",
+      "options": [
+       "3",
+       "2",
+       "1",
+       "5"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "6 − 5",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6 − 5 = ?",
+      "options": [
+       "1",
+       "2",
+       "0",
+       "3"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "덧셈 이야기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "참새가 3마리 있었는데\n2마리가 더 날아왔어요.\n참새는 모두 몇 마리일까요?",
+      "options": [
+       "4",
+       "1",
+       "5",
+       "6"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "뺄셈 이야기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "사탕 8개 중에서\n3개를 먹었어요.\n남은 사탕은 몇 개일까요?",
+      "options": [
+       "4",
+       "5",
+       "11",
+       "6"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "0을 더하기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5 + 0 = ?",
+      "options": [
+       "50",
+       "6",
+       "0",
+       "5"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "덧셈식 만들기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "합이 7이 되는 덧셈식을\n여러 개 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "덧셈 이야기 만들기",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "3 + 4 = 7이 되는\n이야기를 만들어 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-1-1-4",
+   "subject": "수학",
+   "grade": 1,
+   "term": 1,
+   "unit": "4. 비교하기",
+   "title": "수학 1-1 · 4. 비교하기",
+   "note": "",
+   "items": [
+    {
+     "title": "더 긴 것",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "둘 중 더 긴 것은?\n(연필, 크레파스 한 개)",
+      "options": [
+       "길이가 같아요",
+       "크레파스",
+       "연필",
+       "알 수 없어요"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "가장 무거운 것",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "가장 무거운 것은?",
+      "options": [
+       "강아지",
+       "토끼",
+       "고양이",
+       "코끼리"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "가장 가벼운 것",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "가장 가벼운 것은?",
+      "options": [
+       "책가방",
+       "수박",
+       "깃털",
+       "벽돌"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "가장 넓은 것",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "가장 넓은 것은?",
+      "options": [
+       "책상",
+       "운동장",
+       "공책",
+       "교실 문"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "더 많이 담기는 것",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "물을 더 많이 담을 수 있는 것은?",
+      "options": [
+       "양동이",
+       "컵",
+       "숟가락",
+       "병뚜껑"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "가장 키가 큰 것",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "가장 키가 큰 것은?",
+      "options": [
+       "고양이",
+       "강아지",
+       "기린",
+       "병아리"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "비교하는 말",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "두 사람의 키를 비교할 때\n쓰는 말은?",
+      "options": [
+       "더 넓다, 더 좁다",
+       "더 많다, 더 적다",
+       "더 크다, 더 작다",
+       "더 무겁다, 더 가볍다"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "길이 비교하기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "내 필통 속 물건 중\n가장 긴 것과 가장 짧은 것을\n써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "무게 비교하기",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "시소를 타면 왜 한쪽이\n내려갈까요?"
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-1-1-5",
+   "subject": "수학",
+   "grade": 1,
+   "term": 1,
+   "unit": "5. 50까지의 수",
+   "title": "수학 1-1 · 5. 50까지의 수",
+   "note": "",
+   "items": [
+    {
+     "title": "10개씩 3묶음 낱개 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "10개씩 묶음 3개와\n낱개 4개는 얼마일까요?",
+      "options": [
+       "43",
+       "44",
+       "33",
+       "34"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "10개씩 2묶음 낱개 7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "10개씩 묶음 2개와\n낱개 7개는 얼마일까요?",
+      "options": [
+       "72",
+       "26",
+       "37",
+       "27"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "10개씩 4묶음 낱개 0",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "10개씩 묶음 4개와\n낱개 0개는 얼마일까요?",
+      "options": [
+       "50",
+       "39",
+       "4",
+       "40"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "10개씩 1묶음 낱개 9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "10개씩 묶음 1개와\n낱개 9개는 얼마일까요?",
+      "options": [
+       "29",
+       "19",
+       "18",
+       "91"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "22 다음 수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "22보다 1 큰 수는?",
+      "options": [
+       "21",
+       "32",
+       "24",
+       "23"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "35 다음 수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "35보다 1 큰 수는?",
+      "options": [
+       "45",
+       "34",
+       "36",
+       "37"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "27 다음 수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "27보다 1 큰 수는?",
+      "options": [
+       "28",
+       "37",
+       "26",
+       "29"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "23과 32 비교",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "23과 32 중\n더 큰 수는?",
+      "options": [
+       "32",
+       "55",
+       "33",
+       "23"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "41과 38 비교",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "41과 38 중\n더 큰 수는?",
+      "options": [
+       "79",
+       "38",
+       "41",
+       "42"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "19와 21 비교",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "19와 21 중\n더 큰 수는?",
+      "options": [
+       "19",
+       "21",
+       "22",
+       "40"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "짝수 찾기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "다음 중 짝수는?",
+      "options": [
+       "33",
+       "7",
+       "14",
+       "21"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "홀수 찾기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "다음 중 홀수는?",
+      "options": [
+       "25",
+       "48",
+       "12",
+       "30"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "10 알아보기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "9보다 1 큰 수는?",
+      "options": [
+       "90",
+       "8",
+       "10",
+       "19"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "스물 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "20을 읽는 방법이\n바른 것은?",
+      "options": [
+       "이영, 스물",
+       "이십, 스물",
+       "이십, 서른",
+       "십이, 스물"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "수 배열 채우기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "21부터 30까지\n순서대로 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-1-2-1",
+   "subject": "수학",
+   "grade": 1,
+   "term": 2,
+   "unit": "1. 100까지의 수",
+   "title": "수학 1-2 · 1. 100까지의 수",
+   "note": "",
+   "items": [
+    {
+     "title": "10개씩 6묶음 낱개 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "10개씩 묶음 6개와\n낱개 3개는 얼마일까요?",
+      "options": [
+       "63",
+       "36",
+       "53",
+       "73"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "10개씩 8묶음 낱개 0",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "10개씩 묶음 8개와\n낱개 0개는 얼마일까요?",
+      "options": [
+       "80",
+       "70",
+       "800",
+       "90"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "10개씩 7묶음 낱개 5",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "10개씩 묶음 7개와\n낱개 5개는 얼마일까요?",
+      "options": [
+       "57",
+       "75",
+       "85",
+       "65"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "10개씩 9묶음 낱개 9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "10개씩 묶음 9개와\n낱개 9개는 얼마일까요?",
+      "options": [
+       "109",
+       "18",
+       "89",
+       "99"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "100 알아보기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "99보다 1 큰 수는?",
+      "options": [
+       "109",
+       "1000",
+       "98",
+       "100"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "67과 76 비교",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "67과 76 중\n더 큰 수는?",
+      "options": [
+       "67",
+       "66",
+       "76",
+       "68"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "85와 58 비교",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "85와 58 중\n더 큰 수는?",
+      "options": [
+       "86",
+       "58",
+       "75",
+       "85"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "90과 89 비교",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "90과 89 중\n더 큰 수는?",
+      "options": [
+       "91",
+       "80",
+       "89",
+       "90"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "몇십 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "70을 바르게 읽은 것은?",
+      "options": [
+       "칠, 일흔",
+       "칠십, 예순",
+       "십칠, 일흔",
+       "칠십, 일흔"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "짝수 찾기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "다음 중 짝수는?",
+      "options": [
+       "63",
+       "91",
+       "37",
+       "58"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "사이에 있는 수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "45와 47 사이에 있는 수는?",
+      "options": [
+       "57",
+       "46",
+       "48",
+       "44"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "뛰어 세기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "10부터 10씩 뛰어 세어\n100까지 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-1-2-2",
+   "subject": "수학",
+   "grade": 1,
+   "term": 2,
+   "unit": "2. 덧셈과 뺄셈(1)",
+   "title": "수학 1-2 · 2. 덧셈과 뺄셈(1)",
+   "note": "",
+   "items": [
+    {
+     "title": "21 + 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "21 + 3 = ?",
+      "options": [
+       "51",
+       "34",
+       "23",
+       "24"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "33 + 1",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "33 + 1 = ?",
+      "options": [
+       "34",
+       "43",
+       "33",
+       "44"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "57 + 2",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "57 + 2 = ?",
+      "options": [
+       "59",
+       "77",
+       "58",
+       "69"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "74 + 5",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "74 + 5 = ?",
+      "options": [
+       "78",
+       "89",
+       "124",
+       "79"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "33 + 12",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "33 + 12 = ?",
+      "options": [
+       "35",
+       "55",
+       "46",
+       "45"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "14 + 12",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "14 + 12 = ?",
+      "options": [
+       "27",
+       "16",
+       "36",
+       "26"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "47 + 12",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "47 + 12 = ?",
+      "options": [
+       "49",
+       "60",
+       "59",
+       "69"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "64 + 22",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "64 + 22 = ?",
+      "options": [
+       "87",
+       "76",
+       "96",
+       "86"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "56 − 16",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "56 − 16 = ?",
+      "options": [
+       "41",
+       "40",
+       "30",
+       "50"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "91 − 11",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "91 − 11 = ?",
+      "options": [
+       "90",
+       "80",
+       "70",
+       "81"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "53 − 31",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "53 − 31 = ?",
+      "options": [
+       "12",
+       "22",
+       "23",
+       "32"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "89 − 31",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "89 − 31 = ?",
+      "options": [
+       "68",
+       "48",
+       "59",
+       "58"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "덧셈 이야기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "색종이 32장이 있었는데\n15장을 더 샀어요.\n색종이는 모두 몇 장일까요?",
+      "options": [
+       "47",
+       "57",
+       "46",
+       "17"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "뺄셈 이야기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "구슬 48개 중에서\n23개를 동생에게 주었어요.\n남은 구슬은 몇 개일까요?",
+      "options": [
+       "71",
+       "15",
+       "35",
+       "25"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "세로셈으로 풀기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "43 + 25를\n세로셈으로 풀어 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-1-2-3",
+   "subject": "수학",
+   "grade": 1,
+   "term": 2,
+   "unit": "3. 모양과 시각",
+   "title": "수학 1-2 · 3. 모양과 시각",
+   "note": "",
+   "items": [
+    {
+     "title": "뾰족한 곳 3개",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "뾰족한 곳이 3군데인 모양은?",
+      "options": [
+       "네모 모양",
+       "세모 모양",
+       "별 모양",
+       "동그라미 모양"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "뾰족한 곳 4개",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "뾰족한 곳이 4군데인 모양은?",
+      "options": [
+       "하트 모양",
+       "세모 모양",
+       "네모 모양",
+       "동그라미 모양"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "뾰족한 곳이 없는 모양",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "뾰족한 곳이 없고\n둥근 모양은?",
+      "options": [
+       "별 모양",
+       "동그라미 모양",
+       "네모 모양",
+       "세모 모양"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "네모 모양 물건",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "네모 모양을 찾을 수 있는 물건은?",
+      "options": [
+       "공책 표지",
+       "동전",
+       "피자 조각 한 개",
+       "단추"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "1시",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "짧은바늘이 1, 긴바늘이 12를\n가리켜요. 몇 시일까요?",
+      "options": [
+       "12시",
+       "1시",
+       "1시 30분",
+       "2시"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "3시",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "짧은바늘이 3, 긴바늘이 12를\n가리켜요. 몇 시일까요?",
+      "options": [
+       "3시 30분",
+       "3시",
+       "12시",
+       "4시"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "5시",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "짧은바늘이 5, 긴바늘이 12를\n가리켜요. 몇 시일까요?",
+      "options": [
+       "6시",
+       "5시 30분",
+       "5시",
+       "12시"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "10시",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "짧은바늘이 10, 긴바늘이 12를\n가리켜요. 몇 시일까요?",
+      "options": [
+       "11시",
+       "12시",
+       "10시",
+       "10시 30분"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "10시 30분",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "짧은바늘이 10과 11 사이,\n긴바늘이 6을 가리켜요.\n몇 시 몇 분일까요?",
+      "options": [
+       "6시 10분",
+       "11시 30분",
+       "10시 30분",
+       "10시 6분"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "5시 30분",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "짧은바늘이 5와 6 사이,\n긴바늘이 6을 가리켜요.\n몇 시 몇 분일까요?",
+      "options": [
+       "5시 30분",
+       "6시 30분",
+       "6시 5분",
+       "5시 6분"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "4시 30분",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "짧은바늘이 4와 5 사이,\n긴바늘이 6을 가리켜요.\n몇 시 몇 분일까요?",
+      "options": [
+       "6시 4분",
+       "4시 30분",
+       "4시 6분",
+       "5시 30분"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "시계 그리기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "8시 30분을 시계에\n그려 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-1-2-4",
+   "subject": "수학",
+   "grade": 1,
+   "term": 2,
+   "unit": "4. 덧셈과 뺄셈(2)",
+   "title": "수학 1-2 · 4. 덧셈과 뺄셈(2)",
+   "note": "",
+   "items": [
+    {
+     "title": "2 + 3 + 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2 + 3 + 4 = ?",
+      "options": [
+       "9",
+       "7",
+       "11",
+       "10"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "5 + 1 + 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5 + 1 + 3 = ?",
+      "options": [
+       "9",
+       "8",
+       "10",
+       "7"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "4 + 4 + 1",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4 + 4 + 1 = ?",
+      "options": [
+       "9",
+       "8",
+       "11",
+       "10"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "3 + 2 + 2",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3 + 2 + 2 = ?",
+      "options": [
+       "6",
+       "9",
+       "5",
+       "7"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "9 − 3 − 2",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "9 − 3 − 2 = ?",
+      "options": [
+       "6",
+       "5",
+       "4",
+       "2"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "8 − 1 − 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "8 − 1 − 4 = ?",
+      "options": [
+       "1",
+       "3",
+       "2",
+       "4"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "7 − 2 − 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "7 − 2 − 3 = ?",
+      "options": [
+       "3",
+       "0",
+       "1",
+       "2"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "8과 더해 10",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "8 + □ = 10\n□ 안에 알맞은 수는?",
+      "options": [
+       "2",
+       "4",
+       "3",
+       "0"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "2와 더해 10",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2 + □ = 10\n□ 안에 알맞은 수는?",
+      "options": [
+       "7",
+       "6",
+       "8",
+       "10"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "3과 더해 10",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3 + □ = 10\n□ 안에 알맞은 수는?",
+      "options": [
+       "6",
+       "7",
+       "5",
+       "8"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "10 − 9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "10 − 9 = ?",
+      "options": [
+       "2",
+       "3",
+       "1",
+       "0"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "10 − 8",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "10 − 8 = ?",
+      "options": [
+       "3",
+       "1",
+       "0",
+       "2"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "10 − 7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "10 − 7 = ?",
+      "options": [
+       "1",
+       "4",
+       "3",
+       "2"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "10 만들어 6+4+3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6 + 4 + 3 = ?\n(10을 먼저 만들어 보세요)",
+      "options": [
+       "12",
+       "13",
+       "11",
+       "23"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "10 만들어 2+8+5",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2 + 8 + 5 = ?\n(10을 먼저 만들어 보세요)",
+      "options": [
+       "25",
+       "15",
+       "16",
+       "13"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "10 만들어 7+3+9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "7 + 3 + 9 = ?\n(10을 먼저 만들어 보세요)",
+      "options": [
+       "20",
+       "19",
+       "29",
+       "9"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "10 만들기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "더해서 10이 되는 두 수를\n모두 찾아 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-1-2-5",
+   "subject": "수학",
+   "grade": 1,
+   "term": 2,
+   "unit": "5. 규칙 찾기",
+   "title": "수학 1-2 · 5. 규칙 찾기",
+   "note": "",
+   "items": [
+    {
+     "title": "반복 규칙",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "○ △ ○ △ ○ □\n□에 알맞은 모양은?",
+      "options": [
+       "○",
+       "□",
+       "△",
+       "☆"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "색 규칙",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "빨강 노랑 노랑 빨강 노랑 노랑 빨강 □\n□에 알맞은 색은?",
+      "options": [
+       "초록",
+       "파랑",
+       "빨강",
+       "노랑"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "1부터 2씩",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1, 3, 5, 7, □\n□에 알맞은 수는?",
+      "options": [
+       "10",
+       "8",
+       "11",
+       "9"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "5부터 5씩",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5, 10, 15, 20, □\n□에 알맞은 수는?",
+      "options": [
+       "26",
+       "30",
+       "25",
+       "21"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "10부터 10씩",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "10, 20, 30, 40, □\n□에 알맞은 수는?",
+      "options": [
+       "51",
+       "41",
+       "60",
+       "50"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "3부터 3씩",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3, 6, 9, 12, □\n□에 알맞은 수는?",
+      "options": [
+       "15",
+       "18",
+       "16",
+       "13"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "20부터 2씩",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "20, 22, 24, 26, □\n□에 알맞은 수는?",
+      "options": [
+       "30",
+       "27",
+       "28",
+       "29"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "줄어드는 규칙",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "50, 45, 40, 35, □\n□에 알맞은 수는?",
+      "options": [
+       "40",
+       "30",
+       "34",
+       "25"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "수 배열표 규칙",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "수 배열표에서 아래로 한 칸 가면\n수가 얼마씩 커질까요?\n(한 줄에 10칸)",
+      "options": [
+       "2씩",
+       "5씩",
+       "1씩",
+       "10씩"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "나만의 규칙",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "나만의 규칙을 정해서\n모양을 그려 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "생활 속 규칙",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "우리 생활에서 규칙을\n찾아 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-1-2-6",
+   "subject": "수학",
+   "grade": 1,
+   "term": 2,
+   "unit": "6. 덧셈과 뺄셈(3)",
+   "title": "수학 1-2 · 6. 덧셈과 뺄셈(3)",
+   "note": "",
+   "items": [
+    {
+     "title": "9 + 9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "9 + 9 = ?",
+      "options": [
+       "19",
+       "18",
+       "17",
+       "8"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "7 + 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "7 + 4 = ?",
+      "options": [
+       "11",
+       "10",
+       "1",
+       "12"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "9 + 7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "9 + 7 = ?",
+      "options": [
+       "6",
+       "15",
+       "16",
+       "17"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "5 + 9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5 + 9 = ?",
+      "options": [
+       "13",
+       "4",
+       "14",
+       "15"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "8 + 7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "8 + 7 = ?",
+      "options": [
+       "14",
+       "5",
+       "15",
+       "16"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "6 + 9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6 + 9 = ?",
+      "options": [
+       "15",
+       "5",
+       "16",
+       "14"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "17 − 9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "17 − 9 = ?",
+      "options": [
+       "18",
+       "8",
+       "7",
+       "9"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "13 − 7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "13 − 7 = ?",
+      "options": [
+       "6",
+       "5",
+       "7",
+       "16"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "15 − 7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "15 − 7 = ?",
+      "options": [
+       "8",
+       "18",
+       "7",
+       "9"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "11 − 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "11 − 4 = ?",
+      "options": [
+       "6",
+       "17",
+       "7",
+       "8"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "15 − 9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "15 − 9 = ?",
+      "options": [
+       "6",
+       "7",
+       "5",
+       "16"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "16 − 9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "16 − 9 = ?",
+      "options": [
+       "17",
+       "8",
+       "6",
+       "7"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "덧셈 이야기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "딸기 8개와 5개를 합하면\n모두 몇 개일까요?",
+      "options": [
+       "14",
+       "13",
+       "12",
+       "3"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "뺄셈 이야기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "풍선 15개 중 7개가 터졌어요.\n남은 풍선은 몇 개일까요?",
+      "options": [
+       "9",
+       "22",
+       "7",
+       "8"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "10을 만들어 더하기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "8 + 5를 10을 만들어\n더하는 방법으로 풀어 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "나만의 계산 방법",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "9 + 6을 어떻게 계산했는지\n설명해 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-2-1-1",
+   "subject": "수학",
+   "grade": 2,
+   "term": 1,
+   "unit": "1. 세 자리 수",
+   "title": "수학 2-1 · 1. 세 자리 수",
+   "note": "2학년 1학기 단원 이름은 교과서 판에 따라 조금 다를 수 있어요.",
+   "items": [
+    {
+     "title": "백 3 십 4 일 7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "100이 3개, 10이 4개,\n1이 7개인 수는?",
+      "options": [
+       "437",
+       "447",
+       "347",
+       "374"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "백 5 십 0 일 2",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "100이 5개, 10이 0개,\n1이 2개인 수는?",
+      "options": [
+       "52",
+       "602",
+       "520",
+       "502"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "백 8 십 6 일 0",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "100이 8개, 10이 6개,\n1이 0개인 수는?",
+      "options": [
+       "860",
+       "680",
+       "960",
+       "806"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "백 2 십 9 일 9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "100이 2개, 10이 9개,\n1이 9개인 수는?",
+      "options": [
+       "299",
+       "399",
+       "301",
+       "929"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "452의 십의 자리",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "452에서 십의 자리 숫자가\n나타내는 수는?",
+      "options": [
+       "50",
+       "2",
+       "5",
+       "400"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "718의 십의 자리",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "718에서 십의 자리 숫자가\n나타내는 수는?",
+      "options": [
+       "8",
+       "700",
+       "10",
+       "1"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "306의 십의 자리",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "306에서 십의 자리 숫자가\n나타내는 수는?",
+      "options": [
+       "2",
+       "300",
+       "0",
+       "6"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "100씩 뛰어 세기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "340, 440, 540, □\n□에 알맞은 수는?",
+      "options": [
+       "740",
+       "640",
+       "541",
+       "550"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "세 자리 수 비교",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "가장 큰 수는?",
+      "options": [
+       "596",
+       "589",
+       "600",
+       "609"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "수 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "508을 바르게 읽은 것은?",
+      "options": [
+       "오백팔",
+       "오천팔",
+       "오백팔십",
+       "오십팔"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "세 자리 수 만들기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "숫자 카드 3, 7, 1로 만들 수 있는\n세 자리 수를 모두 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-2-1-2",
+   "subject": "수학",
+   "grade": 2,
+   "term": 1,
+   "unit": "2. 여러 가지 도형",
+   "title": "수학 2-1 · 2. 여러 가지 도형",
+   "note": "2학년 1학기 단원 이름은 교과서 판에 따라 조금 다를 수 있어요.",
+   "items": [
+    {
+     "title": "삼각형의 변",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "삼각형의 변은 몇 개일까요?",
+      "options": [
+       "2",
+       "3",
+       "4",
+       "0"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "사각형의 꼭짓점",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "사각형의 꼭짓점은 몇 개일까요?",
+      "options": [
+       "3",
+       "4",
+       "5",
+       "8"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "오각형의 변",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "오각형의 변은 몇 개일까요?",
+      "options": [
+       "5",
+       "4",
+       "10",
+       "6"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "육각형의 꼭짓점",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "육각형의 꼭짓점은 몇 개일까요?",
+      "options": [
+       "12",
+       "6",
+       "8",
+       "5"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "원의 특징",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "원에 대해 바르게 말한 것은?",
+      "options": [
+       "꼭짓점이 1개 있어요",
+       "곧은 선과 꼭짓점이 없어요",
+       "뾰족한 곳이 있어요",
+       "변이 4개 있어요"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "변과 꼭짓점 합",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "삼각형의 변과 꼭짓점의 수를\n모두 더하면?",
+      "options": [
+       "5",
+       "7",
+       "3",
+       "6"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "곧은 선으로 둘러싸인 도형",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "곧은 선 4개로 둘러싸인 도형은?",
+      "options": [
+       "원",
+       "삼각형",
+       "사각형",
+       "오각형"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "도형 그리기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "삼각형, 사각형, 원을\n하나씩 그려 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "생활 속 도형",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "교실에서 찾을 수 있는 도형과\n그 물건을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-2-1-3",
+   "subject": "수학",
+   "grade": 2,
+   "term": 1,
+   "unit": "3. 덧셈과 뺄셈",
+   "title": "수학 2-1 · 3. 덧셈과 뺄셈",
+   "note": "2학년 1학기 단원 이름은 교과서 판에 따라 조금 다를 수 있어요.",
+   "items": [
+    {
+     "title": "27 + 18",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "27 + 18 = ?",
+      "options": [
+       "45",
+       "55",
+       "35",
+       "44"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "31 + 29",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "31 + 29 = ?",
+      "options": [
+       "70",
+       "59",
+       "60",
+       "50"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "19 + 26",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "19 + 26 = ?",
+      "options": [
+       "55",
+       "45",
+       "44",
+       "35"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "39 + 17",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "39 + 17 = ?",
+      "options": [
+       "55",
+       "56",
+       "46",
+       "66"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "84 − 37",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "84 − 37 = ?",
+      "options": [
+       "47",
+       "37",
+       "53",
+       "57"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "84 − 18",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "84 − 18 = ?",
+      "options": [
+       "74",
+       "56",
+       "66",
+       "76"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "46 − 29",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "46 − 29 = ?",
+      "options": [
+       "23",
+       "27",
+       "17",
+       "7"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "82 − 37",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "82 − 37 = ?",
+      "options": [
+       "45",
+       "47",
+       "35",
+       "55"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "□ 구하기 28",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "□ + 28 = 73\n□ 안에 알맞은 수는?",
+      "options": [
+       "55",
+       "44",
+       "101",
+       "45"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "□ 구하기 37",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "□ + 37 = 56\n□ 안에 알맞은 수는?",
+      "options": [
+       "18",
+       "93",
+       "29",
+       "19"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "덧셈과 뺄셈의 관계",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "26 + 17 = 43이에요.\n43 − 17은?",
+      "options": [
+       "17",
+       "60",
+       "36",
+       "26"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "세로셈",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "64 − 28을\n세로셈으로 풀어 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "계산 방법 설명",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "35 + 48을 어떻게 계산하는지\n친구에게 설명해 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-2-1-4",
+   "subject": "수학",
+   "grade": 2,
+   "term": 1,
+   "unit": "4. 길이 재기",
+   "title": "수학 2-1 · 4. 길이 재기",
+   "note": "2학년 1학기 단원 이름은 교과서 판에 따라 조금 다를 수 있어요.",
+   "items": [
+    {
+     "title": "1 cm 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 cm를 바르게 읽은 것은?",
+      "options": [
+       "1 킬로그램",
+       "1 센티미터",
+       "1 밀리리터",
+       "1 미터"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "1 cm로 재기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 cm가 6번이면\n몇 cm일까요?",
+      "options": [
+       "1 cm",
+       "60 cm",
+       "6 cm",
+       "7 cm"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "자로 재기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "자의 눈금 0에서 시작해\n9에서 끝났어요. 길이는?",
+      "options": [
+       "9 cm",
+       "0 cm",
+       "10 cm",
+       "8 cm"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "중간부터 재기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "자의 눈금 2에서 시작해\n7에서 끝났어요. 길이는?",
+      "options": [
+       "5 cm",
+       "9 cm",
+       "2 cm",
+       "7 cm"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "어림하기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "연필 한 자루의 길이로\n가장 알맞은 것은?",
+      "options": [
+       "약 1 cm",
+       "약 150 cm",
+       "약 15 cm",
+       "약 1500 cm"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "단위가 필요한 이유",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "뼘으로 재면 사람마다 결과가\n다른 이유는?",
+      "options": [
+       "숫자를 몰라서",
+       "뼘의 길이가 서로 달라서",
+       "물건이 자라서",
+       "자가 없어서"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "내 물건 재기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "필통 속 물건 3개의 길이를\n어림하고 재어 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-2-1-5",
+   "subject": "수학",
+   "grade": 2,
+   "term": 1,
+   "unit": "5. 분류하기",
+   "title": "수학 2-1 · 5. 분류하기",
+   "note": "2학년 1학기 단원 이름은 교과서 판에 따라 조금 다를 수 있어요.",
+   "items": [
+    {
+     "title": "다른 무리",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "나머지와 다른 무리는?",
+      "options": [
+       "포도",
+       "바나나",
+       "자동차",
+       "사과"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "다른 무리",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "나머지와 다른 무리는?",
+      "options": [
+       "연필",
+       "토끼",
+       "강아지",
+       "고양이"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "분류 기준",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "빨간 공, 파란 공, 빨간 상자, 파란 상자를\n두 무리로 나눌 때 기준이 될 수 있는 것은?",
+      "options": [
+       "소리",
+       "냄새",
+       "맛",
+       "색깔"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "분명한 기준",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "분류 기준으로 알맞은 것은?",
+      "options": [
+       "좋은 것과 싫은 것",
+       "귀여운 것",
+       "다리의 수",
+       "예쁜 것과 안 예쁜 것"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "세어 보기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "반 친구들이 좋아하는 계절:\n봄 6명, 여름 9명, 가을 4명, 겨울 3명.\n가장 많은 친구가 좋아하는 계절은?",
+      "options": [
+       "봄",
+       "겨울",
+       "가을",
+       "여름"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "나만의 분류",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "내 필통 속 물건을\n두 무리로 나누어 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "분류 기준 설명",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "우리 반 친구들을 나눌 수 있는\n기준을 두 가지 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-2-1-6",
+   "subject": "수학",
+   "grade": 2,
+   "term": 1,
+   "unit": "6. 곱셈",
+   "title": "수학 2-1 · 6. 곱셈",
+   "note": "2학년 1학기 단원 이름은 교과서 판에 따라 조금 다를 수 있어요.",
+   "items": [
+    {
+     "title": "3씩 4묶음",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3씩 4묶음은 모두 얼마일까요?",
+      "options": [
+       "9",
+       "7",
+       "15",
+       "12"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "5씩 2묶음",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5씩 2묶음은 모두 얼마일까요?",
+      "options": [
+       "5",
+       "7",
+       "10",
+       "15"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "2씩 6묶음",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2씩 6묶음은 모두 얼마일까요?",
+      "options": [
+       "8",
+       "14",
+       "10",
+       "12"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "4씩 5묶음",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4씩 5묶음은 모두 얼마일까요?",
+      "options": [
+       "20",
+       "9",
+       "24",
+       "16"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "3의 5배",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3의 5배는 얼마일까요?",
+      "options": [
+       "15",
+       "18",
+       "5",
+       "8"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "6의 2배",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6의 2배는 얼마일까요?",
+      "options": [
+       "18",
+       "2",
+       "12",
+       "8"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "덧셈식을 곱셈식으로",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4 + 4 + 4를\n곱셈식으로 나타내면?",
+      "options": [
+       "4 + 3",
+       "4 × 4",
+       "4 × 3",
+       "3 × 3"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "곱셈식 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2 × 5 = 10을 바르게 읽은 것은?",
+      "options": [
+       "2 곱하기 5는 10과 같습니다",
+       "5 곱하기 10은 2입니다",
+       "2 빼기 5는 10입니다",
+       "2 더하기 5는 10입니다"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "곱셈 이야기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "한 접시에 만두가 3개씩 있어요.\n접시가 6개면 만두는 모두 몇 개일까요?",
+      "options": [
+       "9",
+       "18",
+       "21",
+       "15"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "묶어 세기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "사탕 12개를 여러 방법으로\n묶어 세어 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-2-2-1",
+   "subject": "수학",
+   "grade": 2,
+   "term": 2,
+   "unit": "1. 네 자리 수",
+   "title": "수학 2-2 · 1. 네 자리 수",
+   "note": "",
+   "items": [
+    {
+     "title": "천 3 백 2",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1000이 3개, 100이 2개,\n10이 5개, 1이 6개인 수는?",
+      "options": [
+       "3256",
+       "4256",
+       "3526",
+       "3156"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "천 7 백 0",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1000이 7개, 100이 0개,\n10이 4개, 1이 1개인 수는?",
+      "options": [
+       "8041",
+       "6941",
+       "7401",
+       "7041"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "천 5 백 8",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1000이 5개, 100이 8개,\n10이 0개, 1이 0개인 수는?",
+      "options": [
+       "5080",
+       "6800",
+       "5800",
+       "5700"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "천 9 백 1",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1000이 9개, 100이 1개,\n10이 1개, 1이 9개인 수는?",
+      "options": [
+       "9119",
+       "10119",
+       "9121",
+       "9019"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "1000 알아보기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "900보다 100 큰 수는?",
+      "options": [
+       "9000",
+       "1900",
+       "1000",
+       "910"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "4372의 백의 자리",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4372에서 백의 자리 숫자가\n나타내는 수는?",
+      "options": [
+       "4000",
+       "300",
+       "70",
+       "3"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "6059의 백의 자리",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6059에서 백의 자리 숫자가\n나타내는 수는?",
+      "options": [
+       "2",
+       "6000",
+       "50",
+       "0"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "1000씩 뛰어 세기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2500, 3500, 4500, □\n□에 알맞은 수는?",
+      "options": [
+       "6500",
+       "4600",
+       "5000",
+       "5500"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "네 자리 수 비교",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "가장 큰 수는?",
+      "options": [
+       "6999",
+       "7002",
+       "7009",
+       "7012"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "수 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3080을 바르게 읽은 것은?",
+      "options": [
+       "삼천팔",
+       "삼천팔백",
+       "삼백팔십",
+       "삼천팔십"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "네 자리 수 만들기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "숫자 카드 2, 0, 5, 8로 만들 수 있는\n가장 큰 수와 가장 작은 수를 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-2-2-2",
+   "subject": "수학",
+   "grade": 2,
+   "term": 2,
+   "unit": "2. 곱셈구구",
+   "title": "수학 2-2 · 2. 곱셈구구",
+   "note": "",
+   "items": [
+    {
+     "title": "4 × 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4 × 4 = ?",
+      "options": [
+       "16",
+       "20",
+       "8",
+       "12"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "4 × 2",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4 × 2 = ?",
+      "options": [
+       "12",
+       "8",
+       "4",
+       "6"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "9 × 8",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "9 × 8 = ?",
+      "options": [
+       "72",
+       "81",
+       "63",
+       "17"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "3 × 5",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3 × 5 = ?",
+      "options": [
+       "15",
+       "18",
+       "8",
+       "12"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "3 × 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3 × 3 = ?",
+      "options": [
+       "12",
+       "6",
+       "9",
+       "11"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "6 × 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6 × 4 = ?",
+      "options": [
+       "18",
+       "24",
+       "10",
+       "30"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "5 × 8",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5 × 8 = ?",
+      "options": [
+       "40",
+       "35",
+       "13",
+       "45"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "7 × 2",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "7 × 2 = ?",
+      "options": [
+       "14",
+       "7",
+       "21",
+       "9"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "9 × 7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "9 × 7 = ?",
+      "options": [
+       "72",
+       "63",
+       "54",
+       "16"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "9 × 2",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "9 × 2 = ?",
+      "options": [
+       "11",
+       "9",
+       "27",
+       "18"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "3 × 9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3 × 9 = ?",
+      "options": [
+       "27",
+       "24",
+       "12",
+       "30"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "9 × 5",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "9 × 5 = ?",
+      "options": [
+       "45",
+       "36",
+       "14",
+       "54"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "8 × 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "8 × 4 = ?",
+      "options": [
+       "32",
+       "40",
+       "12",
+       "24"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "4 × 6",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4 × 6 = ?",
+      "options": [
+       "24",
+       "28",
+       "20",
+       "10"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "3 × 7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3 × 7 = ?",
+      "options": [
+       "24",
+       "18",
+       "10",
+       "21"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "3 × 6",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3 × 6 = ?",
+      "options": [
+       "15",
+       "9",
+       "18",
+       "21"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "1의 단",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 × 7 = ?",
+      "options": [
+       "8",
+       "0",
+       "1",
+       "7"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "0의 곱",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "0 × 6 = ?",
+      "options": [
+       "60",
+       "6",
+       "0",
+       "1"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "곱셈 이야기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "세발자전거가 4대 있어요.\n바퀴는 모두 몇 개일까요?",
+      "options": [
+       "12",
+       "7",
+       "16",
+       "8"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "곱셈구구 쓰기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "7단 곱셈구구를\n처음부터 끝까지 써 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "곱셈표 규칙",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "곱셈표에서 찾은 규칙을\n써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-2-2-3",
+   "subject": "수학",
+   "grade": 2,
+   "term": 2,
+   "unit": "3. 길이 재기",
+   "title": "수학 2-2 · 3. 길이 재기",
+   "note": "",
+   "items": [
+    {
+     "title": "1 m는 몇 cm",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 m는 몇 cm일까요?",
+      "options": [
+       "1000 cm",
+       "100 cm",
+       "1 cm",
+       "10 cm"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "m와 cm",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 m 25 cm는 몇 cm일까요?",
+      "options": [
+       "125 cm",
+       "25 cm",
+       "1025 cm",
+       "12 cm"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "cm를 m로",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "340 cm는 몇 m 몇 cm일까요?",
+      "options": [
+       "3 m 40 cm",
+       "3 m 4 cm",
+       "30 m 40 cm",
+       "34 m"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "길이의 합",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 m 30 cm + 2 m 50 cm = ?",
+      "options": [
+       "1 m 80 cm",
+       "3 m 80 cm",
+       "3 m 20 cm",
+       "4 m 80 cm"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "길이의 차",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4 m 70 cm − 1 m 20 cm = ?",
+      "options": [
+       "2 m 50 cm",
+       "3 m 50 cm",
+       "5 m 90 cm",
+       "3 m 70 cm"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "어림하기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "교실 문의 높이로\n가장 알맞은 것은?",
+      "options": [
+       "약 200 m",
+       "약 20 m",
+       "약 2 cm",
+       "약 2 m"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "양팔 길이 재기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "내 양팔을 벌린 길이를\n어림하고 재어 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-2-2-4",
+   "subject": "수학",
+   "grade": 2,
+   "term": 2,
+   "unit": "4. 시각과 시간",
+   "title": "수학 2-2 · 4. 시각과 시간",
+   "note": "",
+   "items": [
+    {
+     "title": "3시 25분",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "짧은바늘이 3과 4 사이,\n긴바늘이 5를 가리켜요.\n몇 시 몇 분일까요?",
+      "options": [
+       "5시 15분",
+       "4시 25분",
+       "3시 25분",
+       "3시 5분"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "7시 40분",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "짧은바늘이 7과 8 사이,\n긴바늘이 8을 가리켜요.\n몇 시 몇 분일까요?",
+      "options": [
+       "7시 40분",
+       "7시 8분",
+       "8시 35분",
+       "8시 40분"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "10시 5분",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "짧은바늘이 10과 11 사이,\n긴바늘이 1을 가리켜요.\n몇 시 몇 분일까요?",
+      "options": [
+       "1시 50분",
+       "10시 1분",
+       "10시 5분",
+       "11시 5분"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "5시 55분",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "짧은바늘이 5와 6 사이,\n긴바늘이 11을 가리켜요.\n몇 시 몇 분일까요?",
+      "options": [
+       "5시 55분",
+       "5시 11분",
+       "11시 25분",
+       "6시 55분"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "1시간은 몇 분",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1시간은 몇 분일까요?",
+      "options": [
+       "100분",
+       "30분",
+       "60분",
+       "24분"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "하루는 몇 시간",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "하루는 몇 시간일까요?",
+      "options": [
+       "12시간",
+       "7시간",
+       "24시간",
+       "60시간"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "1주일",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1주일은 며칠일까요?",
+      "options": [
+       "30일",
+       "7일",
+       "10일",
+       "5일"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "걸린 시간",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2시 30분에 시작해서\n3시 10분에 끝났어요.\n걸린 시간은?",
+      "options": [
+       "50분",
+       "1시간 40분",
+       "30분",
+       "40분"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "오전과 오후",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "낮 12시부터 밤 12시까지를\n무엇이라고 할까요?",
+      "options": [
+       "새벽",
+       "오후",
+       "오전",
+       "아침"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "1년",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1년은 몇 개월일까요?",
+      "options": [
+       "12개월",
+       "30개월",
+       "24개월",
+       "10개월"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "나의 하루",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "아침에 일어나서 잠들 때까지\n나의 하루를 시각과 함께 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-2-2-5",
+   "subject": "수학",
+   "grade": 2,
+   "term": 2,
+   "unit": "5. 표와 그래프",
+   "title": "수학 2-2 · 5. 표와 그래프",
+   "note": "",
+   "items": [
+    {
+     "title": "표 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "좋아하는 과일\n사과 5명, 배 3명, 포도 7명, 귤 4명\n가장 많은 사람이 좋아하는 과일은?",
+      "options": [
+       "배",
+       "포도",
+       "사과",
+       "귤"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "합계",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "좋아하는 과일\n사과 5명, 배 3명, 포도 7명, 귤 4명\n조사한 사람은 모두 몇 명일까요?",
+      "options": [
+       "19명",
+       "7명",
+       "18명",
+       "20명"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "차이",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "좋아하는 운동\n축구 8명, 줄넘기 5명\n축구가 줄넘기보다 몇 명 더 많을까요?",
+      "options": [
+       "3명",
+       "13명",
+       "5명",
+       "2명"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "그래프의 장점",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "그래프로 나타내면 좋은 점은?",
+      "options": [
+       "조사를 안 해도 돼요",
+       "수가 저절로 바뀌어요",
+       "많고 적음을 한눈에 알 수 있어요",
+       "누가 무엇을 좋아하는지 이름을 알 수 있어요"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "표의 장점",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "표로 나타내면 좋은 점은?",
+      "options": [
+       "누가 좋아하는지 알 수 있어요",
+       "조사를 다시 안 해도 돼요",
+       "그림이 예뻐요",
+       "항목별 수와 합계를 알기 쉬워요"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "우리 반 조사",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "우리 반 친구 5명에게 좋아하는 색을 묻고\n표로 나타내어 보세요."
+     },
+     "answer_key": null
+    },
+    {
+     "title": "그래프 해석",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "조사한 결과를 보고\n알게 된 점을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-2-2-6",
+   "subject": "수학",
+   "grade": 2,
+   "term": 2,
+   "unit": "6. 규칙 찾기",
+   "title": "수학 2-2 · 6. 규칙 찾기",
+   "note": "",
+   "items": [
+    {
+     "title": "덧셈표 규칙",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "덧셈표에서 오른쪽으로 한 칸 가면\n수가 얼마씩 커질까요?",
+      "options": [
+       "2씩",
+       "1씩",
+       "0씩",
+       "10씩"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "곱셈표 규칙",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "곱셈표의 5단에서 일의 자리 숫자는\n어떤 규칙이 있을까요?",
+      "options": [
+       "1씩 커져요",
+       "모두 5예요",
+       "5와 0이 번갈아 나와요",
+       "모두 0이에요"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "수 규칙",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2, 4, 8, 16, □\n□에 알맞은 수는?",
+      "options": [
+       "24",
+       "18",
+       "32",
+       "20"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "수 규칙",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1, 4, 7, 10, □\n□에 알맞은 수는?",
+      "options": [
+       "12",
+       "14",
+       "11",
+       "13"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "쌓기 규칙",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "쌓기나무를 1개, 3개, 5개, 7개로\n쌓았어요. 다음에는 몇 개일까요?",
+      "options": [
+       "8",
+       "9",
+       "11",
+       "10"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "달력 규칙",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "달력에서 바로 아래 칸의 날짜는\n위 칸보다 얼마나 클까요?",
+      "options": [
+       "5",
+       "10",
+       "1",
+       "7"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "무늬 만들기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "규칙을 정해 무늬를 만들고\n규칙을 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-3-1-1",
+   "subject": "수학",
+   "grade": 3,
+   "term": 1,
+   "unit": "덧셈과 뺄셈",
+   "title": "수학 3-1 · 덧셈과 뺄셈",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "528 + 299",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "528 + 299 = ?",
+      "options": [
+       "827",
+       "927",
+       "727",
+       "817"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "162 + 150",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "162 + 150 = ?",
+      "options": [
+       "302",
+       "312",
+       "212",
+       "412"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "180 + 354",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "180 + 354 = ?",
+      "options": [
+       "534",
+       "434",
+       "634",
+       "524"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "678 + 256",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "678 + 256 = ?",
+      "options": [
+       "924",
+       "834",
+       "1034",
+       "934"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "592 − 319",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "592 − 319 = ?",
+      "options": [
+       "273",
+       "373",
+       "173",
+       "283"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "866 − 229",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "866 − 229 = ?",
+      "options": [
+       "537",
+       "737",
+       "647",
+       "637"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "614 − 357",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "614 − 357 = ?",
+      "options": [
+       "357",
+       "257",
+       "267",
+       "157"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "852 − 299",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "852 − 299 = ?",
+      "options": [
+       "653",
+       "553",
+       "563",
+       "453"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "어림하기",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "298 + 405를 어림하는 방법과\n실제 계산 결과를 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-3-1-2",
+   "subject": "수학",
+   "grade": 3,
+   "term": 1,
+   "unit": "나눗셈",
+   "title": "수학 3-1 · 나눗셈",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "18 ÷ 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "18 ÷ 3 = ?",
+      "options": [
+       "15",
+       "7",
+       "6",
+       "5"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "28 ÷ 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "28 ÷ 4 = ?",
+      "options": [
+       "24",
+       "7",
+       "6",
+       "8"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "40 ÷ 8",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "40 ÷ 8 = ?",
+      "options": [
+       "32",
+       "4",
+       "5",
+       "6"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "54 ÷ 6",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "54 ÷ 6 = ?",
+      "options": [
+       "9",
+       "8",
+       "48",
+       "10"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "28 ÷ 7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "28 ÷ 7 = ?",
+      "options": [
+       "4",
+       "3",
+       "21",
+       "5"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "72 ÷ 9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "72 ÷ 9 = ?",
+      "options": [
+       "63",
+       "7",
+       "8",
+       "9"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "나눗셈 이야기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "쿠키 24개를 접시 4개에 똑같이\n나누어 담으면 한 접시에 몇 개일까요?",
+      "options": [
+       "8",
+       "28",
+       "6",
+       "20"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "곱셈과 나눗셈",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "7 × 5 = 35일 때,\n35 ÷ 7은?",
+      "options": [
+       "35",
+       "7",
+       "5",
+       "28"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "나눗셈식 만들기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "사과 18개로 만들 수 있는\n나눗셈식을 여러 개 써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-3-1-3",
+   "subject": "수학",
+   "grade": 3,
+   "term": 1,
+   "unit": "곱셈 (두 자리 × 한 자리)",
+   "title": "수학 3-1 · 곱셈 (두 자리 × 한 자리)",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "23 × 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "23 × 3 = ?",
+      "options": [
+       "63",
+       "79",
+       "69",
+       "66"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "41 × 2",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "41 × 2 = ?",
+      "options": [
+       "80",
+       "92",
+       "82",
+       "81"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "14 × 6",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "14 × 6 = ?",
+      "options": [
+       "78",
+       "84",
+       "94",
+       "64"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "36 × 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "36 × 4 = ?",
+      "options": [
+       "140",
+       "154",
+       "124",
+       "144"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "58 × 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "58 × 3 = ?",
+      "options": [
+       "171",
+       "184",
+       "174",
+       "154"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "27 × 5",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "27 × 5 = ?",
+      "options": [
+       "105",
+       "130",
+       "135",
+       "145"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "곱셈 이야기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "한 상자에 연필이 12자루씩 있어요.\n4상자면 모두 몇 자루일까요?",
+      "options": [
+       "48",
+       "44",
+       "16",
+       "52"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-3-1-4",
+   "subject": "수학",
+   "grade": 3,
+   "term": 1,
+   "unit": "길이와 시간",
+   "title": "수학 3-1 · 길이와 시간",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "1 cm와 mm",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 cm는 몇 mm일까요?",
+      "options": [
+       "1 mm",
+       "1000 mm",
+       "100 mm",
+       "10 mm"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "km와 m",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 km는 몇 m일까요?",
+      "options": [
+       "10 m",
+       "1000 m",
+       "100 m",
+       "10000 m"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "mm 단위",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3 cm 5 mm는 몇 mm일까요?",
+      "options": [
+       "8 mm",
+       "350 mm",
+       "305 mm",
+       "35 mm"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "1분은 몇 초",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1분은 몇 초일까요?",
+      "options": [
+       "60초",
+       "100초",
+       "30초",
+       "10초"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "시간의 합",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1시간 25분 + 2시간 40분 = ?",
+      "options": [
+       "4시간 5분",
+       "4시간 15분",
+       "3시간 65분",
+       "3시간 5분"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "시간의 차",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3시 10분 − 1시간 30분 = ?",
+      "options": [
+       "1시 40분",
+       "2시 40분",
+       "1시 80분",
+       "2시 20분"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "알맞은 단위",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "서울에서 부산까지의 거리에\n알맞은 단위는?",
+      "options": [
+       "mm",
+       "cm",
+       "m",
+       "km"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-3-1-5",
+   "subject": "수학",
+   "grade": 3,
+   "term": 1,
+   "unit": "분수와 소수",
+   "title": "수학 3-1 · 분수와 소수",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "분수 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3/4을 바르게 읽은 것은?",
+      "options": [
+       "삼과 사",
+       "삼분의 사",
+       "사분의 삼",
+       "사 나누기 삼"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "분수로 나타내기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "피자를 똑같이 8조각으로 나눈 것 중\n3조각은 전체의 얼마일까요?",
+      "options": [
+       "3/5",
+       "8/3",
+       "3/8",
+       "5/8"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "단위분수 비교",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "가장 큰 분수는?",
+      "options": [
+       "1/5",
+       "1/2",
+       "1/3",
+       "1/8"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "분모가 같은 분수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "가장 큰 분수는?",
+      "options": [
+       "2/7",
+       "3/7",
+       "4/7",
+       "5/7"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "소수 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "0.6을 바르게 읽은 것은?",
+      "options": [
+       "육",
+       "영 점 육",
+       "점 육",
+       "영 육"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "분수와 소수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3/10을 소수로 나타내면?",
+      "options": [
+       "3.1",
+       "0.3",
+       "0.03",
+       "3.0"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "소수 비교",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "더 큰 수는?",
+      "options": [
+       "1.0",
+       "1.4",
+       "0.14",
+       "0.9"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "똑같이 나누기",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "케이크를 4명이 똑같이 나누어 먹으려면\n어떻게 잘라야 할까요?"
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-3-1-6",
+   "subject": "수학",
+   "grade": 3,
+   "term": 1,
+   "unit": "평면도형",
+   "title": "수학 3-1 · 평면도형",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "직각",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "종이를 두 번 접어 만든 각을\n무엇이라고 할까요?",
+      "options": [
+       "둔각",
+       "평각",
+       "직각",
+       "예각"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "직사각형",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "네 각이 모두 직각인 사각형은?",
+      "options": [
+       "원",
+       "직사각형",
+       "사다리꼴",
+       "삼각형"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "정사각형",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "네 각이 모두 직각이고\n네 변의 길이가 같은 사각형은?",
+      "options": [
+       "정사각형",
+       "마름모",
+       "직사각형",
+       "평행사변형"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "선분",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "두 점을 곧게 이은 선을\n무엇이라고 할까요?",
+      "options": [
+       "꼭짓점",
+       "곡선",
+       "선분",
+       "반직선"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "직각삼각형",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "한 각이 직각인 삼각형은?",
+      "options": [
+       "예각삼각형",
+       "정삼각형",
+       "직각삼각형",
+       "이등변삼각형"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "직각 찾기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "교실에서 직각을 찾아\n써 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-3-2-1",
+   "subject": "수학",
+   "grade": 3,
+   "term": 2,
+   "unit": "곱셈",
+   "title": "수학 3-2 · 곱셈",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "213 × 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "213 × 3 = ?",
+      "options": [
+       "649",
+       "639",
+       "539",
+       "642"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "146 × 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "146 × 4 = ?",
+      "options": [
+       "484",
+       "584",
+       "588",
+       "594"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "325 × 6",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "325 × 6 = ?",
+      "options": [
+       "1960",
+       "1956",
+       "1850",
+       "1950"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "27 × 34",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "27 × 34 = ?",
+      "options": [
+       "952",
+       "928",
+       "818",
+       "918"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "45 × 18",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "45 × 18 = ?",
+      "options": [
+       "828",
+       "710",
+       "810",
+       "820"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "62 × 25",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "62 × 25 = ?",
+      "options": [
+       "1560",
+       "1450",
+       "1575",
+       "1550"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "곱셈 이야기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "하루에 줄넘기를 125번씩 해요.\n4일 동안 모두 몇 번 할까요?",
+      "options": [
+       "129",
+       "500",
+       "520",
+       "480"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-3-2-2",
+   "subject": "수학",
+   "grade": 3,
+   "term": 2,
+   "unit": "나눗셈",
+   "title": "수학 3-2 · 나눗셈",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "17 ÷ 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "17 ÷ 3의 몫과 나머지는?",
+      "options": [
+       "몫 5, 나머지 3",
+       "몫 6, 나머지 2",
+       "몫 2, 나머지 5",
+       "몫 5, 나머지 2"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "29 ÷ 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "29 ÷ 4의 몫과 나머지는?",
+      "options": [
+       "몫 7, 나머지 1",
+       "몫 7, 나머지 2",
+       "몫 1, 나머지 7",
+       "몫 8, 나머지 1"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "45 ÷ 7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "45 ÷ 7의 몫과 나머지는?",
+      "options": [
+       "몫 6, 나머지 3",
+       "몫 3, 나머지 6",
+       "몫 6, 나머지 4",
+       "몫 7, 나머지 3"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "53 ÷ 6",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "53 ÷ 6의 몫과 나머지는?",
+      "options": [
+       "몫 8, 나머지 5",
+       "몫 9, 나머지 5",
+       "몫 5, 나머지 8",
+       "몫 8, 나머지 6"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "84 ÷ 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "84 ÷ 4 = ?",
+      "options": [
+       "21",
+       "31",
+       "20",
+       "22"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "96 ÷ 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "96 ÷ 3 = ?",
+      "options": [
+       "33",
+       "32",
+       "42",
+       "31"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "75 ÷ 5",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "75 ÷ 5 = ?",
+      "options": [
+       "15",
+       "16",
+       "14",
+       "25"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "나머지 확인",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "나눗셈에서 나머지는 나누는 수보다\n항상 어떨까요?",
+      "options": [
+       "작아요",
+       "두 배예요",
+       "같아요",
+       "커요"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-3-2-3",
+   "subject": "수학",
+   "grade": 3,
+   "term": 2,
+   "unit": "원",
+   "title": "수학 3-2 · 원",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "반지름과 지름",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "반지름이 4 cm인 원의\n지름은?",
+      "options": [
+       "2 cm",
+       "4 cm",
+       "16 cm",
+       "8 cm"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "지름과 반지름",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "지름이 10 cm인 원의\n반지름은?",
+      "options": [
+       "15 cm",
+       "5 cm",
+       "10 cm",
+       "20 cm"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "원의 중심",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "원을 그릴 때 컴퍼스의 침이\n꽂히는 점은?",
+      "options": [
+       "원의 중심",
+       "반지름",
+       "지름",
+       "꼭짓점"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "가장 긴 선분",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "원 안에 그을 수 있는 가장 긴\n선분은?",
+      "options": [
+       "대각선",
+       "반지름",
+       "변",
+       "지름"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "원으로 무늬 만들기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "컴퍼스로 원을 여러 개 그려\n무늬를 만들어 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-3-2-4",
+   "subject": "수학",
+   "grade": 3,
+   "term": 2,
+   "unit": "분수",
+   "title": "수학 3-2 · 분수",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "분수만큼",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "12의 1/3은?",
+      "options": [
+       "9",
+       "3",
+       "4",
+       "36"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "분수만큼",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "20의 3/4은?",
+      "options": [
+       "5",
+       "12",
+       "16",
+       "15"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "가분수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "분자가 분모보다 크거나 같은 분수는?",
+      "options": [
+       "단위분수",
+       "가분수",
+       "진분수",
+       "대분수"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "대분수로",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "7/3을 대분수로 나타내면?",
+      "options": [
+       "1과 3/7",
+       "1과 4/3",
+       "2와 1/3",
+       "3과 1/7"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "가분수로",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1과 2/5를 가분수로 나타내면?",
+      "options": [
+       "5/7",
+       "7/5",
+       "12/5",
+       "3/5"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "분수 비교",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "더 큰 수는?",
+      "options": [
+       "9/4",
+       "1과 3/4",
+       "2",
+       "7/4"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-3-2-5",
+   "subject": "수학",
+   "grade": 3,
+   "term": 2,
+   "unit": "들이와 무게",
+   "title": "수학 3-2 · 들이와 무게",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "1 L는 몇 mL",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 L는 몇 mL일까요?",
+      "options": [
+       "10000 mL",
+       "10 mL",
+       "100 mL",
+       "1000 mL"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "1 kg은 몇 g",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 kg은 몇 g일까요?",
+      "options": [
+       "1000 g",
+       "100 g",
+       "1 g",
+       "10 g"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "들이의 합",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 L 300 mL + 2 L 800 mL = ?",
+      "options": [
+       "4 L 110 mL",
+       "3 L 100 mL",
+       "4 L 100 mL",
+       "3 L 1100 mL"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "무게의 차",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3 kg 200 g − 1 kg 500 g = ?",
+      "options": [
+       "1 kg 300 g",
+       "1 kg 700 g",
+       "2 kg 700 g",
+       "2 kg 300 g"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "알맞은 단위",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "우유 한 팩의 들이로\n알맞은 것은?",
+      "options": [
+       "2 mL",
+       "200 mL",
+       "200 L",
+       "20 L"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "1 t",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 t은 몇 kg일까요?",
+      "options": [
+       "10000 kg",
+       "1000 kg",
+       "10 kg",
+       "100 kg"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-3-2-6",
+   "subject": "수학",
+   "grade": 3,
+   "term": 2,
+   "unit": "자료의 정리",
+   "title": "수학 3-2 · 자료의 정리",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "그림그래프",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "그림그래프에서 큰 그림이 10명,\n작은 그림이 1명이에요.\n큰 그림 3개, 작은 그림 4개는?",
+      "options": [
+       "34명",
+       "304명",
+       "43명",
+       "7명"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "자료 정리",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "자료를 표로 정리하면 좋은 점은?",
+      "options": [
+       "항목별 수를 쉽게 비교해요",
+       "조사가 필요 없어요",
+       "그림이 생겨요",
+       "수가 늘어나요"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "그림그래프 그리기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "우리 반이 좋아하는 간식을 조사해\n그림그래프로 나타내어 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-4-1-1",
+   "subject": "수학",
+   "grade": 4,
+   "term": 1,
+   "unit": "큰 수",
+   "title": "수학 4-1 · 큰 수",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "만 알아보기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "9999보다 1 큰 수는?",
+      "options": [
+       "99999",
+       "1000",
+       "100000",
+       "10000"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "큰 수 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "35000을 바르게 읽은 것은?",
+      "options": [
+       "삼만 오백",
+       "삼십오만",
+       "삼천오백",
+       "삼만 오천"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "자릿값",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4625000에서 6이 나타내는 값은?",
+      "options": [
+       "6000000",
+       "60000",
+       "6000",
+       "600000"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "억",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1000만이 10개인 수는?",
+      "options": [
+       "100만",
+       "1억",
+       "10억",
+       "1000만"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "뛰어 세기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "10만씩 뛰어 세기:\n230만, 240만, 250만, □",
+      "options": [
+       "2600만",
+       "260만",
+       "251만",
+       "350만"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "큰 수 비교",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "가장 큰 수는?",
+      "options": [
+       "1억 2만",
+       "1억 2000만",
+       "9800만",
+       "1억 199만"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-4-1-2",
+   "subject": "수학",
+   "grade": 4,
+   "term": 1,
+   "unit": "각도",
+   "title": "수학 4-1 · 각도",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "직각의 크기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "직각은 몇 도일까요?",
+      "options": [
+       "45°",
+       "360°",
+       "90°",
+       "180°"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "예각",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "0°보다 크고 직각보다 작은 각은?",
+      "options": [
+       "둔각",
+       "평각",
+       "예각",
+       "직각"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "둔각",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "직각보다 크고 180°보다 작은 각은?",
+      "options": [
+       "예각",
+       "직각",
+       "둔각",
+       "0°"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "각도의 합",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "35° + 70° = ?",
+      "options": [
+       "115°",
+       "35°",
+       "95°",
+       "105°"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "삼각형 세 각",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "삼각형의 세 각의 크기의 합은?",
+      "options": [
+       "270°",
+       "180°",
+       "360°",
+       "90°"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "삼각형 나머지 각",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "삼각형의 두 각이 50°, 60°이면\n나머지 한 각은?",
+      "options": [
+       "70°",
+       "60°",
+       "110°",
+       "80°"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "사각형 네 각",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "사각형의 네 각의 크기의 합은?",
+      "options": [
+       "400°",
+       "270°",
+       "360°",
+       "180°"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-4-1-3",
+   "subject": "수학",
+   "grade": 4,
+   "term": 1,
+   "unit": "곱셈과 나눗셈",
+   "title": "수학 4-1 · 곱셈과 나눗셈",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "325 × 40",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "325 × 40 = ?",
+      "options": [
+       "13325",
+       "13100",
+       "12600",
+       "13000"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "214 × 36",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "214 × 36 = ?",
+      "options": [
+       "7804",
+       "7344",
+       "7704",
+       "6634"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "508 × 12",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "508 × 12 = ?",
+      "options": [
+       "6196",
+       "6096",
+       "5588",
+       "5976"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "368 ÷ 23",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "368 ÷ 23의 몫은?",
+      "options": [
+       "몫 160",
+       "몫 17",
+       "몫 15",
+       "몫 16"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "840 ÷ 35",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "840 ÷ 35의 몫은?",
+      "options": [
+       "몫 24",
+       "몫 25",
+       "몫 240",
+       "몫 23"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "612 ÷ 18",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "612 ÷ 18의 몫은?",
+      "options": [
+       "몫 34",
+       "몫 340",
+       "몫 33",
+       "몫 35"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "어림하기",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "298 × 31의 값을 어림하는 방법을\n설명해 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-4-1-4",
+   "subject": "수학",
+   "grade": 4,
+   "term": 1,
+   "unit": "평면도형의 이동",
+   "title": "수학 4-1 · 평면도형의 이동",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "밀기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "도형을 밀면 어떻게 될까요?",
+      "options": [
+       "크기가 커져요",
+       "모양과 방향이 그대로예요",
+       "왼쪽과 오른쪽이 바뀌어요",
+       "위아래가 바뀌어요"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "뒤집기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "도형을 오른쪽으로 뒤집으면?",
+      "options": [
+       "왼쪽과 오른쪽이 바뀌어요",
+       "크기가 바뀌어요",
+       "그대로예요",
+       "위와 아래가 바뀌어요"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "돌리기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "도형을 시계 방향으로 360° 돌리면?",
+      "options": [
+       "거꾸로 돼요",
+       "뒤집힌 모양이 돼요",
+       "작아져요",
+       "처음 모양과 같아요"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "돌리기 같음",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "시계 방향으로 90° 돌린 것과 같은 것은?",
+      "options": [
+       "오른쪽으로 밀기",
+       "시계 방향으로 180° 돌리기",
+       "시계 반대 방향으로 270° 돌리기",
+       "아래쪽으로 뒤집기"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "무늬 만들기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "한 모양을 밀기·뒤집기·돌리기 하여\n무늬를 만들어 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-4-1-5",
+   "subject": "수학",
+   "grade": 4,
+   "term": 1,
+   "unit": "막대그래프",
+   "title": "수학 4-1 · 막대그래프",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "막대그래프",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "막대그래프에서 막대의 길이는\n무엇을 나타낼까요?",
+      "options": [
+       "사람의 이름",
+       "그래프의 색",
+       "조사한 날짜",
+       "조사한 수의 많고 적음"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "눈금 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "세로 눈금 한 칸이 2명이에요.\n막대가 7칸이면 몇 명일까요?",
+      "options": [
+       "72명",
+       "9명",
+       "14명",
+       "7명"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "가장 많은 항목",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "좋아하는 운동\n축구 12, 야구 8, 농구 15, 배구 5\n가장 긴 막대는?",
+      "options": [
+       "농구",
+       "배구",
+       "야구",
+       "축구"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "막대그래프 그리기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "우리 반 친구들의 생일 계절을 조사해\n막대그래프로 나타내어 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-4-1-6",
+   "subject": "수학",
+   "grade": 4,
+   "term": 1,
+   "unit": "규칙 찾기",
+   "title": "수학 4-1 · 규칙 찾기",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "수 배열 규칙",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1004, 1104, 1204, 1304, □",
+      "options": [
+       "2304",
+       "1305",
+       "1404",
+       "1414"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "계산식 규칙",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "11 × 11 = 121\n111 × 111 = 12321\n1111 × 1111 = ?",
+      "options": [
+       "1232321",
+       "1234321",
+       "12344321",
+       "123321"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "도형 규칙",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "정사각형을 한 줄에 1개, 2개, 3개씩\n늘어놓으면 4번째에는 모두 몇 개일까요?\n(1+2+3+4)",
+      "options": [
+       "16개",
+       "8개",
+       "10개",
+       "4개"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "규칙 설명",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "9 × 9 = 81, 99 × 9 = 891, 999 × 9 = 8991\n에서 찾은 규칙을 설명해 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-4-2-1",
+   "subject": "수학",
+   "grade": 4,
+   "term": 2,
+   "unit": "분수의 덧셈과 뺄셈",
+   "title": "수학 4-2 · 분수의 덧셈과 뺄셈",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "2/7 + 3/7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2/7 + 3/7 = ?",
+      "options": [
+       "5/7",
+       "6/7",
+       "1과 5/7",
+       "5/14"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "4/9 + 5/9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4/9 + 5/9 = ?",
+      "options": [
+       "20/9",
+       "1",
+       "2",
+       "9/18"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "5/8 + 6/8",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5/8 + 6/8 = ?",
+      "options": [
+       "1과 3/8",
+       "11/16",
+       "2와 3/8",
+       "30/8"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "6/7 − 2/7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6/7 − 2/7 = ?",
+      "options": [
+       "8/7",
+       "4/14",
+       "5/7",
+       "4/7"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "8/9 − 3/9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "8/9 − 3/9 = ?",
+      "options": [
+       "5/9",
+       "6/9",
+       "5/18",
+       "11/9"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "대분수 덧셈",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1과 2/5 + 2와 1/5 = ?",
+      "options": [
+       "4와 3/5",
+       "3과 2/5",
+       "3과 3/5",
+       "3과 3/10"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "1에서 빼기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 − 3/8 = ?",
+      "options": [
+       "5/8",
+       "3/8",
+       "1/8",
+       "2/8"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-4-2-2",
+   "subject": "수학",
+   "grade": 4,
+   "term": 2,
+   "unit": "삼각형",
+   "title": "수학 4-2 · 삼각형",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "이등변삼각형",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "두 변의 길이가 같은 삼각형은?",
+      "options": [
+       "이등변삼각형",
+       "직각삼각형",
+       "둔각삼각형",
+       "정삼각형"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "정삼각형 각",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "정삼각형의 한 각의 크기는?",
+      "options": [
+       "45°",
+       "180°",
+       "60°",
+       "90°"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "예각삼각형",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "세 각이 모두 예각인 삼각형은?",
+      "options": [
+       "직각삼각형",
+       "예각삼각형",
+       "둔각삼각형",
+       "정사각형"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "둔각삼각형",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "한 각이 둔각인 삼각형은?",
+      "options": [
+       "예각삼각형",
+       "둔각삼각형",
+       "정삼각형",
+       "직각삼각형"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "이등변삼각형 각",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "이등변삼각형에서 크기가 같은 두 각이\n각각 70°이면 나머지 한 각은?",
+      "options": [
+       "70°",
+       "20°",
+       "110°",
+       "40°"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-4-2-3",
+   "subject": "수학",
+   "grade": 4,
+   "term": 2,
+   "unit": "소수의 덧셈과 뺄셈",
+   "title": "수학 4-2 · 소수의 덧셈과 뺄셈",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "1.25 + 2.4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1.25 + 2.4 = ?",
+      "options": [
+       "2.65",
+       "3.65",
+       "25.25",
+       "3.75"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "3.07 + 0.86",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3.07 + 0.86 = ?",
+      "options": [
+       "4.03",
+       "3.93",
+       "2.93",
+       "11.67"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "5.6 + 2.75",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5.6 + 2.75 = ?",
+      "options": [
+       "8.45",
+       "33.1",
+       "8.35",
+       "7.35"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "4.3 − 1.75",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4.3 − 1.75 = ?",
+      "options": [
+       "2.54",
+       "2.65",
+       "3.55",
+       "2.55"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "6.02 − 2.8",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6.02 − 2.8 = ?",
+      "options": [
+       "3.32",
+       "3.22",
+       "3.21",
+       "4.22"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "소수 자릿값",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3.582에서 8이 나타내는 수는?",
+      "options": [
+       "0.8",
+       "0.008",
+       "0.08",
+       "8"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "소수 비교",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "가장 큰 수는?",
+      "options": [
+       "0.7",
+       "0.69",
+       "0.088",
+       "0.65"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-4-2-4",
+   "subject": "수학",
+   "grade": 4,
+   "term": 2,
+   "unit": "사각형",
+   "title": "수학 4-2 · 사각형",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "평행선",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "서로 만나지 않는 두 직선을\n무엇이라고 할까요?",
+      "options": [
+       "대각선",
+       "평행선",
+       "선분",
+       "수선"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "수직",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "두 직선이 만나서 이루는 각이\n직각일 때 두 직선은?",
+      "options": [
+       "서로 같아요",
+       "서로 수직이에요",
+       "서로 만나지 않아요",
+       "서로 평행해요"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "사다리꼴",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "평행한 변이 한 쌍이라도 있는 사각형은?",
+      "options": [
+       "오각형",
+       "삼각형",
+       "원",
+       "사다리꼴"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "평행사변형",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "마주 보는 두 쌍의 변이 서로 평행한\n사각형은?",
+      "options": [
+       "평행사변형",
+       "삼각형",
+       "사다리꼴",
+       "오각형"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "마름모",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "네 변의 길이가 모두 같은 사각형은?",
+      "options": [
+       "마름모",
+       "직사각형",
+       "사다리꼴",
+       "평행사변형"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "정사각형 포함",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "정사각형에 대해 옳은 것은?",
+      "options": [
+       "평행선이 없어요",
+       "직사각형이면서 마름모예요",
+       "사다리꼴이 아니에요",
+       "각이 모두 예각이에요"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-4-2-5",
+   "subject": "수학",
+   "grade": 4,
+   "term": 2,
+   "unit": "꺾은선그래프",
+   "title": "수학 4-2 · 꺾은선그래프",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "꺾은선그래프",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "시간에 따라 변하는 모습을 나타내기에\n알맞은 그래프는?",
+      "options": [
+       "막대그래프만",
+       "그림그래프",
+       "꺾은선그래프",
+       "표"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "물결선",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "꺾은선그래프에서 물결선을 쓰는 까닭은?",
+      "options": [
+       "눈금을 없애려고",
+       "자료를 숨기려고",
+       "그래프를 예쁘게 하려고",
+       "필요 없는 부분을 줄여 변화를 잘 보이게 하려고"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "변화 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "기온: 9시 12°, 10시 15°, 11시 19°, 12시 20°\n가장 많이 오른 때는?",
+      "options": [
+       "9시~10시",
+       "변화가 없어요",
+       "11시~12시",
+       "10시~11시"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "키 변화 그래프",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "내가 키운 식물의 키 변화를\n꺾은선그래프로 나타내어 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-4-2-6",
+   "subject": "수학",
+   "grade": 4,
+   "term": 2,
+   "unit": "다각형",
+   "title": "수학 4-2 · 다각형",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "정다각형",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "변의 길이와 각의 크기가 모두 같은\n다각형은?",
+      "options": [
+       "원",
+       "사다리꼴",
+       "정다각형",
+       "대각선"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "대각선 수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "사각형의 대각선은 몇 개일까요?",
+      "options": [
+       "2개",
+       "4개",
+       "0개",
+       "1개"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "오각형 대각선",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "오각형의 대각선은 몇 개일까요?",
+      "options": [
+       "10개",
+       "3개",
+       "5개",
+       "2개"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "삼각형 대각선",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "삼각형의 대각선은 몇 개일까요?",
+      "options": [
+       "3개",
+       "0개",
+       "1개",
+       "2개"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "정육각형 둘레",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "한 변이 4 cm인 정육각형의 둘레는?",
+      "options": [
+       "28 cm",
+       "16 cm",
+       "24 cm",
+       "20 cm"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-5-1-1",
+   "subject": "수학",
+   "grade": 5,
+   "term": 1,
+   "unit": "자연수의 혼합 계산",
+   "title": "수학 5-1 · 자연수의 혼합 계산",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "36 − 4 × 5",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "36 − 4 × 5 = ?",
+      "options": [
+       "160",
+       "18",
+       "14",
+       "16"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "(12 + 8) ÷ 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "(12 + 8) ÷ 4 = ?",
+      "options": [
+       "15",
+       "7",
+       "3",
+       "5"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "48 ÷ 6 + 3 × 2",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "48 ÷ 6 + 3 × 2 = ?",
+      "options": [
+       "14",
+       "12",
+       "22",
+       "16"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "50 − (6 + 9) × 2",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "50 − (6 + 9) × 2 = ?",
+      "options": [
+       "18",
+       "20",
+       "106",
+       "22"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "7 × (15 − 9) ÷ 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "7 × (15 − 9) ÷ 3 = ?",
+      "options": [
+       "12",
+       "32",
+       "14",
+       "16"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "100 − 64 ÷ 8 × 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "100 − 64 ÷ 8 × 3 = ?",
+      "options": [
+       "76",
+       "12",
+       "74",
+       "78"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "계산 순서",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "덧셈, 뺄셈, 곱셈, 나눗셈이 섞인 식에서\n가장 먼저 계산하는 것은?",
+      "options": [
+       "( ) 안의 식",
+       "덧셈",
+       "뺄셈",
+       "맨 오른쪽 계산"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-5-1-2",
+   "subject": "수학",
+   "grade": 5,
+   "term": 1,
+   "unit": "약수와 배수",
+   "title": "수학 5-1 · 약수와 배수",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "12의 약수 개수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "12의 약수는 모두 몇 개일까요?",
+      "options": [
+       "7개",
+       "5개",
+       "6개",
+       "8개"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "18의 약수 개수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "18의 약수는 모두 몇 개일까요?",
+      "options": [
+       "5개",
+       "6개",
+       "7개",
+       "9개"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "20의 약수 개수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "20의 약수는 모두 몇 개일까요?",
+      "options": [
+       "10개",
+       "7개",
+       "5개",
+       "6개"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "36의 약수 개수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "36의 약수는 모두 몇 개일까요?",
+      "options": [
+       "9개",
+       "10개",
+       "8개",
+       "18개"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "12, 18 최대공약수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "12와 18의 최대공약수는?",
+      "options": [
+       "12",
+       "1",
+       "6",
+       "36"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "24, 36 최대공약수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "24와 36의 최대공약수는?",
+      "options": [
+       "1",
+       "12",
+       "24",
+       "72"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "15, 25 최대공약수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "15와 25의 최대공약수는?",
+      "options": [
+       "75",
+       "5",
+       "10",
+       "1"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "4, 6 최소공배수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4와 6의 최소공배수는?",
+      "options": [
+       "2",
+       "12",
+       "16",
+       "24"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "6, 8 최소공배수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6과 8의 최소공배수는?",
+      "options": [
+       "2",
+       "30",
+       "48",
+       "24"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "9, 12 최소공배수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "9와 12의 최소공배수는?",
+      "options": [
+       "3",
+       "108",
+       "36",
+       "45"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "배수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "다음 중 7의 배수는?",
+      "options": [
+       "27",
+       "47",
+       "37",
+       "42"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-5-1-3",
+   "subject": "수학",
+   "grade": 5,
+   "term": 1,
+   "unit": "규칙과 대응",
+   "title": "수학 5-1 · 규칙과 대응",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "대응 관계",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "세발자전거 수와 바퀴 수의 관계:\n자전거 1대 → 바퀴 3개.\n자전거가 6대면 바퀴는?",
+      "options": [
+       "12개",
+       "18개",
+       "6개",
+       "9개"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "식으로 나타내기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "□가 1씩 커질 때 △가 4씩 커지고\n□=1일 때 △=4예요. 알맞은 식은?",
+      "options": [
+       "△ = □ + 4",
+       "△ = □ − 4",
+       "□ = △ × 4",
+       "△ = □ × 4"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "대응표 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "□: 2, 3, 4, 5\n△: 7, 8, 9, 10\n□와 △의 관계는?",
+      "options": [
+       "△ = □ × 5",
+       "△ = □ + 4",
+       "△ = □ + 5",
+       "△ = □ − 5"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "생활 속 대응",
+     "kind": "essay",
+     "content": {
+      "kind": "essay",
+      "question": "우리 생활에서 대응 관계인 두 양을\n찾아 식으로 나타내어 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-5-1-4",
+   "subject": "수학",
+   "grade": 5,
+   "term": 1,
+   "unit": "약분과 통분",
+   "title": "수학 5-1 · 약분과 통분",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "6/8 기약분수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6/8을 기약분수로 나타내면?",
+      "options": [
+       "4/4",
+       "3/4",
+       "4/3",
+       "5/7"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "12/18 기약분수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "12/18를 기약분수로 나타내면?",
+      "options": [
+       "3/3",
+       "11/17",
+       "2/3",
+       "6/9"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "15/20 기약분수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "15/20를 기약분수로 나타내면?",
+      "options": [
+       "14/19",
+       "4/3",
+       "3/4",
+       "4/4"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "8/12 기약분수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "8/12을 기약분수로 나타내면?",
+      "options": [
+       "4/6",
+       "3/3",
+       "7/11",
+       "2/3"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "통분",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1/4과 1/6을 통분할 때\n가장 작은 공통분모는?",
+      "options": [
+       "10",
+       "24",
+       "12",
+       "4"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "분수 크기 비교",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "더 큰 분수는?",
+      "options": [
+       "4/7",
+       "5/9",
+       "1/2",
+       "3/5"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "크기가 같은 분수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2/3와 크기가 같은 분수는?",
+      "options": [
+       "6/8",
+       "3/4",
+       "4/9",
+       "8/12"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-5-1-5",
+   "subject": "수학",
+   "grade": 5,
+   "term": 1,
+   "unit": "분수의 덧셈과 뺄셈",
+   "title": "수학 5-1 · 분수의 덧셈과 뺄셈",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "1/2 + 1/3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1/2 + 1/3 = ?",
+      "options": [
+       "2/5",
+       "1/6",
+       "5/6",
+       "6/6"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "2/5 + 1/4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2/5 + 1/4 = ?",
+      "options": [
+       "3/9",
+       "13/20",
+       "2/20",
+       "14/20"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "3/4 + 1/6",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3/4 + 1/6 = ?",
+      "options": [
+       "11/12",
+       "3/24",
+       "12/12",
+       "4/10"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "5/6 + 2/9",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5/6 + 2/9 = ?",
+      "options": [
+       "20/18",
+       "7/15",
+       "10/54",
+       "1과 1/18"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "3/4 − 1/3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3/4 − 1/3 = ?",
+      "options": [
+       "6/12",
+       "5/12",
+       "5/24",
+       "2/1"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "5/6 − 1/4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5/6 − 1/4 = ?",
+      "options": [
+       "7/12",
+       "4/2",
+       "7/24",
+       "8/12"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-5-1-6",
+   "subject": "수학",
+   "grade": 5,
+   "term": 1,
+   "unit": "다각형의 둘레와 넓이",
+   "title": "수학 5-1 · 다각형의 둘레와 넓이",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "직사각형 넓이",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "가로 8 cm, 세로 5 cm인\n직사각형의 넓이는?",
+      "options": [
+       "13 cm²",
+       "40 cm",
+       "26 cm²",
+       "40 cm²"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "정사각형 넓이",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "한 변이 7 cm인 정사각형의 넓이는?",
+      "options": [
+       "49 cm²",
+       "28 cm²",
+       "49 cm",
+       "14 cm²"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "평행사변형 넓이",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "밑변 10 cm, 높이 6 cm인\n평행사변형의 넓이는?",
+      "options": [
+       "60 cm²",
+       "16 cm²",
+       "30 cm²",
+       "32 cm²"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "삼각형 넓이",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "밑변 10 cm, 높이 6 cm인\n삼각형의 넓이는?",
+      "options": [
+       "30 cm²",
+       "15 cm²",
+       "60 cm²",
+       "16 cm²"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "사다리꼴 넓이",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "윗변 4 cm, 아랫변 8 cm, 높이 5 cm인\n사다리꼴의 넓이는?",
+      "options": [
+       "30 cm²",
+       "160 cm²",
+       "60 cm²",
+       "17 cm²"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "마름모 넓이",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "두 대각선이 6 cm, 10 cm인\n마름모의 넓이는?",
+      "options": [
+       "32 cm²",
+       "30 cm²",
+       "16 cm²",
+       "60 cm²"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "직사각형 둘레",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "가로 9 cm, 세로 4 cm인\n직사각형의 둘레는?",
+      "options": [
+       "13 cm",
+       "36 cm",
+       "18 cm",
+       "26 cm"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "1 m²",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 m²는 몇 cm²일까요?",
+      "options": [
+       "10000 cm²",
+       "1000000 cm²",
+       "100 cm²",
+       "1000 cm²"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-5-2-1",
+   "subject": "수학",
+   "grade": 5,
+   "term": 2,
+   "unit": "수의 범위와 어림하기",
+   "title": "수학 5-2 · 수의 범위와 어림하기",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "이상",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5 이상인 수에 들어가는 것은?",
+      "options": [
+       "4",
+       "5",
+       "3",
+       "1"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "미만",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "10 미만인 수가 아닌 것은?",
+      "options": [
+       "7",
+       "10",
+       "2",
+       "9"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "올림",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "432를 올림하여 백의 자리까지 나타내면?",
+      "options": [
+       "440",
+       "500",
+       "430",
+       "400"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "버림",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "7869를 버림하여 천의 자리까지 나타내면?",
+      "options": [
+       "7800",
+       "7900",
+       "7000",
+       "8000"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "반올림",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3650을 반올림하여 백의 자리까지 나타내면?",
+      "options": [
+       "3700",
+       "3600",
+       "3000",
+       "4000"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "초과",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "20 초과 25 이하인 자연수는 몇 개일까요?",
+      "options": [
+       "4개",
+       "5개",
+       "25개",
+       "6개"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-5-2-2",
+   "subject": "수학",
+   "grade": 5,
+   "term": 2,
+   "unit": "분수의 곱셈",
+   "title": "수학 5-2 · 분수의 곱셈",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "2/3 × 3/4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2/3 × 3/4 = ?",
+      "options": [
+       "1/2",
+       "8/9",
+       "6/7",
+       "5/12"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "3/5 × 5/6",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3/5 × 5/6 = ?",
+      "options": [
+       "1/2",
+       "8/30",
+       "15/11",
+       "18/25"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "4/7 × 7/8",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4/7 × 7/8 = ?",
+      "options": [
+       "1/2",
+       "28/15",
+       "11/56",
+       "32/49"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "12 × 3/4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "12 × 3/4 = ?",
+      "options": [
+       "9",
+       "36/48",
+       "36",
+       "16"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "15 × 2/5",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "15 × 2/5 = ?",
+      "options": [
+       "30",
+       "6",
+       "30/75",
+       "17/5"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "8 × 5/6",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "8 × 5/6 = ?",
+      "options": [
+       "13/6",
+       "40/48",
+       "40",
+       "6과 2/3"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-5-2-3",
+   "subject": "수학",
+   "grade": 5,
+   "term": 2,
+   "unit": "합동과 대칭",
+   "title": "수학 5-2 · 합동과 대칭",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "합동",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "모양과 크기가 같아서 포개었을 때\n완전히 겹치는 두 도형은?",
+      "options": [
+       "서로 대칭이에요",
+       "서로 평행해요",
+       "서로 합동이에요",
+       "서로 수직이에요"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "선대칭 도형",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "한 직선을 따라 접었을 때\n완전히 겹치는 도형은?",
+      "options": [
+       "점대칭도형",
+       "합동",
+       "선대칭도형",
+       "평행사변형"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "점대칭 도형",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "어떤 점을 중심으로 180° 돌렸을 때\n처음과 완전히 겹치는 도형은?",
+      "options": [
+       "사다리꼴",
+       "점대칭도형",
+       "선대칭도형",
+       "삼각형"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "대칭축 수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "정사각형의 대칭축은 몇 개일까요?",
+      "options": [
+       "8개",
+       "4개",
+       "1개",
+       "2개"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "대응변",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "합동인 두 도형에서 서로 겹치는 변을\n무엇이라고 할까요?",
+      "options": [
+       "대칭축",
+       "대각선",
+       "대응변",
+       "높이"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "대칭 무늬",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "선대칭도형이 되도록\n나머지 반쪽을 그려 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-5-2-4",
+   "subject": "수학",
+   "grade": 5,
+   "term": 2,
+   "unit": "소수의 곱셈",
+   "title": "수학 5-2 · 소수의 곱셈",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "0.4 × 6",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "0.4 × 6 = ?",
+      "options": [
+       "2.4",
+       "24",
+       "0.24",
+       "6.4"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "2.3 × 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2.3 × 4 = ?",
+      "options": [
+       "0.92",
+       "9.2",
+       "92",
+       "6.3"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "0.25 × 8",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "0.25 × 8 = ?",
+      "options": [
+       "8.25",
+       "2",
+       "20",
+       "0.2"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "1.2 × 0.3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1.2 × 0.3 = ?",
+      "options": [
+       "0.036",
+       "3.6",
+       "36",
+       "0.36"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "2.5 × 1.4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2.5 × 1.4 = ?",
+      "options": [
+       "3.5",
+       "35",
+       "0.35",
+       "350"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "0.6 × 0.7",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "0.6 × 0.7 = ?",
+      "options": [
+       "42",
+       "4.2",
+       "0.42",
+       "0.042"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "곱의 소수점",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "0.5 × 0.5 = ?",
+      "options": [
+       "2.5",
+       "0.25",
+       "25",
+       "0.025"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-5-2-5",
+   "subject": "수학",
+   "grade": 5,
+   "term": 2,
+   "unit": "직육면체",
+   "title": "수학 5-2 · 직육면체",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "직육면체 면",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "직육면체의 면은 몇 개일까요?",
+      "options": [
+       "4개",
+       "8개",
+       "12개",
+       "6개"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "직육면체 모서리",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "직육면체의 모서리는 몇 개일까요?",
+      "options": [
+       "10개",
+       "6개",
+       "8개",
+       "12개"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "직육면체 꼭짓점",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "직육면체의 꼭짓점은 몇 개일까요?",
+      "options": [
+       "12개",
+       "8개",
+       "4개",
+       "6개"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "정육면체",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "정사각형 6개로 둘러싸인 도형은?",
+      "options": [
+       "직육면체만",
+       "각뿔",
+       "원기둥",
+       "정육면체"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "평행한 면",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "직육면체에서 서로 평행한 면은\n모두 몇 쌍일까요?",
+      "options": [
+       "4쌍",
+       "6쌍",
+       "3쌍",
+       "2쌍"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "전개도 그리기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "정육면체의 전개도를\n그려 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-5-2-6",
+   "subject": "수학",
+   "grade": 5,
+   "term": 2,
+   "unit": "평균과 가능성",
+   "title": "수학 5-2 · 평균과 가능성",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "평균 [80, 90, 70, 100]",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "80, 90, 70, 100의 평균은?",
+      "options": [
+       "70",
+       "100",
+       "85",
+       "340"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "평균 [12, 15, 9]",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "12, 15, 9의 평균은?",
+      "options": [
+       "12",
+       "15",
+       "9",
+       "36"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "평균 [5, 7, 6, 8, 4]",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5, 7, 6, 8, 4의 평균은?",
+      "options": [
+       "30",
+       "4",
+       "6",
+       "8"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "가능성",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "동전을 던졌을 때 그림 면이 나올\n가능성을 수로 나타내면?",
+      "options": [
+       "1/2",
+       "1",
+       "1/4",
+       "0"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "가능성 말로",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "내일 해가 동쪽에서 뜰 가능성은?",
+      "options": [
+       "불가능하다",
+       "~아닐 것 같다",
+       "확실하다",
+       "반반이다"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "주사위 가능성",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "주사위를 굴려 7이 나올 가능성은?",
+      "options": [
+       "~일 것 같다",
+       "반반이다",
+       "확실하다",
+       "불가능하다"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-6-1-1",
+   "subject": "수학",
+   "grade": 6,
+   "term": 1,
+   "unit": "분수의 나눗셈",
+   "title": "수학 6-1 · 분수의 나눗셈",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "3/4 ÷ 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3/4 ÷ 3 = ?",
+      "options": [
+       "9/4",
+       "3/13",
+       "1/4",
+       "4/9"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "4/5 ÷ 2",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4/5 ÷ 2 = ?",
+      "options": [
+       "4/11",
+       "5/8",
+       "2/5",
+       "8/5"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "6/7 ÷ 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6/7 ÷ 3 = ?",
+      "options": [
+       "18/7",
+       "6/22",
+       "7/18",
+       "2/7"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "7 ÷ 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "7 ÷ 3의 몫을 분수로 나타내면?",
+      "options": [
+       "10/3",
+       "3/7",
+       "7/10",
+       "7/3"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "5 ÷ 8",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5 ÷ 8의 몫을 분수로 나타내면?",
+      "options": [
+       "8/5",
+       "5/8",
+       "13/8",
+       "5/13"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-6-1-2",
+   "subject": "수학",
+   "grade": 6,
+   "term": 1,
+   "unit": "각기둥과 각뿔",
+   "title": "수학 6-1 · 각기둥과 각뿔",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "각기둥 밑면",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "각기둥에서 서로 평행하고 합동인\n두 면을 무엇이라고 할까요?",
+      "options": [
+       "꼭짓점",
+       "모서리",
+       "옆면",
+       "밑면"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "삼각기둥 면",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "삼각기둥의 면은 몇 개일까요?",
+      "options": [
+       "5개",
+       "6개",
+       "9개",
+       "3개"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "사각뿔 꼭짓점",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "사각뿔의 꼭짓점은 몇 개일까요?",
+      "options": [
+       "5개",
+       "8개",
+       "6개",
+       "4개"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "육각기둥 모서리",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "육각기둥의 모서리는 몇 개일까요?",
+      "options": [
+       "24개",
+       "18개",
+       "12개",
+       "6개"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "각뿔 옆면",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "각뿔의 옆면은 어떤 모양일까요?",
+      "options": [
+       "원",
+       "삼각형",
+       "사각형",
+       "직사각형"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "오각뿔 면",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "오각뿔의 면은 몇 개일까요?",
+      "options": [
+       "7개",
+       "5개",
+       "10개",
+       "6개"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-6-1-3",
+   "subject": "수학",
+   "grade": 6,
+   "term": 1,
+   "unit": "소수의 나눗셈",
+   "title": "수학 6-1 · 소수의 나눗셈",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "8.4 ÷ 4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "8.4 ÷ 4 = ?",
+      "options": [
+       "3.1",
+       "21",
+       "0.21",
+       "2.1"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "6.3 ÷ 3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6.3 ÷ 3 = ?",
+      "options": [
+       "3.1",
+       "21",
+       "0.21",
+       "2.1"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "12.6 ÷ 6",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "12.6 ÷ 6 = ?",
+      "options": [
+       "0.21",
+       "3.1",
+       "2.1",
+       "21"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "4.5 ÷ 5",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "4.5 ÷ 5 = ?",
+      "options": [
+       "0.09",
+       "1.9",
+       "0.9",
+       "9"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "7 ÷ 4 소수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "7 ÷ 4의 몫을 소수로 나타내면?",
+      "options": [
+       "1",
+       "2.25",
+       "1.75",
+       "17.5"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "9 ÷ 2 소수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "9 ÷ 2의 몫을 소수로 나타내면?",
+      "options": [
+       "4",
+       "5",
+       "45",
+       "4.5"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-6-1-4",
+   "subject": "수학",
+   "grade": 6,
+   "term": 1,
+   "unit": "비와 비율",
+   "title": "수학 6-1 · 비와 비율",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "비 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3 : 5를 바르게 읽은 것은?",
+      "options": [
+       "3 대 5",
+       "3 나누기 5",
+       "3과 5의 합",
+       "5 대 3"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "비율",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3 : 4의 비율을 분수로 나타내면?",
+      "options": [
+       "3/7",
+       "4/3",
+       "3/4",
+       "1/4"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "백분율",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "0.35를 백분율로 나타내면?",
+      "options": [
+       "35%",
+       "350%",
+       "3.5%",
+       "0.35%"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "백분율 계산",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "200의 15%는?",
+      "options": [
+       "15",
+       "20",
+       "30",
+       "300"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "기준량과 비교하는 양",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "6 : 10에서 기준량은?",
+      "options": [
+       "10",
+       "4",
+       "16",
+       "6"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "할인",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "10000원짜리 물건을 20% 할인하면\n얼마일까요?",
+      "options": [
+       "2000원",
+       "9800원",
+       "7000원",
+       "8000원"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-6-1-5",
+   "subject": "수학",
+   "grade": 6,
+   "term": 1,
+   "unit": "여러 가지 그래프",
+   "title": "수학 6-1 · 여러 가지 그래프",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "띠그래프",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "전체에 대한 부분의 비율을 띠 모양에\n나타낸 그래프는?",
+      "options": [
+       "막대그래프",
+       "띠그래프",
+       "꺾은선그래프",
+       "그림그래프"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "원그래프",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "원그래프에서 전체는 몇 %일까요?",
+      "options": [
+       "100%",
+       "50%",
+       "10%",
+       "360%"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "비율 읽기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "원그래프에서 운동 30%, 독서 25%,\n게임 45%이면 가장 많은 항목은?",
+      "options": [
+       "운동",
+       "게임",
+       "독서",
+       "모두 같아요"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "원그래프 그리기",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "하루 동안 한 일을 조사해\n원그래프로 나타내어 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-6-1-6",
+   "subject": "수학",
+   "grade": 6,
+   "term": 1,
+   "unit": "직육면체의 부피와 겉넓이",
+   "title": "수학 6-1 · 직육면체의 부피와 겉넓이",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "직육면체 부피",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "가로 5 cm, 세로 4 cm, 높이 3 cm인\n직육면체의 부피는?",
+      "options": [
+       "47 cm³",
+       "12 cm³",
+       "60 cm³",
+       "60 cm²"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "정육면체 부피",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "한 모서리가 4 cm인 정육면체의 부피는?",
+      "options": [
+       "12 cm³",
+       "64 cm³",
+       "48 cm³",
+       "16 cm³"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "정육면체 겉넓이",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "한 모서리가 3 cm인 정육면체의 겉넓이는?",
+      "options": [
+       "27 cm²",
+       "36 cm²",
+       "18 cm²",
+       "54 cm²"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "직육면체 겉넓이",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "가로 2 cm, 세로 3 cm, 높이 4 cm인\n직육면체의 겉넓이는?",
+      "options": [
+       "24 cm²",
+       "48 cm²",
+       "52 cm²",
+       "26 cm²"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "1 m³",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1 m³는 몇 cm³일까요?",
+      "options": [
+       "100 cm³",
+       "10000 cm³",
+       "1000000 cm³",
+       "1000 cm³"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-6-2-1",
+   "subject": "수학",
+   "grade": 6,
+   "term": 2,
+   "unit": "분수의 나눗셈 (분수 ÷ 분수)",
+   "title": "수학 6-2 · 분수의 나눗셈 (분수 ÷ 분수)",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "3/4 ÷ 1/8",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3/4 ÷ 1/8 = ?",
+      "options": [
+       "4/24",
+       "8",
+       "6",
+       "3/32"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "2/3 ÷ 1/6",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2/3 ÷ 1/6 = ?",
+      "options": [
+       "2/18",
+       "3/12",
+       "4",
+       "6"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "5/6 ÷ 2/3",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "5/6 ÷ 2/3 = ?",
+      "options": [
+       "10/18",
+       "12/15",
+       "5/18",
+       "5/4"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-6-2-2",
+   "subject": "수학",
+   "grade": 6,
+   "term": 2,
+   "unit": "소수의 나눗셈 (소수 ÷ 소수)",
+   "title": "수학 6-2 · 소수의 나눗셈 (소수 ÷ 소수)",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "3.6 ÷ 0.4",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3.6 ÷ 0.4 = ?",
+      "options": [
+       "90",
+       "9",
+       "1.44",
+       "0.9"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "2.25 ÷ 0.5",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2.25 ÷ 0.5 = ?",
+      "options": [
+       "4.5",
+       "0.45",
+       "1.125",
+       "45"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "8.4 ÷ 1.2",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "8.4 ÷ 1.2 = ?",
+      "options": [
+       "7",
+       "10.08",
+       "70",
+       "0.7"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "1.8 ÷ 0.06",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1.8 ÷ 0.06 = ?",
+      "options": [
+       "3",
+       "0.108",
+       "30",
+       "300"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-6-2-3",
+   "subject": "수학",
+   "grade": 6,
+   "term": 2,
+   "unit": "공간과 입체",
+   "title": "수학 6-2 · 공간과 입체",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "쌓기나무 개수",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "1층에 5개, 2층에 3개, 3층에 1개를 쌓았어요.\n쌓기나무는 모두 몇 개일까요?",
+      "options": [
+       "5개",
+       "9개",
+       "15개",
+       "8개"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "위에서 본 모양",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "쌓기나무로 쌓은 모양을 위에서 보면\n알 수 있는 것은?",
+      "options": [
+       "가장 높은 층수",
+       "앞에서 본 모양",
+       "모든 쌓기나무 수",
+       "1층의 모양"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "쌓기나무 설계",
+     "kind": "blank",
+     "content": {
+      "kind": "blank",
+      "question": "쌓기나무 10개로 만들고 싶은 모양을\n위·앞·옆에서 본 모양으로 그려 보세요."
+     },
+     "answer_key": null
+    }
+   ]
+  },
+  {
+   "id": "math-6-2-4",
+   "subject": "수학",
+   "grade": 6,
+   "term": 2,
+   "unit": "비례식과 비례배분",
+   "title": "수학 6-2 · 비례식과 비례배분",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "비의 성질",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "2 : 3과 비율이 같은 비는?",
+      "options": [
+       "2 : 6",
+       "4 : 5",
+       "4 : 6",
+       "3 : 2"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "비례식",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "3 : 4 = 9 : □\n□ 안에 알맞은 수는?",
+      "options": [
+       "7",
+       "16",
+       "12",
+       "10"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "간단한 자연수의 비",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "12 : 18을 가장 간단한 자연수의 비로?",
+      "options": [
+       "3 : 2",
+       "4 : 6",
+       "6 : 9",
+       "2 : 3"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "비례배분",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "사탕 20개를 2 : 3으로 나누면\n적은 쪽은 몇 개일까요?",
+      "options": [
+       "8개",
+       "12개",
+       "4개",
+       "10개"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "비례배분",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "35를 3 : 4로 나누면 큰 쪽은?",
+      "options": [
+       "28",
+       "20",
+       "21",
+       "15"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-6-2-5",
+   "subject": "수학",
+   "grade": 6,
+   "term": 2,
+   "unit": "원의 넓이",
+   "title": "수학 6-2 · 원의 넓이",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "원주율",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "원의 둘레를 지름으로 나눈 값을\n무엇이라고 할까요?",
+      "options": [
+       "원주율",
+       "원주",
+       "비율",
+       "반지름"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "원주",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "지름이 10 cm인 원의 원주는?\n(원주율 3.14)",
+      "options": [
+       "314 cm",
+       "15.7 cm",
+       "31.4 cm",
+       "78.5 cm"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "원의 넓이",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "반지름이 10 cm인 원의 넓이는?\n(원주율 3.14)",
+      "options": [
+       "314 cm²",
+       "31.4 cm²",
+       "3140 cm²",
+       "62.8 cm²"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "원의 넓이 2",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "반지름이 2 cm인 원의 넓이는?\n(원주율 3)",
+      "options": [
+       "24 cm²",
+       "6 cm²",
+       "12 cm²",
+       "36 cm²"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    },
+    {
+     "title": "원주 구하기",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "반지름이 5 cm인 원의 원주는?\n(원주율 3)",
+      "options": [
+       "25 cm",
+       "30 cm",
+       "15 cm",
+       "75 cm"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    }
+   ]
+  },
+  {
+   "id": "math-6-2-6",
+   "subject": "수학",
+   "grade": 6,
+   "term": 2,
+   "unit": "원기둥, 원뿔, 구",
+   "title": "수학 6-2 · 원기둥, 원뿔, 구",
+   "note": "3~6학년은 출판사마다 단원 이름과 순서가 달라서 주제로 묶었어요.",
+   "items": [
+    {
+     "title": "원기둥 밑면",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "원기둥의 밑면은 몇 개일까요?",
+      "options": [
+       "0개",
+       "2개",
+       "1개",
+       "3개"
+      ]
+     },
+     "answer_key": {
+      "correct": 1
+     }
+    },
+    {
+     "title": "원뿔",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "밑면이 원이고 뾰족한 꼭짓점이 있는\n입체도형은?",
+      "options": [
+       "구",
+       "각뿔",
+       "원기둥",
+       "원뿔"
+      ]
+     },
+     "answer_key": {
+      "correct": 3
+     }
+    },
+    {
+     "title": "구",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "어느 방향에서 보아도 원 모양인\n입체도형은?",
+      "options": [
+       "구",
+       "원기둥",
+       "각기둥",
+       "원뿔"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "원기둥 전개도",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "원기둥의 전개도에서 옆면의 모양은?",
+      "options": [
+       "직사각형",
+       "삼각형",
+       "원",
+       "부채꼴"
+      ]
+     },
+     "answer_key": {
+      "correct": 0
+     }
+    },
+    {
+     "title": "회전체",
+     "kind": "choice4",
+     "content": {
+      "kind": "choice4",
+      "question": "직사각형을 한 변을 기준으로\n한 바퀴 돌리면 생기는 입체도형은?",
+      "options": [
+       "삼각기둥",
+       "구",
+       "원기둥",
+       "원뿔"
+      ]
+     },
+     "answer_key": {
+      "correct": 2
+     }
+    }
+   ]
+  }
+ ]
+}

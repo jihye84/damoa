@@ -130,6 +130,8 @@ export class Ink {
 
     const down = (e) => {
       if (id !== null || !this.canDraw(e)) return;
+      // 펜이 글쓰기 칸 위에 닿아도 커서·글자 선택이 아니라 필기가 되게
+      if (e.pointerType === 'pen') e.preventDefault();
       id = e.pointerId;
       moved = 0;
       start = [e.clientX, e.clientY];

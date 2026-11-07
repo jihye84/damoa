@@ -112,7 +112,8 @@ button:disabled { cursor: default; }
   box-shadow: 0 0 0 1px var(--line); overflow: hidden;
   display: flex; flex-direction: column; user-select: none; -webkit-user-select: none;
 }
-.sheet.is-live { touch-action: none; }
+.sheet.is-live, .sheet.is-live * { touch-action: none; }
+/* 펜으로 글쓰기 칸 위에 써도 브라우저가 가로채지 않게 (손가락으로 톡 누르면 키보드 입력은 그대로 돼요) */
 .sheet-q {
   flex: none; padding: 3.2cqw 4cqw 0; text-align: center;
   font-family: var(--round); font-size: 4.4cqw; line-height: 1.3; white-space: pre-line;

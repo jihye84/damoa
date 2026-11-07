@@ -10,7 +10,7 @@ const st = {
   code: null,
   claim: null,          // {code, sessionId, studentId, name, number}
   session: null,
-  assignmentId: null,
+  assignmentId: undefined, // undefined = 아직 아무 화면도 안 띄움
   assignment: null,
   submissionId: null,
   sheet: null,
@@ -230,7 +230,7 @@ function cleanup() {
   st.channel = null;
   if (st.sheet) st.sheet.destroy();
   st.sheet = null;
-  st.assignmentId = null;
+  st.assignmentId = undefined;
   overlay('ov-front', false);
   overlay('ov-lock', false);
   overlay('ov-feedback', false);

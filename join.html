@@ -38,10 +38,16 @@
   </section>
 
   <!-- 기다리기 -->
-  <section id="v-wait" class="screen center" hidden>
-    <div class="logo big">다모아</div>
-    <div id="wait-name" class="kid-name"></div>
-    <div class="kid-title">선생님이 문제를 보낼 때까지<br>기다려요</div>
+  <section id="v-wait" class="screen center wait" hidden>
+    <div class="welcome-check" aria-hidden="true">
+      <svg width="88" height="88" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+    </div>
+    <h1 class="welcome-title">들어왔어요!</h1>
+    <div id="wait-name" class="welcome-name"></div>
+    <div class="wait-msg">
+      <span>선생님이 문제를 보낼 때까지</span>
+      <span>기다려요</span>
+    </div>
     <div class="dots" aria-hidden="true"><span></span><span></span><span></span></div>
     <button id="not-me" type="button" class="link-btn">내 이름이 아니에요</button>
   </section>

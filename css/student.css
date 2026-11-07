@@ -101,3 +101,19 @@ body.kid { background: var(--kid-bg); }
   border-radius: 16px; padding: 14px 18px; font-size: 18px; display: flex; flex-direction: column; gap: 6px;
 }
 #problem .problem-detail { font-size: 13px; color: var(--ink-2); font-family: ui-monospace, monospace; word-break: break-all; max-height: 4.5em; overflow: hidden; }
+
+/* 들어왔어요! (대기 화면) */
+.screen.wait { gap: clamp(10px, 2.4vh, 22px); }
+.welcome-check {
+  width: clamp(96px, 18vh, 150px); height: clamp(96px, 18vh, 150px); border-radius: 999px; background: var(--teal);
+  display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 0 var(--teal-d);
+  animation: pop 0.5s cubic-bezier(.2, 1.6, .4, 1) both;
+}
+.welcome-check svg { width: 60%; height: 60%; }
+@keyframes pop { from { transform: scale(0.3); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.welcome-title { margin: 0; font-family: var(--round); font-weight: 400; font-size: clamp(48px, 11vh, 96px); line-height: 1; color: var(--teal-t); }
+.welcome-name {
+  font-family: var(--round); font-size: clamp(30px, 6.5vh, 54px); background: #fff; color: var(--ink);
+  padding: 8px 32px; border-radius: 999px; box-shadow: 0 5px 0 var(--kid-line);
+}
+.wait-msg { display: flex; flex-direction: column; font-size: clamp(20px, 3.6vh, 30px); font-weight: 500; color: #3E4452; line-height: 1.45; }

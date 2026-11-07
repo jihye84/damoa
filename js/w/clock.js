@@ -1,8 +1,8 @@
 // 모형 시계: 바늘을 돌려 시각 만들기(set) · 시계를 보고 시각 쓰기(read)
 // content: { mode: 'set'|'read', time: '3:30', step: 30|5|1 }
 // answer:  set → { minutes } (0~719)   read → { h, m }
-import { h } from '../common.js?v=202611072130';
-import { s, svgRoot, toSvg, makeState, wrap, num, eul } from './base.js?v=202611072130';
+import { h } from '../common.js?v=202611072148';
+import { s, svgRoot, toSvg, makeState, wrap, num, eul } from './base.js?v=202611072148';
 
 export function parseTime(t) {
   const m = String(t || '').match(/^\s*(\d{1,2})\s*[:시]\s*(\d{1,2})?/);
@@ -37,6 +37,8 @@ export const clock = {
     { k: 'time', label: '시각 (예: 3:30)', type: 'text' },
     { k: 'step', label: '바늘을 놓으면 맞춰지는 눈금', type: 'select', options: [[30, '30분 (몇 시 · 몇 시 30분)'], [5, '5분'], [1, '1분']] },
   ],
+  // 문제 글·이름 속 숫자를 함께 바꾸기 위한 낱말들
+  tokens(c) { const t = parseTime(c.time); return [t ? timeText(t) : null]; },
   validate(c) { return parseTime(c.time) ? null : '시각을 "3:30"처럼 써 주세요 (1~12시)'; },
   defaultQuestion(c) {
     const t = parseTime(c.time);
@@ -59,7 +61,9 @@ export const clock = {
   render(sheet, c, opt) {
     const box = wrap(sheet, 'wg-clock' + (c.mode === 'read' ? ' read' : ''));
     const t = parseTime(c.time) || { h: 3, m: 0, minutes: 180 };
-    const step = num(c.step, 30);
+    // 시각이 눈금에 안 맞으면(예: 30분 눈금인데 2시 15분) 알맞은 눈금으로 바꿔요
+    let step = num(c.step, 30);
+    if (t.m % step) step = t.m % 5 === 0 ? 5 : 1;
     const a = opt.answer || {};
     const S = makeState(c.mode === 'read' ? { h: a.h ?? null, m: a.m ?? null } : { minutes: a.minutes ?? 0 }, opt, draw);
 

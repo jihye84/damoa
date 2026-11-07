@@ -1,8 +1,8 @@
 // 막대그래프 만들기: 표를 보고, 칸을 눌러 막대를 쌓아요
 // content: { title, cats: '사과, 배, 귤', values: '3, 5, 2' (표에 보여 줄 수, 비우면 자유 조사), max: 8, unit: '명', scale: 1, showTable: true }
 // answer:  { h: [3, 5, 2] }  (막대마다 수)
-import { h } from '../common.js?v=202611072130';
-import { s, svgRoot, toSvg, makeState, wrap, num, clamp } from './base.js?v=202611072130';
+import { h } from '../common.js?v=202611072148';
+import { s, svgRoot, toSvg, makeState, wrap, num, clamp } from './base.js?v=202611072148';
 
 const list = (t) => String(t || '').split(/[,，、\n]/).map((x) => x.trim()).filter(Boolean);
 const COLORS = ['#F59E0B', '#10B981', '#3B82F6', '#EC4899', '#8B5CF6', '#EF4444', '#14B8A6', '#84CC16'];
@@ -36,6 +36,7 @@ export const bargraph = {
     if (x.vals && x.vals.some((v) => v % x.scale || v / x.scale > x.max)) return '표의 수가 칸에 맞지 않아요 (한 칸 크기와 세로 칸 수를 확인해 주세요)';
     return null;
   },
+  tokens(c) { return [c.title || null]; },
   defaultQuestion(c) { return shape(c).vals ? '표를 보고\n막대그래프를 그려 보세요.' : '우리 반 친구들에게 물어보고\n막대그래프를 그려 보세요.'; },
   grade(ans, k, c) {
     const x = shape(c);

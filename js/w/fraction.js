@@ -1,7 +1,7 @@
 // 분수 색칠판: 똑같이 나눈 원·막대·사각형을 톡 눌러 칠해요
 // content: { shape: 'circle'|'bar'|'rect', parts: 4, wholes: 1 }
 // answer:  { on: [칠한 조각 번호…] }    answer_key: { num }  (칠한 조각 수)
-import { s, svgRoot, makeState, wrap, num, clamp } from './base.js?v=202611072130';
+import { s, svgRoot, makeState, wrap, num, clamp } from './base.js?v=202611072148';
 
 export const fraction = {
   name: '분수 색칠판',
@@ -23,6 +23,7 @@ export const fraction = {
     if (c.shape === 'rect' && p % 2) return '사각형(두 줄)은 짝수 조각이어야 해요';
     return null;
   },
+  tokens(c, k) { return [k && k.num != null ? `${k.num}/${num(c.parts, 4)}` : null]; },
   defaultQuestion(c, k) {
     const p = num(c.parts, 4);
     return k && k.num != null ? `${k.num}/${p}만큼\n색칠해 보세요.` : '조각을 칠해\n분수를 나타내 보세요.';

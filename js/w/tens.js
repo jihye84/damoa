@@ -2,8 +2,8 @@
 // content: { mode: 'frame', frames: 1|2 }  /  { mode: 'blocks', places: 2|3 }
 // answer:  frame → { cells: ['r','b',null,…] }   blocks → { n: [백, 십, 일] }
 // answer_key: frame → { count, red, blue }   blocks → { value, exact }
-import { h } from '../common.js?v=202611072130';
-import { s, svgRoot, makeState, wrap, num, clamp, eul } from './base.js?v=202611072130';
+import { h } from '../common.js?v=202611072148';
+import { s, svgRoot, makeState, wrap, num, clamp, eul } from './base.js?v=202611072148';
 
 const RED = '#E53935', BLUE = '#1E78E8';
 const PLACE = [['백', 100], ['십', 10], ['일', 1]];
@@ -25,6 +25,7 @@ export const tens = {
     { k: 'value', label: '나타낼 수 (채점)', type: 'number', show: (c) => c.mode === 'blocks' },
     { k: 'exact', label: '자리마다 9개까지만 (예: 34 = 십 3, 일 4)', type: 'check', show: (c) => c.mode === 'blocks' },
   ],
+  tokens(c, k) { k = k || {}; return c.mode === 'blocks' ? [k.value] : [k.count, k.red, k.count != null && k.red != null ? k.count - k.red : null]; },
   defaultQuestion(c, k) {
     if (c.mode === 'blocks') return k && k.value != null ? `${eul(k.value)}\n수 모형으로 나타내 보세요.` : '수 모형으로\n수를 나타내 보세요.';
     if (k && k.count != null && k.red != null) return `${eul(k.count)} 빨강 ${k.red}개와\n파랑으로 갈라 보세요.`;

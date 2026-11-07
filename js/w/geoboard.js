@@ -2,8 +2,8 @@
 // content: { cols: 7, rows: 5 }
 // answer:  { polys: [{ pts: [[x,y]…], closed }] }
 // answer_key: { sides: 3|4|…, kind: 'any'|'rect'|'square'|'right', area }
-import { h } from '../common.js?v=202611072130';
-import { s, svgRoot, toSvg, makeState, wrap, num, clamp, eul } from './base.js?v=202611072130';
+import { h } from '../common.js?v=202611072148';
+import { s, svgRoot, toSvg, makeState, wrap, num, clamp, eul } from './base.js?v=202611072148';
 
 const COLORS = ['#2563EB', '#E11D48', '#059669', '#D97706', '#7C3AED'];
 const SIDES = { 3: '삼각형', 4: '사각형', 5: '오각형', 6: '육각형' };
@@ -55,6 +55,7 @@ export const geoboard = {
     if (a < 3 || a > 12 || b < 3 || b > 9) return '점은 가로 3~12, 세로 3~9개로 해 주세요';
     return null;
   },
+  tokens(c, k) { k = k || {}; return [k.kind && k.kind !== 'any' ? KIND[k.kind] : SIDES[k.sides] || null, k.area != null && k.area !== '' ? `넓이 ${k.area}` : null]; },
   defaultQuestion(c, k) {
     if (!k) return '점을 이어\n여러 가지 도형을 그려 보세요.';
     const name = k.kind && k.kind !== 'any' ? KIND[k.kind] : SIDES[k.sides] || '도형';

@@ -1,8 +1,8 @@
 // 세로셈: 덧셈 · 뺄셈 · 곱셈. 빈칸을 누르고 숫자 패드로 써요 (받아올림 작은 칸은 채점하지 않아요)
 // content: { op: '+'|'-'|'×', a: 27, b: 35, carry: true }
 // answer:  { rows: { carry: [], p1: [], p2: [], ans: [] } }   (왼쪽부터 칸마다 한 글자)
-import { h } from '../common.js?v=202611072130';
-import { makeState, wrap, num, eul } from './base.js?v=202611072130';
+import { h } from '../common.js?v=202611072148';
+import { makeState, wrap, num, eul } from './base.js?v=202611072148';
 
 function calc(c) {
   const a = Math.trunc(num(c.a, 0)), b = Math.trunc(num(c.b, 0));
@@ -36,6 +36,7 @@ export const vmath = {
     if (x.W > 7) return '수가 너무 커요 (일곱 자리까지)';
     return null;
   },
+  tokens(c) { const x = calc(c); const sym = x.op === '-' ? '−' : x.op; return [`${x.a} ${sym} ${x.b}`, `${x.a}${sym}${x.b}`]; },
   defaultQuestion(c) { const x = calc(c); return `${eul(`${x.a} ${x.op === '-' ? '−' : x.op} ${x.b}`)}\n세로셈으로 계산해 보세요.`; },
   grade(ans, k, c) {
     if (!ans || !ans.rows) return null;

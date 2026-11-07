@@ -1,10 +1,10 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611072130';
-import { renderSheet, isCorrect, gradeMap, gradeShapes, gradeAny, loadMap, WIDGETS } from './sheet.js?v=202611072130';
-import { cleanKey } from './w/index.js?v=202611072130';
-import { initPortfolio } from './portfolio.js?v=202611072130';
-import { openLibrary } from './library.js?v=202611072130';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611072130';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611072148';
+import { renderSheet, isCorrect, gradeMap, gradeShapes, gradeAny, loadMap, WIDGETS } from './sheet.js?v=202611072148';
+import { cleanKey, syncText } from './w/index.js?v=202611072148';
+import { initPortfolio } from './portfolio.js?v=202611072148';
+import { openLibrary } from './library.js?v=202611072148';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611072148';
 
 const sb = makeClient('teacher');
 
@@ -419,7 +419,8 @@ function editTemplate(t, afterSave) {
       if (f.type === 'select') el = h('select', { class: 'input', id }, ...f.options.map(([o, lb]) => h('option', { value: String(o), selected: String(val ?? '') === String(o) }, lb)));
       else if (f.type === 'check') el = h('input', { type: 'checkbox', id, checked: val === undefined ? bag === 'c' : !!val });
       else el = h('input', { class: 'input', id, type: f.type === 'number' ? 'number' : 'text', value: val ?? '' });
-      el.addEventListener('change', () => { readTool(); if (f.k === 'mode') paintTool(); });
+      el.addEventListener('change', () => { readTool(); syncWords(); if (f.k === 'mode') paintTool(); });
+      if (f.type === 'text' || f.type === 'number') el.addEventListener('input', () => { readTool(); syncWords(); });
       toolInputs.push([f, el, bag]);
       into.appendChild(f.type === 'check'
         ? h('label', { class: 'row tool-check', for: id, style: { gap: '8px' } }, el, f.label)
@@ -438,7 +439,29 @@ function editTemplate(t, afterSave) {
     }
     toolFields.appendChild(h('p', { class: 'muted small-note', style: { margin: 0 } }, '문제 칸을 비워 두면 알맞은 문제 글을 자동으로 넣어요.'));
   }
-  toolSel.addEventListener('change', () => { readTool(); kind = toolSel.value; paintTool(); schedule(); });
+  toolSel.addEventListener('change', () => { readTool(); kind = toolSel.value; paintTool(); lastSnap = null; syncWords(); schedule(); });
+
+  // 시각·수를 바꾸면 문제 글과 템플릿 이름 속 같은 낱말도 함께 바꿔요 (선생님이 직접 쓴 글도)
+  let lastSnap = null;
+  function syncWords() {
+    if (!WIDGETS[kind]) return;
+    const w = WIDGETS[kind];
+    const r = toolContent();
+    if (w.validate && w.validate(r.content)) return;   // 쓰는 중인 값(예: "1")은 건너뛰어요
+    const tok = w.tokens ? w.tokens(r.content, r.key) : [];
+    const snap = { kind, tok: lastSnap && lastSnap.kind === kind ? tok.map((v, i) => (v == null ? lastSnap.tok[i] : v)) : tok, q: w.defaultQuestion(r.content, r.key) };
+    if (lastSnap && lastSnap.kind === kind) {
+      const before = lastSnap.tok, after = snap.tok;
+      if (q.value.trim()) {
+        q.value = q.value.trim() === lastSnap.q.trim() ? snap.q : syncText(q.value, before, after);
+      }
+      if (title.value.trim()) {
+        const flat = (x) => x.replace(/\s*\n\s*/g, ' ');
+        title.value = title.value.trim() === flat(lastSnap.q).slice(0, 30) ? flat(snap.q).slice(0, 30) : syncText(title.value, before, after);
+      }
+    }
+    lastSnap = snap;
+  }
   function toolContent() {
     const w = WIDGETS[kind];
     const v = readTool();
@@ -746,6 +769,7 @@ function editTemplate(t, afterSave) {
   openModal(t ? '템플릿 고치기' : '새 템플릿', body, buttons, 'wide');
   paintKinds();
   paintTool();
+  syncWords();   // 처음 값을 기억해 둬요
   paintGrade();
   paintPreview();
 }

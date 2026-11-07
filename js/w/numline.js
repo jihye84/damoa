@@ -2,8 +2,8 @@
 // content: { min, max, step(큰 눈금 간격), minor(큰 눈금 사이 칸 수), labels: 'all'|'major'|'ends', fmt: 'int'|'frac'|'dec', mode, start }
 // answer:  point → { i } (작은 눈금 번호)   jump → { path: [i0, i1, …] }
 // answer_key: point → { value }   jump → { end, size }
-import { h } from '../common.js?v=202611072130';
-import { s, svgRoot, toSvg, makeState, wrap, num, clamp, parseNum, eul } from './base.js?v=202611072130';
+import { h } from '../common.js?v=202611072148';
+import { s, svgRoot, toSvg, makeState, wrap, num, clamp, parseNum, eul } from './base.js?v=202611072148';
 
 function shape(c) {
   const min = num(parseNum(c.min), 0), max = num(parseNum(c.max), 10);
@@ -52,6 +52,7 @@ export const numline = {
     if (sh.N > 60) return '눈금이 너무 많아요 (60칸까지)';
     return null;
   },
+  tokens(c, k) { k = k || {}; return c.mode === 'jump' ? [c.start, k.size, k.end] : [k.value]; },
   defaultQuestion(c, k) {
     if (c.mode === 'jump') return k && k.size ? `${c.start}에서 ${k.size}씩 뛰어 세어\n${k.end}까지 가 보세요.` : '수직선에서\n뛰어 세어 보세요.';
     return k && k.value ? `${eul(k.value)}\n수직선에 나타내 보세요.` : '수직선에\n점을 찍어 보세요.';

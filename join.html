@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#EEF6F4">
 <title>다모아 · 학생</title>
-<script src="js/inapp.js?v=202611071721"></script>
+<script src="js/inapp.js?v=202611071758"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Jua&display=swap">
-<link rel="stylesheet" href="css/app.css?v=202611071721">
-<link rel="stylesheet" href="css/student.css?v=202611071721">
+<link rel="stylesheet" href="css/app.css?v=202611071758">
+<link rel="stylesheet" href="css/student.css?v=202611071758">
 </head>
 <body class="kid">
 <div class="app">
@@ -35,6 +35,26 @@
     <h1 class="kid-title center-text">내 이름을 눌러요</h1>
     <div id="names-grid" class="names-grid grow"></div>
     <p class="names-help">회색 이름은 이미 친구가 들어왔어요. 내 이름이 회색이면 선생님께 말해요.</p>
+  </section>
+
+  <!-- 이름·별명 쓰고 들어오기 -->
+  <section id="v-nick" class="screen center" hidden>
+    <div class="row kid-head nick-head">
+      <div class="logo">다모아</div>
+      <div id="nick-title" class="pill"></div>
+    </div>
+    <form id="nick-form" class="nick-form">
+      <label for="nick-input" class="kid-title">이름이나 별명을 써요</label>
+      <input id="nick-input" class="nick-input" maxlength="12" autocomplete="off" enterkeyhint="go" aria-describedby="nick-help">
+      <div id="nick-help" class="muted">12글자까지 쓸 수 있어요</div>
+      <div class="nick-row">
+        <button type="button" id="nick-make" class="kid-btn soft">
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
+          별명 만들어 줘요
+        </button>
+        <button type="submit" class="kid-btn">들어가기</button>
+      </div>
+    </form>
   </section>
 
   <!-- 기다리기 -->
@@ -183,6 +203,6 @@
     <div class="dots" aria-label="불러오는 중"><span></span><span></span><span></span></div>
   </div>
 </div>
-<script type="module" src="js/student.js?v=202611071721"></script>
+<script type="module" src="js/student.js?v=202611071758"></script>
 </body>
 </html>

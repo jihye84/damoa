@@ -1,5 +1,5 @@
-import { createClient } from '../vendor/supabase.js?v=202611071721';
-import { SUPABASE_URL, SUPABASE_KEY } from './config.js?v=202611071721';
+import { createClient } from '../vendor/supabase.js?v=202611071758';
+import { SUPABASE_URL, SUPABASE_KEY } from './config.js?v=202611071758';
 
 // 선생님 PC와 학생 태블릿의 로그인을 따로 보관 (같은 기기에서 둘 다 열어도 섞이지 않게)
 export function makeClient(role) {
@@ -44,6 +44,7 @@ export function toast(msg, ms = 2600) {
 }
 
 const ERRORS = {
+  name_taken: '이미 친구가 쓰는 이름이에요. 다른 이름을 써요.',
   no_session: '열려 있는 수업을 찾지 못했어요.',
   entry_closed: '입장이 마감됐어요. 선생님께 말해요.',
   taken: '이미 친구가 고른 이름이에요.',
@@ -54,6 +55,8 @@ const ERRORS = {
   screen_locked: '지금은 화면이 잠겨 있어요.',
   session_ended: '수업이 끝났어요.',
   teacher_only: '선생님만 할 수 있어요.',
+  bad_name: '이름은 1~12글자로 써요.',
+  roster_only: '이 수업은 명렬표에서 이름을 골라요.',
   'Invalid login credentials': '이메일이나 비밀번호가 맞지 않아요.',
   'Email not confirmed': '이메일 인증을 먼저 해 주세요. 받은편지함을 확인해 주세요.',
   'User already registered': '이미 가입된 이메일이에요. 로그인해 주세요.',
@@ -82,6 +85,22 @@ export function stampEl(key, cls = 'stamp') {
   const lines = words.length > 1 ? [words[0], words.slice(1).join(' ')] : [s.label];
   return h('div', { class: cls, role: 'img', 'aria-label': '도장: ' + s.label, style: { color: s.color, borderColor: s.color } },
     ...lines.map((l) => h('span', null, l)));
+}
+
+// 화면에 보이는 학생 이름: 명렬표 학생은 "3번 다겸", 이름을 쓰고 들어온 학생은 이름만
+export function who(s) { return s.number > 0 ? `${s.number}번 ${s.name}` : s.name; }
+
+// 별명 만들어 주기
+const NICK_A = ['반짝이는', '용감한', '느긋한', '씩씩한', '졸린', '신나는', '수줍은', '똑똑한', '배고픈', '노래하는',
+  '춤추는', '꿈꾸는', '웃는', '날쌘', '튼튼한', '다정한', '호기심 많은', '부지런한', '엉뚱한', '빛나는'];
+const NICK_B = ['수달', '판다', '고래', '다람쥐', '펭귄', '여우', '부엉이', '코알라', '햄스터', '거북이', '고슴도치',
+  '토끼', '돌고래', '사자', '기린', '해달', '알파카', '참새', '두더지', '물개', '너구리', '오리', '곰', '호랑이'];
+export function makeNickname() {
+  const pick = (a) => a[Math.floor(Math.random() * a.length)];
+  for (;;) {
+    const n = `${pick(NICK_A)} ${pick(NICK_B)}`;
+    if (n.length <= 12) return n;
+  }
 }
 
 export const KINDS = {

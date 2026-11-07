@@ -1,8 +1,8 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl } from './common.js?v=202611071721';
-import { renderSheet, isCorrect, loadMap } from './sheet.js?v=202611071721';
-import { openLibrary } from './library.js?v=202611071721';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611071721';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611071758';
+import { renderSheet, isCorrect, loadMap } from './sheet.js?v=202611071758';
+import { openLibrary } from './library.js?v=202611071758';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611071758';
 
 const sb = makeClient('teacher');
 
@@ -28,7 +28,10 @@ const st = {
   oneId: null,              // 한 명 보기 중인 student_id
   pickStamp: null,
   tickTimer: null,
+  openSessions: [],         // 열려 있는 수업들 (반마다 하나씩 열어 둘 수 있어요)
+  joinMode: (() => { try { return localStorage.getItem('damoa-joinmode') || 'roster'; } catch (_) { return 'roster'; } })(),
 };
+const isOpenMode = () => !!(st.session && st.session.join_mode === 'open');
 
 const views = ['v-auth', 'v-home', 'v-live'];
 function show(id) {
@@ -132,17 +135,38 @@ async function afterLogin() {
   st.teacher = t;
   $('#me-name').textContent = (t && t.display_name) || user.email;
   await loadHome();
-  // 열려 있는 수업이 있으면 바로 이어서
-  const { data: open } = await sb.from('sessions').select('*').eq('status', 'open')
-    .order('created_at', { ascending: false }).limit(1);
-  if (open && open[0]) {
-    $('#resume-box').hidden = false;
-    $('#resume').onclick = () => enterLive(open[0]);
-  } else {
-    $('#resume-box').hidden = true;
-  }
   show('v-home');
 }
+
+async function loadOpenSessions() {
+  const { data } = await sb.from('sessions').select('*').eq('status', 'open').order('created_at', { ascending: false });
+  st.openSessions = data || [];
+}
+const openSessionOf = (classId) => st.openSessions.find((x) => x.class_id === classId) || null;
+
+// 선택한 반에 열려 있는 수업이 있으면 "이어서 하기"
+function paintResume() {
+  const s = openSessionOf(st.classId);
+  const others = st.openSessions.length - (s ? 1 : 0);
+  $('#resume-box').hidden = !s && !others;
+  $('#resume-text').textContent = s ? '이 반은 수업 중이에요.' : `열려 있는 수업이 ${others}개 있어요.`;
+  $('#resume').textContent = s ? '이어서 하기' : '수업 고르기';
+  $('#resume').onclick = () => (s ? enterLive(s) : openClassSwitch());
+  $('#start-session').textContent = s ? '이어서 하기' : '수업 시작';
+}
+
+// 들어오는 방법 고르기 (홈·입장 화면 공용)
+function paintJoinMode(box, mode) {
+  box.querySelectorAll('button[data-mode]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.mode === mode ? 'true' : 'false'));
+}
+$('#join-mode').addEventListener('click', (e) => {
+  const b = e.target.closest('button[data-mode]');
+  if (!b) return;
+  st.joinMode = b.dataset.mode;
+  try { localStorage.setItem('damoa-joinmode', st.joinMode); } catch (_) {}
+  paintJoinMode($('#join-mode'), st.joinMode);
+});
+paintJoinMode($('#join-mode'), st.joinMode);
 
 // =====================================================================
 // 홈: 반 · 명렬표 · 템플릿
@@ -154,12 +178,14 @@ async function loadHome() {
   ]);
   st.classes = classes || [];
   st.templates = templates || [];
+  await loadOpenSessions();
   if (!st.classId || !st.classes.find((c) => c.id === st.classId)) {
     st.classId = st.classes[0] ? st.classes[0].id : null;
   }
   renderClasses();
   renderTemplates();
   await loadRoster();
+  paintResume();
 }
 
 function renderClasses() {
@@ -173,8 +199,10 @@ function renderClasses() {
     box.appendChild(h('button', {
       type: 'button',
       class: 'list-item' + (c.id === st.classId ? ' on' : ''),
-      onclick: async () => { st.classId = c.id; renderClasses(); await loadRoster(); },
-    }, h('span', { class: 'tname' }, c.name), h('span', { class: 'meta' }, c.school_year + '년')));
+      onclick: async () => { st.classId = c.id; renderClasses(); await loadRoster(); paintResume(); },
+    }, h('span', { class: 'tname' }, c.name),
+      openSessionOf(c.id) ? h('span', { class: 'live-badge' }, '수업 중') : null,
+      h('span', { class: 'meta' }, c.school_year + '년')));
   }
 }
 
@@ -569,12 +597,90 @@ function openViewer(startT, { sending = false } = {}) {
 // 수업 시작
 // =====================================================================
 $('#start-session').addEventListener('click', async () => {
+  const open = openSessionOf(st.classId);
+  if (open) { await enterLive(open); return; }
+  if (!st.classId && st.joinMode === 'open') {
+    // 반이 없어도 "누구나 들어오기" 수업은 열 수 있게 반 하나를 만들어 둬요
+    const { data, error } = await sb.from('classes').insert({ name: '누구나 수업' }).select().single();
+    if (error) { toast(errMsg(error)); return; }
+    st.classId = data.id;
+    st.classes.push(data);
+  }
   if (!st.classId) { toast('먼저 반을 만들어 주세요'); return; }
-  if (!st.students.length) { toast('먼저 명렬표를 넣어 주세요'); return; }
-  const { data, error } = await sb.rpc('start_session', { p_class: st.classId, p_title: $('#session-title').value.trim() });
-  if (error) { toast(errMsg(error)); return; }
-  await enterLive(data);
+  if (st.joinMode === 'roster' && !st.students.length) {
+    toast('명렬표가 비어 있어요. 이름을 넣거나 "누구나 들어오기"로 시작해요', 4500);
+    return;
+  }
+  const session = await startSessionFor(st.classId, $('#session-title').value.trim(), st.joinMode);
+  if (session) await enterLive(session);
 });
+
+async function startSessionFor(classId, title, mode) {
+  const { data, error } = await sb.rpc('start_session', { p_class: classId, p_title: title || '' });
+  if (error) { toast(errMsg(error)); return null; }
+  if (mode === 'open') {
+    const r = await sb.from('sessions').update({ join_mode: 'open' }).eq('id', data.id).select().single();
+    if (r.error) { toast('누구나 들어오기를 켜지 못했어요. 05_open_join.sql을 실행했는지 확인해 주세요.', 6000); return data; }
+    return r.data;
+  }
+  return data;
+}
+
+// ---------- 반 바꾸기 (여러 반을 가르치는 교과 선생님) ----------
+async function openClassSwitch() {
+  await loadOpenSessions();
+  const cur = st.session;
+  const endCur = h('input', { type: 'checkbox', id: 'sw-end', checked: true });
+  const list = h('div', { class: 'pick-list' });
+  for (const c of st.classes) {
+    const open = openSessionOf(c.id);
+    const here = cur && cur.class_id === c.id;
+    list.appendChild(h('button', {
+      type: 'button', class: 'list-item' + (here ? ' on' : ''), disabled: here,
+      onclick: () => switchTo(c, endCur.checked && !!cur),
+    }, h('span', { class: 'tname' }, c.name),
+      here ? h('span', { class: 'meta' }, '지금 이 반') : open ? h('span', { class: 'live-badge' }, '수업 중 · 이어서') : h('span', { class: 'meta' }, '새로 시작')));
+  }
+  if (!st.classes.length) list.appendChild(h('div', { class: 'empty' }, '반이 없어요. 홈에서 반을 만들어 주세요.'));
+  const body = h('div', { class: 'col' },
+    h('p', { class: 'muted', style: { margin: 0 } }, '옮겨 갈 반을 누르세요. 그 반에 열려 있는 수업이 있으면 이어서 하고, 없으면 새 QR로 시작해요.'),
+    list,
+    cur ? h('label', { class: 'row', for: 'sw-end', style: { gap: '8px' } }, endCur,
+      `지금 수업(${(st.classes.find((c) => c.id === cur.class_id) || {}).name || ''})은 끝내고 옮겨요`) : null);
+  openModal('반 바꾸기', body, []);
+}
+
+async function switchTo(c, endCurrent) {
+  closeModal();
+  const cur = st.session;
+  if (cur && endCurrent) {
+    await sb.from('sessions').update({ status: 'ended', entry_open: false, screen_mode: 'normal', ended_at: new Date().toISOString() }).eq('id', cur.id);
+  }
+  leaveLive();
+  await loadOpenSessions();
+  let target = openSessionOf(c.id);
+  if (!target) {
+    st.classId = c.id;
+    const mode = cur ? cur.join_mode : st.joinMode;
+    const { count } = await sb.from('students').select('id', { count: 'exact', head: true }).eq('class_id', c.id).eq('active', true);
+    const useMode = mode === 'roster' && !count ? 'open' : mode;
+    if (useMode !== mode) toast(`${c.name}은(는) 명렬표가 비어 있어서 누구나 들어오기로 시작했어요`, 4500);
+    target = await startSessionFor(c.id, cur ? cur.title : $('#session-title').value.trim(), useMode);
+    if (!target) { await afterLogin(); return; }
+  }
+  await enterLive(target);
+  toast(`${c.name} 수업으로 옮겼어요`);
+}
+
+function leaveLive() {
+  if (st.channel) sb.removeChannel(st.channel);
+  st.channel = null;
+  if (st.tickTimer) clearInterval(st.tickTimer);
+  st.tickTimer = null;
+  st.session = null;
+  st.assignment = null;
+  st.view = 'grid';
+}
 
 async function enterLive(session) {
   st.session = session;
@@ -583,8 +689,8 @@ async function enterLive(session) {
   $('#live-class').textContent = cls ? cls.name : '';
   $('#live-title').textContent = session.title || '';
 
-  const { data: students } = await sb.from('students').select('*').eq('class_id', session.class_id).eq('active', true).order('number');
-  st.sessionStudents = students || [];
+  await loadSessionStudents();
+  paintJoinMode($('#live-join-mode'), session.join_mode || 'roster');
 
   await reloadParticipants();
   subscribeLive();
@@ -600,6 +706,55 @@ async function enterLive(session) {
   show('v-live');
 }
 
+// 이 수업의 학생: 명렬표 학생(명렬표 모드) + 이름을 쓰고 들어온 학생
+async function loadSessionStudents() {
+  const session = st.session;
+  const [roster, guests] = await Promise.all([
+    isOpenMode() ? Promise.resolve({ data: [] })
+      : sb.from('students').select('*').eq('class_id', session.class_id).eq('active', true).order('number'),
+    sb.from('students').select('*').eq('guest_session', session.id).order('created_at'),
+  ]);
+  st.sessionStudents = [...(roster.data || []), ...(guests.error ? [] : guests.data || [])];
+}
+
+// 답안판에 보일 학생: 누구나 들어오기면 들어와 있거나 답을 낸 학생만
+function boardStudents() {
+  if (!isOpenMode()) return st.sessionStudents;
+  const sent = new Set();
+  for (const set of st.subCounts.values()) for (const id of set) sent.add(id);
+  return st.sessionStudents.filter((s) => s.number > 0 || st.participants.has(s.id) || sent.has(s.id));
+}
+
+// 처음 보는 학생이 들어오면 (이름을 쓰고 들어온 학생) 이름을 받아 와요
+async function ensureStudent(id) {
+  const old = st.sessionStudents.find((x) => x.id === id);
+  if (old && !old.guest_session) return;
+  const { data } = await sb.from('students').select('*').eq('id', id).maybeSingle();
+  if (!data) return;
+  if (old) {
+    Object.assign(old, data);   // 이름을 바꿨을 수도 있어요
+    const nm = document.querySelector('#tile-' + id + ' .tile-name');
+    if (nm) nm.textContent = data.name;
+  }
+  else st.sessionStudents.push(data);
+  renderJoin();
+  renderTiles();
+  renderTabs();
+}
+
+$('#live-join-mode').addEventListener('click', async (e) => {
+  const b = e.target.closest('button[data-mode]');
+  if (!b || !st.session || b.dataset.mode === st.session.join_mode) return;
+  if (!(await updateSession({ join_mode: b.dataset.mode }))) return;
+  paintJoinMode($('#live-join-mode'), st.session.join_mode);
+  await loadSessionStudents();
+  renderJoin();
+  renderTiles();
+  renderTabs();
+  toast(isOpenMode() ? 'QR이 있는 누구나 이름을 쓰고 들어올 수 있어요' : '명렬표에서 이름을 골라 들어와요');
+});
+$('#live-class').addEventListener('click', openClassSwitch);
+
 async function reloadParticipants() {
   const { data } = await sb.from('session_participants').select('*').eq('session_id', st.session.id);
   st.participants = new Map((data || []).map((p) => [p.student_id, p]));
@@ -612,9 +767,13 @@ function subscribeLive() {
   const sid = st.session.id;
   st.channel = sb.channel('tch-' + sid)
     .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'session_participants', filter: 'session_id=eq.' + sid },
-      (p) => { st.participants.set(p.new.student_id, p.new); renderJoin(); renderTile(p.new.student_id); })
+      (p) => { st.participants.set(p.new.student_id, p.new); renderJoin(); renderTile(p.new.student_id); ensureStudent(p.new.student_id); })
     .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'session_participants', filter: 'session_id=eq.' + sid },
-      (p) => { st.participants.set(p.new.student_id, p.new); renderJoin(); renderTile(p.new.student_id); })
+      (p) => {
+        const before = st.participants.get(p.new.student_id);
+        st.participants.set(p.new.student_id, p.new); renderJoin(); renderTile(p.new.student_id);
+        if (!before || !st.sessionStudents.some((x) => x.id === p.new.student_id)) ensureStudent(p.new.student_id);
+      })
     .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'session_participants' },
       () => reloadParticipants())
     .on('postgres_changes', { event: '*', schema: 'public', table: 'submissions', filter: 'session_id=eq.' + sid },
@@ -652,26 +811,34 @@ function renderJoin() {
   if (!st.session) return;
   const grid = $('#join-grid');
   grid.innerHTML = '';
-  const n = st.sessionStudents.length;
+  const open = isOpenMode();
+  // 누구나 들어오기: 들어온 학생만 보여요
+  const list = open ? st.sessionStudents.filter((s) => st.participants.has(s.id)) : st.sessionStudents;
+  const n = list.length;
   const cols = n > 30 ? 7 : 6;
   grid.style.gridTemplateColumns = `repeat(${cols}, minmax(0, 1fr))`;
+  // 몇 명 없을 때 이름 칸이 너무 커지지 않게 줄 수를 최소 6줄로
+  grid.style.gridTemplateRows = `repeat(${Math.max(6, Math.ceil(n / cols))}, minmax(0, 1fr))`;
   let joined = 0;
-  for (const s of st.sessionStudents) {
+  for (const s of list) {
     const p = st.participants.get(s.id);
     if (p) joined++;
     const cls = p ? (isAway(p) ? 'join-chip out' : 'join-chip in') : 'join-chip';
     grid.appendChild(h('button', {
-      type: 'button', class: cls,
-      'aria-label': `${s.number}번 ${s.name}, ${p ? (isAway(p) ? '다른 앱으로 나감' : '들어왔어요') : '아직이에요'}`,
+      type: 'button', class: cls + (s.number > 0 ? '' : ' guest'),
+      'aria-label': `${who(s)}, ${p ? (isAway(p) ? '다른 앱으로 나감' : '들어왔어요') : '아직이에요'}`,
       onclick: () => p && kick(s),
-    }, h('span', { class: 'no' }, s.number + '번'), h('span', { class: 'nm' }, s.name)));
+    }, s.number > 0 ? h('span', { class: 'no' }, s.number + '번') : null, h('span', { class: 'nm' }, s.name)));
+  }
+  if (open && !n) {
+    grid.appendChild(h('div', { class: 'empty join-empty' }, '아이들이 QR을 찍고\n이름이나 별명을 쓰면\n여기에 나타나요.'));
   }
   $('#join-n').textContent = joined;
-  $('#join-total').textContent = ` / ${n}명`;
+  $('#join-total').textContent = open ? '명 들어왔어요' : ` / ${n}명`;
 }
 
 async function kick(s) {
-  if (!(await confirmBox('내보내기', `${s.number}번 ${s.name}을(를) 내보낼까요? 그 태블릿은 이름 고르기 화면으로 돌아가요.`, '내보내기'))) return;
+  if (!(await confirmBox('내보내기', `${who(s)}을(를) 내보낼까요? 그 태블릿은 이름 고르기 화면으로 돌아가요.`, '내보내기'))) return;
   const { error } = await sb.from('session_participants').delete().eq('session_id', st.session.id).eq('student_id', s.id);
   if (error) toast(errMsg(error));
   await reloadParticipants();
@@ -718,9 +885,7 @@ $('#btn-entry').addEventListener('click', () => updateSession({ entry_open: !st.
 $('#btn-end').addEventListener('click', async () => {
   if (!(await confirmBox('수업 끝내기', '수업을 끝낼까요? 아이들 화면에 "수업이 끝났어요"가 뜨고 QR은 더 이상 쓸 수 없어요. 낸 답안은 그대로 남아요.', '끝내기'))) return;
   if (await updateSession({ status: 'ended', entry_open: false, screen_mode: 'normal', ended_at: new Date().toISOString() })) {
-    if (st.channel) sb.removeChannel(st.channel);
-    if (st.tickTimer) clearInterval(st.tickTimer);
-    st.session = null;
+    leaveLive();
     await afterLogin();
     toast('수업을 끝냈어요. 수고하셨어요!');
   }
@@ -763,7 +928,7 @@ function renderTabs() {
   const box = $('#asg-tabs');
   box.innerHTML = '';
   box.hidden = st.asgList.length < 2;
-  const total = st.sessionStudents.length;
+  const total = boardStudents().length;
   st.asgList.forEach((a, i) => {
     const on = st.assignment && st.assignment.id === a.id;
     const n = (st.subCounts.get(a.id) || new Set()).size;
@@ -852,7 +1017,7 @@ function gridShape(n) {
 function renderTiles() {
   if (!st.session || !st.assignment || $('#board').hidden || st.view !== 'grid') return;
   const box = $('#tiles');
-  const list = st.sessionStudents;
+  const list = boardStudents();
   const shape = gridShape(list.length);
   box.style.gridTemplateColumns = `repeat(${shape.cols}, minmax(0, 1fr))`;
   box.style.gridTemplateRows = `repeat(${shape.rows}, minmax(0, 1fr))`;
@@ -863,7 +1028,7 @@ function renderTiles() {
     box.dataset.aid = st.assignment.id;
     for (const s of list) {
       box.appendChild(h('button', { type: 'button', class: 'tile', id: 'tile-' + s.id, onclick: () => openOne(s.id) },
-        h('div', { class: 'tile-head' }, h('span', { class: 'tile-name' }, `${s.number}. ${s.name}`), h('span', { class: 'badge' })),
+        h('div', { class: 'tile-head' }, h('span', { class: 'tile-name' }, s.number > 0 ? `${s.number}. ${s.name}` : s.name), h('span', { class: 'badge' })),
         h('div', { class: 'tile-body' })));
     }
   }
@@ -879,7 +1044,7 @@ function renderTile(studentId) {
   const t = tileState(s);
   el.className = 'tile ' + t.cls;
   el.querySelector('.badge').textContent = t.badge;
-  el.setAttribute('aria-label', `${s.number}번 ${s.name}, ${t.badge}`);
+  el.setAttribute('aria-label', `${who(s)}, ${t.badge}`);
   const body = el.querySelector('.tile-body');
   const sub = st.subs.get(studentId);
   const sig = sub ? sub.updated_at : '';
@@ -907,7 +1072,7 @@ function renderTile(studentId) {
 function renderStats() {
   if (!st.assignment) return;
   let ok = 0, no = 0, done = 0, wip = 0, away = 0, late = 0;
-  for (const s of st.sessionStudents) {
+  for (const s of boardStudents()) {
     const t = tileState(s).cls;
     if (t === 'ok') ok++; else if (t === 'no') no++; else if (t === 'done') done++;
     else if (t === 'wip') wip++; else if (t === 'away') away++; else if (t === 'late') late++;
@@ -915,7 +1080,7 @@ function renderStats() {
   const sent = ok + no + done;
   const box = $('#board-stats');
   box.innerHTML = '';
-  box.appendChild(h('span', null, h('b', { style: { fontSize: '20px', color: 'var(--teal)' } }, sent), ` / ${st.sessionStudents.length}명 냈어요`));
+  box.appendChild(h('span', null, h('b', { style: { fontSize: '20px', color: 'var(--teal)' } }, sent), ` / ${boardStudents().length}명 냈어요`));
   const item = (color, label, n, ring) => h('span', null,
     h('span', { class: 'dot', style: ring ? { border: '2px solid #A9A392' } : { background: color } }), `${label} ${n}`);
   if (st.key) { box.appendChild(item('var(--teal)', '맞았어요', ok)); box.appendChild(item('var(--orange)', '다시 볼까요', no)); }
@@ -969,7 +1134,7 @@ function renderOne() {
     return;
   }
   $('#fb-send').disabled = false;
-  $('#one-name').textContent = `${s.number}번 ${s.name}`;
+  $('#one-name').textContent = who(s);
   const time = new Date(sub.updated_at).toLocaleTimeString('ko-KR', { hour: 'numeric', minute: '2-digit' });
   $('#one-sub').textContent = `${time}에 냈어요 · ${list.length}명 중 ${list.indexOf(s) + 1}번째`;
   oneSheet = renderSheet($('#one-sheet'), st.assignment.content, { answer: sub.answer, correctIndex: st.key ? st.key.correct : null, mapTargets: st.key ? st.key.targets : null });

@@ -1,6 +1,6 @@
 // 다모아 학생 태블릿
-import { makeClient, h, $, toast, errMsg, stampEl } from './common.js?v=202611071721';
-import { renderSheet } from './sheet.js?v=202611071721';
+import { makeClient, h, $, toast, errMsg, stampEl, makeNickname } from './common.js?v=202611071758';
+import { renderSheet } from './sheet.js?v=202611071758';
 
 const sb = makeClient('student');
 const CLAIM_KEY = 'damoa-claim';
@@ -25,11 +25,11 @@ const st = {
 };
 
 // ---------------- 화면 전환 ----------------
-const screens = ['v-code', 'v-names', 'v-wait', 'v-work', 'v-garden'];
+const screens = ['v-code', 'v-names', 'v-nick', 'v-wait', 'v-work', 'v-garden'];
 function show(id) {
   for (const s of screens) $('#' + s).hidden = s !== id;
   $('#ov-loading').hidden = true;
-  if (id !== 'v-names') stopRosterPolling();
+  if (id !== 'v-names' && id !== 'v-nick') stopRosterPolling();
 }
 function overlay(id, on) { $('#' + id).hidden = !on; }
 
@@ -82,6 +82,16 @@ $('#code-form').addEventListener('submit', async (e) => {
 
 // ---------------- 이름 고르기 ----------------
 async function showNames(code) {
+  // 이 수업은 어떻게 들어오나요? (명렬표 / 누구나 이름 쓰기)
+  const info = await sb.rpc('session_info', { p_code: code });
+  if (info.error && !/session_info|function/i.test(info.error.message || '')) {
+    toast(errMsg(info.error), 5000);
+    show('v-code');
+    $('#code-input').value = code;
+    return;
+  }
+  const row = info.data && info.data[0];
+  if (row && row.join_mode === 'open') { showNick(code, row.session_title); return; }
   const { data, error } = await sb.rpc('session_roster', { p_code: code });
   if (error) {
     toast(errMsg(error), 5000);
@@ -113,13 +123,57 @@ function renderNames(rows) {
   });
 }
 
-function startRosterPolling(code) {
+function startRosterPolling(code, mode = 'roster') {
   stopRosterPolling();
   st.rosterTimer = setInterval(async () => {
+    // 선생님이 들어오는 방법을 바꾸면 화면도 따라 바뀌어요
+    const info = await sb.rpc('session_info', { p_code: code });
+    const m = info.data && info.data[0] ? info.data[0].join_mode : mode;
+    if (m !== mode) { showNames(code); return; }
+    if (mode !== 'roster') return;
     const { data, error } = await sb.rpc('session_roster', { p_code: code });
     if (!error && data) renderNames(data);
   }, 4000);
 }
+
+// ---------------- 이름·별명 쓰고 들어오기 ----------------
+function showNick(code, title) {
+  $('#nick-title').textContent = title || '수업에 들어가요';
+  const inp = $('#nick-input');
+  if (!inp.value) {
+    let last = '';
+    try { last = localStorage.getItem('damoa-nick') || ''; } catch (_) {}
+    inp.value = last;
+  }
+  show('v-nick');
+  startRosterPolling(code, 'open');
+}
+$('#nick-make').addEventListener('click', () => {
+  $('#nick-input').value = makeNickname();
+});
+$('#nick-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const name = $('#nick-input').value.replace(/\s+/g, ' ').trim();
+  if (!name) { toast('이름이나 별명을 써요'); $('#nick-input').focus(); return; }
+  try { if (!document.fullscreenElement) document.documentElement.requestFullscreen({ navigationUI: 'hide' }).catch(() => {}); } catch (_) {}
+  $('#nick-input').blur();
+  const { data, error } = await sb.rpc('join_open', { p_code: st.code, p_name: name });
+  if (error) {
+    toast(errMsg(error), 4000);
+    if (/roster_only/.test(error.message || '')) showNames(st.code);
+    return;
+  }
+  const r = data && data[0];
+  try { localStorage.setItem('damoa-nick', r.name); } catch (_) {}
+  const claim = { code: st.code, sessionId: r.session_id, studentId: r.student_id, name: r.name, number: 0, guest: true };
+  saveClaim(claim);
+  const why = await enterSession(claim);
+  if (why !== true) {
+    toast('수업에 들어가지 못했어요. ' + why, 6000);
+    saveClaim(null);
+    showNick(st.code);
+  }
+});
 function stopRosterPolling() { if (st.rosterTimer) { clearInterval(st.rosterTimer); st.rosterTimer = null; } }
 
 // 들어가지 못했을 때 이유를 화면에 남겨 둬요 (선생님이 보고 알려 줄 수 있게)
@@ -170,8 +224,9 @@ async function enterSession(claim) {
   st.claim = claim;
   if (!(await stillJoined())) { st.claim = null; return 'participants: 내 입장 기록이 안 보여요'; }
 
-  const label = `${claim.number}번 ${claim.name}`;
+  const label = claim.number > 0 ? `${claim.number}번 ${claim.name}` : claim.name;
   $('#wait-name').textContent = label;
+  $('#not-me').textContent = claim.guest ? '이름을 바꿀래요' : '내 이름이 아니에요';
   $('#work-name').textContent = label;
 
   subscribe(claim.sessionId);
@@ -656,6 +711,15 @@ async function showFeedback(fb, onlyIfNew) {
 }
 
 $('#not-me').addEventListener('click', async () => {
+  // 이름을 쓰고 들어왔으면 나가지 않고 이름만 다시 써요
+  if (st.claim && st.claim.guest) {
+    const keep = st.claim.name;
+    cleanup();
+    saveClaim(null);
+    $('#nick-input').value = keep;
+    showNames(st.code);
+    return;
+  }
   if (st.claim) await sb.rpc('leave_session', { p_session: st.claim.sessionId });
   cleanup();
   saveClaim(null);

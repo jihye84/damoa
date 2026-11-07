@@ -210,3 +210,14 @@
 .lib-thumb { flex: none; width: 208px; height: 130px; pointer-events: none; }
 .lib-thumb .sheet { border-radius: 10px; }
 .lib-item { align-items: center; }
+
+/* 들어오는 방법 · 반 바꾸기 */
+.join-mode { flex: none; }
+.join-mode button { flex: none; }
+.live-badge { flex: none; font-size: 12px; font-weight: 700; color: #fff; background: var(--teal); border-radius: 999px; padding: 3px 9px; }
+.class-switch { border: 1px solid var(--line-2); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font: inherit; font-weight: 700; }
+.class-switch::after { content: ''; width: 7px; height: 7px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-2px) rotate(45deg); opacity: 0.6; }
+.class-switch:hover { border-color: var(--teal); }
+.join-chip.guest .nm { font-size: 17px; }
+.join-empty { grid-column: 1 / -1; grid-row: 2 / span 3; text-align: center; align-self: center; font-size: 18px; }
+@media (max-width: 1280px) { .home-foot .title-input { width: 200px; } }

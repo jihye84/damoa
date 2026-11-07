@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>다모아 · 선생님</title>
-<script src="js/inapp.js?v=202611071721"></script>
+<script src="js/inapp.js?v=202611071758"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Jua&display=swap">
-<link rel="stylesheet" href="css/app.css?v=202611071721">
-<link rel="stylesheet" href="css/teacher.css?v=202611071721">
+<link rel="stylesheet" href="css/app.css?v=202611071758">
+<link rel="stylesheet" href="css/teacher.css?v=202611071758">
 </head>
 <body>
 <div class="app" id="app">
@@ -70,10 +70,14 @@
     </div>
     <div class="home-foot">
       <div id="resume-box" class="row" hidden>
-        <span>열려 있는 수업이 있어요.</span>
+        <span id="resume-text">열려 있는 수업이 있어요.</span>
         <button type="button" id="resume" class="btn">이어서 하기</button>
       </div>
       <div class="spacer"></div>
+      <div id="join-mode" class="seg small join-mode" role="group" aria-label="아이들이 들어오는 방법">
+        <button type="button" data-mode="roster" aria-pressed="true">명렬표에서 이름 고르기</button>
+        <button type="button" data-mode="open" aria-pressed="false">QR 있는 누구나 · 이름 쓰기</button>
+      </div>
       <label class="row muted" for="session-title">수업 이름</label>
       <input id="session-title" class="input title-input" placeholder="예: 수학 · 덧셈과 뺄셈">
       <button type="button" id="start-session" class="btn primary big">수업 시작</button>
@@ -84,7 +88,7 @@
   <section id="v-live" class="live" hidden>
     <header class="topbar">
       <div class="logo">다모아</div>
-      <div id="live-class" class="pill"></div>
+      <button type="button" id="live-class" class="pill class-switch" aria-label="반 바꾸기"></button>
       <div id="live-title" class="title"></div>
       <div class="spacer"></div>
       <button type="button" id="btn-lobby" class="btn">입장 QR</button>
@@ -115,6 +119,10 @@
             <div class="join-count"><b id="join-n">0</b><span id="join-total"> / 0명</span></div>
           </div>
           <div class="spacer"></div>
+          <div id="live-join-mode" class="seg small join-mode" role="group" aria-label="아이들이 들어오는 방법">
+            <button type="button" data-mode="roster" aria-pressed="true">명렬표</button>
+            <button type="button" data-mode="open" aria-pressed="false">누구나 · 이름 쓰기</button>
+          </div>
           <button type="button" id="btn-entry" class="btn big">입장 마감</button>
         </div>
         <div id="join-grid" class="join-grid grow"></div>
@@ -186,6 +194,6 @@
   </div>
 </div>
 
-<script type="module" src="js/teacher.js?v=202611071721"></script>
+<script type="module" src="js/teacher.js?v=202611071758"></script>
 </body>
 </html>

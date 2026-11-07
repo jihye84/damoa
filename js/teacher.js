@@ -1,7 +1,7 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, joinUrl } from './common.js?v=202611071220';
-import { renderSheet, isCorrect } from './sheet.js?v=202611071220';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611071220';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, joinUrl } from './common.js?v=202611071223';
+import { renderSheet, isCorrect } from './sheet.js?v=202611071223';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611071223';
 
 const sb = makeClient('teacher');
 

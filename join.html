@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#EEF6F4">
 <title>다모아 · 학생</title>
-<script src="js/inapp.js?v=202611071220"></script>
+<script src="js/inapp.js?v=202611071223"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Jua&display=swap">
-<link rel="stylesheet" href="css/app.css?v=202611071220">
-<link rel="stylesheet" href="css/student.css?v=202611071220">
+<link rel="stylesheet" href="css/app.css?v=202611071223">
+<link rel="stylesheet" href="css/student.css?v=202611071223">
 </head>
 <body class="kid">
 <div class="app">
@@ -112,8 +112,17 @@
   <div id="ov-feedback" class="overlay feedback" hidden>
     <div class="fb-title">선생님이 도장을 찍어 주셨어요!</div>
     <div class="fb-body">
-      <div id="fb-stamp" class="fb-stamp"></div>
-      <div id="fb-comment" class="fb-comment" hidden></div>
+      <figure class="fb-mine">
+        <figcaption class="fb-mine-label">내가 보낸 답</figcaption>
+        <div class="fb-mine-paper">
+          <div id="fb-sheet" class="fb-sheet"></div>
+          <div id="fb-stamp" class="fb-stamp"></div>
+        </div>
+      </figure>
+      <div id="fb-comment-wrap" class="fb-comment-wrap">
+        <div class="fb-mine-label">선생님의 한마디</div>
+        <div id="fb-comment" class="fb-comment"></div>
+      </div>
     </div>
     <button id="fb-ok" type="button" class="kid-btn">확인했어요</button>
   </div>
@@ -131,6 +140,6 @@
     <div class="dots" aria-label="불러오는 중"><span></span><span></span><span></span></div>
   </div>
 </div>
-<script type="module" src="js/student.js?v=202611071220"></script>
+<script type="module" src="js/student.js?v=202611071223"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 // 다모아 학생 태블릿
-import { makeClient, h, $, toast, errMsg, stampEl } from './common.js?v=202611071220';
-import { renderSheet } from './sheet.js?v=202611071220';
+import { makeClient, h, $, toast, errMsg, stampEl } from './common.js?v=202611071223';
+import { renderSheet } from './sheet.js?v=202611071223';
 
 const sb = makeClient('student');
 const CLAIM_KEY = 'damoa-claim';
@@ -358,27 +358,38 @@ $('#send').addEventListener('click', async () => {
 
 // ---------------- 도장 받기 ----------------
 const seenKey = 'damoa-fb-seen';
-function showFeedback(fb, onlyIfNew) {
+let fbSheet = null;
+async function showFeedback(fb, onlyIfNew) {
   if (!fb || (!fb.stamp && !fb.comment)) return;
   let seen = {};
   try { seen = JSON.parse(localStorage.getItem(seenKey) || '{}'); } catch (_) {}
   if (onlyIfNew && seen[fb.id] === fb.updated_at) return;
 
+  // 도장
   const holder = $('#fb-stamp');
   holder.innerHTML = '';
   const s = fb.stamp ? stampEl(fb.stamp) : null;
   if (s) holder.appendChild(s);
-  holder.hidden = !s;
   $('.fb-title').textContent = s ? '선생님이 도장을 찍어 주셨어요!' : '선생님이 한마디 남기셨어요!';
-  const c = $('#fb-comment');
-  c.textContent = fb.comment || '';
-  c.hidden = !fb.comment;
+
+  // 한마디
+  $('#fb-comment').textContent = fb.comment || '';
+  $('#fb-comment-wrap').hidden = !fb.comment;
+
+  // 내가 보낸 답 (선생님께 간 그대로)
+  if (fbSheet) { fbSheet.destroy(); fbSheet = null; }
   overlay('ov-feedback', true);
+  if (st.assignment) {
+    const { data: sub } = await sb.from('submissions').select('answer').eq('id', fb.submission_id).maybeSingle();
+    const answer = sub ? sub.answer : (st.sheet ? st.sheet.getAnswer() : {});
+    if (!$('#ov-feedback').hidden) fbSheet = renderSheet($('#fb-sheet'), st.assignment.content || {}, { answer });
+  }
 
   $('#fb-ok').onclick = () => {
     seen[fb.id] = fb.updated_at;
     try { localStorage.setItem(seenKey, JSON.stringify(seen)); } catch (_) {}
     overlay('ov-feedback', false);
+    if (fbSheet) { fbSheet.destroy(); fbSheet = null; }
   };
 }
 

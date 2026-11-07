@@ -59,7 +59,7 @@ body.kid { background: var(--kid-bg); }
 .tool-sep { width: 48px; height: 1px; background: var(--kid-line); }
 .swatch { width: 46px; height: 46px; border-radius: 99px; border: 4px solid #fff; box-shadow: 0 0 0 1px var(--kid-line); }
 .swatch.on { box-shadow: 0 0 0 3px var(--ink); }
-.work-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 14px 24px 16px; gap: 12px; }
+.work-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 8px 12px 8px; gap: 8px; }
 .work-head { height: 40px; flex: none; }
 .sheet-host { min-height: 0; }
 .sheet-host .sheet { box-shadow: 0 6px 0 var(--kid-line); border-radius: 26px; }
@@ -229,3 +229,16 @@ body.kid { background: var(--kid-bg); }
 @media (max-height: 520px) { .kid-btn { height: 56px; font-size: 24px; padding: 0 28px; } }
 /* 작곡 칸: 펜·색은 필요 없어요 (되돌리기만) */
 .is-song .tool[data-tool], .is-song .swatches, .is-song .tool-sep, .is-song #finger { display: none; }
+
+/* 풀기 화면: 종이를 최대한 크게, 아래 한 줄에 이름·상태·전송 */
+.work-bar { flex: none; height: 56px; gap: 10px; min-width: 0; }
+.work-bar .foot-help { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 15px; }
+.work-bar .kid-btn.send { height: 52px; font-size: 26px; padding: 0 30px; margin-left: auto; flex: none; box-shadow: 0 4px 0 var(--teal-d); }
+.work-bar .mode, .work-bar .pile, .work-bar .sent-badge { flex: none; }
+.sheet-host .sheet { border-radius: 20px; }
+@media (max-height: 520px) {
+  .work-bar { height: 44px; }
+  .work-bar .kid-btn.send { height: 42px; font-size: 20px; padding: 0 20px; }
+  .work-bar .mode { height: 34px; font-size: 14px; padding: 0 12px; }
+  .work-bar .sent-badge, .work-bar .pile { font-size: 13px; padding: 5px 10px; }
+}

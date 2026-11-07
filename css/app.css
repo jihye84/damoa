@@ -116,7 +116,7 @@ button:disabled { cursor: default; }
 /* 펜으로 글쓰기 칸 위에 써도 브라우저가 가로채지 않게 (손가락으로 톡 누르면 키보드 입력은 그대로 돼요) */
 .sheet-q {
   flex: none; padding: 3.2cqw 4cqw 0; text-align: center;
-  font-family: var(--round); font-size: 4.4cqw; line-height: 1.3; white-space: pre-line;
+  font-family: var(--round); font-size: 4.4cqw; line-height: 1.3; white-space: pre-line; word-break: keep-all;
 }
 .kind-blank .sheet-q { text-align: left; font-family: var(--font); font-weight: 700; font-size: 2.6cqw; }
 .sheet-opts {
@@ -220,3 +220,11 @@ button:disabled { cursor: default; }
 .song-tempo input { width: 18cqw; accent-color: var(--teal); }
 .song-tempo-n { min-width: 3cqw; font-weight: 700; color: var(--teal); }
 .song-clear { margin-left: auto; border: 0.15cqw solid var(--line-2, #ddd); background: #fff; border-radius: 1cqw; padding: 0.8cqw 1.6cqw; font-size: 1.5cqw; color: var(--ink-2); }
+/* 작곡 칸: 문제와 ▶·빠르기를 한 줄에 놓고, 칸을 최대한 크게 */
+.sheet.kind-song { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto minmax(0, 1fr); }
+.kind-song .sheet-q { grid-column: 1; grid-row: 1; text-align: left; padding: 1.6cqw 2cqw 0 8.4cqw; font-size: 2.2cqw; line-height: 1.35; }
+.kind-song .song-head { grid-column: 2; grid-row: 1; padding: 1.3cqw 2.6cqw 0 0; gap: 1.6cqw; }
+.kind-song .song { grid-column: 1 / -1; grid-row: 2; margin: 2.8cqw 2.6cqw 2.2cqw; }
+.kind-song .song.compact { margin-top: 2cqw; }
+.kind-song .song-play { width: 4.6cqw; height: 4.6cqw; font-size: 2.3cqw; }
+.kind-song .song-clear { margin-left: 0.6cqw; }

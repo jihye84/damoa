@@ -1,14 +1,15 @@
 // 수학 도구 템플릿 모음 (종류 이름 → 부품)
-import { clock } from './clock.js?v=202611072338';
-import { tens } from './tens.js?v=202611072338';
-import { vmath } from './vmath.js?v=202611072338';
-import { numline } from './numline.js?v=202611072338';
-import { fraction } from './fraction.js?v=202611072338';
-import { bargraph } from './bargraph.js?v=202611072338';
-import { geoboard } from './geoboard.js?v=202611072338';
-import { eul } from './base.js?v=202611072338';
+import { clock } from './clock.js?v=202611072349';
+import { tens } from './tens.js?v=202611072349';
+import { vmath } from './vmath.js?v=202611072349';
+import { numline } from './numline.js?v=202611072349';
+import { fraction } from './fraction.js?v=202611072349';
+import { bargraph } from './bargraph.js?v=202611072349';
+import { geoboard } from './geoboard.js?v=202611072349';
+import { eul } from './base.js?v=202611072349';
+import { link } from './link.js?v=202611072349';
 
-export const WIDGETS = { clock, tens, vmath, numline, fraction, bargraph, geoboard };
+export const WIDGETS = { clock, tens, vmath, numline, fraction, bargraph, geoboard, link };
 
 // 편집기 칸 값 → 템플릿 내용 / 정답
 export function cleanKey(w, raw) {

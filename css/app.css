@@ -370,3 +370,18 @@ button:disabled { cursor: default; }
 .geo-v.first { fill: #FEF3C7; }
 /* 수학 도구: 문제 글은 조금 작게, 도구는 크게 */
 .sheet:has(> .wg) > .sheet-q { font-size: 3.2cqw; padding-top: 2.2cqw; }
+
+/* 링크 */
+.wg-link { padding: 1cqw 2.6cqw 2.4cqw; }
+.lk-frame { width: 100%; height: 100%; border: 0; border-radius: 1.4cqw; background: #000; }
+.lk-card { display: flex; flex-direction: column; align-items: center; gap: 1.2cqw; text-align: center; max-width: 80%; }
+.lk-kind { font-size: 1.8cqw; color: var(--ink-3); font-weight: 700; }
+.lk-site { font-family: var(--round); font-size: 4.6cqw; color: var(--ink); word-break: break-all; }
+.lk-url { font-size: 1.5cqw; color: var(--ink-3); word-break: break-all; }
+.lk-open {
+  margin-top: 1.4cqw; display: inline-flex; align-items: center; gap: 1cqw; height: 8cqw; padding: 0 5cqw;
+  border-radius: 4cqw; background: var(--teal); color: #fff; font-family: var(--round); font-size: 3.6cqw; text-decoration: none;
+  box-shadow: 0 0.6cqw 0 #0B5C55;
+}
+.lk-open:active { transform: translateY(0.4cqw); box-shadow: 0 0.2cqw 0 #0B5C55; }
+.lk-done { min-height: 3cqw; font-size: 2.2cqw; font-weight: 700; color: #16A34A; }

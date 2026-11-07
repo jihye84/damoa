@@ -4,8 +4,9 @@
 //   7 = 3 + 4          → 십 배열판 가르기          57                     → 수 모형 (20까지는 십 배열판)
 //   사과는? 배, *사과, 귤, 감 → 4지선다 (* 가 정답)  물음표로 끝나는 글       → 서술형
 //   그 밖의 글           → 빈 답지
-import { h, $, toast, errMsg, KINDS } from './common.js?v=202611072338';
-import { renderSheet, WIDGETS } from './sheet.js?v=202611072338';
+import { h, $, toast, errMsg, KINDS } from './common.js?v=202611072349';
+import { cleanUrl } from './w/link.js?v=202611072349';
+import { renderSheet, WIDGETS } from './sheet.js?v=202611072349';
 
 const eunOf = (t) => { const ch = String(t).trim().slice(-1); if (/[0-9]/.test(ch)) return '013678'.includes(ch) ? '은' : '는'; const k = ch.charCodeAt(0) - 0xAC00; return k >= 0 && k < 11172 && k % 28 ? '은' : '는'; };
 const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -35,6 +36,17 @@ export function parseLine(raw) {
   if (!line) return [];
   const out = [];
   let m;
+  // 사이트 주소: "오늘의 노래 https://youtu.be/…" → 링크 (앞뒤 글은 문제 글로)
+  if ((m = raw.match(/(https?:\/\/\S+|www\.\S+|\b[a-z0-9-]+\.(?:com|net|org|kr|co\.kr|io|me|be|app|site)\/\S*)/i))) {
+    const words = raw.replace(m[0], ' ').replace(/\s+/g, ' ').trim();
+    const x = tool('link', { url: cleanUrl(m[0]) || m[0], open: 'auto' });
+    if (x) {
+      if (words) { x.content.question = words; x.title = words.slice(0, 30); }
+      else { try { x.title = '링크 · ' + new URL(x.content.url).hostname.replace(/^www\./, ''); } catch (_) {} }
+      out.push(x);
+      return out;
+    }
+  }
   // 보기가 있는 문제: "질문? 보기, *정답, 보기, 보기"
   if ((m = raw.match(/^(.+?[?？])\s*(.+)$/)) && m[2].split(/[,，]/).length === 4 && /\*/.test(m[2])) {
     const parts = m[2].split(/[,，]/).map((x) => x.trim());
@@ -97,14 +109,14 @@ export function parseLine(raw) {
 export function openQuick(ctx) {
   const { sb, openModal, closeModal, reload, onSaved, send } = ctx;   // send: 수업 중이면 만들자마자 보내요
   const ta = h('textarea', { class: 'textarea quick-in', id: 'qk-in', rows: '8',
-    placeholder: '한 줄에 하나씩 써요. 예)\n8 + 5\n27 + 35\n3:30\n3/4\n7 = 3 + 4\n57\n가장 큰 동물은? 개미, 고양이, *코끼리, 토끼\n친구와 다툰 적이 있나요?' });
+    placeholder: '한 줄에 하나씩 써요. 예)\n오늘의 노래 https://youtu.be/…\n8 + 5\n27 + 35\n3:30\n3/4\n7 = 3 + 4\n57\n가장 큰 동물은? 개미, 고양이, *코끼리, 토끼\n친구와 다툰 적이 있나요?' });
   const d = new Date();
   const folder = h('input', { class: 'input', id: 'qk-folder', value: `${send ? '수업 중 만든 문제' : '빠른 만들기'} ${d.getMonth() + 1}/${d.getDate()}` });
   const list = h('div', { class: 'quick-list' });
   const stage = h('div', { class: 'tv-stage' });
   const help = h('div', { class: 'quick-help muted' },
     h('b', null, '이렇게 쓰면 알아서 만들어요'),
-    h('span', null, '8 + 5 → 4지선다 (보기 자동) · 27 + 35, 23 × 4 → 세로셈 · 3:30 → 모형 시계 · 3/4 → 분수 색칠판 · 7 = 3 + 4 → 가르기 · 57 → 수 모형 · "질문? 보기, *정답, 보기, 보기" → 4지선다 · 물음표로 끝나는 글 → 서술형 · 그 밖의 글 → 빈 답지'));
+    h('span', null, '사이트 주소 → 링크 (유튜브·구글 문서는 화면 안에서) · 8 + 5 → 4지선다 (보기 자동) · 27 + 35, 23 × 4 → 세로셈 · 3:30 → 모형 시계 · 3/4 → 분수 색칠판 · 7 = 3 + 4 → 가르기 · 57 → 수 모형 · "질문? 보기, *정답, 보기, 보기" → 4지선다 · 물음표로 끝나는 글 → 서술형 · 그 밖의 글 → 빈 답지'));
   let rows = [];   // { line, cands, pick }
   let sel = 0;
   let pv = null;

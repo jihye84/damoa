@@ -313,3 +313,4 @@
 .quick-chip { height: 28px; padding: 0 10px; border-radius: 999px; border: 1px solid var(--line-2); background: #fff; font-size: 12.5px; color: var(--ink-2); }
 .quick-chip.on { background: var(--teal); border-color: var(--teal); color: #fff; font-weight: 700; }
 .quick-pv { flex: 1; min-height: 0; }
+.te .kind-picks .kind-pick:nth-last-child(2) { grid-column: auto; }

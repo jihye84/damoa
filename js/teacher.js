@@ -1,11 +1,12 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611072338';
-import { renderSheet, isCorrect, gradeMap, gradeShapes, gradeAny, loadMap, WIDGETS } from './sheet.js?v=202611072338';
-import { cleanKey, syncText } from './w/index.js?v=202611072338';
-import { openQuick } from './quick.js?v=202611072338';
-import { initPortfolio } from './portfolio.js?v=202611072338';
-import { openLibrary } from './library.js?v=202611072338';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611072338';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611072349';
+import { renderSheet, isCorrect, gradeMap, gradeShapes, gradeAny, loadMap, WIDGETS } from './sheet.js?v=202611072349';
+import { cleanUrl } from './w/link.js?v=202611072349';
+import { cleanKey, syncText } from './w/index.js?v=202611072349';
+import { openQuick } from './quick.js?v=202611072349';
+import { initPortfolio } from './portfolio.js?v=202611072349';
+import { openLibrary } from './library.js?v=202611072349';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611072349';
 
 const sb = makeClient('teacher');
 
@@ -383,19 +384,21 @@ function editTemplate(t, afterSave) {
     map: ['지도', '백지도에 톡 눌러 색칠'],
     song: ['작곡', '칸을 눌러 가락 짓기 · 이어 짓기'],
     shapes: ['모양 그림판', '○△□로 그림 꾸미기'],
+    link: ['링크', '사이트 · 유튜브 보내기'],
     tool: ['수학 도구', '시계 · 수 모형 · 세로셈 · 수직선 · 분수 · 그래프 · 점판'],
   }).map(([k, [name, desc]]) => h('button', {
     type: 'button', class: 'kind-pick' + (k === 'tool' ? ' wide' : ''), 'aria-pressed': 'false',
-    onclick: () => { kind = k === 'tool' ? toolSel.value : k; paintKinds(); paintTool(); },
+    onclick: () => { kind = k === 'tool' ? toolSel.value : k; paintKinds(); paintTool(); lastSnap = null; syncWords(); schedule(); },
   }, h('b', null, name), h('span', null, desc)));
-  const kindKeys = ['choice4', 'blank', 'essay', 'map', 'song', 'shapes', 'tool'];
-  const pickOf = (kd) => (WIDGETS[kd] ? 'tool' : kd);
+  const kindKeys = ['choice4', 'blank', 'essay', 'map', 'song', 'shapes', 'link', 'tool'];
+  const pickOf = (kd) => (kd === 'link' ? 'link' : WIDGETS[kd] ? 'tool' : kd);
 
   // 수학 도구: 고른 도구의 칸을 그때그때 만들어요
   const toolSel = h('select', { class: 'input', id: 'tp-tool' },
-    ...Object.entries(WIDGETS).map(([id, w]) => h('option', { value: id, selected: kind === id }, `${w.name} · ${w.desc}`)));
+    ...Object.entries(WIDGETS).filter(([id]) => id !== 'link').map(([id, w]) => h('option', { value: id, selected: kind === id }, `${w.name} · ${w.desc}`)));
   const toolFields = h('div', { class: 'col', style: { gap: '10px' } });
-  const toolBox = h('div', { class: 'col', style: { gap: '10px' } }, h('div', { class: 'field' }, h('label', { for: 'tp-tool' }, '도구'), toolSel), toolFields);
+  const toolPick = h('div', { class: 'field' }, h('label', { for: 'tp-tool' }, '도구'), toolSel);
+  const toolBox = h('div', { class: 'col', style: { gap: '10px' } }, toolPick, toolFields);
   const toolVals = {};   // 도구별로 고친 값을 기억 (도구를 바꿨다 돌아와도 그대로)
   if (WIDGETS[kind]) toolVals[kind] = { c: Object.assign({}, WIDGETS[kind].defaults, c), k: Object.assign({}, (t && t.answer_key) || {}) };
   const toolInputs = [];
@@ -647,6 +650,7 @@ function editTemplate(t, afterSave) {
   function paintKinds() {
     kinds.forEach((b, i) => b.setAttribute('aria-pressed', kindKeys[i] === pickOf(kind) ? 'true' : 'false'));
     toolBox.hidden = !WIDGETS[kind];
+    toolPick.hidden = kind === 'link';
     shapesBox.hidden = kind !== 'shapes';
     optBox.hidden = kind !== 'choice4';
     mapBox.hidden = kind !== 'map';
@@ -738,6 +742,7 @@ function editTemplate(t, afterSave) {
       Object.assign(content, r.content);
       const err = WIDGETS[kind].validate && WIDGETS[kind].validate(content);
       if (err) { toast(err); return; }
+      if (kind === 'link') content.url = cleanUrl(content.url);
       if (!content.question) content.question = WIDGETS[kind].defaultQuestion(content, r.key);
       answer_key = r.key;
     }

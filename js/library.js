@@ -1,12 +1,13 @@
 // 템플릿 꺼내 오기: 다모아가 미리 만들어 둔 묶음(수학 1~6학년, 생각하기)을 골라 보관함에 넣어요.
-import { h, toast, errMsg, KINDS } from './common.js?v=202611071908';
+import { h, toast, errMsg, KINDS } from './common.js?v=202611071922';
 
-import { renderSheet } from './sheet.js?v=202611071908';
+import { renderSheet } from './sheet.js?v=202611071922';
 
 const SOURCES = [
   { key: 'math', label: '수학', file: 'library/math.json' },
   { key: 'think', label: '생각하기', file: 'library/think.json' },
   { key: 'maps', label: '지도', file: 'library/maps.json' },
+  { key: 'songs', label: '음악', file: 'library/songs.json' },
 ];
 const cache = {};
 
@@ -128,7 +129,7 @@ export async function openLibrary(ctx) {
     [...ul.querySelectorAll('.lib-thumb')].forEach((th, i) => {
       const it = b.items[i];
       const k = it.answer_key || {};
-      renderSheet(th, it.content, { correctIndex: typeof k.correct === 'number' ? k.correct : null, mapKey: (k.targets || k.groups) ? k : null });
+      renderSheet(th, it.content, { correctIndex: typeof k.correct === 'number' ? k.correct : null, mapKey: (k.targets || k.groups) ? k : null, compact: true });
     });
     syncBtn();
   }

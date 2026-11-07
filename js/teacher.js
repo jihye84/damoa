@@ -1,8 +1,8 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611071908';
-import { renderSheet, isCorrect, gradeMap, loadMap } from './sheet.js?v=202611071908';
-import { openLibrary } from './library.js?v=202611071908';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611071908';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611071922';
+import { renderSheet, isCorrect, gradeMap, loadMap } from './sheet.js?v=202611071922';
+import { openLibrary } from './library.js?v=202611071922';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611071922';
 
 const sb = makeClient('teacher');
 
@@ -369,11 +369,12 @@ function editTemplate(t, afterSave) {
     blank: ['빈 답지', '골든벨처럼 펜으로 쓰기'],
     essay: ['서술형', '타자로 쓰기 + 펜'],
     map: ['지도', '백지도에 톡 눌러 색칠'],
+    song: ['작곡', '칸을 눌러 가락 짓기 · 이어 짓기'],
   }).map(([k, [name, desc]]) => h('button', {
     type: 'button', class: 'kind-pick', 'aria-pressed': k === kind ? 'true' : 'false',
     onclick: () => { kind = k; paintKinds(); },
   }, h('b', null, name), h('span', null, desc)));
-  const kindKeys = ['choice4', 'blank', 'essay', 'map'];
+  const kindKeys = ['choice4', 'blank', 'essay', 'map', 'song'];
 
   // 지도: 어떤 지도인지, 이름 보이기, 정답 지역(있으면 자동 채점)
   const mapSel = h('select', { class: 'input', id: 'tp-map' },
@@ -471,10 +472,54 @@ function editTemplate(t, afterSave) {
     h('div', { class: 'field' }, h('label', null, '자동 채점'), gradeSeg),
     targetsBox, groupsBox);
 
+  // 작곡: 칸 모양과 선생님이 짓는 앞부분
+  const sc = c.kind === 'song' ? c : {};
+  const sel = (id, opts2, val) => h('select', { class: 'input', id }, ...opts2.map(([v, label]) => h('option', { value: String(v), selected: String(val) === String(v) }, label)));
+  const sBars = sel('tp-s-bars', [[2, '2마디'], [4, '4마디'], [6, '6마디'], [8, '8마디']], sc.bars || 4);
+  const sBeats = sel('tp-s-beats', [[4, '4/4 (네 박)'], [3, '3/4 (세 박)'], [2, '2/4 (두 박)']], sc.beats || 4);
+  const sSplit = sel('tp-s-split', [[1, '한 박에 한 칸'], [2, '한 박에 두 칸']], sc.split || 2);
+  const sOct = sel('tp-s-oct', [[1, '도 ~ 높은 도'], [2, '두 옥타브']], sc.octaves || 1);
+  const sInst = sel('tp-s-inst', [['marimba', '마림바'], ['piano', '피아노'], ['synth', '전자음']], sc.instrument || 'marimba');
+  const sTempo = h('input', { class: 'input', id: 'tp-s-tempo', type: 'number', min: '50', max: '200', step: '5', value: String(sc.tempo || 100) });
+  const sDrums = h('input', { type: 'checkbox', id: 'tp-s-drums', checked: sc.drums !== false });
+  const sRhythm = h('input', { type: 'checkbox', id: 'tp-s-rhythm', checked: sc.melody === false });
+  const sGiven = h('select', { class: 'input', id: 'tp-s-given' });
+  let songGiven = { notes: (sc.given && sc.given.notes) || [], drums: (sc.given && sc.given.drums) || [] };
+  function paintGivenOpts() {
+    const n = +sBars.value;
+    const cur = sGiven.value !== '' ? +sGiven.value : (sc.givenBars || 0);
+    sGiven.innerHTML = '';
+    for (let i = 0; i < n; i++) sGiven.appendChild(h('option', { value: String(i), selected: i === Math.min(cur, n - 1) }, i ? `앞 ${i}마디를 선생님이 지어요` : '없음 (빈 칸)'));
+  }
+  paintGivenOpts();
+  sBars.addEventListener('change', paintGivenOpts);
+  const f2 = (label, el) => h('div', { class: 'field' }, h('label', { for: el.id }, label), el);
+  const songBox = h('div', { class: 'col', style: { gap: '10px' } },
+    h('div', { class: 'song-form' }, f2('길이', sBars), f2('박자', sBeats), f2('칸', sSplit), f2('음 높이', sOct), f2('악기', sInst), f2('빠르기', sTempo)),
+    h('label', { class: 'row', for: 'tp-s-drums', style: { gap: '8px' } }, sDrums, '아래에 큰북·작은북 줄 넣기'),
+    h('label', { class: 'row', for: 'tp-s-rhythm', style: { gap: '8px' } }, sRhythm, '리듬만 (가락 줄 없이 북만)'),
+    f2('이어 짓기', sGiven),
+    h('p', { class: 'muted small-note', style: { margin: 0 } }, '앞부분을 고르면 오른쪽 칸의 앞 마디에 직접 음을 놓아요. 학생은 그 뒤를 이어서 짓고, 앞부분은 바꿀 수 없어요.'));
+  function songContent() {
+    const sh = { bars: +sBars.value, beats: +sBeats.value, split: +sSplit.value, octaves: +sOct.value };
+    const givenBars = +sGiven.value || 0;
+    const per = sh.beats * sh.split, gc = givenBars * per;
+    const rows = sRhythm.checked ? 0 : (sh.octaves === 2 ? 15 : 8);
+    return Object.assign(sh, {
+      drums: sDrums.checked || sRhythm.checked, melody: !sRhythm.checked,
+      instrument: sInst.value, tempo: Math.max(50, Math.min(200, +sTempo.value || 100)), givenBars,
+      given: {
+        notes: songGiven.notes.filter(([cc, r]) => cc < gc && r < rows),
+        drums: songGiven.drums.filter(([cc]) => cc < gc),
+      },
+    });
+  }
+
   function paintKinds() {
     kinds.forEach((b, i) => b.setAttribute('aria-pressed', kindKeys[i] === kind ? 'true' : 'false'));
     optBox.hidden = kind !== 'choice4';
     mapBox.hidden = kind !== 'map';
+    songBox.hidden = kind !== 'song';
     $('#tp-q-label') && ($('#tp-q-label').textContent = kind === 'blank' ? '안내 글 (없어도 돼요)' : '문제');
   }
 
@@ -482,7 +527,7 @@ function editTemplate(t, afterSave) {
     h('div', { class: 'kind-picks' }, ...kinds),
     h('div', { class: 'field' }, h('label', { for: 'tp-title' }, '템플릿 이름 (보관함에 보이는 이름)'), title),
     h('div', { class: 'field' }, h('label', { for: 'tp-q', id: 'tp-q-label' }, '문제'), q),
-    optBox, mapBox);
+    optBox, mapBox, songBox);
 
   // 오른쪽: 고치는 대로 학생 화면이 바로 바뀌어요
   const stage = h('div', { class: 'tv-stage' });
@@ -503,6 +548,17 @@ function editTemplate(t, afterSave) {
       key = (await buildMapKey(false)).key;
     }
     if (pv) pv.destroy();
+    if (kind === 'song') {
+      // 작곡: 미리 보기 칸에서 앞부분을 바로 지어요
+      Object.assign(content, songContent());
+      const gc = content.givenBars * content.beats * content.split;
+      pv = renderSheet(stage, content, {
+        interactive: true, editGiven: true, givenCols: () => gc,
+        answer: { notes: content.given.notes, drums: content.given.drums, tempo: content.tempo },
+        onChange: () => { const a = pv.getAnswer(); songGiven = { notes: a.notes, drums: a.drums }; },
+      });
+      return;
+    }
     pv = previewSheet(stage, content, key);
   }
   const schedule = () => { clearTimeout(pvT); pvT = setTimeout(paintPreview, 120); };
@@ -529,6 +585,12 @@ function editTemplate(t, afterSave) {
       answer_key = { correct: parseInt(radios.find((r) => r.checked).value, 10) };
     }
     if (kind === 'essay' && !content.question) { toast('질문을 써 주세요'); return; }
+    if (kind === 'song') {
+      Object.assign(content, songContent());
+      if (content.givenBars && !content.given.notes.length && !content.given.drums.length) {
+        toast('앞부분을 오른쪽 칸에 지어 주세요 (또는 이어 짓기를 "없음"으로)'); return;
+      }
+    }
     if (kind === 'map') {
       content.map = mapSel.value;
       content.labels = mapLabels.checked;
@@ -536,7 +598,7 @@ function editTemplate(t, afterSave) {
       if (r.error) { toast(r.error); return; }
       answer_key = r.key;
     }
-    const row = { title: title.value.trim() || content.question.slice(0, 30) || (kind === 'map' ? MAPS.find((m) => m.id === content.map).name + ' 백지도' : KINDS[kind]), kind, content, answer_key };
+    const row = { title: title.value.trim() || content.question.slice(0, 30) || (kind === 'map' ? MAPS.find((m) => m.id === content.map).name + ' 백지도' : kind === 'song' ? (content.givenBars ? '이어 짓기' : '작곡') : KINDS[kind]), kind, content, answer_key };
     const res = t
       ? await sb.from('templates').update(row).eq('id', t.id).select().single()
       : await sb.from('templates').insert(row).select().single();
@@ -572,6 +634,7 @@ function answerNote(t) {
     return '자유 색칠 (채점 안 함)';
   }
   if (t.kind === 'essay') return '타자나 펜으로 답을 써요';
+  if (t.kind === 'song') { const s2 = t.content || {}; return `${s2.bars || 4}마디 · ${s2.givenBars ? `앞 ${s2.givenBars}마디를 이어 짓기` : '빈 작곡 칸'} · ▶로 들어 볼 수 있어요`; }
   return '펜으로 자유롭게 써요';
 }
 
@@ -1135,7 +1198,7 @@ function renderTile(studentId) {
       body.innerHTML = '';
       const host = h('div', { style: { position: 'absolute', inset: '0' } });
       body.appendChild(host);
-      const sheet = renderSheet(host, st.assignment.content, { answer: sub.answer, correctIndex: st.key ? st.key.correct : null, mapKey: st.key });
+      const sheet = renderSheet(host, st.assignment.content, { answer: sub.answer, correctIndex: st.key ? st.key.correct : null, mapKey: st.key, compact: true });
       tileSheets.set(studentId, { sheet, sig });
     }
     const fb = st.fbs.get(sub.id);

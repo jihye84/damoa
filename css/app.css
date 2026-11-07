@@ -178,3 +178,45 @@ button:disabled { cursor: default; }
   font-family: var(--round); line-height: 1.1; text-align: center; transform: rotate(-12deg);
   width: 4.6em; height: 4.6em; font-size: 28px;
 }
+
+/* 작곡 칸 */
+.kind-song .sheet-q { font-size: 2.6cqw; padding-top: 1.8cqw; }
+.song { flex: 1; min-height: 0; display: grid; grid-template-columns: 5.2cqw minmax(0, 1fr); gap: 0.6cqw; margin: 2.6cqw 2.6cqw 0; }
+.song.compact { margin-bottom: 2cqw; }
+.song-names { display: grid; grid-template-rows: repeat(calc(var(--rows) + var(--drows)), minmax(0, 1fr)); font-weight: 700; }
+.song-names span { display: flex; align-items: center; justify-content: flex-end; font-size: min(1.5cqw, 2.4cqh); white-space: nowrap; }
+.song-names .dn { color: #5D4037; font-size: min(1.3cqw, 2.2cqh); }
+.song-grid {
+  position: relative; display: grid; border: 0.15cqw solid #B9D7E3; border-radius: 0.6cqw; background: #fff;
+  grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+  grid-template-rows: repeat(calc(var(--rows) + var(--drows)), minmax(0, 1fr));
+  touch-action: none;
+}
+.sc { border-right: 1px solid #E6F0F4; border-bottom: 1px solid #E6F0F4; min-width: 0; min-height: 0; }
+.sc.beat { border-left: 1px solid #CFE3EC; }
+.sc.bar { border-left: 0.2cqw solid #8EC3D8; }
+.sc.octave { border-bottom: 0.2cqw solid #9FCFE0; }
+.sc.d { background: #FAF7F2; }
+.sc.dtop { border-top: 0.35cqw solid #CDBFAE; }
+.sc.given:not(.on) { background: #F1F3F5; }
+.sc.start { border-left: 0.45cqw solid #F59E0B; }
+.sc.on { border-radius: 0.35cqw; box-shadow: inset 0 -0.25cqw 0 rgba(0,0,0,0.15); }
+.sc.d.on { border-radius: 50%; transform: scale(0.72); box-shadow: none; }
+.sc.now:not(.on) { background: #DDF2FA; }
+.sc.now.on { filter: brightness(1.25) saturate(1.2); }
+.sc.nope { animation: nope 0.3s; }
+@keyframes nope { 25% { background: #FECACA; } 100% { background: #F1F3F5; } }
+.song-start-tag {
+  position: absolute; top: -2.3cqw; transform: translateX(-0.2cqw); background: #F59E0B; color: #fff;
+  font-size: 1.3cqw; font-weight: 700; padding: 0.2cqw 0.9cqw; border-radius: 0.6cqw 0.6cqw 0.6cqw 0; white-space: nowrap; pointer-events: none;
+}
+.song-head { flex: none; display: flex; align-items: center; gap: 2cqw; padding: 1.2cqw 2.6cqw 1.6cqw 8.4cqw; }
+.song-play {
+  width: 5.2cqw; height: 5.2cqw; border-radius: 50%; border: none; background: var(--teal); color: #fff;
+  display: grid; place-items: center; font-size: 2.6cqw; box-shadow: 0 0.35cqw 0 var(--teal-d, #0b5c55); flex: none;
+}
+.song-play.on { background: #E85D3F; box-shadow: 0 0.35cqw 0 #B5432B; }
+.song-tempo { display: flex; align-items: center; gap: 1cqw; font-size: 1.5cqw; color: var(--ink-2); }
+.song-tempo input { width: 18cqw; accent-color: var(--teal); }
+.song-tempo-n { min-width: 3cqw; font-weight: 700; color: var(--teal); }
+.song-clear { margin-left: auto; border: 0.15cqw solid var(--line-2, #ddd); background: #fff; border-radius: 1cqw; padding: 0.8cqw 1.6cqw; font-size: 1.5cqw; color: var(--ink-2); }

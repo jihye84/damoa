@@ -1,7 +1,8 @@
 // 템플릿 한 장을 그려요. 학생 태블릿(풀기)과 선생님 화면(보기)이 같은 코드를 써서 똑같이 보여요.
 // 모든 템플릿 = 바탕(문제) + 입력 부품(선택지·글쓰기 칸) + 맨 위 필기 층
-import { h } from './common.js?v=202611071908';
-import { Ink } from './ink.js?v=202611071908';
+import { h } from './common.js?v=202611071922';
+import { Ink } from './ink.js?v=202611071922';
+import { renderSong } from './song.js?v=202611071922';
 
 const MARKS = ['①', '②', '③', '④'];
 
@@ -83,6 +84,7 @@ export function renderSheet(host, content, opt = {}) {
   const fills = Object.assign({}, answer.fills || {});   // 지역 id → 색
   let mapSvg = null;
   let lastTap = 0;
+  let song = null;
 
   if (content.kind === 'choice4') {
     const grid = h('div', { class: 'sheet-opts' });
@@ -155,6 +157,11 @@ export function renderSheet(host, content, opt = {}) {
         if (r) tapRegion(r.dataset.id);
       });
     }
+  } else if (content.kind === 'song') {
+    song = renderSong(sheet, content, {
+      interactive, answer: opt.answer, onChange: changed, compact: !!opt.compact,
+      editGiven: !!opt.editGiven, givenCols: opt.givenCols,
+    });
   } else {
     sheet.appendChild(h('div', { class: 'sheet-blank' }));
   }
@@ -220,7 +227,7 @@ export function renderSheet(host, content, opt = {}) {
   paint();
 
   const ink = new Ink(sheet, {
-    readonly: !interactive,
+    readonly: !interactive || content.kind === 'song',   // 작곡 칸은 펜 필기 대신 칸 누르기
     strokes: answer.strokes || [],
     allowFinger: !!opt.allowFinger,
     onChange: changed,
@@ -242,14 +249,17 @@ export function renderSheet(host, content, opt = {}) {
       if (content.kind === 'choice4') a.choice = choice;
       if (textarea) a.text = textarea.value;
       if (content.kind === 'map') a.fills = Object.assign({}, fills);
+      if (song) Object.assign(a, song.getAnswer());
       return a;
     },
     hasWork() {
       return ink.strokes.length > 0 || choice !== null || (textarea && textarea.value.trim().length > 0)
-        || Object.keys(fills).length > 0;
+        || Object.keys(fills).length > 0 || (song ? song.hasWork() : false);
     },
+    undo() { if (song) song.undo(); else ink.undo(); },
+    song,
     kind: content.kind,
-    destroy() { ink.destroy(); host.innerHTML = ''; },
+    destroy() { if (song) song.destroy(); ink.destroy(); host.innerHTML = ''; },
   };
 }
 

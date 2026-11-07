@@ -1,6 +1,6 @@
 // 다모아 학생 태블릿
-import { makeClient, h, $, toast, errMsg, stampEl, makeNickname } from './common.js?v=202611071908';
-import { renderSheet } from './sheet.js?v=202611071908';
+import { makeClient, h, $, toast, errMsg, stampEl, makeNickname } from './common.js?v=202611071922';
+import { renderSheet } from './sheet.js?v=202611071922';
 
 const sb = makeClient('student');
 const CLAIM_KEY = 'damoa-claim';
@@ -322,6 +322,8 @@ async function applySession(s) {
   }
   overlay('ov-front', s.screen_mode === 'look_front');
   overlay('ov-lock', s.screen_mode === 'locked');
+  // 앞을 보거나 잠그면 지은 곡 소리도 멈춰요
+  if (s.screen_mode !== 'normal' && st.sheet && st.sheet.song) st.sheet.song.stop();
   if (!st.loaded) { st.loaded = true; await loadQueue(); }
 }
 
@@ -342,7 +344,7 @@ function readDraft(aid) {
 function answerHasWork(a) {
   if (!a) return false;
   return (a.strokes && a.strokes.length > 0) || typeof a.choice === 'number' || (a.text && a.text.trim().length > 0)
-    || (a.fills && Object.keys(a.fills).length > 0);
+    || (a.fills && Object.keys(a.fills).length > 0) || (a.mine > 0);
 }
 
 async function loadQueue() {
@@ -570,7 +572,9 @@ function applyTool() {
   st.sheet.ink.allowFinger = tool.finger;
   $('#kbd').hidden = !st.sheet.textarea;
   $('#v-work').classList.toggle('is-map', st.sheet.kind === 'map');
-  if (st.sheet.kind === 'map') $('#foot-help').textContent = '펜이나 손가락으로 톡 누르면 색칠돼요';
+  $('#v-work').classList.toggle('is-song', st.sheet.kind === 'song');
+  if (st.sheet.kind === 'song') $('#foot-help').textContent = '칸을 톡 누르거나 쭉 끌어서 음을 놓고, ▶로 들어 봐요';
+  else if (st.sheet.kind === 'map') $('#foot-help').textContent = '펜이나 손가락으로 톡 누르면 색칠돼요';
   else $('#foot-help').textContent = tool.finger ? '손가락으로도 써져요. 선택지는 톡 눌러요' : '펜으로 쓰고, 손가락으로 골라요';
   paintMode();
 }
@@ -583,8 +587,9 @@ function paintMode() {
   const m = typing() ? 'kbd' : (tool.kind === 'eraser' ? 'eraser' : 'pen');
   const box = $('#mode');
   const isMap = !!(st.sheet && st.sheet.kind === 'map');
-  box.className = 'mode mode-' + (isMap && m === 'pen' ? 'paint' : m);
-  const pen = isMap ? '톡 눌러 색칠하는 중' : tool.finger ? '펜·손가락으로 쓰는 중' : '펜으로 쓰는 중';
+  const isSong = !!(st.sheet && st.sheet.kind === 'song');
+  box.className = 'mode mode-' + ((isMap || isSong) && m === 'pen' ? 'paint' : m);
+  const pen = isSong ? '톡 눌러 음 놓는 중' : isMap ? '톡 눌러 색칠하는 중' : tool.finger ? '펜·손가락으로 쓰는 중' : '펜으로 쓰는 중';
   $('#mode-text').textContent = m === 'kbd' ? '키보드로 쓰는 중' : m === 'eraser' ? (isMap ? '톡 눌러 지우는 중' : '지우개로 지우는 중') : pen;
   $('#kbd').classList.toggle('on', m === 'kbd');
   $('#kbd').setAttribute('aria-pressed', m === 'kbd' ? 'true' : 'false');
@@ -653,7 +658,7 @@ document.querySelectorAll('.swatch').forEach((b) => b.addEventListener('click', 
   });
   applyTool();
 }));
-$('#undo').addEventListener('click', () => { if (st.sheet) st.sheet.ink.undo(); });
+$('#undo').addEventListener('click', () => { if (st.sheet) st.sheet.undo(); });
 
 // ---------------- 전송 ----------------
 $('#send').addEventListener('click', async () => {

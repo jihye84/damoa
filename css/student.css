@@ -1,0 +1,95 @@
+/* 학생 태블릿 화면 (가로) */
+body.kid { background: var(--kid-bg); }
+.screen { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 24px 36px; gap: 16px; }
+.screen.center { align-items: center; justify-content: center; text-align: center; gap: 20px; }
+.center-text { text-align: center; }
+.logo.big { font-size: 48px; }
+.logo.small { font-size: 24px; }
+.pill.white { background: #fff; color: var(--ink); font-size: 16px; }
+.kid-title { font-family: var(--round); font-size: clamp(28px, 5vh, 48px); font-weight: 400; margin: 0; line-height: 1.3; }
+.kid-name { font-family: var(--round); font-size: 36px; color: var(--teal); }
+.kid-head { justify-content: space-between; }
+
+.kid-btn {
+  height: 72px; padding: 0 44px; border-radius: 22px; border: none;
+  background: var(--teal); color: #fff; font-family: var(--round); font-size: 32px;
+  box-shadow: 0 6px 0 var(--teal-d); display: inline-flex; align-items: center; gap: 12px;
+}
+.kid-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--teal-d); }
+.kid-btn:disabled { background: #9AA5A3; box-shadow: 0 6px 0 #7C8785; }
+.link-btn { border: none; background: none; color: var(--ink-2); text-decoration: underline; font-size: 18px; padding: 12px; }
+
+/* 입장 번호 */
+.code-form { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.code-input {
+  width: 340px; height: 88px; text-align: center; font-size: 48px; font-weight: 900; letter-spacing: 10px;
+  border: 3px solid var(--kid-line); border-radius: 22px; background: #fff;
+}
+
+/* 이름 */
+.names-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: minmax(0, 1fr); gap: 12px; }
+.name-btn {
+  border: none; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  color: var(--ink); box-shadow: 0 5px 0 rgba(31, 36, 48, 0.15); min-height: 0;
+}
+.name-btn .no { font-size: clamp(12px, 2vh, 16px); opacity: 0.75; }
+.name-btn .nm { font-family: var(--round); font-size: clamp(20px, 4.4vh, 36px); }
+.name-btn:active { transform: translateY(3px); box-shadow: 0 2px 0 rgba(31, 36, 48, 0.15); }
+.name-btn:disabled { background: #D9DDE0 !important; color: #5B616B; box-shadow: none; }
+.names-help { margin: 0; text-align: center; font-size: 17px; color: #3E4452; }
+
+/* 기다리기 점 */
+.dots { display: flex; gap: 12px; }
+.dots span { width: 18px; height: 18px; border-radius: 99px; background: var(--teal); animation: bounce 1.2s infinite ease-in-out; }
+.dots span:nth-child(2) { animation-delay: 0.15s; }
+.dots span:nth-child(3) { animation-delay: 0.3s; }
+@keyframes bounce { 0%, 80%, 100% { transform: translateY(0); opacity: 0.4; } 40% { transform: translateY(-12px); opacity: 1; } }
+
+/* 풀기 */
+.screen.work { padding: 0; flex-direction: row; gap: 0; }
+.tools {
+  width: 96px; flex: none; padding: 18px 0; display: flex; flex-direction: column; align-items: center; gap: 12px;
+  background: #fff; border-right: 1px solid var(--kid-line);
+}
+.tool {
+  width: 64px; height: 64px; border-radius: 18px; border: 1px solid var(--kid-line); background: #fff; color: #3E4452;
+  display: flex; align-items: center; justify-content: center;
+}
+.tool.on { border: 3px solid var(--teal); background: var(--teal-bg); color: var(--teal-t); }
+.tool-sep { width: 48px; height: 1px; background: var(--kid-line); }
+.swatch { width: 46px; height: 46px; border-radius: 99px; border: 4px solid #fff; box-shadow: 0 0 0 1px var(--kid-line); }
+.swatch.on { box-shadow: 0 0 0 3px var(--ink); }
+.work-main { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 14px 24px 16px; gap: 12px; }
+.work-head { height: 40px; flex: none; }
+.sheet-host { min-height: 0; }
+.sheet-host .sheet { box-shadow: 0 6px 0 var(--kid-line); border-radius: 26px; }
+.work-foot { flex: none; }
+.kid-btn.send { height: 68px; font-size: 30px; }
+.foot-help { font-size: 16px; }
+.sent-badge { background: var(--teal); color: #fff; padding: 8px 16px; border-radius: 999px; font-weight: 700; font-size: 16px; }
+
+/* 겹쳐 뜨는 화면 */
+.overlay {
+  position: fixed; inset: 0; z-index: 40; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 28px; text-align: center; padding: 24px;
+}
+.ov-big { font-family: var(--round); font-size: clamp(48px, 12vh, 108px); line-height: 1.1; }
+.ov-sub { font-size: clamp(20px, 3.8vh, 30px); font-weight: 500; line-height: 1.5; }
+.overlay.front { background: #FCE3CC; color: var(--ink); }
+.overlay.front .ov-sub { color: #5A2C0C; }
+.overlay.lock { background: #24324A; color: #fff; z-index: 41; }
+.overlay.lock .ov-sub { color: #D7E0EE; }
+.lock-ring { width: 180px; height: 180px; border-radius: 999px; background: #33476A; display: flex; align-items: center; justify-content: center; }
+.overlay.ended { background: var(--kid-bg); z-index: 45; }
+.overlay.loading { background: var(--kid-bg); z-index: 60; }
+.overlay.rotate { background: var(--ink); color: #fff; z-index: 70; display: none; }
+@media (orientation: portrait) and (max-width: 1100px) { .overlay.rotate { display: flex; } }
+
+.overlay.feedback { background: rgba(238, 246, 244, 0.97); z-index: 39; }
+.fb-title { font-family: var(--round); font-size: clamp(30px, 6vh, 48px); color: #C2410C; }
+.fb-body { display: flex; align-items: center; gap: 48px; }
+.fb-stamp .stamp { font-size: clamp(34px, 6vh, 52px); }
+.fb-comment {
+  max-width: 520px; background: #fff; border-radius: 24px; box-shadow: 0 6px 0 var(--kid-line); padding: 28px 32px;
+  font-family: var(--round); font-size: clamp(26px, 5vh, 40px); line-height: 1.35; text-align: left; white-space: pre-line;
+}

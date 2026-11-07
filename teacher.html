@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>다모아 · 선생님</title>
+<script src="js/inapp.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Jua&display=swap">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/teacher.css">
+</head>
+<body>
+<div class="app" id="app">
+
+  <!-- 로그인 / 회원가입 -->
+  <section id="v-auth" class="auth" hidden>
+    <div class="auth-card card">
+      <div class="logo big">다모아</div>
+      <p class="auth-lead">반 아이들의 생각을<br>한 화면에 다 모아요</p>
+      <div class="seg" role="tablist" aria-label="로그인 또는 회원가입">
+        <button type="button" role="tab" id="tab-login" aria-selected="true">로그인</button>
+        <button type="button" role="tab" id="tab-signup" aria-selected="false">회원가입</button>
+      </div>
+      <form id="auth-form" class="col">
+        <div class="field" id="name-field" hidden>
+          <label for="auth-name">이름 (아이들에게 보일 이름)</label>
+          <input id="auth-name" class="input" autocomplete="name" placeholder="예: 박지혜 선생님">
+        </div>
+        <div class="field">
+          <label for="auth-email">이메일</label>
+          <input id="auth-email" class="input" type="email" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="auth-pw">비밀번호</label>
+          <input id="auth-pw" class="input" type="password" autocomplete="current-password" minlength="6" required>
+        </div>
+        <button id="auth-submit" type="submit" class="btn primary big">로그인</button>
+        <p id="auth-msg" class="auth-msg" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- 홈: 반·명렬표·템플릿 -->
+  <section id="v-home" class="home" hidden>
+    <header class="topbar">
+      <div class="logo">다모아</div>
+      <div class="spacer"></div>
+      <span id="me-name" class="muted"></span>
+      <button type="button" id="logout" class="btn">로그아웃</button>
+    </header>
+    <div class="home-grid grow">
+      <section class="card panel" aria-labelledby="h-classes">
+        <div class="panel-head"><h2 id="h-classes">우리 반</h2><div class="spacer"></div>
+          <button type="button" id="add-class" class="btn">+ 반 만들기</button></div>
+        <div id="class-list" class="list grow"></div>
+      </section>
+      <section class="card panel" aria-labelledby="h-roster">
+        <div class="panel-head"><h2 id="h-roster">명렬표</h2><span id="roster-count" class="muted"></span><div class="spacer"></div>
+          <button type="button" id="edit-roster" class="btn">고치기</button></div>
+        <div id="roster" class="roster grow"></div>
+      </section>
+      <section class="card panel" aria-labelledby="h-templates">
+        <div class="panel-head"><h2 id="h-templates">템플릿 보관함</h2><div class="spacer"></div>
+          <button type="button" id="add-template" class="btn">+ 새 템플릿</button></div>
+        <div id="template-list" class="list grow"></div>
+      </section>
+    </div>
+    <div class="home-foot">
+      <div id="resume-box" class="row" hidden>
+        <span>열려 있는 수업이 있어요.</span>
+        <button type="button" id="resume" class="btn">이어서 하기</button>
+      </div>
+      <div class="spacer"></div>
+      <label class="row muted" for="session-title">수업 이름</label>
+      <input id="session-title" class="input title-input" placeholder="예: 수학 · 덧셈과 뺄셈">
+      <button type="button" id="start-session" class="btn primary big">수업 시작</button>
+    </div>
+  </section>
+
+  <!-- 수업 중 -->
+  <section id="v-live" class="live" hidden>
+    <header class="topbar">
+      <div class="logo">다모아</div>
+      <div id="live-class" class="pill"></div>
+      <div id="live-title" class="title"></div>
+      <div class="spacer"></div>
+      <button type="button" id="btn-lobby" class="btn">입장 QR</button>
+      <button type="button" id="btn-lock" class="btn" aria-pressed="false">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        <span>화면 잠금</span>
+      </button>
+      <button type="button" id="btn-front" class="btn warn" aria-pressed="false">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+        <span>모두 앞을 보세요</span>
+      </button>
+      <button type="button" id="btn-send" class="btn primary">템플릿 보내기</button>
+      <button type="button" id="btn-end" class="btn">수업 끝내기</button>
+    </header>
+
+    <!-- 입장 화면 -->
+    <div id="lobby" class="lobby grow">
+      <section class="card qr-card">
+        <div class="qr-lead">태블릿 카메라로<br>QR을 찍어 주세요</div>
+        <div id="qr" class="qr" role="img" aria-label="수업 입장 QR 코드"></div>
+        <div class="row"><span class="muted">입장 번호</span><span id="join-code" class="join-code"></span></div>
+        <div id="join-url" class="join-url muted"></div>
+      </section>
+      <section class="card join-card">
+        <div class="row">
+          <div>
+            <div class="muted small-label">입장 현황</div>
+            <div class="join-count"><b id="join-n">0</b><span id="join-total"> / 0명</span></div>
+          </div>
+          <div class="spacer"></div>
+          <button type="button" id="btn-entry" class="btn big">입장 마감</button>
+        </div>
+        <div id="join-grid" class="join-grid grow"></div>
+        <p class="muted small-note">이름을 누르면 그 학생을 내보낼 수 있어요 (다시 이름을 고르게 돼요)</p>
+      </section>
+    </div>
+
+    <!-- 답안 보기 -->
+    <div id="board" class="board grow" hidden>
+      <div class="board-bar row">
+        <div id="board-title" class="board-title"></div>
+        <div id="board-stats" class="row stats"></div>
+        <div class="spacer"></div>
+        <div class="seg small" role="group" aria-label="보기 방식">
+          <button type="button" id="view-grid" aria-pressed="true">분할 보기</button>
+          <button type="button" id="view-one" aria-pressed="false">한 명씩</button>
+        </div>
+        <button type="button" id="btn-close-asg" class="btn">제출 마감</button>
+      </div>
+      <div id="tiles" class="tiles grow"></div>
+      <div id="one" class="one grow" hidden>
+        <section class="one-main col">
+          <div class="row one-nav">
+            <button type="button" id="one-prev" class="btn icon" aria-label="이전 학생">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
+            </button>
+            <div class="spacer center-text">
+              <div id="one-name" class="one-name"></div>
+              <div id="one-sub" class="muted"></div>
+            </div>
+            <button type="button" id="one-next" class="btn icon" aria-label="다음 학생">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+          <div id="one-sheet-wrap" class="grow one-sheet-wrap">
+            <div id="one-sheet" class="one-sheet"></div>
+            <div id="one-stamp" class="one-stamp"></div>
+            <button type="button" id="one-tv" class="btn tv-btn">교실 TV에 크게</button>
+          </div>
+        </section>
+        <aside class="card one-side">
+          <div>
+            <div class="side-h">도장 찍기</div>
+            <div id="stamp-picks" class="stamp-picks"></div>
+          </div>
+          <div class="field grow">
+            <label for="fb-text" class="side-h">한마디 남기기</label>
+            <textarea id="fb-text" class="textarea grow" placeholder="예: 받아올림을 아주 잘 설명했어요!"></textarea>
+          </div>
+          <button type="button" id="fb-send" class="btn primary big">돌려주기</button>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div id="ov-loading" class="loading-ov"><div class="logo big">다모아</div></div>
+</div>
+
+<!-- 대화상자 -->
+<div id="modal" class="modal-back" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-head"><h2 id="modal-title"></h2><div class="spacer"></div>
+      <button type="button" id="modal-x" class="btn icon" aria-label="닫기">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button></div>
+    <div id="modal-body" class="modal-body"></div>
+    <div id="modal-foot" class="modal-foot"></div>
+  </div>
+</div>
+
+<script type="module" src="js/teacher.js"></script>
+</body>
+</html>

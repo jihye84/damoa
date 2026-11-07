@@ -2,8 +2,8 @@
 // 반을 고르고 학생을 누르면, 그 학생이 낸 것이 날짜순으로 나와요. 도장·한마디·자동 채점도 함께.
 // ★ 대표작을 달고, 학생 한 명 또는 반 전체를 A4로 인쇄(PDF 저장)할 수 있어요.
 
-import { h, $, toast, errMsg, KINDS, stampOf } from './common.js?v=202611072101';
-import { renderSheet, isCorrect, gradeMap, gradeShapes } from './sheet.js?v=202611072101';
+import { h, $, toast, errMsg, KINDS, stampOf } from './common.js?v=202611072119';
+import { renderSheet, gradeAny } from './sheet.js?v=202611072119';
 
 const PAGE = 500;
 const CHUNK = 80;
@@ -167,12 +167,8 @@ export function initPortfolio(ctx) {
 
   // ------------------------------------------------ 카드
   function gradeText(sub, a) {
-    const key = P.keys.get(a.id);
-    if (!key) return null;
-    if (a.kind === 'map') { const g = gradeMap('map', sub.answer, key); return g && g.ok !== null ? [g.ok, g.short] : null; }
-    if (a.kind === 'shapes') { const g = gradeShapes(sub.answer, key); return g && g.ok !== null ? [g.ok, g.short] : null; }
-    const ok = isCorrect(a.kind, sub.answer, key);
-    return ok === null ? null : [ok, ok ? '맞았어요' : '다시 볼까요'];
+    const g = gradeAny(a.kind, sub.answer, P.keys.get(a.id), a.content);
+    return g ? [g.ok, g.short] : null;
   }
   function card(sub, { forPrint = false } = {}) {
     const a = P.asgs.get(sub.assignment_id);

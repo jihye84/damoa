@@ -160,7 +160,7 @@
 .modal.wide .modal-body { overflow: hidden; }
 .lib { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 12px; }
 .lib-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.lib-top .seg { width: 430px; }
+.lib-top .seg { width: 540px; }
 .lib-grades { display: flex; gap: 6px; flex-wrap: wrap; }
 .chip { height: 34px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line-2); background: #fff; font-size: 14px; }
 .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; font-weight: 700; }
@@ -291,3 +291,7 @@
 .btn.danger:disabled { background: #F3B4B4; border-color: #F3B4B4; }
 .reset-warn { margin: 0; padding: 10px 12px; border-radius: 10px; background: #FEF2F2; color: #991B1B; line-height: 1.6; }
 .reset-n { font-weight: 700; }
+.kind-pick.wide { grid-column: 1 / -1; }
+.tool-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 10px; }
+.tool-form .input { height: 40px; }
+.tool-form .tool-check { grid-column: 1 / -1; }

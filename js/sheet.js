@@ -1,9 +1,10 @@
 // 템플릿 한 장을 그려요. 학생 태블릿(풀기)과 선생님 화면(보기)이 같은 코드를 써서 똑같이 보여요.
 // 모든 템플릿 = 바탕(문제) + 입력 부품(선택지·글쓰기 칸) + 맨 위 필기 층
-import { h } from './common.js?v=202611072101';
-import { Ink } from './ink.js?v=202611072101';
-import { renderShapes, gradeShapes } from './shapes.js?v=202611072101';
-import { renderSong } from './song.js?v=202611072101';
+import { h } from './common.js?v=202611072119';
+import { Ink } from './ink.js?v=202611072119';
+import { renderShapes, gradeShapes } from './shapes.js?v=202611072119';
+import { WIDGETS } from './w/index.js?v=202611072119';
+import { renderSong } from './song.js?v=202611072119';
 
 const MARKS = ['①', '②', '③', '④'];
 
@@ -160,6 +161,8 @@ export function renderSheet(host, content, opt = {}) {
     }
   } else if (content.kind === 'shapes') {
     song = renderShapes(sheet, content, { interactive, answer: opt.answer, onChange: changed });
+  } else if (WIDGETS[content.kind]) {
+    song = Object.assign({ stop() {}, destroy() {} }, WIDGETS[content.kind].render(sheet, content, { interactive, answer: opt.answer, onChange: changed }));
   } else if (content.kind === 'song') {
     song = renderSong(sheet, content, {
       interactive, answer: opt.answer, onChange: changed, compact: !!opt.compact,
@@ -230,7 +233,7 @@ export function renderSheet(host, content, opt = {}) {
   paint();
 
   const ink = new Ink(sheet, {
-    readonly: !interactive || content.kind === 'song' || content.kind === 'shapes',   // 작곡 칸은 펜 필기 대신 칸 누르기
+    readonly: !interactive || content.kind === 'song' || content.kind === 'shapes' || !!WIDGETS[content.kind],   // 작곡 칸은 펜 필기 대신 칸 누르기
     strokes: answer.strokes || [],
     allowFinger: !!opt.allowFinger,
     onChange: changed,
@@ -327,10 +330,25 @@ export function gradeMap(kind, answer, key) {
   return null;
 }
 
-export { gradeShapes };
+export { gradeShapes, WIDGETS };
+
+// 어떤 종류든 채점: { ok, short } 또는 null (채점 안 함 · 아직 안 함)
+export function gradeAny(kind, answer, key, content) {
+  if (!answer) return null;
+  let g = null;
+  if (kind === 'map') g = gradeMap('map', answer, key);
+  else if (kind === 'shapes') g = gradeShapes(answer, key);
+  else if (WIDGETS[kind]) g = WIDGETS[kind].grade(answer, key || null, content || {});
+  else {
+    const ok = isCorrect(kind, answer, key);
+    g = ok === null ? null : { ok, short: ok ? '맞았어요' : '다시 볼까요' };
+  }
+  return g && g.ok !== null && g.ok !== undefined ? g : null;
+}
 export function isCorrect(kind, answer, key) {
   if (kind === 'map') { const g = gradeMap(kind, answer, key); return g ? g.ok : null; }
   if (kind === 'shapes') { const g = gradeShapes(answer, key); return g ? g.ok : null; }
+  if (WIDGETS[kind]) return null;   // 수학 도구는 gradeAny로 (내용이 필요해요)
   if (kind !== 'choice4' || !key || typeof key.correct !== 'number') return null;
   if (!answer || typeof answer.choice !== 'number') return null;
   return answer.choice === key.correct;

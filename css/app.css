@@ -259,3 +259,114 @@ button:disabled { cursor: default; }
 .shp-palette { grid-column: 1; grid-row: 3; display: flex; justify-content: center; flex-wrap: nowrap; gap: 0.55cqw; padding: 0 1cqw 1.5cqw 2.4cqw; }
 .shp-sw { width: 3.1cqw; height: 3.1cqw; flex: none; border-radius: 50%; border: 0.3cqw solid #fff; box-shadow: 0 0 0 0.12cqw #C8C8C8; padding: 0; }
 .shp-sw.on { box-shadow: 0 0 0 0.35cqw #5B3FB0; }
+
+/* ---------- 수학 도구 공통 ---------- */
+.wg { flex: 1; min-height: 0; position: relative; display: flex; align-items: center; justify-content: center; gap: 3cqw; padding: 1.5cqw 3cqw 2.4cqw; }
+.wg-svg { width: 100%; height: 100%; display: block; min-width: 0; min-height: 0; touch-action: none; user-select: none; }
+.wg-tools { position: absolute; right: 2.4cqw; top: 0.4cqw; display: flex; gap: 0.8cqw; }
+.tf-pick { display: inline-flex; align-items: center; gap: 0.7cqw; height: 4cqw; padding: 0 1.4cqw; border-radius: 2cqw; border: 0.2cqw solid #D7DCE2; background: #fff; font-size: 1.6cqw; font-weight: 700; color: var(--ink); }
+.tf-pick i { width: 2.2cqw; height: 2.2cqw; border-radius: 50%; display: block; }
+.tf-pick.on { border-color: var(--ink); box-shadow: 0 0 0 0.2cqw var(--ink) inset; }
+.tf-pick.clear { color: #B91C1C; border-color: #F3C4C4; }
+
+/* 모형 시계 */
+.wg-clock .wg-svg { max-width: 60cqw; }
+.wg-clock.read .wg-svg { max-width: 42cqw; }
+.ck-face { fill: #fff; stroke: #334155; stroke-width: 3; }
+.ck-tick { stroke: #94A3B8; stroke-width: 1; }
+.ck-tick.big { stroke: #334155; stroke-width: 2.4; }
+.ck-num { font-size: 15px; font-weight: 700; text-anchor: middle; dominant-baseline: central; fill: #1F2937; font-family: var(--round); }
+.ck-hour { stroke: #DC2626; stroke-width: 7; stroke-linecap: round; }
+.ck-min { stroke: #2563EB; stroke-width: 4.5; stroke-linecap: round; }
+.ck-pin { fill: #1F2937; }
+.ck-read { display: flex; flex-direction: column; gap: 2.4cqw; }
+.ck-step { display: flex; align-items: center; gap: 1.2cqw; }
+.ck-btn { width: 6cqw; height: 6cqw; border-radius: 1.4cqw; border: 0.2cqw solid #CBD5E1; background: #fff; font-size: 3.6cqw; font-weight: 700; line-height: 1; color: var(--ink); }
+.ck-btn:disabled { opacity: 0.4; }
+.ck-val { min-width: 8cqw; text-align: center; font-family: var(--round); font-size: 6cqw; color: var(--teal); }
+.ck-unit { font-size: 3cqw; font-weight: 700; }
+
+/* 십 배열판 */
+.tf-frame { fill: #FFFBEB; stroke: #92400E; stroke-width: 6; }
+.tf-cell { fill: transparent; stroke: #92400E; stroke-width: 3; }
+.tf-dot { fill: transparent; stroke: #E5D3B3; stroke-width: 3; stroke-dasharray: 6 6; }
+.tf-dot.on { stroke: rgba(0,0,0,0.25); stroke-dasharray: none; }
+.tf-slot { cursor: pointer; }
+/* 수 모형 */
+.wg-blocks { align-items: stretch; }
+.bk-mat { width: 100%; display: grid; gap: 1.4cqw; }
+.bk-col { display: flex; flex-direction: column; gap: 1cqw; background: #F8FAFC; border: 0.2cqw solid #E2E8F0; border-radius: 1.4cqw; padding: 1cqw; min-height: 0; }
+.bk-head { text-align: center; font-weight: 700; font-size: 1.8cqw; }
+.bk-area { flex: 1; min-height: 0; display: flex; flex-wrap: wrap; align-content: flex-start; justify-content: center; gap: 0.6cqw; overflow: hidden; }
+.bk-add { height: 4.4cqw; border-radius: 1.2cqw; border: 0.2cqw dashed #94A3B8; background: #fff; font-size: 1.7cqw; font-weight: 700; color: #334155; }
+.bk-fill { fill: #FCD34D; stroke: #B45309; stroke-width: 1; }
+.bk-h .bk-fill { stroke-width: 1.5; }
+.bk-ln { stroke: #B45309; stroke-width: 0.6; }
+.bk-t .bk-ln { stroke-width: 0.4; }
+.bk-h { width: 13cqw; height: 13cqw; }
+.bk-t { width: 1.6cqw; height: 13cqw; }
+.bk-o { width: 1.6cqw; height: 1.6cqw; }
+.bk-area .wg-svg { width: auto; height: auto; touch-action: manipulation; }
+.wg-blocks .bk-area svg.bk-h { width: 13cqw; height: 13cqw; }
+.wg-blocks .bk-area svg.bk-t { width: 1.6cqw; height: 13cqw; }
+.wg-blocks .bk-area svg.bk-o { width: 1.6cqw; height: 1.6cqw; }
+
+/* 세로셈 */
+.wg-vmath { --vm: 7.4cqw; }
+.vm-paper { display: flex; align-items: center; justify-content: center; }
+.vm-grid { display: grid; gap: 0.5cqw; align-items: center; justify-items: center; }
+.vm-op, .vm-d { width: var(--vm); height: var(--vm); display: grid; place-items: center; font-family: var(--round); font-size: 5cqw; }
+.vm-line { height: 0.4cqw; background: #1F2937; width: 100%; border-radius: 0.2cqw; }
+.vm-in { width: var(--vm); height: var(--vm); border: 0.25cqw dashed #94A3B8; border-radius: 1cqw; background: #F8FAFC; font-family: var(--round); font-size: 5cqw; color: #1D4ED8; padding: 0; }
+.vm-in.small { width: calc(var(--vm) * 0.6); height: calc(var(--vm) * 0.6); font-size: 2.8cqw; color: #DC2626; border-width: 0.18cqw; align-self: end; }
+.vm-in.sel { border: 0.35cqw solid var(--teal); background: #E6F6F3; }
+.vm-in.ok { border: 0.3cqw solid #16A34A; background: #F0FDF4; }
+.vm-in.no { border: 0.3cqw solid #EA580C; background: #FFF7ED; }
+.vm-in:disabled { opacity: 1; }
+.vm-gap { color: #CBD5E1; }
+.vm-pad { display: grid; grid-template-columns: repeat(3, 6.4cqw); gap: 0.9cqw; }
+.vm-key { height: 6.4cqw; border-radius: 1.2cqw; border: 0.2cqw solid #CBD5E1; background: #fff; font-family: var(--round); font-size: 3.6cqw; color: var(--ink); box-shadow: 0 0.3cqw 0 #E2E8F0; }
+.vm-key:active { transform: translateY(0.2cqw); box-shadow: none; }
+.vm-key.del { grid-column: span 2; font-size: 3cqw; color: #B91C1C; }
+
+/* 수직선 */
+.nl-axis { stroke: #1F2937; stroke-width: 4; }
+.nl-arrow { fill: #1F2937; }
+.nl-tick { stroke: #475569; stroke-width: 2.5; }
+.nl-tick.big { stroke: #1F2937; stroke-width: 4; }
+.nl-lb { font-size: 30px; text-anchor: middle; font-family: var(--round); fill: #1F2937; }
+.nl-lb.sm { font-size: 22px; }
+.nl-bar { stroke: #1F2937; stroke-width: 2; }
+.nl-pt { fill: #E11D48; stroke: #fff; stroke-width: 3; }
+.nl-pin { fill: #E11D48; }
+.nl-start { fill: #fff; stroke: #2563EB; stroke-width: 5; }
+.nl-jump { fill: none; stroke: #2563EB; stroke-width: 5; stroke-linecap: round; }
+.nl-head { fill: #2563EB; }
+
+/* 분수 색칠판 */
+.fr-piece { fill: #fff; stroke: #1F2937; stroke-width: 3; cursor: pointer; }
+.fr-piece.on { fill: #FB923C; }
+
+/* 막대그래프 */
+.wg-bar { align-items: stretch; }
+.bg-table { border-collapse: collapse; align-self: center; font-size: 1.9cqw; flex: none; }
+.bg-table caption { font-weight: 700; padding-bottom: 0.8cqw; font-size: 2cqw; }
+.bg-table th, .bg-table td { border: 0.15cqw solid #94A3B8; padding: 0.7cqw 1.8cqw; text-align: center; }
+.bg-table th { background: #F1F5F9; }
+.bg-grid { stroke: #CBD5E1; stroke-width: 1.5; }
+.bg-base { stroke: #1F2937; stroke-width: 3; }
+.bg-ylb { font-size: 22px; text-anchor: end; fill: #334155; }
+.bg-xlb { font-size: 26px; text-anchor: middle; fill: #1F2937; font-weight: 700; }
+.bg-unit { font-size: 20px; text-anchor: end; fill: #64748B; }
+.bg-barr { stroke: rgba(0,0,0,0.15); stroke-width: 2; }
+.bg-barr.bad { stroke: #DC2626; stroke-width: 6; stroke-dasharray: 10 6; }
+
+/* 점판 */
+.geo-board { fill: #F1F5F9; stroke: #CBD5E1; stroke-width: 3; }
+.geo-dot { fill: #334155; }
+.geo-shape { stroke-width: 7; stroke-linejoin: round; stroke-linecap: round; }
+.geo-shape.closed { fill-opacity: 0.22; }
+.geo-v { fill: #fff; stroke-width: 5; }
+.geo-v.first { fill: #FEF3C7; }
+/* 수학 도구: 문제 글은 조금 작게, 도구는 크게 */
+.sheet:has(> .wg) > .sheet-q { font-size: 3.2cqw; padding-top: 2.2cqw; }

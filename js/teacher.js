@@ -1,9 +1,10 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611072101';
-import { renderSheet, isCorrect, gradeMap, gradeShapes, loadMap } from './sheet.js?v=202611072101';
-import { initPortfolio } from './portfolio.js?v=202611072101';
-import { openLibrary } from './library.js?v=202611072101';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611072101';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611072119';
+import { renderSheet, isCorrect, gradeMap, gradeShapes, gradeAny, loadMap, WIDGETS } from './sheet.js?v=202611072119';
+import { cleanKey } from './w/index.js?v=202611072119';
+import { initPortfolio } from './portfolio.js?v=202611072119';
+import { openLibrary } from './library.js?v=202611072119';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611072119';
 
 const sb = makeClient('teacher');
 
@@ -379,11 +380,79 @@ function editTemplate(t, afterSave) {
     map: ['지도', '백지도에 톡 눌러 색칠'],
     song: ['작곡', '칸을 눌러 가락 짓기 · 이어 짓기'],
     shapes: ['모양 그림판', '○△□로 그림 꾸미기'],
+    tool: ['수학 도구', '시계 · 수 모형 · 세로셈 · 수직선 · 분수 · 그래프 · 점판'],
   }).map(([k, [name, desc]]) => h('button', {
-    type: 'button', class: 'kind-pick', 'aria-pressed': k === kind ? 'true' : 'false',
-    onclick: () => { kind = k; paintKinds(); },
+    type: 'button', class: 'kind-pick' + (k === 'tool' ? ' wide' : ''), 'aria-pressed': 'false',
+    onclick: () => { kind = k === 'tool' ? toolSel.value : k; paintKinds(); paintTool(); },
   }, h('b', null, name), h('span', null, desc)));
-  const kindKeys = ['choice4', 'blank', 'essay', 'map', 'song', 'shapes'];
+  const kindKeys = ['choice4', 'blank', 'essay', 'map', 'song', 'shapes', 'tool'];
+  const pickOf = (kd) => (WIDGETS[kd] ? 'tool' : kd);
+
+  // 수학 도구: 고른 도구의 칸을 그때그때 만들어요
+  const toolSel = h('select', { class: 'input', id: 'tp-tool' },
+    ...Object.entries(WIDGETS).map(([id, w]) => h('option', { value: id, selected: kind === id }, `${w.name} · ${w.desc}`)));
+  const toolFields = h('div', { class: 'col', style: { gap: '10px' } });
+  const toolBox = h('div', { class: 'col', style: { gap: '10px' } }, h('div', { class: 'field' }, h('label', { for: 'tp-tool' }, '도구'), toolSel), toolFields);
+  const toolVals = {};   // 도구별로 고친 값을 기억 (도구를 바꿨다 돌아와도 그대로)
+  if (WIDGETS[kind]) toolVals[kind] = { c: Object.assign({}, WIDGETS[kind].defaults, c), k: Object.assign({}, (t && t.answer_key) || {}) };
+  const toolInputs = [];
+  function toolState(id) {
+    if (!toolVals[id]) toolVals[id] = { c: Object.assign({}, WIDGETS[id].defaults), k: {} };
+    return toolVals[id];
+  }
+  function readTool() {
+    const v = toolState(kind);
+    for (const [f, el, bag] of toolInputs) v[bag][f.k] = f.type === 'check' ? el.checked : el.value;
+    return v;
+  }
+  function paintTool() {
+    if (!WIDGETS[kind]) return;
+    const w = WIDGETS[kind];
+    const v = toolState(kind);
+    toolFields.innerHTML = '';
+    toolInputs.length = 0;
+    const add = (f, bag, into) => {
+      if (f.show && !f.show(v.c)) return;
+      const id = `tp-w-${bag}-${f.k}`;
+      const val = v[bag][f.k];
+      let el;
+      if (f.type === 'select') el = h('select', { class: 'input', id }, ...f.options.map(([o, lb]) => h('option', { value: String(o), selected: String(val ?? '') === String(o) }, lb)));
+      else if (f.type === 'check') el = h('input', { type: 'checkbox', id, checked: val === undefined ? bag === 'c' : !!val });
+      else el = h('input', { class: 'input', id, type: f.type === 'number' ? 'number' : 'text', value: val ?? '' });
+      el.addEventListener('change', () => { readTool(); if (f.k === 'mode') paintTool(); });
+      toolInputs.push([f, el, bag]);
+      into.appendChild(f.type === 'check'
+        ? h('label', { class: 'row tool-check', for: id, style: { gap: '8px' } }, el, f.label)
+        : h('div', { class: 'field' }, h('label', { for: id }, f.label), el));
+    };
+    const grid = h('div', { class: 'tool-form' });
+    for (const f of w.fields) add(f, 'c', grid);
+    toolFields.appendChild(grid);
+    const keyShown = (w.keyFields || []).filter((f) => !f.show || f.show(v.c));
+    if (keyShown.length) {
+      const g2 = h('div', { class: 'tool-form' });
+      for (const f of keyShown) add(f, 'k', g2);
+      toolFields.append(h('div', { class: 'side-h', style: { margin: '4px 0 0' } }, '자동 채점'), g2);
+    } else {
+      toolFields.appendChild(h('p', { class: 'muted small-note', style: { margin: 0 } }, '정답은 위의 내용으로 자동으로 채점해요.'));
+    }
+    toolFields.appendChild(h('p', { class: 'muted small-note', style: { margin: 0 } }, '문제 칸을 비워 두면 알맞은 문제 글을 자동으로 넣어요.'));
+  }
+  toolSel.addEventListener('change', () => { readTool(); kind = toolSel.value; paintTool(); schedule(); });
+  function toolContent() {
+    const w = WIDGETS[kind];
+    const v = readTool();
+    const content = {};
+    for (const f of w.fields) {
+      if (f.show && !f.show(v.c)) continue;
+      const x = v.c[f.k];
+      content[f.k] = f.type === 'number' ? Number(x) : f.type === 'check' ? !!x : (f.type === 'select' && /^\d+$/.test(String(x)) ? Number(x) : x);
+    }
+    if (content.mode === undefined && v.c.mode !== undefined) content.mode = v.c.mode;
+    const raw = {};
+    for (const f of w.keyFields || []) if (!f.show || f.show(v.c)) raw[f.k] = v.k[f.k];
+    return { content, key: cleanKey(w, raw) };
+  }
 
   // 지도: 어떤 지도인지, 이름 보이기, 정답 지역(있으면 자동 채점)
   const mapSel = h('select', { class: 'input', id: 'tp-map' },
@@ -550,7 +619,8 @@ function editTemplate(t, afterSave) {
   }
 
   function paintKinds() {
-    kinds.forEach((b, i) => b.setAttribute('aria-pressed', kindKeys[i] === kind ? 'true' : 'false'));
+    kinds.forEach((b, i) => b.setAttribute('aria-pressed', kindKeys[i] === pickOf(kind) ? 'true' : 'false'));
+    toolBox.hidden = !WIDGETS[kind];
     shapesBox.hidden = kind !== 'shapes';
     optBox.hidden = kind !== 'choice4';
     mapBox.hidden = kind !== 'map';
@@ -562,7 +632,7 @@ function editTemplate(t, afterSave) {
     h('div', { class: 'kind-picks' }, ...kinds),
     h('div', { class: 'field' }, h('label', { for: 'tp-title' }, '템플릿 이름 (보관함에 보이는 이름)'), title),
     h('div', { class: 'field' }, h('label', { for: 'tp-q', id: 'tp-q-label' }, '문제'), q),
-    optBox, mapBox, songBox, shapesBox);
+    optBox, mapBox, songBox, shapesBox, toolBox);
 
   // 오른쪽: 고치는 대로 학생 화면이 바로 바뀌어요
   const stage = h('div', { class: 'tv-stage' });
@@ -583,6 +653,14 @@ function editTemplate(t, afterSave) {
       key = (await buildMapKey(false)).key;
     }
     if (pv) pv.destroy();
+    if (WIDGETS[kind]) {
+      const r = toolContent();
+      Object.assign(content, r.content);
+      if (!content.question) content.question = WIDGETS[kind].defaultQuestion(content, r.key);
+      if (WIDGETS[kind].validate && WIDGETS[kind].validate(content)) { stage.innerHTML = ''; stage.appendChild(h('div', { class: 'empty tv-empty' }, WIDGETS[kind].validate(content))); pv = null; return; }
+      pv = renderSheet(stage, content, { interactive: true });   // 선생님도 미리 만져 볼 수 있어요
+      return;
+    }
     if (kind === 'shapes') {
       Object.assign(content, shapesContent());
       if (!content.allow.length) content.allow = ['c', 't', 'r'];
@@ -629,6 +707,14 @@ function editTemplate(t, afterSave) {
       answer_key = { correct: parseInt(radios.find((r) => r.checked).value, 10) };
     }
     if (kind === 'essay' && !content.question) { toast('질문을 써 주세요'); return; }
+    if (WIDGETS[kind]) {
+      const r = toolContent();
+      Object.assign(content, r.content);
+      const err = WIDGETS[kind].validate && WIDGETS[kind].validate(content);
+      if (err) { toast(err); return; }
+      if (!content.question) content.question = WIDGETS[kind].defaultQuestion(content, r.key);
+      answer_key = r.key;
+    }
     if (kind === 'shapes') {
       Object.assign(content, shapesContent());
       if (!content.allow.length) { toast('쓸 수 있는 모양을 하나 이상 골라 주세요'); return; }
@@ -647,7 +733,7 @@ function editTemplate(t, afterSave) {
       if (r.error) { toast(r.error); return; }
       answer_key = r.key;
     }
-    const row = { title: title.value.trim() || content.question.slice(0, 30) || (kind === 'map' ? MAPS.find((m) => m.id === content.map).name + ' 백지도' : kind === 'song' ? (content.givenBars ? '이어 짓기' : '작곡') : kind === 'shapes' ? '모양 그림판' : KINDS[kind]), kind, content, answer_key };
+    const row = { title: title.value.trim() || content.question.replace(/\s*\n\s*/g, ' ').slice(0, 30) || (kind === 'map' ? MAPS.find((m) => m.id === content.map).name + ' 백지도' : kind === 'song' ? (content.givenBars ? '이어 짓기' : '작곡') : kind === 'shapes' ? '모양 그림판' : WIDGETS[kind] ? WIDGETS[kind].name : KINDS[kind]), kind, content, answer_key };
     const res = t
       ? await sb.from('templates').update(row).eq('id', t.id).select().single()
       : await sb.from('templates').insert(row).select().single();
@@ -659,6 +745,7 @@ function editTemplate(t, afterSave) {
 
   openModal(t ? '템플릿 고치기' : '새 템플릿', body, buttons, 'wide');
   paintKinds();
+  paintTool();
   paintGrade();
   paintPreview();
 }
@@ -683,6 +770,10 @@ function answerNote(t) {
     return '자유 색칠 (채점 안 함)';
   }
   if (t.kind === 'essay') return '타자나 펜으로 답을 써요';
+  if (WIDGETS[t.kind]) {
+    const g = t.answer_key || ['clock', 'vmath'].includes(t.kind) || (t.kind === 'bargraph' && t.content && t.content.values);
+    return `${g ? '자동 채점' : '채점 안 함'} · 미리 만져 볼 수 있어요`;
+  }
   if (t.kind === 'shapes') {
     const n = k && k.counts ? Object.entries(k.counts).map(([a, b]) => `${{ c: '동그라미', t: '세모', r: '네모' }[a]} ${b}개`).join(', ') : '';
     return n ? `자동 채점 · ${n}` : '자유롭게 꾸미기 (채점 안 함)';
@@ -1183,13 +1274,8 @@ function tileState(s) {
   const sub = st.subs.get(s.id);
   if (sub && sub.auto_collected) return { cls: 'late', badge: '마감 때 거둠' };
   if (sub) {
-    if (st.assignment.kind === 'map' || st.assignment.kind === 'shapes') {
-      const g = st.assignment.kind === 'map' ? gradeMap('map', sub.answer, st.key) : gradeShapes(sub.answer, st.key);
-      if (g && g.ok !== null) return { cls: g.ok ? 'ok' : 'no', badge: g.short };
-    }
-    const ok = isCorrect(st.assignment.kind, sub.answer, st.key);
-    if (ok === true) return { cls: 'ok', badge: '맞았어요' };
-    if (ok === false) return { cls: 'no', badge: '다시 볼까요' };
+    const g = gradeAny(st.assignment.kind, sub.answer, st.key, st.assignment.content);
+    if (g) return { cls: g.ok ? 'ok' : 'no', badge: g.short };
     return { cls: 'done', badge: '냈어요' };
   }
   if (!p) return { cls: 'absent', badge: '안 들어옴' };

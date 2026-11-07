@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>다모아 · 선생님</title>
-<script src="js/inapp.js?v=202611072023"></script>
+<script src="js/inapp.js?v=202611072035"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Jua&display=swap">
-<link rel="stylesheet" href="css/app.css?v=202611072023">
-<link rel="stylesheet" href="css/teacher.css?v=202611072023">
+<link rel="stylesheet" href="css/app.css?v=202611072035">
+<link rel="stylesheet" href="css/teacher.css?v=202611072035">
 </head>
 <body>
 <div class="app" id="app">
@@ -58,6 +58,7 @@
       </section>
       <section class="card panel" aria-labelledby="h-roster">
         <div class="panel-head"><h2 id="h-roster">명렬표</h2><span id="roster-count" class="muted"></span><div class="spacer"></div>
+          <button type="button" id="open-portfolio" class="btn">포트폴리오</button>
           <button type="button" id="edit-roster" class="btn">고치기</button></div>
         <div id="roster" class="roster grow"></div>
       </section>
@@ -81,6 +82,33 @@
       <label class="row muted" for="session-title">수업 이름</label>
       <input id="session-title" class="input title-input" placeholder="예: 수학 · 덧셈과 뺄셈">
       <button type="button" id="start-session" class="btn primary big">수업 시작</button>
+    </div>
+  </section>
+
+  <!-- 포트폴리오 -->
+  <section id="v-port" class="port" hidden>
+    <header class="topbar">
+      <div class="logo">다모아</div>
+      <div class="pill">포트폴리오</div>
+      <select id="port-class" class="input port-class" aria-label="반"></select>
+      <div class="spacer"></div>
+      <button type="button" id="port-print-one" class="btn">이 학생 인쇄</button>
+      <button type="button" id="port-print-all" class="btn">반 전체 인쇄</button>
+      <button type="button" id="port-back" class="btn primary">홈으로</button>
+    </header>
+    <div class="port-grid grow">
+      <aside class="card panel">
+        <div class="panel-head"><h2>학생</h2></div>
+        <div id="port-list" class="list grow port-list"></div>
+      </aside>
+      <section class="card panel port-main">
+        <div class="port-top">
+          <div><h2 id="port-who" class="port-who"></h2><div id="port-sum" class="muted"></div></div>
+          <div class="spacer"></div>
+          <div id="port-filters" class="row port-filters"></div>
+        </div>
+        <div id="port-cards" class="port-cards grow"></div>
+      </section>
     </div>
   </section>
 
@@ -194,6 +222,8 @@
   </div>
 </div>
 
-<script type="module" src="js/teacher.js?v=202611072023"></script>
+<script type="module" src="js/teacher.js?v=202611072035"></script>
+<!-- 인쇄용 (포트폴리오) -->
+<div id="print-root" aria-hidden="true"></div>
 </body>
 </html>

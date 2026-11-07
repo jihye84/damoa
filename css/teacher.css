@@ -225,3 +225,64 @@
 .btn.small { height: 34px; padding: 0 12px; font-size: 14px; }
 .song-form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
 .song-form .input { height: 40px; padding: 0 8px; }
+
+/* ---------- 포트폴리오 ---------- */
+.port { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.port-class { width: 180px; height: 40px; }
+.port-grid { padding: 16px 20px; display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 16px; min-height: 0; }
+.port-list { overflow: auto; }
+.port-stu .no { width: 26px; color: var(--ink-3); font-size: 13px; flex: none; }
+.port-star-n { font-size: 12px; color: #B45309; font-weight: 700; flex: none; }
+.port-main { min-width: 0; min-height: 0; }
+.port-top { display: flex; align-items: flex-end; gap: 12px; flex-wrap: wrap; }
+.port-who { margin: 0; font-size: 22px; }
+.port-filters { gap: 8px; flex-wrap: wrap; }
+.port-filters .seg button { flex: none; }
+.btn.star-only.on { background: #FEF3C7; border-color: #F59E0B; color: #92400E; }
+.port-cards { min-height: 0; overflow: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; align-content: start; padding: 2px 4px 8px 2px; }
+.port-cards > .empty { grid-column: 1 / -1; text-align: center; padding-top: 60px; }
+.port-card { border: 1px solid var(--line); border-radius: 14px; background: #fff; padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 8px; }
+.port-card.starred { border: 2px solid #F59E0B; background: #FFFBEB; }
+.port-card-head { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.port-date { flex: none; font-size: 13px; font-weight: 700; color: var(--teal-t); }
+.port-title { flex: 1; min-width: 0; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.port-star { flex: none; width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--line-2); background: #fff; color: #D6D3D1; font-size: 20px; line-height: 1; }
+.port-star.on { color: #F59E0B; border-color: #F59E0B; background: #FEF3C7; }
+.port-sheet { aspect-ratio: 16 / 10; }
+.port-sheet .sheet { box-shadow: 0 0 0 1px var(--line); border-radius: 10px; }
+.port-card-foot { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 12px; }
+.port-kind { color: var(--ink-3); margin-right: auto; }
+.port-grade { font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+.port-grade.ok { background: #DCFCE7; color: #166534; }
+.port-grade.no { background: #FFEDD5; color: #9A3412; }
+.port-grade.late { background: #F3F4F6; color: #4B5563; }
+.port-stamp { font-weight: 700; border: 2px solid; border-radius: 999px; padding: 1px 8px; }
+.port-comment { font-size: 13px; line-height: 1.5; background: #F7F5EF; border-radius: 8px; padding: 6px 10px; }
+
+/* 인쇄: 화면 밖에 A4 너비로 미리 그려 둬요 */
+#print-root { position: fixed; left: -10000px; top: 0; width: 186mm; background: #fff; }
+.pr-student { break-before: page; }
+.pr-student:first-child { break-before: auto; }
+.pr-head { border-bottom: 2px solid #0F766E; padding-bottom: 4mm; margin-bottom: 5mm; }
+.pr-kicker { font-size: 10pt; color: #0F766E; font-weight: 700; }
+.pr-head h1 { margin: 1mm 0 2mm; font-size: 20pt; }
+.pr-meta { display: flex; flex-wrap: wrap; gap: 2mm 5mm; font-size: 9.5pt; color: #444; }
+.pr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm 5mm; }
+#print-root[data-per="2"] .pr-grid { grid-template-columns: 1fr; }
+#print-root .port-card { break-inside: avoid; border-radius: 3mm; padding: 2.5mm 3mm 3mm; gap: 1.8mm; }
+#print-root .port-card-head { font-size: 9.5pt; }
+#print-root .port-date { font-size: 9pt; }
+#print-root .port-card-foot { font-size: 8pt; }
+#print-root .port-comment { font-size: 8.5pt; padding: 1.5mm 2.5mm; }
+#print-root .port-star.on { width: auto; height: auto; border: none; background: none; font-size: 12pt; }
+#print-root.no-fb .port-stamp, #print-root.no-fb .port-comment { display: none; }
+#print-root[data-per="2"] .port-card { max-width: 150mm; margin: 0 auto; width: 100%; }
+
+@page { size: A4; margin: 14mm 12mm; }
+@media print {
+  body.printing > *:not(#print-root) { display: none !important; }
+  html { height: auto !important; overflow: visible !important; }
+  body.printing { background: #fff; overflow: visible !important; height: auto !important; display: block !important; }
+  body.printing #print-root { position: static; left: auto; width: auto; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

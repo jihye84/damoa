@@ -1,8 +1,9 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611072023';
-import { renderSheet, isCorrect, gradeMap, gradeShapes, loadMap } from './sheet.js?v=202611072023';
-import { openLibrary } from './library.js?v=202611072023';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611072023';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611072035';
+import { renderSheet, isCorrect, gradeMap, gradeShapes, loadMap } from './sheet.js?v=202611072035';
+import { initPortfolio } from './portfolio.js?v=202611072035';
+import { openLibrary } from './library.js?v=202611072035';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611072035';
 
 const sb = makeClient('teacher');
 
@@ -33,7 +34,7 @@ const st = {
 };
 const isOpenMode = () => !!(st.session && st.session.join_mode === 'open');
 
-const views = ['v-auth', 'v-home', 'v-live'];
+const views = ['v-auth', 'v-home', 'v-live', 'v-port'];
 function show(id) {
   for (const v of views) $('#' + v).hidden = v !== id;
   $('#ov-loading').hidden = true;
@@ -351,6 +352,13 @@ $('#open-library').addEventListener('click', () => openLibrary({
 }));
 
 $('#add-template').addEventListener('click', () => editTemplate(null));
+
+initPortfolio({
+  sb, openModal, closeModal, show,
+  getClasses: () => st.classes,
+  getClassId: () => st.classId,
+  back: () => afterLogin(),
+});
 
 function editTemplate(t, afterSave) {
   const c = (t && t.content) || {};

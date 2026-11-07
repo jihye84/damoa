@@ -1,8 +1,8 @@
 // 모형 시계: 바늘을 돌려 시각 만들기(set) · 시계를 보고 시각 쓰기(read)
 // content: { mode: 'set'|'read', time: '3:30', step: 30|5|1 }
 // answer:  set → { minutes } (0~719)   read → { h, m }
-import { h } from '../common.js?v=202611072148';
-import { s, svgRoot, toSvg, makeState, wrap, num, eul } from './base.js?v=202611072148';
+import { h } from '../common.js?v=202611072336';
+import { s, svgRoot, toSvg, makeState, wrap, num, eul } from './base.js?v=202611072336';
 
 export function parseTime(t) {
   const m = String(t || '').match(/^\s*(\d{1,2})\s*[:시]\s*(\d{1,2})?/);

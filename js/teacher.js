@@ -1,10 +1,11 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611072148';
-import { renderSheet, isCorrect, gradeMap, gradeShapes, gradeAny, loadMap, WIDGETS } from './sheet.js?v=202611072148';
-import { cleanKey, syncText } from './w/index.js?v=202611072148';
-import { initPortfolio } from './portfolio.js?v=202611072148';
-import { openLibrary } from './library.js?v=202611072148';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611072148';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611072336';
+import { renderSheet, isCorrect, gradeMap, gradeShapes, gradeAny, loadMap, WIDGETS } from './sheet.js?v=202611072336';
+import { cleanKey, syncText } from './w/index.js?v=202611072336';
+import { openQuick } from './quick.js?v=202611072336';
+import { initPortfolio } from './portfolio.js?v=202611072336';
+import { openLibrary } from './library.js?v=202611072336';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611072336';
 
 const sb = makeClient('teacher');
 
@@ -353,6 +354,7 @@ $('#open-library').addEventListener('click', () => openLibrary({
 }));
 
 $('#add-template').addEventListener('click', () => editTemplate(null));
+$('#quick-template').addEventListener('click', () => openQuick({ sb, openModal, closeModal, reload: loadHome }));
 
 initPortfolio({
   sb, openModal, closeModal, show,
@@ -363,7 +365,8 @@ initPortfolio({
 
 function editTemplate(t, afterSave) {
   const c = (t && t.content) || {};
-  let kind = (t && t.kind) || 'choice4';
+  let kind = (t && t.kind) || (() => { try { return localStorage.getItem('damoa-lastkind') || 'choice4'; } catch (_) { return 'choice4'; } })();
+  if (!KINDS[kind]) kind = 'choice4';
   const title = h('input', { class: 'input', id: 'tp-title', value: (t && t.title) || '' , placeholder: '예: 8 + 5' });
   const q = h('textarea', { class: 'textarea', id: 'tp-q', rows: '2', placeholder: '예: 8 + 5는 얼마일까요?' });
   q.value = c.question || '';
@@ -757,7 +760,9 @@ function editTemplate(t, afterSave) {
       answer_key = r.key;
     }
     const row = { title: title.value.trim() || content.question.replace(/\s*\n\s*/g, ' ').slice(0, 30) || (kind === 'map' ? MAPS.find((m) => m.id === content.map).name + ' 백지도' : kind === 'song' ? (content.givenBars ? '이어 짓기' : '작곡') : kind === 'shapes' ? '모양 그림판' : WIDGETS[kind] ? WIDGETS[kind].name : KINDS[kind]), kind, content, answer_key };
-    const res = t
+    try { localStorage.setItem('damoa-lastkind', kind); } catch (_) {}
+    if (t && !t.id && t.folder) row.folder = t.folder;   // 복사본은 같은 폴더에
+    const res = t && t.id
       ? await sb.from('templates').update(row).eq('id', t.id).select().single()
       : await sb.from('templates').insert(row).select().single();
     if (res.error) { toast(errMsg(res.error)); return; }
@@ -766,7 +771,7 @@ function editTemplate(t, afterSave) {
     if (afterSave) afterSave(res.data);
   } }, afterSave ? '저장하고 보내기' : '저장'));
 
-  openModal(t ? '템플릿 고치기' : '새 템플릿', body, buttons, 'wide');
+  openModal(t && t.id ? '템플릿 고치기' : t ? '복사해서 새로 만들기' : '새 템플릿', body, buttons, 'wide');
   paintKinds();
   paintTool();
   syncWords();   // 처음 값을 기억해 둬요
@@ -848,7 +853,10 @@ function openViewer(startT, { sending = false } = {}) {
   const sendB = h('button', { type: 'button', class: 'btn primary', onclick: () => { if (cur) { closeModal(); sendTemplate(cur); } } }, '이 템플릿 보내기');
   const editB = h('button', { type: 'button', class: 'btn', onclick: () => cur && editTemplate(cur, sending ? (t) => sendTemplate(t) : null) }, '고치기');
   const newB = h('button', { type: 'button', class: 'btn', onclick: () => editTemplate(null, sending ? (t) => sendTemplate(t) : null) }, '+ 새로 만들기');
-  const buttons = sending ? [newB, editB, sendB] : [newB, editB];
+  // 복사해서 숫자만 바꾸면 비슷한 문제를 금방 만들어요
+  const copyB = h('button', { type: 'button', class: 'btn', onclick: () => cur && editTemplate(Object.assign({}, cur, { id: null, title: cur.title }), sending ? (t) => sendTemplate(t) : null) }, '복사해서 새로');
+  const quickB = h('button', { type: 'button', class: 'btn', onclick: () => openQuick({ sb, openModal, closeModal, reload: loadHome, onSaved: () => openViewer(null, { sending }) }) }, '⚡ 빠른 만들기');
+  const buttons = sending ? [quickB, copyB, editB, sendB] : [quickB, newB, copyB, editB];
 
   function show(t) {
     cur = t;
@@ -861,7 +869,7 @@ function openViewer(startT, { sending = false } = {}) {
       b.setAttribute('aria-selected', on ? 'true' : 'false');
       if (on) b.scrollIntoView({ block: 'nearest' });
     });
-    editB.disabled = !t; sendB.disabled = !t;
+    editB.disabled = !t; sendB.disabled = !t; copyB.disabled = !t;
     const i = t ? shown.findIndex((x) => x.id === t.id) : -1;
     prevB.disabled = i <= 0; nextB.disabled = i < 0 || i >= shown.length - 1;
     if (!t) {

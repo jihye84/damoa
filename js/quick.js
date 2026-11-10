@@ -4,9 +4,9 @@
 //   7 = 3 + 4          → 십 배열판 가르기          57                     → 수 모형 (20까지는 십 배열판)
 //   사과는? 배, *사과, 귤, 감 → 4지선다 (* 가 정답)  물음표로 끝나는 글       → 서술형
 //   그 밖의 글           → 빈 답지
-import { h, $, toast, errMsg, KINDS } from './common.js?v=202611080707';
-import { cleanUrl } from './w/link.js?v=202611080707';
-import { renderSheet, WIDGETS } from './sheet.js?v=202611080707';
+import { h, $, toast, errMsg, KINDS } from './common.js?v=202611080717';
+import { cleanUrl } from './w/link.js?v=202611080717';
+import { renderSheet, WIDGETS } from './sheet.js?v=202611080717';
 
 const eunOf = (t) => { const ch = String(t).trim().slice(-1); if (/[0-9]/.test(ch)) return '013678'.includes(ch) ? '은' : '는'; const k = ch.charCodeAt(0) - 0xAC00; return k >= 0 && k < 11172 && k % 28 ? '은' : '는'; };
 const shuffle = (a) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };

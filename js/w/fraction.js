@@ -1,7 +1,7 @@
 // 분수 색칠판: 똑같이 나눈 원·막대·사각형을 톡 눌러 칠해요
 // content: { shape: 'circle'|'bar'|'rect', parts: 4, wholes: 1 }
 // answer:  { on: [칠한 조각 번호…] }    answer_key: { num }  (칠한 조각 수)
-import { s, svgRoot, makeState, wrap, num, clamp } from './base.js?v=202611080707';
+import { s, svgRoot, makeState, wrap, num, clamp } from './base.js?v=202611080717';
 
 export const fraction = {
   name: '분수 색칠판',

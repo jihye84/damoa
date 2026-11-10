@@ -314,7 +314,11 @@
 .quick-chip.on { background: var(--teal); border-color: var(--teal); color: #fff; font-weight: 700; }
 .quick-pv { flex: 1; min-height: 0; }
 .te .kind-picks .kind-pick:nth-last-child(2) { grid-column: auto; }
-.tpl-foot { display: flex; align-items: center; gap: 8px; padding-top: 8px; border-top: 1px solid var(--line); margin-top: 8px; font-size: 13px; }
 /* 템플릿 보관함 머리: 제목 한 줄, 단추는 그 아래로 넘쳐도 줄바꿈 */
-section[aria-labelledby="h-templates"] .panel-head { flex-wrap: wrap; row-gap: 8px; }
-section[aria-labelledby="h-templates"] .panel-head h2 { white-space: nowrap; }
+/* 템플릿 보관함: 제목 한 줄 + 단추 한 줄 (좁아도 제목이 꺾이지 않게) */
+.tpl-head h2 { white-space: nowrap; }
+.tpl-head #tpl-count { font-size: 14px; white-space: nowrap; }
+.tpl-actions { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 6px; margin-bottom: 10px; }
+.tpl-actions .btn { height: 38px; padding: 0 8px; font-size: 14px; white-space: nowrap; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.link-btn { border: none; background: none; padding: 4px 2px; font-size: 13px; color: var(--ink-3); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
+.link-btn.danger { color: #B91C1C; }

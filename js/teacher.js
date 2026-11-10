@@ -1,12 +1,12 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611080707';
-import { renderSheet, isCorrect, gradeMap, gradeShapes, gradeAny, loadMap, WIDGETS } from './sheet.js?v=202611080707';
-import { cleanUrl } from './w/link.js?v=202611080707';
-import { cleanKey, syncText } from './w/index.js?v=202611080707';
-import { openQuick } from './quick.js?v=202611080707';
-import { initPortfolio } from './portfolio.js?v=202611080707';
-import { openLibrary } from './library.js?v=202611080707';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611080707';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611080717';
+import { renderSheet, isCorrect, gradeMap, gradeShapes, gradeAny, loadMap, WIDGETS } from './sheet.js?v=202611080717';
+import { cleanUrl } from './w/link.js?v=202611080717';
+import { cleanKey, syncText } from './w/index.js?v=202611080717';
+import { openQuick } from './quick.js?v=202611080717';
+import { initPortfolio } from './portfolio.js?v=202611080717';
+import { openLibrary } from './library.js?v=202611080717';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611080717';
 
 const sb = makeClient('teacher');
 
@@ -310,7 +310,7 @@ function foldersOf(list) {
 function renderTemplates() {
   const box = $('#template-list');
   box.innerHTML = '';
-  $('#tpl-count').textContent = st.templates.length ? `템플릿 ${st.templates.length}개` : '';
+  $('#tpl-count').textContent = st.templates.length ? `${st.templates.length}개` : '';
   $('#clear-templates').hidden = !st.templates.length;
   if (!st.templates.length) {
     box.appendChild(h('div', { class: 'empty' }, '"+ 새 템플릿"으로 직접 만들거나,\n"꺼내 오기"로 수학 단원별 묶음과\n생각하기 질문을 가져올 수 있어요.'));

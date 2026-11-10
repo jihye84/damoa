@@ -2,8 +2,8 @@
 // content: { mode: 'frame', frames: 1|2 }  /  { mode: 'blocks', places: 2|3 }
 // answer:  frame → { cells: ['r','b',null,…] }   blocks → { n: [백, 십, 일] }
 // answer_key: frame → { count, red, blue }   blocks → { value, exact }
-import { h } from '../common.js?v=202611080707';
-import { s, svgRoot, makeState, wrap, num, clamp, eul } from './base.js?v=202611080707';
+import { h } from '../common.js?v=202611080717';
+import { s, svgRoot, makeState, wrap, num, clamp, eul } from './base.js?v=202611080717';
 
 const RED = '#E53935', BLUE = '#1E78E8';
 const PLACE = [['백', 100], ['십', 10], ['일', 1]];

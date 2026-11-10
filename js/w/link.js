@@ -2,8 +2,8 @@
 //  · 유튜브 · 구글 문서/슬라이드/설문은 다모아 화면 안에서 바로 (아이들이 앱 밖으로 나가지 않게)
 //  · 그 밖의 사이트는 큰 "열어 보기" 단추 → 새 탭 (다 보면 다모아 탭으로 돌아와 "다 했어요")
 // content: { url, open: 'auto'|'new' }      answer: { opened: true }
-import { h } from '../common.js?v=202611080707';
-import { makeState, wrap } from './base.js?v=202611080707';
+import { h } from '../common.js?v=202611080717';
+import { makeState, wrap } from './base.js?v=202611080717';
 
 export function cleanUrl(raw) {
   let u = String(raw || '').trim();

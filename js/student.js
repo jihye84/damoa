@@ -1,8 +1,11 @@
 // 다모아 학생 태블릿
-import { makeClient, h, $, toast, errMsg, stampEl, makeNickname } from './common.js?v=202611080717';
-import { renderSheet, WIDGETS } from './sheet.js?v=202611080717';
+import { makeClient, h, $, toast, errMsg, stampEl, makeNickname } from './common.js?v=202611101540';
+import { SUPABASE_URL, SUPABASE_KEY } from './config.js?v=202611101540';
+import { renderSheet, WIDGETS } from './sheet.js?v=202611101540';
 
 const sb = makeClient('student');
+// 창을 닫는 순간에도 보낼 수 있게 로그인 표를 미리 들고 있어요
+sb.auth.onAuthStateChange((_e, s) => { st.token = s ? s.access_token : null; });
 const CLAIM_KEY = 'damoa-claim';
 const NAME_COLORS = ['#FFE3C2', '#D6F0E0', '#DCE8FF', '#FBE0EA', '#EDE3FF', '#FFF1B8'];
 
@@ -22,6 +25,8 @@ const st = {
   beat: null,
   rosterTimer: null,
   sending: false,
+  srvDrafts: new Map(), // assignment_id → {t, a} 서버에 맡겨 둔 쓰던 것
+  token: null,
 };
 
 // ---------------- 화면 전환 ----------------
@@ -274,6 +279,7 @@ function startHeartbeat() {
 }
 
 document.addEventListener('visibilitychange', () => {
+  if (document.hidden) flushServerDraft(true);
   if (!st.claim) return;
   sb.rpc('heartbeat', { p_session: st.claim.sessionId, p_in_app: !document.hidden });
   if (!document.hidden) refreshSession();
@@ -341,6 +347,56 @@ function pending() {
 function readDraft(aid) {
   try { return JSON.parse(localStorage.getItem(draftKey(aid)) || 'null'); } catch (_) { return null; }
 }
+// ---------------- 서버에 맡겨 두기 ----------------
+// 쓰는 동안 2초에 한 번쯤, 그리고 창을 닫거나 다른 앱으로 갈 때 바로 맡겨요.
+// 브라우저를 꺼도, 태블릿을 바꿔도 다시 들어오면 이어서 할 수 있어요.
+const srv = { timer: null, dirty: false, last: 0, busy: false };
+function queueServerDraft() {
+  srv.dirty = true;
+  if (srv.timer) return;
+  const wait = Math.max(0, 2000 - (Date.now() - srv.last));
+  srv.timer = setTimeout(() => { srv.timer = null; flushServerDraft(false); }, wait);
+}
+function cancelServerDraft() {
+  clearTimeout(srv.timer); srv.timer = null; srv.dirty = false;
+}
+async function flushServerDraft(closing) {
+  if (closing && st.sheet && st.assignmentId) {
+    // 이 태블릿에도 바로 적어 둬요
+    try { if (srv.dirty) localStorage.setItem(draftKey(st.assignmentId), JSON.stringify({ t: Date.now(), a: st.sheet.getAnswer() })); } catch (_) {}
+  }
+  if (srv.off || !srv.dirty || !st.sheet || !st.assignment || !st.claim || st.sending) return;
+  if (!st.assignment.accepting) { srv.dirty = false; return; }
+  const aid = st.assignment.id;
+  const answer = st.sheet.getAnswer();
+  if (!answerHasWork(answer)) { srv.dirty = false; return; }
+  srv.dirty = false;
+  srv.last = Date.now();
+  clearTimeout(srv.timer); srv.timer = null;
+  st.srvDrafts.set(aid, { t: Date.now(), a: answer });
+  const body = JSON.stringify({ p_assignment: aid, p_answer: answer });
+  if (closing && st.token && body.length < 60000) {
+    // 창이 닫혀도 끝까지 가는 편지 (keepalive는 64KB까지만 돼요)
+    try {
+      fetch(SUPABASE_URL + '/rest/v1/rpc/save_draft', {
+        method: 'POST', keepalive: true, body,
+        headers: { 'Content-Type': 'application/json', apikey: SUPABASE_KEY, Authorization: 'Bearer ' + st.token },
+      }).catch(() => {});
+      return;
+    } catch (_) { /* 아래 보통 방법으로 */ }
+  }
+  if (srv.busy) { srv.dirty = true; queueServerDraft(); return; }
+  srv.busy = true;
+  try {
+    const { error } = await sb.rpc('save_draft', { p_assignment: aid, p_answer: answer });
+    if (error && (error.code === 'PGRST202' || error.code === '42883')) srv.off = true; // 07 설계도를 아직 안 돌렸으면 쉬어요
+    else if (error) srv.dirty = true;   // 잠깐 끊겼으면 다음에 다시
+  } catch (_) { srv.dirty = true; }
+  srv.busy = false;
+  if (srv.dirty && !srv.timer) queueServerDraft();
+}
+addEventListener('pagehide', () => flushServerDraft(true));
+
 function answerHasWork(a) {
   if (!a) return false;
   return (a.strokes && a.strokes.length > 0) || typeof a.choice === 'number' || (a.text && a.text.trim().length > 0)
@@ -354,6 +410,10 @@ async function loadQueue() {
     sb.from('assignments').select('id, title, kind, content, accepting, sent_at, closed_at').eq('session_id', sid).order('sent_at'),
     sb.from('submissions').select('id, assignment_id, answer, updated_at, auto_collected').eq('session_id', sid),
   ]);
+  try {
+    const { data: drafts, error } = await sb.rpc('my_drafts', { p_session: sid });
+    if (!error) st.srvDrafts = new Map((drafts || []).map((d) => [d.assignment_id, { t: Date.parse(d.updated_at), a: d.answer }]));
+  } catch (_) {}
   st.asgs = new Map((asgs || []).map((a) => [a.id, a]));
   st.mySubs = new Map((subs || []).map((x) => [x.assignment_id, x]));
   // 화면이 꺼져 있는 동안 마감된 장의 쓰던 것도 거둬 보기 (2분 안이면 받아 줘요)
@@ -432,6 +492,7 @@ function route(opts = {}) {
 }
 
 function destroySheet() {
+  flushServerDraft(false); // 다른 장으로 넘어가기 전에 쓰던 것 맡기기
   if (st.sheet) { st.sheet.destroy(); st.sheet = null; }
 }
 
@@ -452,9 +513,12 @@ function openSheet(aid) {
   st.submissionId = sub ? sub.id : null;
   $('#sent-badge').hidden = !sub;
 
+  // 낸 답, 이 태블릿에 둔 것, 서버에 맡긴 것 가운데 가장 나중 것으로 이어서 해요
   let answer = sub ? sub.answer : null;
-  const d = readDraft(aid);
-  if (d && (!sub || d.t > Date.parse(sub.updated_at))) answer = d.a;
+  let newest = sub ? Date.parse(sub.updated_at) : -1;
+  for (const d of [readDraft(aid), st.srvDrafts.get(aid)]) {
+    if (d && answerHasWork(d.a) && d.t > newest) { answer = d.a; newest = d.t; }
+  }
 
   show('v-work');
   let saveT = null;
@@ -463,10 +527,12 @@ function openSheet(aid) {
     answer,
     getFill: () => ({ color: tool.color, erase: tool.kind === 'eraser' }),
     onChange: () => {
+      srv.dirty = true;
       clearTimeout(saveT);
       saveT = setTimeout(() => {
         if (st.assignmentId !== aid || !st.sheet) return;
         try { localStorage.setItem(draftKey(aid), JSON.stringify({ t: Date.now(), a: st.sheet.getAnswer() })); } catch (_) {}
+        queueServerDraft();
       }, 300);
     },
   });
@@ -674,6 +740,7 @@ $('#send').addEventListener('click', async () => {
   st.sending = true;
   $('#send').disabled = true;
   const aid = st.assignment.id;
+  cancelServerDraft();
   const { data, error } = await sb.from('submissions').upsert({
     assignment_id: aid,
     session_id: st.claim.sessionId,
@@ -686,6 +753,7 @@ $('#send').addEventListener('click', async () => {
   st.mySubs.set(aid, data);
   st.submissionId = data.id;
   try { localStorage.removeItem(draftKey(aid)); } catch (_) {}
+  st.srvDrafts.delete(aid);
   st.editing = null;
   toast('선생님께 보냈어요!');
   route({ afterSend: true });

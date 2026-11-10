@@ -1,12 +1,12 @@
 // 다모아 선생님 PC
-import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611080717';
-import { renderSheet, isCorrect, gradeMap, gradeShapes, gradeAny, loadMap, WIDGETS } from './sheet.js?v=202611080717';
-import { cleanUrl } from './w/link.js?v=202611080717';
-import { cleanKey, syncText } from './w/index.js?v=202611080717';
-import { openQuick } from './quick.js?v=202611080717';
-import { initPortfolio } from './portfolio.js?v=202611080717';
-import { openLibrary } from './library.js?v=202611080717';
-import { qrcode } from '../vendor/qrcode.mjs?v=202611080717';
+import { makeClient, h, $, toast, errMsg, STAMPS, stampOf, stampEl, KINDS, MAPS, joinUrl, who } from './common.js?v=202611101540';
+import { renderSheet, isCorrect, gradeMap, gradeShapes, gradeAny, loadMap, WIDGETS } from './sheet.js?v=202611101540';
+import { cleanUrl } from './w/link.js?v=202611101540';
+import { cleanKey, syncText } from './w/index.js?v=202611101540';
+import { openQuick } from './quick.js?v=202611101540';
+import { initPortfolio } from './portfolio.js?v=202611101540';
+import { openLibrary } from './library.js?v=202611101540';
+import { qrcode } from '../vendor/qrcode.mjs?v=202611101540';
 
 const sb = makeClient('teacher');
 

@@ -1,8 +1,8 @@
 // 세로셈: 덧셈 · 뺄셈 · 곱셈. 빈칸을 누르고 숫자 패드로 써요 (받아올림 작은 칸은 채점하지 않아요)
 // content: { op: '+'|'-'|'×', a: 27, b: 35, carry: true }
 // answer:  { rows: { carry: [], p1: [], p2: [], ans: [] } }   (왼쪽부터 칸마다 한 글자)
-import { h } from '../common.js?v=202611080717';
-import { makeState, wrap, num, eul } from './base.js?v=202611080717';
+import { h } from '../common.js?v=202611101540';
+import { makeState, wrap, num, eul } from './base.js?v=202611101540';
 
 function calc(c) {
   const a = Math.trunc(num(c.a, 0)), b = Math.trunc(num(c.b, 0));
